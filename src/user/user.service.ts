@@ -19,7 +19,7 @@ export class UserService {
   ) {}
 
   /**
-   * Поиск пользователя для модуля аутентификации
+   * User search for auth module
    * @param username {string}
    * @returns {User | undefined}
    */
@@ -106,7 +106,6 @@ export class UserService {
     return await bcrypt.hash(password, rounds);
   }
 
-  // TODO: Локализовать ошибку - Пользователь с таким логином уже существует
   async createUser(data: CreateUserInput): Promise<any> {
     try {
       const hash: string = await UserService.hashPassword(

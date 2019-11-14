@@ -16,7 +16,7 @@ export class UserRoleResolver {
 
   @Query(() => UserRoleDto, {
     name: 'userRole',
-    description: 'Роль пользователя',
+    description: 'User role',
     nullable: false,
   })
   async userRole(@Args() { id }: UserRoleArgs) {

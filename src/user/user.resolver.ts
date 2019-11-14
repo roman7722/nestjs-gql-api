@@ -11,7 +11,7 @@ import { UpdateUserInput } from './inputs/user.update.input';
 import { UserService } from './user.service';
 
 @Resolver()
-// @UseGuards(GqlAuthGuard)
+@UseGuards(GqlAuthGuard)
 export class UserResolver {
   constructor(private readonly userService: UserService) {}
 
@@ -22,7 +22,7 @@ export class UserResolver {
 
   @Query(() => [UserDto], {
     name: 'userList',
-    description: 'Поиск пользователей и пагинация',
+    description: 'User search and pagination',
     nullable: false,
   })
   async userList(@Args() { textFilter, page, paging }: UserListArgs) {

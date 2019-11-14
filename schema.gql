@@ -52,11 +52,11 @@ type Query {
   agreementsFiltered(numAgreements: [String!]): [AgreementDto!]!
   user(id: Int!): UserDto
 
-  """Поиск пользователей и пагинация"""
+  """User search and pagination"""
   userList(textFilter: String, paging: Int!, page: Int!): [UserDto!]!
   usersFiltered(ids: [Int!], usernames: [String!]): [UserDto!]!
 
-  """Роль пользователя"""
+  """User role"""
   userRole(id: Int!): UserRoleDto!
   userRolesFiltered(ids: [Int!]): [UserRoleDto!]!
 }
