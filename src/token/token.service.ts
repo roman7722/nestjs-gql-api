@@ -1,0 +1,85 @@
+import { Op, Transaction } from 'sequelize';
+import { BadRequestException, Inject, Injectable } from '@nestjs/common';
+import { CreateRefreshTokenInput } from './inputs/token.create.inputs';
+import { UpdateRefreshTokenInput } from './inputs/token.update.inputs';
+import Token from './token.model';
+
+@Injectable()
+export class TokenService {
+  constructor(
+    @Inject('TOKEN_REPOSITORY')
+    private readonly TOKEN_REPOSITORY: typeof Token,
+  ) {}
+
+  async createRefreshToken(data: CreateRefreshTokenInput): Promise<Token> {
+    try {
+      return await this.TOKEN_REPOSITORY.create<Token>(data);
+    } catch (error) {
+      throw new BadRequestException();
+    }
+  }
+
+  async updateRefreshToken(values: UpdateRefreshTokenInput): Promise<any> {
+    try {
+      const res = await this.TOKEN_REPOSITORY.update<Token>(values, {
+        where: { id: values.id },
+        returning: true,
+      });
+      const [, [data]] = res;
+      return data.getDataValue('id');
+    } catch (error) {
+      throw new BadRequestException();
+    }
+  }
+
+  async findRefreshToken(userId: number, fingerprint: string): Promise<Token> {
+    try {
+      return await this.TOKEN_REPOSITORY.findOne<any>({
+        where: {
+          [Op.and]: [{ userId }, { fingerprint }],
+        },
+      });
+    } catch (error) {
+      throw new BadRequestException();
+    }
+  }
+
+  async verifyRefreshToken(
+    refreshToken: string,
+    fingerprint: string,
+  ): Promise<Token> {
+    return await this.TOKEN_REPOSITORY.findOne<any>({
+      where: {
+        [Op.and]: [{ refreshToken }, { fingerprint }],
+      },
+    });
+  }
+
+  async deleteRefreshToken(refreshToken: string): Promise<number> {
+    return await this.TOKEN_REPOSITORY.destroy({
+      where: {
+        refreshToken,
+      },
+    });
+  }
+
+  async deleteAllRefreshToken(
+    userId: number,
+    transaction?: Transaction,
+  ): Promise<number> {
+    return await this.TOKEN_REPOSITORY.destroy({
+      where: {
+        userId,
+      },
+      transaction,
+    });
+  }
+
+  async numberRefreshTokens(userId: number): Promise<number> {
+    return await this.TOKEN_REPOSITORY.count({
+      where: {
+        userId,
+      },
+    });
+  }
+}

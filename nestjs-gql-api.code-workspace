@@ -1,0 +1,40 @@
+{
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "settings": {
+    "editor.rulers": [120],
+    "editor.minimap.enabled": false,
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true,
+    "editor.tabCompletion": "on",
+    "editor.tabSize": 2,
+    "editor.wordSeparators": "`~!@#$%^&*()-=+[{]}\\|;:'\",.<>/?",
+    "cSpell.language": "en,ru",
+    "cSpell.ignorePaths": [
+      "node_modules/**",
+      "dist/**",
+      ".vscode/**",
+      ".env",
+      "yarn.lock"
+    ],
+    "workbench.tree.indent": 12,
+    "workbench.colorCustomizations": {
+      "editorRuler.foreground": "#03800e88"
+    },
+    "files.associations": {
+      "*.js": "javascript"
+    },
+    "git.enabled": true,
+    "typescript.tsdk": "node_modules/typescript/lib",
+    "importSorter.generalConfiguration.sortOnBeforeSave": true,
+    "importSorter.importStringConfiguration.tabSize": 2,
+    "importSorter.sortConfiguration.customOrderingRules.defaultNumberOfEmptyLinesAfterGroup": 0,
+    "importSorter.importStringConfiguration.maximumNumberOfImportExpressionsPerLine.count": 120,
+    "sync.quietSync": true,
+    "sync.removeExtensions": false,
+    "sync.syncExtensions": true
+  }
+}
