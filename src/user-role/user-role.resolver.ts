@@ -1,6 +1,4 @@
-import { UseGuards } from '@nestjs/common';
-import { Args, Mutation, Parent, Query, ResolveProperty, Resolver } from '@nestjs/graphql';
-import { GqlAuthGuard } from '../auth/guards/gql-auth.guard';
+import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { UserRoleArgs } from './args/user-role.args';
 import { UserRolesArgs } from './args/user-roles.args';
 import { UserRoleDto } from './dto/user-role.dto';
@@ -16,7 +14,7 @@ export class UserRoleResolver {
 
   @Query(() => UserRoleDto, {
     name: 'userRole',
-    description: 'User role',
+    description: 'Роль пользователя',
     nullable: false,
   })
   async userRole(@Args() { id }: UserRoleArgs) {
@@ -34,8 +32,10 @@ export class UserRoleResolver {
   }
 
   @Mutation(() => UserRoleDto)
-  async updateUserRole(@Args('data') { id, roleName }: UpdateUserRoleInput) {
-    return await this.userRoleService.updateUserRole({ id, roleName });
+  async updateUserRole(
+    @Args('data') { id, roleDescription }: UpdateUserRoleInput,
+  ) {
+    return await this.userRoleService.updateUserRole({ id, roleDescription });
   }
 
   @Mutation(() => UserRoleDto)

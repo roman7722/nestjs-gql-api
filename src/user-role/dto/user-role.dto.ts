@@ -1,10 +1,7 @@
-import { Field, ID, ObjectType } from 'type-graphql';
+import { Field, ObjectType } from 'type-graphql';
 
 @ObjectType()
 export class UserRoleDto {
-  @Field(() => ID, { nullable: true })
-  id?: number;
-
-  @Field({ nullable: true })
-  roleName?: string;
+  @Field({ nullable: true }) id?: string;
+  @Field({ nullable: true }) roleDescription?: string;
 }

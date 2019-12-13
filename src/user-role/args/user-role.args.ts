@@ -1,7 +1,7 @@
-import { ArgsType, Field, Int } from 'type-graphql';
+import { ArgsType, Field } from 'type-graphql';
 
 @ArgsType()
 export class UserRoleArgs {
-  @Field(() => Int, { nullable: false })
-  id: number;
+  @Field(() => String, { nullable: false })
+  id: string;
 }

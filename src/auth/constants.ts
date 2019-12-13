@@ -1,5 +1,5 @@
 export const jwtConstants = {
-  accessTokenLife: '15m',
-  refreshTokenLife: '10d',
-  maxNumberRefreshTokens: 5,
+  accessTokenLife: '90d',
+  refreshTokenLife: '120d',
+  maxNumberRefreshTokens: 3,
 };

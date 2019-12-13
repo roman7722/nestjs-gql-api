@@ -19,11 +19,12 @@ input CreateUserInput {
   email: String
   phone: String
   rem: String
-  roleId: Int!
+  roleId: String!
 }
 
 input CreateUserRoleInput {
-  roleName: String!
+  id: String!
+  roleDescription: String
 }
 
 """
@@ -36,7 +37,7 @@ input DeleteUserInput {
 }
 
 input DeleteUserRoleInput {
-  id: Int!
+  id: String!
 }
 
 type Mutation {
@@ -52,13 +53,13 @@ type Query {
   agreementsFiltered(numAgreements: [String!]): [AgreementDto!]!
   user(id: Int!): UserDto
 
-  """User search and pagination"""
+  """Поиск пользователей и пагинация"""
   userList(textFilter: String, paging: Int!, page: Int!): [UserDto!]!
   usersFiltered(ids: [Int!], usernames: [String!]): [UserDto!]!
 
-  """User role"""
-  userRole(id: Int!): UserRoleDto!
-  userRolesFiltered(ids: [Int!]): [UserRoleDto!]!
+  """Роль пользователя"""
+  userRole(id: String!): UserRoleDto!
+  userRolesFiltered(ids: [String!]): [UserRoleDto!]!
 }
 
 input UpdateUserInput {
@@ -71,12 +72,12 @@ input UpdateUserInput {
   email: String
   phone: String
   rem: String
-  roleId: Int!
+  roleId: String!
 }
 
 input UpdateUserRoleInput {
-  id: Int!
-  roleName: String!
+  id: String!
+  roleDescription: String
 }
 
 type UserDto {
@@ -93,6 +94,6 @@ type UserDto {
 }
 
 type UserRoleDto {
-  id: ID
-  roleName: String
+  id: String
+  roleDescription: String
 }

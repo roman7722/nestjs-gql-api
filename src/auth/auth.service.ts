@@ -19,12 +19,12 @@ export class AuthService {
   ) {}
 
   /**
-   * Generation accessToken, refreshToken and expiresIn
-   * @param payload {IPayload}
-   * @returns {Tokens}
+   * Генерация accessToken, refreshToken и expiresIn
+   * @param payload {Payload}
+   * @returns {Tokens} Объект содержащий accessToken и refreshToken
    */
   private getTokens(payload: IPayload): ITokens {
-    // Generation accessToken
+    // Генерация accessToken
     const accessToken: string = this.jwtService.sign(
       { ...payload, isAccessToken: 1 },
       {
@@ -32,7 +32,7 @@ export class AuthService {
         algorithm: 'HS256',
       },
     );
-    // Generation refreshToken
+    // Генерация refreshToken
     const refreshToken: string = this.jwtService.sign(
       { ...payload, isAccessToken: 0 },
       {
@@ -41,12 +41,12 @@ export class AuthService {
       },
     );
 
-    // Get data from accessToken
+    // Получение данных из accessToken
     const decodedAccessToken: TDecodedToken = this.jwtService.decode(
       accessToken,
     ) as TDecodedToken;
 
-    // Getting a expires time accessToken (Unix timestamp)
+    // Получение времени жизни accessToken (Unix timestamp)
     let expiresIn: number = 0;
     if (typeof decodedAccessToken !== 'string' && decodedAccessToken?.exp) {
       expiresIn = decodedAccessToken.exp;
@@ -67,22 +67,22 @@ export class AuthService {
   }
 
   /**
-   * User Authentication, generation accessToken, refreshToken and expiresIn
+   * Аунтентификация пользователя, генерация accessToken, refreshToken и expiresIn
    * @param username {string}
    * @param password {string}
    * @param fingerprint {string}
-   * @returns {Tokens}
+   * @returns {Tokens} Объект содержащий accessToken и refreshToken
    */
   async validateUser(
     username: string,
     password: string,
     fingerprint: string,
   ): Promise<ITokens | undefined> {
-    // Search for user in s_user table by username
+    // Поиск пользователя в таблице s_user по имени username
     const user = await this.userService.findUser(username);
 
     if (user && user.passwordHash) {
-      // Getting passwordHash from a record of a found user
+      // Получение passwordHash из записи найденного пользователя
       const { passwordHash } = user;
 
       const isMatch: boolean = await AuthService.comparePassword(
@@ -91,40 +91,41 @@ export class AuthService {
       );
 
       if (!isMatch) {
-        // Passwords did not match
+        // passwords did not match
         // throw new UnauthorizedException('auth:login:badUsernameOrPassword');
         throw new MessageCodeError('auth:login:badUsernameOrPassword');
       } else {
         // passwords match
         const userId: number = user.id;
-        const payload = { username, sub: userId };
+        const roleId: string = user.roleId;
+        const payload = { username, sub: userId, roleId };
 
-        // Get the number of user refreshToken entries
+        // Получаем кол-во записей refreshToken пользователя
         const numberRefreshTokens: number = await this.tokenService.numberRefreshTokens(
           userId,
         );
 
-        // If the refreshToken is greater than the maximum maxNumberRefreshTokens,
-        // then delete all refreshToken user from the table
+        // Если кол-во refreshToken больше допустимого maxNumberRefreshTokens,
+        // то удаляем все refreshToken пользователя из таблицы
         if (numberRefreshTokens >= jwtConstants.maxNumberRefreshTokens) {
           await this.tokenService.deleteAllRefreshToken(userId);
         }
 
-        // Generation accessToken, refreshToken and expiresIn
+        // Генерируем accessToken refreshToken и expiresIn
         const tokens = this.getTokens(payload);
 
-        // Search for an entry in the session table of an existing userId and fingerprint
+        // Поиск записи в таблице token существующего userId и fingerprint
         const existingRefreshTokenRow: Token = await this.tokenService.findRefreshToken(
           userId,
           fingerprint,
         );
 
-        // Retrieving data from refreshToken
+        // Получение данных из refreshToken
         const decodedRefreshToken: TDecodedToken = this.jwtService.decode(
           tokens.refreshToken,
         ) as TDecodedToken;
 
-        // Check for existence decodedRefreshToken.exp refreshToken lifetime
+        // Проверка на существование decodedRefreshToken.exp времени жизни refreshToken
         if (
           typeof decodedRefreshToken !== 'string' &&
           decodedRefreshToken?.exp
@@ -133,6 +134,7 @@ export class AuthService {
             const value: UpdateRefreshTokenInput = {
               id: existingRefreshTokenRow.id,
               userId,
+              roleId,
               refreshToken: tokens.refreshToken,
               expiresIn: decodedRefreshToken.exp,
               fingerprint,
@@ -141,6 +143,7 @@ export class AuthService {
           } else {
             const data: CreateRefreshTokenInput = {
               userId,
+              roleId,
               refreshToken: tokens.refreshToken,
               expiresIn: decodedRefreshToken.exp,
               fingerprint,
@@ -158,22 +161,23 @@ export class AuthService {
   }
 
   /**
-   * Update accessToken, refreshToken and expiresIn
+   * Обновление accessToken, refreshToken и expiresIn
    * @param refreshToken {string}
    * @param fingerprint {string}
-   * @returns {Tokens}
+   * @returns {Tokens} Объект содержащий accessToken и refreshToken
    */
   async regenerateRefreshToken(
     refreshToken: string,
     fingerprint: string,
   ): Promise<ITokens | undefined> {
-    // Search in table of session record where refreshToken matches fingerprint
+    // Ищем в таблице token запись где refreshToken соответствует fingerprint
     const existingRefreshTokenRow = await this.tokenService.verifyRefreshToken(
       refreshToken,
       fingerprint,
     );
 
     let userId: number = 0;
+    let roleId: string = '';
     let expiresIn: number = 0;
     let recordId: number = 0;
     let username: string = '';
@@ -181,15 +185,16 @@ export class AuthService {
     if (existingRefreshTokenRow?.userId) {
       const { getDataValue } = existingRefreshTokenRow;
       userId = getDataValue('userId');
+      roleId = getDataValue('roleId');
       expiresIn = getDataValue('expiresIn');
       recordId = getDataValue('id');
 
-      // Getting data from a new refreshToken
+      // Получаем данные из нового refreshToken
       const decodedRefreshToken: TDecodedToken = this.jwtService.decode(
         refreshToken,
       ) as TDecodedToken;
 
-      // If the received refreshToken was decoded without errors
+      // Если полученный refreshToken декодировался без ошибок
       if (
         typeof decodedRefreshToken !== 'string' &&
         decodedRefreshToken?.username
@@ -197,36 +202,38 @@ export class AuthService {
         username = decodedRefreshToken.username;
       }
     } else {
-      // If the record is not found, throw an Unauthorized exception
+      // Если запись не найдена выбрасываем исключение Unauthorized
       throw new UnauthorizedException('Unauthorized');
     }
 
-    // Get the current Unix timestamp in seconds
+    // Получаем текущий Unix timestamp в секундах
     const currentTimestamp: number = +Math.round(+new Date() / 1000);
 
-    // If refreshToken expired, delete the record from the table
-    // and throw an Unauthorized exception
+    // Если время жизни refreshToken истекло - удаляем запись из таблицы
+    // и генерируем исключение Unauthorized
     if (expiresIn < currentTimestamp) {
       await this.tokenService.deleteRefreshToken(refreshToken);
       throw new UnauthorizedException('Unauthorized');
-    } // generate a new pair of tokens and update the record
+    }
 
     // Если запись с валидным refreshToken в таблице найдена,
+    // генерируем новую пару токенов и обновляем запись
     if (existingRefreshTokenRow) {
       const payload = {
         username,
         sub: userId,
+        roleId,
       };
 
-      // Generate a new pair of accessToken, refreshToken and expiresIn
+      // Генерируем новую пару accessToken, refreshToken и expiresIn
       const tokens = this.getTokens(payload);
 
-      // Getting data from a new refreshToken
+      // Получаем данные из нового refreshToken
       const decodedNewRefreshToken: TDecodedToken = this.jwtService.decode(
         tokens.refreshToken,
       ) as TDecodedToken;
 
-      // If the new refreshToken decoded without errors
+      // Если новый refreshToken декодировался без ошибок
       if (
         typeof decodedNewRefreshToken !== 'string' &&
         decodedNewRefreshToken?.username
@@ -234,11 +241,12 @@ export class AuthService {
         const value: UpdateRefreshTokenInput = {
           id: recordId,
           userId,
+          roleId,
           refreshToken: tokens.refreshToken,
           expiresIn: decodedNewRefreshToken.exp,
           fingerprint,
         };
-        // Update refreshToken in session table
+        // Обновляем refreshToken в таблице token
         await this.tokenService.updateRefreshToken(value);
         return tokens;
       }

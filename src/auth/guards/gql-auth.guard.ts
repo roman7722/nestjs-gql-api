@@ -11,11 +11,15 @@ export class GqlAuthGuard extends AuthGuard('jwt') {
   canActivate(context: ExecutionContext) {
     const ctx = GqlExecutionContext.create(context);
     const { req } = ctx.getContext();
-    if (req && req.headers && req.headers.authorization) {
+    if (req?.headers?.authorization) {
       const accessToken: string = req.headers.authorization.split(' ')[1];
-      const payload: TVerifyedToken = verify(accessToken, process.env.JWT_SECRET, {
-        algorithms: ['HS256'],
-      }) as TVerifyedToken;
+      const payload: TVerifyedToken = verify(
+        accessToken,
+        process.env.JWT_SECRET,
+        {
+          algorithms: ['HS256'],
+        },
+      ) as TVerifyedToken;
 
       if (
         typeof payload !== 'string' &&

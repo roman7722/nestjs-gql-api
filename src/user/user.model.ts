@@ -18,9 +18,9 @@ export default class User extends Model<User> {
 
   @ForeignKey(() => UserRole)
   @Column({ allowNull: false })
-  roleId: number;
-
+  roleId: string;
   @BelongsTo(() => UserRole) role: UserRole;
+
   @HasMany(() => Agreement) agreements: Agreement[];
   @HasMany(() => Token) tokens: Token[];
 }

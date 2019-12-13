@@ -1,5 +1,5 @@
-import { Op } from 'sequelize';
 import { BadRequestException, Inject, Injectable } from '@nestjs/common';
+import { Op } from 'sequelize';
 import { CreateUserRoleInput } from './inputs/user-role.create.input';
 import UserRole from './user-role.model';
 
@@ -10,7 +10,7 @@ export class UserRoleService {
     private readonly USER_ROLE_REPOSITORY: typeof UserRole,
   ) {}
 
-  async readUserRole(id: number): Promise<UserRole | undefined> {
+  async readUserRole(id: string): Promise<UserRole | undefined> {
     try {
       return await this.USER_ROLE_REPOSITORY.findOne<any>({
         where: { id },
@@ -46,11 +46,11 @@ export class UserRoleService {
     }
   }
 
-  async updateUserRole({ id, roleName }): Promise<any> {
+  async updateUserRole({ id, roleDescription }): Promise<any> {
     try {
       const res = await this.USER_ROLE_REPOSITORY.update<UserRole>(
         {
-          roleName,
+          roleDescription,
         },
         {
           where: {
@@ -66,7 +66,7 @@ export class UserRoleService {
     }
   }
 
-  async deleteUserRole(id: number): Promise<number> {
+  async deleteUserRole(id: string): Promise<number> {
     return await this.USER_ROLE_REPOSITORY.destroy({
       where: {
         id,

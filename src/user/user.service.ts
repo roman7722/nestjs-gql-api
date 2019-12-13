@@ -1,6 +1,6 @@
 import * as bcrypt from 'bcrypt';
 import { isEmpty } from 'lodash';
-import { DatabaseError, Op, Transaction, ValidationError } from 'sequelize';
+import { Op, Transaction } from 'sequelize';
 import { BadRequestException, Inject, Injectable } from '@nestjs/common';
 import { MessageCodeError } from '../common/lib/error/MessageCodeError';
 import { TokenService } from '../token/token.service';
@@ -19,7 +19,7 @@ export class UserService {
   ) {}
 
   /**
-   * User search for auth module
+   * Поиск пользователя для модуля аутентификации
    * @param username {string}
    * @returns {User | undefined}
    */
@@ -27,7 +27,7 @@ export class UserService {
     try {
       const res = await this.USER_REPOSITORY.findOne<any>({
         where: { username },
-        attributes: ['id', 'username', 'passwordHash'],
+        attributes: ['id', 'roleId', 'username', 'passwordHash'],
       });
       return res;
     } catch (error) {

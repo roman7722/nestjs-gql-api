@@ -12,14 +12,10 @@
     "editor.tabCompletion": "on",
     "editor.tabSize": 2,
     "editor.wordSeparators": "`~!@#$%^&*()-=+[{]}\\|;:'\",.<>/?",
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": true
+    },
     "cSpell.language": "en,ru",
-    "cSpell.ignorePaths": [
-      "node_modules/**",
-      "dist/**",
-      ".vscode/**",
-      ".env",
-      "yarn.lock"
-    ],
     "workbench.tree.indent": 12,
     "workbench.colorCustomizations": {
       "editorRuler.foreground": "#03800e88"

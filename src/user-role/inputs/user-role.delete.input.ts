@@ -1,6 +1,6 @@
-import { Field, InputType, Int } from 'type-graphql';
+import { Field, InputType } from 'type-graphql';
 
 @InputType()
 export class DeleteUserRoleInput {
-  @Field(() => Int) id: number;
+  @Field(() => String) id: string;
 }

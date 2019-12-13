@@ -1,0 +1,53 @@
+version: '3.4'
+
+services:
+  db:
+    image: postgres
+    restart: always
+    env_file:
+      - .env.${NODE_ENV}
+    volumes:
+      - /var/lib/postgresql/data/tlt:/var/lib/postgresql/data/tlt
+    ports:
+      - 5432:5432
+    networks:
+      backend:
+        ipv4_address: 172.16.238.5
+
+  pga:
+    image: dpage/pgadmin4
+    restart: always
+    env_file:
+      - .env.${NODE_ENV}
+    ports:
+      - 8082:80
+    depends_on:
+      - db
+    networks:
+      backend:
+        ipv4_address: 172.16.238.6
+
+  node:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    user: 'root'
+    env_file:
+      - .env.${NODE_ENV}
+    working_dir: /home/node/app
+    ports:
+      - 3005:3005
+    depends_on:
+      - pga
+    command: ./start-node.sh
+    networks:
+      backend:
+        ipv4_address: 172.16.238.7
+
+networks:
+  backend:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.16.238.0/24
