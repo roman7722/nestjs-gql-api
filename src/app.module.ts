@@ -15,7 +15,7 @@ import { UserModule } from './user/user.module';
       autoSchemaFile: 'schema.gql',
       context: ({ req }) => ({ req }),
       debug: false,
-      playground: true,
+      playground: process.env.GRAPHQL_PLAYGROUND === 'true',
     }),
     UserRoleModule,
     AgreementModule,

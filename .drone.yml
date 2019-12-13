@@ -1,0 +1,13 @@
+kind: pipeline
+name: nest.fastrobot.ru
+
+steps:
+  - name: composer
+    image: docker/compose
+    environment:
+      DOCKER_HOST: tcp://172.17.0.1:2375
+    when:
+      branch: master
+      event: push
+    commands:
+      - NODE_ENV=prod COMPOSE_PROJECT_NAME=tlt docker-compose -f ./docker-compose.all.yml up --detach --build node

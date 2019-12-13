@@ -4,7 +4,7 @@ import { IErrorMessages } from './interfaces/IErrorMessages';
 export const errorMessagesConfig: { [messageCode: string]: IErrorMessages } = {
   'auth:login:badUsernameOrPassword': {
     type: 'BadRequest',
-    httpStatus: HttpStatus.BAD_REQUEST,
+    httpStatus: HttpStatus.UNAUTHORIZED,
     errorMessage: 'Unable to login, incorrect username or password.',
     userMessage: 'Невозможно войти, неверное имя пользователя или пароль.',
   },
@@ -13,5 +13,11 @@ export const errorMessagesConfig: { [messageCode: string]: IErrorMessages } = {
     httpStatus: HttpStatus.BAD_REQUEST,
     errorMessage: 'Unable to create user.',
     userMessage: 'Невозможно создать пользователя.',
+  },
+  'common:route:notFound': {
+    type: 'NotFound',
+    httpStatus: HttpStatus.NOT_FOUND,
+    errorMessage: 'No route found.',
+    userMessage: 'Не найден маршрут.',
   },
 };

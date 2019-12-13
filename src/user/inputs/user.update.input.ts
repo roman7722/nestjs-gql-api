@@ -11,5 +11,5 @@ export class UpdateUserInput {
   @Field({ nullable: true }) email: string;
   @Field({ nullable: true }) phone: string;
   @Field({ nullable: true }) rem: string;
-  @Field(() => Int, { nullable: false }) roleId: number;
+  @Field(() => String, { nullable: false }) roleId: string;
 }

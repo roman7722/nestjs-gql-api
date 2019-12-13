@@ -3,12 +3,30 @@ import { resolve } from 'path';
 import { Dialect } from 'sequelize/types';
 import { IDatabaseConfig } from './interfaces/IDatabase';
 
-dotenv.config({ path: resolve(__dirname, '../../../.env') });
+console.log(
+  `\n--------------------------------------- NODE_ENV =`,
+  process.env.NODE_ENV,
+  ` ---------------------------------------\n`,
+);
+
+switch (process.env.NODE_ENV) {
+  case 'dev':
+    dotenv.config({ path: resolve(__dirname, '../../../.env.dev') });
+    break;
+
+  case 'prod':
+    dotenv.config({ path: resolve(__dirname, '../../../.env.prod') });
+    break;
+
+  default:
+    dotenv.config({ path: resolve(__dirname, '../../../.env.prod') });
+    break;
+}
 
 const {
-  DB_USERNAME,
-  DB_PASSWORD,
-  DB_DATABASE,
+  POSTGRES_USER,
+  POSTGRES_PASSWORD,
+  POSTGRES_DB,
   DB_HOST,
   DB_PORT,
   DB_DIALECT,
@@ -16,25 +34,25 @@ const {
 
 export const databaseConfig: IDatabaseConfig = {
   dev: {
-    username: DB_USERNAME || '',
-    password: DB_PASSWORD || '',
-    database: DB_DATABASE || '',
+    username: POSTGRES_USER || '',
+    password: POSTGRES_PASSWORD || '',
+    database: POSTGRES_DB || '',
     host: DB_HOST || '127.0.0.1',
     port: Number(DB_PORT) || 5432,
     dialect: DB_DIALECT as Dialect,
   },
   prod: {
-    username: DB_USERNAME || '',
-    password: DB_PASSWORD || '',
-    database: DB_DATABASE || '',
+    username: POSTGRES_USER || '',
+    password: POSTGRES_PASSWORD || '',
+    database: POSTGRES_DB || '',
     host: DB_HOST || '127.0.0.1',
     port: Number(DB_PORT) || 5432,
     dialect: DB_DIALECT as Dialect,
   },
   test: {
-    username: DB_USERNAME || '',
-    password: DB_PASSWORD || '',
-    database: DB_DATABASE || '',
+    username: POSTGRES_USER || '',
+    password: POSTGRES_PASSWORD || '',
+    database: POSTGRES_DB || '',
     host: DB_HOST || '127.0.0.1',
     port: Number(DB_PORT) || 5432,
     dialect: DB_DIALECT as Dialect,

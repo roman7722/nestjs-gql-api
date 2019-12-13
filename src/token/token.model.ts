@@ -8,6 +8,7 @@ export default class Token extends Model<Token> {
   @Column({ allowNull: false })
   userId: number;
   @BelongsTo(() => User) user: User;
+  @Column({ allowNull: false }) roleId: string;
   @Column({ allowNull: false }) refreshToken: string;
   @Column({ allowNull: false }) expiresIn: number;
   @Column({ allowNull: false }) fingerprint: string;

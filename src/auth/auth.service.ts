@@ -48,7 +48,7 @@ export class AuthService {
 
     // Получение времени жизни accessToken (Unix timestamp)
     let expiresIn: number = 0;
-    if ( typeof decodedAccessToken !== 'string' && decodedAccessToken?.exp ) {
+    if (typeof decodedAccessToken !== 'string' && decodedAccessToken?.exp) {
       expiresIn = decodedAccessToken.exp;
     }
 
@@ -97,7 +97,8 @@ export class AuthService {
       } else {
         // passwords match
         const userId: number = user.id;
-        const payload = { username, sub: userId };
+        const roleId: string = user.roleId;
+        const payload = { username, sub: userId, roleId };
 
         // Получаем кол-во записей refreshToken пользователя
         const numberRefreshTokens: number = await this.tokenService.numberRefreshTokens(
@@ -126,12 +127,14 @@ export class AuthService {
 
         // Проверка на существование decodedRefreshToken.exp времени жизни refreshToken
         if (
-          typeof decodedRefreshToken !== 'string' && decodedRefreshToken?.exp
+          typeof decodedRefreshToken !== 'string' &&
+          decodedRefreshToken?.exp
         ) {
           if (existingRefreshTokenRow) {
             const value: UpdateRefreshTokenInput = {
               id: existingRefreshTokenRow.id,
               userId,
+              roleId,
               refreshToken: tokens.refreshToken,
               expiresIn: decodedRefreshToken.exp,
               fingerprint,
@@ -140,6 +143,7 @@ export class AuthService {
           } else {
             const data: CreateRefreshTokenInput = {
               userId,
+              roleId,
               refreshToken: tokens.refreshToken,
               expiresIn: decodedRefreshToken.exp,
               fingerprint,
@@ -173,6 +177,7 @@ export class AuthService {
     );
 
     let userId: number = 0;
+    let roleId: string = '';
     let expiresIn: number = 0;
     let recordId: number = 0;
     let username: string = '';
@@ -180,6 +185,7 @@ export class AuthService {
     if (existingRefreshTokenRow?.userId) {
       const { getDataValue } = existingRefreshTokenRow;
       userId = getDataValue('userId');
+      roleId = getDataValue('roleId');
       expiresIn = getDataValue('expiresIn');
       recordId = getDataValue('id');
 
@@ -189,7 +195,10 @@ export class AuthService {
       ) as TDecodedToken;
 
       // Если полученный refreshToken декодировался без ошибок
-      if ( typeof decodedRefreshToken !== 'string' && decodedRefreshToken?.username ) {
+      if (
+        typeof decodedRefreshToken !== 'string' &&
+        decodedRefreshToken?.username
+      ) {
         username = decodedRefreshToken.username;
       }
     } else {
@@ -213,6 +222,7 @@ export class AuthService {
       const payload = {
         username,
         sub: userId,
+        roleId,
       };
 
       // Генерируем новую пару accessToken, refreshToken и expiresIn
@@ -224,10 +234,14 @@ export class AuthService {
       ) as TDecodedToken;
 
       // Если новый refreshToken декодировался без ошибок
-      if ( typeof decodedNewRefreshToken !== 'string' && decodedNewRefreshToken?.username ) {
+      if (
+        typeof decodedNewRefreshToken !== 'string' &&
+        decodedNewRefreshToken?.username
+      ) {
         const value: UpdateRefreshTokenInput = {
           id: recordId,
           userId,
+          roleId,
           refreshToken: tokens.refreshToken,
           expiresIn: decodedNewRefreshToken.exp,
           fingerprint,

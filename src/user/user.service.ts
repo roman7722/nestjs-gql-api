@@ -1,6 +1,6 @@
 import * as bcrypt from 'bcrypt';
 import { isEmpty } from 'lodash';
-import { DatabaseError, Op, Transaction, ValidationError } from 'sequelize';
+import { Op, Transaction } from 'sequelize';
 import { BadRequestException, Inject, Injectable } from '@nestjs/common';
 import { MessageCodeError } from '../common/lib/error/MessageCodeError';
 import { TokenService } from '../token/token.service';
@@ -27,7 +27,7 @@ export class UserService {
     try {
       const res = await this.USER_REPOSITORY.findOne<any>({
         where: { username },
-        attributes: ['id', 'username', 'passwordHash'],
+        attributes: ['id', 'roleId', 'username', 'passwordHash'],
       });
       return res;
     } catch (error) {
@@ -106,7 +106,6 @@ export class UserService {
     return await bcrypt.hash(password, rounds);
   }
 
-  // TODO: Локализовать ошибку - Пользователь с таким логином уже существует
   async createUser(data: CreateUserInput): Promise<any> {
     try {
       const hash: string = await UserService.hashPassword(
