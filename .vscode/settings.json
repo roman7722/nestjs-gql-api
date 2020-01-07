@@ -35,5 +35,6 @@
     "валидным",
     "токенов"
   ],
-  "cSpell.language": "en,ru"
+  "cSpell.language": "en,ru",
+  "typescript.tsdk": "node_modules/typescript/lib"
 }

@@ -21,11 +21,7 @@ export class GqlAuthGuard extends AuthGuard('jwt') {
         },
       ) as TVerifyedToken;
 
-      if (
-        typeof payload !== 'string' &&
-        payload &&
-        payload.isAccessToken === 1
-      ) {
+      if (typeof payload !== 'string' && payload) {
         return super.canActivate(new ExecutionContextHost([req]));
       }
     } else {

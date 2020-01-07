@@ -9,14 +9,14 @@ export const databaseProviders = [
       let config: IDatabaseConfigAttributes;
 
       switch (process.env.NODE_ENV) {
-        case 'prod':
-          config = databaseConfig.prod;
+        case 'production':
+          config = databaseConfig.production;
           break;
-        case 'dev':
-          config = databaseConfig.dev;
+        case 'develop':
+          config = databaseConfig.develop;
           break;
         default:
-          config = databaseConfig.dev;
+          config = databaseConfig.develop;
       }
 
       const sequelize = new Sequelize({

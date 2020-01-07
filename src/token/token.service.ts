@@ -47,7 +47,7 @@ export class TokenService {
   async verifyRefreshToken(
     refreshToken: string,
     fingerprint: string,
-  ): Promise<Token> {
+  ): Promise<Token | undefined> {
     return await this.TOKEN_REPOSITORY.findOne<any>({
       where: {
         [Op.and]: [{ refreshToken }, { fingerprint }],
@@ -55,10 +55,10 @@ export class TokenService {
     });
   }
 
-  async deleteRefreshToken(refreshToken: string): Promise<number> {
+  async deleteRefreshToken(recordId: number): Promise<number> {
     return await this.TOKEN_REPOSITORY.destroy({
       where: {
-        refreshToken,
+        id: recordId,
       },
     });
   }

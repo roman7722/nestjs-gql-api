@@ -19,7 +19,7 @@ export class UserService {
   ) {}
 
   /**
-   * Поиск пользователя для модуля аутентификации
+   * Поиск пользователя по имени для модуля аутентификации
    * @param username {string}
    * @returns {User | undefined}
    */
@@ -28,6 +28,23 @@ export class UserService {
       const res = await this.USER_REPOSITORY.findOne<any>({
         where: { username },
         attributes: ['id', 'roleId', 'username', 'passwordHash'],
+      });
+      return res;
+    } catch (error) {
+      throw new BadRequestException();
+    }
+  }
+
+  /**
+   * Поиск роли пользователя по id для модуля RolesGuard
+   * @param id {number}
+   * @returns {User | undefined}
+   */
+  async findUserRole(id: number): Promise<User | undefined> {
+    try {
+      const res = await this.USER_REPOSITORY.findOne<any>({
+        where: { id },
+        attributes: ['roleId'],
       });
       return res;
     } catch (error) {

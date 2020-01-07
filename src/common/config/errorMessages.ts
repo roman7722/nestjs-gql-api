@@ -20,4 +20,10 @@ export const errorMessagesConfig: { [messageCode: string]: IErrorMessages } = {
     errorMessage: 'No route found.',
     userMessage: 'Не найден маршрут.',
   },
+  'common:route:forbidden': {
+    type: 'Forbidden',
+    httpStatus: HttpStatus.FORBIDDEN,
+    errorMessage: 'Forbidden resource.',
+    userMessage: 'Запрещенный ресурс.',
+  },
 };
