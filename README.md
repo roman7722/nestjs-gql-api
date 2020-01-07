@@ -6,17 +6,17 @@
   <a href="https://www.postgresql.org/" target="blank"><img src="https://www.postgresql.org/media/img/about/press/elephant.png" width="60" alt="PostgreSQL Logo" /></a>
 </p>
 
-## Description
+## Описание
 
-Backend GraphQL application.
+Backend GraphQL application (проект в разработке!).
 
-## Installation
+## Установка
 
 ```bash
 $ yarn install
 ```
 
-## Running the app
+## Запуск приложения
 
 ```bash
 # develop
@@ -28,12 +28,14 @@ $ yarn start:dev
 # production mode
 $ yarn start:prod
 ```
+## Реализованная схема БД (PostgreSQL 12)
+![Схема БД](./db-diagram.png)
 
-## Stay in touch
+## Оставайтесь на связи
 
 - Author - [Roman Karas](https://www.facebook.com/roman.karas.98)
 - Telegram - [@roman_t2](https://t.me/roman_t2)
 
-## License
+## Лицензия
 
 This project is [ISC licensed](https://gitlab.com/roman7722/nestjs-gql-api/blob/develop/LICENCE).
