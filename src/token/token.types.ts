@@ -1,5 +1,4 @@
 export interface IPayload {
-  // username: string;
   sub: number;
 }
 
@@ -10,7 +9,6 @@ export interface ITokens {
 }
 
 interface IDecodedToken {
-  // username: string;
   sub: number;
   iat: number;
   exp: number;
