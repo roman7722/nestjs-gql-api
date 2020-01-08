@@ -1,14 +1,18 @@
+import { decode } from 'jsonwebtoken';
 import { CanActivate, ExecutionContext, Injectable } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
 import { GqlExecutionContext } from '@nestjs/graphql';
-import { decode } from 'jsonwebtoken';
 import { TDecodedToken } from '../../token/token.types';
+import { UserService } from '../../user/user.service';
 
 @Injectable()
 export class RolesGuard implements CanActivate {
-  constructor(private readonly reflector: Reflector) {}
+  constructor(
+    private readonly userService: UserService,
+    private readonly reflector: Reflector,
+  ) {}
 
-  canActivate(context: ExecutionContext): boolean {
+  async canActivate(context: ExecutionContext): Promise<boolean> {
     const rolesResolver =
       this.reflector.get<string[]>('roles', context.getClass()) || [];
     const rolesQuery =
@@ -25,9 +29,12 @@ export class RolesGuard implements CanActivate {
       const accessToken: string = req.headers.authorization.split(' ')[1];
       payload = decode(accessToken) as TDecodedToken;
       if (typeof payload !== 'string' && payload) {
-        const { sub, roleId } = payload;
+        const { sub } = payload;
+        /** Получаем roleId из таблицы s_user */
+        const user = await this.userService.findUserRole(sub);
+        const roleId = user?.getDataValue('roleId');
 
-        console.log('Token role --->', roleId);
+        console.log('User role --->', roleId);
 
         const hasRole = () => roles.some(role => role === roleId);
 

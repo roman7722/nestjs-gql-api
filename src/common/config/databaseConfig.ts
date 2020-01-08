@@ -10,16 +10,16 @@ console.log(
 );
 
 switch (process.env.NODE_ENV) {
-  case 'dev':
-    dotenv.config({ path: resolve(__dirname, '../../../.env.dev') });
+  case 'develop':
+    dotenv.config({ path: resolve(__dirname, '../../../.env.develop') });
     break;
 
-  case 'prod':
-    dotenv.config({ path: resolve(__dirname, '../../../.env.prod') });
+  case 'production':
+    dotenv.config({ path: resolve(__dirname, '../../../.env.production') });
     break;
 
   default:
-    dotenv.config({ path: resolve(__dirname, '../../../.env.prod') });
+    dotenv.config({ path: resolve(__dirname, '../../../.env.production') });
     break;
 }
 
@@ -33,7 +33,7 @@ const {
 } = process.env;
 
 export const databaseConfig: IDatabaseConfig = {
-  dev: {
+  develop: {
     username: POSTGRES_USER || '',
     password: POSTGRES_PASSWORD || '',
     database: POSTGRES_DB || '',
@@ -41,7 +41,7 @@ export const databaseConfig: IDatabaseConfig = {
     port: Number(DB_PORT) || 5432,
     dialect: DB_DIALECT as Dialect,
   },
-  prod: {
+  production: {
     username: POSTGRES_USER || '',
     password: POSTGRES_PASSWORD || '',
     database: POSTGRES_DB || '',

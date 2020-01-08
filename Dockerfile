@@ -9,8 +9,8 @@ RUN yarn install \
   && apt-get update \
   && apt-get install -y postgresql-client
 
-COPY .env.dev ./
-COPY .env.prod ./
+COPY .env.develop ./
+COPY .env.production ./
 COPY src ./src
 COPY schema.gql ./
 COPY nodemon.json ./

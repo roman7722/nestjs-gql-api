@@ -1,7 +1,5 @@
 export interface IPayload {
-  username: string;
   sub: number;
-  roleId: string;
 }
 
 export interface ITokens {
@@ -11,12 +9,9 @@ export interface ITokens {
 }
 
 interface IDecodedToken {
-  username: string;
   sub: number;
-  roleId: string;
   iat: number;
   exp: number;
-  isAccessToken: number;
 }
 
 export type TDecodedToken = IDecodedToken | null | string;

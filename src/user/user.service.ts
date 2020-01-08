@@ -19,15 +19,44 @@ export class UserService {
   ) {}
 
   /**
-   * Поиск пользователя для модуля аутентификации
+   * Поиск пользователя по имени для модуля аутентификации
    * @param username {string}
    * @returns {User | undefined}
    */
   async findUser(username: string): Promise<User | undefined> {
     try {
-      const res = await this.USER_REPOSITORY.findOne<any>({
+      const res = await this.USER_REPOSITORY.findOne<User>({
         where: { username },
         attributes: ['id', 'roleId', 'username', 'passwordHash'],
+      });
+      return res;
+    } catch (error) {
+      throw new BadRequestException();
+    }
+  }
+
+  /**
+   * Поиск роли пользователя по id для модуля RolesGuard
+   * @param id {number}
+   * @returns {User | undefined}
+   */
+  async findUserRole(id: number): Promise<User | undefined> {
+    try {
+      const res = await this.USER_REPOSITORY.findOne<User>({
+        where: { id },
+        attributes: ['roleId'],
+      });
+      return res;
+    } catch (error) {
+      throw new BadRequestException();
+    }
+  }
+
+  async findUserName(username: string): Promise<User | undefined> {
+    try {
+      const res = await this.USER_REPOSITORY.findOne<User>({
+        where: { username },
+        attributes: ['id', 'username'],
       });
       return res;
     } catch (error) {
@@ -44,7 +73,7 @@ export class UserService {
       const iRegexp: string = isEmpty(textFilter)
         ? ``
         : `(^${textFilter})|( ${textFilter})`;
-      return await this.USER_REPOSITORY.findAll<any>({
+      return await this.USER_REPOSITORY.findAll<User>({
         limit: paging,
         offset: (page - 1) * paging,
         include: [UserRole],
@@ -62,7 +91,7 @@ export class UserService {
 
   async user(id: number): Promise<User | undefined> {
     try {
-      return await this.USER_REPOSITORY.findOne<any>({
+      return await this.USER_REPOSITORY.findOne<User>({
         include: [UserRole],
         where: { id },
       });
@@ -91,7 +120,7 @@ export class UserService {
         });
       }
 
-      return await this.USER_REPOSITORY.findAll<any>({
+      return await this.USER_REPOSITORY.findAll<User>({
         include: [UserRole],
         where: {
           [Op.or]: [idWhereCondition, loginWhereCondition],
@@ -106,8 +135,15 @@ export class UserService {
     return await bcrypt.hash(password, rounds);
   }
 
-  async createUser(data: CreateUserInput): Promise<any> {
+  async createUser(data: CreateUserInput): Promise<User> {
     try {
+      const user = await this.findUserName(data.username);
+      const username = user?.getDataValue('username');
+
+      if (username) {
+        throw new MessageCodeError('user:create:unableToCreateUser');
+      }
+
       const hash: string = await UserService.hashPassword(
         data.passwordHash,
         12,
@@ -123,7 +159,7 @@ export class UserService {
     }
   }
 
-  async updateUser(val: UpdateUserInput): Promise<any> {
+  async updateUser(val: UpdateUserInput): Promise<number> {
     try {
       const hash: string = await UserService.hashPassword(val.passwordHash, 12);
       const res = await this.USER_REPOSITORY.update<User>(
@@ -146,7 +182,7 @@ export class UserService {
     }
   }
 
-  async deleteUser(userId: number): Promise<any> {
+  async deleteUser(userId: number): Promise<number> {
     let transaction: Transaction;
 
     try {

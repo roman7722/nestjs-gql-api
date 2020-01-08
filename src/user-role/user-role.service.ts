@@ -1,5 +1,5 @@
-import { BadRequestException, Inject, Injectable } from '@nestjs/common';
 import { Op } from 'sequelize';
+import { BadRequestException, Inject, Injectable } from '@nestjs/common';
 import { CreateUserRoleInput } from './inputs/user-role.create.input';
 import UserRole from './user-role.model';
 
@@ -12,7 +12,7 @@ export class UserRoleService {
 
   async readUserRole(id: string): Promise<UserRole | undefined> {
     try {
-      return await this.USER_ROLE_REPOSITORY.findOne<any>({
+      return await this.USER_ROLE_REPOSITORY.findOne<UserRole>({
         where: { id },
       });
     } catch (error) {
@@ -46,7 +46,7 @@ export class UserRoleService {
     }
   }
 
-  async updateUserRole({ id, roleDescription }): Promise<any> {
+  async updateUserRole({ id, roleDescription }): Promise<string> {
     try {
       const res = await this.USER_ROLE_REPOSITORY.update<UserRole>(
         {
