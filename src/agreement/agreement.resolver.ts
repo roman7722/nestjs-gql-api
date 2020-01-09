@@ -1,4 +1,4 @@
-import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
+import { Args, Query, Resolver } from '@nestjs/graphql';
 import { AgreementService } from './agreement.service';
 import { AgreementArgs } from './args/agreement.args';
 import { AgreementDto } from './dto/agreement.dto';

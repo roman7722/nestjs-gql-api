@@ -1,7 +1,5 @@
 import { map } from 'lodash';
-import {
-  AfterCreate, AfterFind, AfterUpdate, BelongsTo, Column, ForeignKey, HasMany, Model, Table,
-} from 'sequelize-typescript';
+import { AfterCreate, AfterFind, AfterUpdate, BelongsTo, Column, ForeignKey, Model, Table } from 'sequelize-typescript';
 import User from '../user/user.model';
 
 @Table({ tableName: 'agreement' })
