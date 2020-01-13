@@ -6,9 +6,9 @@ import { RolesGuard } from '../auth/guards/roles.guard';
 import { UserRoleArgs } from './args/user-role.args';
 import { UserRolesArgs } from './args/user-roles.args';
 import { UserRoleDto } from './dto/user-role.dto';
-import { CreateUserRoleInput } from './inputs/user-role.create.input';
-import { DeleteUserRoleInput } from './inputs/user-role.delete.input';
-import { UpdateUserRoleInput } from './inputs/user-role.update.input';
+import { UserRoleCreateInput } from './input/user-role-create.input';
+import { UserRoleDeleteInput } from './input/user-role-delete.input';
+import { UserRoleUpdateInput } from './input/user-role-update.input';
 import { UserRoleService } from './user-role.service';
 
 @Resolver()
@@ -24,29 +24,29 @@ export class UserRoleResolver {
     nullable: false,
   })
   async userRole(@Args() { id }: UserRoleArgs) {
-    return this.userRoleService.readUserRole(id);
+    return this.userRoleService.userRole(id);
   }
 
   @Roles('MANAGER')
   @Query(() => [UserRoleDto])
-  async userRolesFiltered(@Args() { ids }: UserRolesArgs) {
-    return await this.userRoleService.findUserRoles(ids);
+  async userRolesFind(@Args() { ids }: UserRolesArgs) {
+    return await this.userRoleService.userRolesFind(ids);
   }
 
   @Mutation(() => UserRoleDto)
-  async createUserRole(@Args('data') data: CreateUserRoleInput) {
-    return await this.userRoleService.createUserRole(data);
+  async userRoleCreate(@Args('data') data: UserRoleCreateInput) {
+    return await this.userRoleService.userRoleCreate(data);
   }
 
   @Mutation(() => UserRoleDto)
-  async updateUserRole(
-    @Args('data') { id, roleDescription }: UpdateUserRoleInput,
+  async userRoleUpdate(
+    @Args('data') { id, roleDescription }: UserRoleUpdateInput,
   ) {
-    return await this.userRoleService.updateUserRole({ id, roleDescription });
+    return await this.userRoleService.userRoleUpdate({ id, roleDescription });
   }
 
   @Mutation(() => UserRoleDto)
-  async deleteUserRole(@Args('data') { id }: DeleteUserRoleInput) {
-    return await this.userRoleService.deleteUserRole(id);
+  async userRoleDelete(@Args('data') { id }: UserRoleDeleteInput) {
+    return await this.userRoleService.userRoleDelete(id);
   }
 }

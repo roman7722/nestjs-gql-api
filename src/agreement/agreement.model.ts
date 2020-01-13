@@ -11,7 +11,7 @@ export default class Agreement extends Model<Agreement> {
   @AfterCreate
   @AfterUpdate
   static passwordHide(instance: User) {
-      map(instance, dataValues => (dataValues.user.dataValues.password = null));
+    map(instance, dataValues => (dataValues.user.dataValues.password = null));
   }
 
   @ForeignKey(() => User)

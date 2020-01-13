@@ -10,21 +10,22 @@ type AgreementDto {
   dateAgreement: DateTime!
 }
 
-input CreateUserInput {
-  firstName: String
-  middleName: String
-  secondName: String
-  username: String!
-  passwordHash: String!
-  email: String
-  phone: String
-  rem: String
-  roleId: String!
+input CityCreateInput {
+  cityName: String!
 }
 
-input CreateUserRoleInput {
-  id: String!
-  roleDescription: String
+input CityDeleteInput {
+  id: Int!
+}
+
+type CityDto {
+  id: ID
+  cityName: String
+}
+
+input CityUpdateInput {
+  id: Int!
+  cityName: String
 }
 
 """
@@ -32,38 +33,38 @@ The javascript `Date` as string. Type represents date and time as the ISO Date s
 """
 scalar DateTime
 
-input DeleteUserInput {
-  id: Int!
-}
-
-input DeleteUserRoleInput {
-  id: String!
-}
-
 type Mutation {
-  createUser(data: CreateUserInput!): UserDto!
-  updateUser(data: UpdateUserInput!): UserDto!
-  deleteUser(data: DeleteUserInput!): Float!
-  createUserRole(data: CreateUserRoleInput!): UserRoleDto!
-  updateUserRole(data: UpdateUserRoleInput!): UserRoleDto!
-  deleteUserRole(data: DeleteUserRoleInput!): UserRoleDto!
+  userCreate(data: UserCreateInput!): UserDto!
+  userUpdate(data: UserUpdateInput!): UserDto!
+  userDelete(data: UserDeleteInput!): Float!
+  cityCreate(data: CityCreateInput!): CityDto!
+  cityUpdate(data: CityUpdateInput!): CityDto!
+  cityDelete(data: CityDeleteInput!): Float!
+  userRoleCreate(data: UserRoleCreateInput!): UserRoleDto!
+  userRoleUpdate(data: UserRoleUpdateInput!): UserRoleDto!
+  userRoleDelete(data: UserRoleDeleteInput!): UserRoleDto!
 }
 
 type Query {
   agreementsFiltered(numAgreements: [String!]): [AgreementDto!]!
   user(id: Int!): UserDto
 
-  """Поиск пользователей и пагинация"""
+  """Поиск пользователей по ФИО и пагинация"""
   userList(textFilter: String, paging: Int!, page: Int!): [UserDto!]!
-  usersFiltered(ids: [Int!], usernames: [String!]): [UserDto!]!
+  usersFind(ids: [Int!], usernames: [String!]): [UserDto!]!
+
+  """Поиск населённого пункта по id"""
+  city(id: Int!): CityDto
+
+  """Поиск населённого пункта по наименованию и пагинация"""
+  cityList(textFilter: String, paging: Int!, page: Int!): [CityDto!]!
 
   """Роль пользователя"""
   userRole(id: String!): UserRoleDto!
-  userRolesFiltered(ids: [String!]): [UserRoleDto!]!
+  userRolesFind(ids: [String!]): [UserRoleDto!]!
 }
 
-input UpdateUserInput {
-  id: Int!
+input UserCreateInput {
   firstName: String
   middleName: String
   secondName: String
@@ -75,9 +76,8 @@ input UpdateUserInput {
   roleId: String!
 }
 
-input UpdateUserRoleInput {
-  id: String!
-  roleDescription: String
+input UserDeleteInput {
+  id: Int!
 }
 
 type UserDto {
@@ -93,7 +93,34 @@ type UserDto {
   role: UserRoleDto
 }
 
+input UserRoleCreateInput {
+  id: String!
+  roleDescription: String
+}
+
+input UserRoleDeleteInput {
+  id: String!
+}
+
 type UserRoleDto {
   id: String
   roleDescription: String
+}
+
+input UserRoleUpdateInput {
+  id: String!
+  roleDescription: String
+}
+
+input UserUpdateInput {
+  id: Int!
+  firstName: String
+  middleName: String
+  secondName: String
+  username: String!
+  passwordHash: String!
+  email: String
+  phone: String
+  rem: String
+  roleId: String!
 }

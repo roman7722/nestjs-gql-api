@@ -79,7 +79,7 @@ export class AuthService {
     fingerprint: string,
   ): Promise<ITokens | undefined> {
     // Поиск пользователя в таблице s_user по имени username
-    const user = await this.userService.findUser(username);
+    const user = await this.userService.userFind(username);
 
     if (user && user.passwordHash) {
       // Получение passwordHash из записи найденного пользователя

@@ -3,13 +3,13 @@ import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { Roles } from '../auth/decorators/roles.decorator';
 import { GqlAuthGuard } from '../auth/guards/gql-auth.guard';
 import { RolesGuard } from '../auth/guards/roles.guard';
-import { FindUserArgs } from './args/findUser.args';
+import { UserFindArgs } from './args/user-find.args';
+import { UserListArgs } from './args/user-list.args';
 import { UserArgs } from './args/user.args';
-import { UserListArgs } from './args/userList.args';
 import { UserDto } from './dto/user.dto';
-import { CreateUserInput } from './inputs/user.create.input';
-import { DeleteUserInput } from './inputs/user.delete.input';
-import { UpdateUserInput } from './inputs/user.update.input';
+import { UserCreateInput } from './input/user-create.input';
+import { UserDeleteInput } from './input/user-delete.input';
+import { UserUpdateInput } from './input/user-update.input';
 import { UserService } from './user.service';
 
 @Resolver()
@@ -20,35 +20,35 @@ export class UserResolver {
 
   @Roles('MANAGER')
   @Query(() => UserDto, { nullable: true })
-  async user(@Args() { id }: FindUserArgs) {
+  async user(@Args() { id }: UserArgs) {
     return await this.userService.user(id);
   }
 
   @Query(() => [UserDto], {
     name: 'userList',
-    description: 'Поиск пользователей и пагинация',
+    description: 'Поиск пользователей по ФИО и пагинация',
   })
   async userList(@Args() { textFilter, page, paging }: UserListArgs) {
     return this.userService.userList(textFilter, page, paging);
   }
 
   @Query(() => [UserDto])
-  async usersFiltered(@Args() data: UserArgs) {
-    return this.userService.usersFiltered(data);
+  async usersFind(@Args() data: UserFindArgs) {
+    return this.userService.usersFind(data);
   }
 
   @Mutation(() => UserDto)
-  async createUser(@Args('data') data: CreateUserInput) {
-    return await this.userService.createUser(data);
+  async userCreate(@Args('data') data: UserCreateInput) {
+    return await this.userService.userCreate(data);
   }
 
   @Mutation(() => UserDto)
-  async updateUser(@Args('data') data: UpdateUserInput) {
-    return await this.userService.updateUser(data);
+  async userUpdate(@Args('data') data: UserUpdateInput) {
+    return await this.userService.userUpdate(data);
   }
 
   @Mutation(() => Number)
-  async deleteUser(@Args('data') { id }: DeleteUserInput) {
-    return await this.userService.deleteUser(id);
+  async userDelete(@Args('data') { id }: UserDeleteInput) {
+    return await this.userService.userDelete(id);
   }
 }

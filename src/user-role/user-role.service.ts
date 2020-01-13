@@ -1,6 +1,6 @@
 import { Op } from 'sequelize';
 import { BadRequestException, Inject, Injectable } from '@nestjs/common';
-import { CreateUserRoleInput } from './inputs/user-role.create.input';
+import { UserRoleCreateInput } from './input/user-role-create.input';
 import UserRole from './user-role.model';
 
 @Injectable()
@@ -10,7 +10,7 @@ export class UserRoleService {
     private readonly USER_ROLE_REPOSITORY: typeof UserRole,
   ) {}
 
-  async readUserRole(id: string): Promise<UserRole | undefined> {
+  async userRole(id: string): Promise<UserRole | undefined> {
     try {
       return await this.USER_ROLE_REPOSITORY.findOne<UserRole>({
         where: { id },
@@ -20,7 +20,7 @@ export class UserRoleService {
     }
   }
 
-  async findUserRoles(ids: number[]): Promise<UserRole[]> {
+  async userRolesFind(ids: number[]): Promise<UserRole[]> {
     try {
       const whereCondition = {};
       if (ids.length > 0) {
@@ -38,7 +38,7 @@ export class UserRoleService {
     }
   }
 
-  async createUserRole(data: CreateUserRoleInput): Promise<UserRole> {
+  async userRoleCreate(data: UserRoleCreateInput): Promise<UserRole> {
     try {
       return await this.USER_ROLE_REPOSITORY.create<UserRole>(data);
     } catch (error) {
@@ -46,7 +46,7 @@ export class UserRoleService {
     }
   }
 
-  async updateUserRole({ id, roleDescription }): Promise<string> {
+  async userRoleUpdate({ id, roleDescription }): Promise<string> {
     try {
       const res = await this.USER_ROLE_REPOSITORY.update<UserRole>(
         {
@@ -66,7 +66,7 @@ export class UserRoleService {
     }
   }
 
-  async deleteUserRole(id: string): Promise<number> {
+  async userRoleDelete(id: string): Promise<number> {
     return await this.USER_ROLE_REPOSITORY.destroy({
       where: {
         id,

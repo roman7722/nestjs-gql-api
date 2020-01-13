@@ -1,7 +1,6 @@
 import { Field, InputType } from 'type-graphql';
 
 @InputType()
-export class UpdateUserRoleInput {
+export class UserRoleDeleteInput {
   @Field(() => String) id: string;
-  @Field(() => String, { nullable: true }) roleDescription: string;
 }

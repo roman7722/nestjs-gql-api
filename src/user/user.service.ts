@@ -5,9 +5,9 @@ import { BadRequestException, Inject, Injectable } from '@nestjs/common';
 import { MessageCodeError } from '../common/lib/error/MessageCodeError';
 import { TokenService } from '../token/token.service';
 import UserRole from '../user-role/user-role.model';
-import { UserArgs } from './args/user.args';
-import { CreateUserInput } from './inputs/user.create.input';
-import { UpdateUserInput } from './inputs/user.update.input';
+import { UserFindArgs } from './args/user-find.args';
+import { UserCreateInput } from './input/user-create.input';
+import { UserUpdateInput } from './input/user-update.input';
 import User from './user.model';
 
 @Injectable()
@@ -23,7 +23,7 @@ export class UserService {
    * @param username {string}
    * @returns {User | undefined}
    */
-  async findUser(username: string): Promise<User | undefined> {
+  async userFind(username: string): Promise<User | undefined> {
     try {
       const res = await this.USER_REPOSITORY.findOne<User>({
         where: { username },
@@ -40,7 +40,7 @@ export class UserService {
    * @param id {number}
    * @returns {User | undefined}
    */
-  async findUserRole(id: number): Promise<User | undefined> {
+  async userRoleFind(id: number): Promise<User | undefined> {
     try {
       const res = await this.USER_REPOSITORY.findOne<User>({
         where: { id },
@@ -52,13 +52,24 @@ export class UserService {
     }
   }
 
-  async findUserName(username: string): Promise<User | undefined> {
+  async userNameFind(username: string): Promise<User | undefined> {
     try {
       const res = await this.USER_REPOSITORY.findOne<User>({
         where: { username },
         attributes: ['id', 'username'],
       });
       return res;
+    } catch (error) {
+      throw new BadRequestException();
+    }
+  }
+
+  async user(id: number): Promise<User | undefined> {
+    try {
+      return await this.USER_REPOSITORY.findOne<User>({
+        include: [UserRole],
+        where: { id },
+      });
     } catch (error) {
       throw new BadRequestException();
     }
@@ -89,18 +100,7 @@ export class UserService {
     }
   }
 
-  async user(id: number): Promise<User | undefined> {
-    try {
-      return await this.USER_REPOSITORY.findOne<User>({
-        include: [UserRole],
-        where: { id },
-      });
-    } catch (error) {
-      throw new BadRequestException();
-    }
-  }
-
-  async usersFiltered(data: UserArgs): Promise<User[]> {
+  async usersFind(data: UserFindArgs): Promise<User[]> {
     try {
       const loginWhereCondition = {};
       if (data.usernames.length > 0) {
@@ -135,9 +135,9 @@ export class UserService {
     return await bcrypt.hash(password, rounds);
   }
 
-  async createUser(data: CreateUserInput): Promise<User> {
+  async userCreate(data: UserCreateInput): Promise<User> {
     try {
-      const user = await this.findUserName(data.username);
+      const user = await this.userNameFind(data.username);
       const username = user?.getDataValue('username');
 
       if (username) {
@@ -159,7 +159,7 @@ export class UserService {
     }
   }
 
-  async updateUser(val: UpdateUserInput): Promise<number> {
+  async userUpdate(val: UserUpdateInput): Promise<number> {
     try {
       const hash: string = await UserService.hashPassword(val.passwordHash, 12);
       const res = await this.USER_REPOSITORY.update<User>(
@@ -182,7 +182,7 @@ export class UserService {
     }
   }
 
-  async deleteUser(userId: number): Promise<number> {
+  async userDelete(userId: number): Promise<number> {
     let transaction: Transaction;
 
     try {
