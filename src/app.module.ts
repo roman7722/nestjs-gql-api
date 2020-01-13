@@ -5,6 +5,7 @@ import { AgreementModule } from './agreement/agreement.module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
+import { CityModule } from './city/city.module';
 import { MessageCodeError } from './common/lib/error/MessageCodeError';
 import { UserRoleModule } from './user-role/user-role.module';
 import { UserModule } from './user/user.module';
@@ -19,6 +20,12 @@ import { UserModule } from './user/user.module';
       debug: false,
       playground: process.env.GRAPHQL_PLAYGROUND === 'true',
       formatError: (error: GraphQLError) => {
+        // console.log(error.message);
+
+        /** Error 400 */
+        if (error.originalError instanceof BadRequestException) {
+          return new BadRequestException('BadRequestException');
+        }
         /** Error 403 */
         if (error.originalError instanceof ForbiddenException) {
           const response = error.originalError.getResponse();
@@ -29,6 +36,10 @@ import { UserModule } from './user/user.module';
         if (error.message.startsWith('JsonWebTokenError')) {
           return new BadRequestException('JsonWebTokenError');
         }
+        /** AuthenticationError from DispatchError */
+        if (error.message.startsWith('AuthenticationError')) {
+          return new BadRequestException('AuthenticationError');
+        }
         /** MessageCodeError from DispatchError */
         if (error.originalError instanceof MessageCodeError) {
           return error?.extensions?.exception;
@@ -37,6 +48,7 @@ import { UserModule } from './user/user.module';
     }),
     UserRoleModule,
     AgreementModule,
+    CityModule,
   ],
   controllers: [AppController],
   providers: [AppService],

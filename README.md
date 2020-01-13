@@ -8,17 +8,19 @@
   <a href="https://www.postgresql.org/" target="blank"><img src="https://www.postgresql.org/media/img/about/press/elephant.png" width="60" alt="PostgreSQL Logo" /></a>
 </p>
 
-## Описание
+### Описание
 
-Backend GraphQL application (проект в разработке!).
+Backend GraphQL application (проект в разработке).
 
-## Установка
+### Развёртывание проекта на OS Linux
 
-```bash
-$ yarn install
-```
+* Установить docker (потребуется sudo)
+* Создать файл(ы) в корне проекта .env.develop (.env.production) по примеру .env.example
+* Создать переменную окружения NODE_ENV=develop (NODE_ENV=production)
+* Запустить скрипт ./start-containers.db-pga.sh для создания и запуска контейнера с БД PostgreSQL и контейнера pgAdmin-4 с веб-интерфейсом для управления БД.
+* Выполнить установку необходимых nodejs модулей командой yarn install
 
-## Запуск приложения
+### Запуск приложения
 
 ```bash
 # develop
@@ -30,14 +32,14 @@ $ yarn start:dev
 # production mode
 $ yarn start:prod
 ```
-## Реализованная схема БД (PostgreSQL 12)
+### Реализованная схема БД (PostgreSQL 12)
 ![Схема БД](./db-diagram.png)
 
-## Оставайтесь на связи
+### Оставайтесь на связи
 
 - Author - [Roman Karas](https://www.facebook.com/roman.karas.98)
 - Telegram - [@roman_t2](https://t.me/roman_t2)
 
-## Лицензия
+### Лицензия
 
 This project is [ISC licensed](https://gitlab.com/roman7722/nestjs-gql-api/blob/develop/LICENCE).

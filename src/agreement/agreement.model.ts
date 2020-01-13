@@ -1,7 +1,5 @@
 import { map } from 'lodash';
-import {
-  AfterCreate, AfterFind, AfterUpdate, BelongsTo, Column, ForeignKey, HasMany, Model, Table,
-} from 'sequelize-typescript';
+import { AfterCreate, AfterFind, AfterUpdate, BelongsTo, Column, ForeignKey, Model, Table } from 'sequelize-typescript';
 import User from '../user/user.model';
 
 @Table({ tableName: 'agreement' })
@@ -13,7 +11,7 @@ export default class Agreement extends Model<Agreement> {
   @AfterCreate
   @AfterUpdate
   static passwordHide(instance: User) {
-      map(instance, dataValues => (dataValues.user.dataValues.password = null));
+    map(instance, dataValues => (dataValues.user.dataValues.password = null));
   }
 
   @ForeignKey(() => User)

@@ -14,6 +14,12 @@ export const errorMessagesConfig: { [messageCode: string]: IErrorMessages } = {
     errorMessage: 'Unable to create user.',
     userMessage: 'Невозможно создать пользователя.',
   },
+  'city:create:unableToCreateCity': {
+    type: 'BadRequest',
+    httpStatus: HttpStatus.BAD_REQUEST,
+    errorMessage: 'Unable to create city.',
+    userMessage: 'Невозможно создать населённый пункт.',
+  },
   'common:route:notFound': {
     type: 'NotFound',
     httpStatus: HttpStatus.NOT_FOUND,

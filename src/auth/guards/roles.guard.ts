@@ -31,7 +31,7 @@ export class RolesGuard implements CanActivate {
       if (typeof payload !== 'string' && payload) {
         const { sub } = payload;
         /** Получаем roleId из таблицы s_user */
-        const user = await this.userService.findUserRole(sub);
+        const user = await this.userService.userRoleFind(sub);
         const roleId = user?.getDataValue('roleId');
 
         console.log('User role --->', roleId);

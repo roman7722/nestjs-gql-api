@@ -1,8 +1,7 @@
-import { Field, InputType, Int } from 'type-graphql';
+import { Field, InputType } from 'type-graphql';
 
 @InputType()
-export class UpdateUserInput {
-  @Field(() => Int, { nullable: false }) id: number;
+export class UserCreateInput {
   @Field({ nullable: true }) firstName: string;
   @Field({ nullable: true }) middleName: string;
   @Field({ nullable: true }) secondName: string;

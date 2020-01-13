@@ -1,3 +1,4 @@
+import { AuthenticationError } from 'apollo-server-core';
 import { Response } from 'express';
 import { JsonWebTokenError } from 'jsonwebtoken';
 import { DatabaseError } from 'sequelize';
@@ -27,6 +28,8 @@ export class DispatchError extends BaseExceptionFilter {
       }
     };
 
+    // console.log(exception);
+
     switch (true) {
       case exception instanceof MessageCodeError:
         if (response?.status) {
@@ -52,6 +55,9 @@ export class DispatchError extends BaseExceptionFilter {
 
       case exception instanceof JsonWebTokenError:
         return new JsonWebTokenError('JsonWebTokenError');
+
+      case exception instanceof AuthenticationError:
+        return new AuthenticationError('AuthenticationError');
 
       case exception instanceof HttpException:
         return exceptionWrapper(response, exception);
