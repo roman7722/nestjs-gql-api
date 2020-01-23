@@ -30,6 +30,7 @@ export const databaseProviders = [
         },
         define: {
           timestamps: false,
+          version: true,
         },
       });
       const force: boolean = false;

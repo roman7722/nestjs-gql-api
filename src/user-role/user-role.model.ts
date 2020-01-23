@@ -5,5 +5,6 @@ import User from '../user/user.model';
 export default class UserRole extends Model<UserRole> {
   @Column({ primaryKey: true }) id: string;
   @Column({ allowNull: false }) roleDescription: string;
+  @Column({ allowNull: false, defaultValue: 1 }) version: number;
   @HasMany(() => User) users: User[];
 }

@@ -1,6 +1,8 @@
 import { Op } from 'sequelize';
 import { BadRequestException, Inject, Injectable } from '@nestjs/common';
+import { OptimisticLocking } from '../optimistic-locking/decorators/optimistic-locking.decorator';
 import { UserRoleCreateInput } from './input/user-role-create.input';
+import { UserRoleUpdateInput } from './input/user-role-update.input';
 import UserRole from './user-role.model';
 
 @Injectable()
@@ -10,8 +12,23 @@ export class UserRoleService {
     private readonly USER_ROLE_REPOSITORY: typeof UserRole,
   ) {}
 
-  async userRole(id: string): Promise<UserRole | undefined> {
+  public async getVersion(id: string): Promise<UserRole | undefined> {
     try {
+      console.log('getVersion ----> ', this);
+
+      return await this.USER_ROLE_REPOSITORY.findOne<UserRole>({
+        where: { id },
+        attributes: ['version'],
+      });
+    } catch (error) {
+      throw new BadRequestException();
+    }
+  }
+
+  public async userRole(id: string): Promise<UserRole | undefined> {
+    try {
+      console.log('userRole ----> ', this);
+
       return await this.USER_ROLE_REPOSITORY.findOne<UserRole>({
         where: { id },
       });
@@ -46,21 +63,26 @@ export class UserRoleService {
     }
   }
 
-  async userRoleUpdate({ id, roleDescription }): Promise<string> {
+  @OptimisticLocking('getVersion')
+  async userRoleUpdate(val: UserRoleUpdateInput): Promise<UserRole> {
+    const { version, id } = val;
     try {
       const res = await this.USER_ROLE_REPOSITORY.update<UserRole>(
         {
-          roleDescription,
+          ...val,
+          version: version + 1,
         },
         {
           where: {
-            id,
+            [Op.and]: [{ id }, { version }],
           },
           returning: true,
         },
       );
+
       const [, [data]] = res;
-      return data.getDataValue('id');
+
+      return data;
     } catch (error) {
       throw new BadRequestException();
     }

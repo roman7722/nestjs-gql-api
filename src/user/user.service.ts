@@ -159,24 +159,28 @@ export class UserService {
     }
   }
 
-  async userUpdate(val: UserUpdateInput): Promise<number> {
+  async userUpdate(data: UserUpdateInput): Promise<User> {
     try {
-      const hash: string = await UserService.hashPassword(val.passwordHash, 12);
+      const hash: string = await UserService.hashPassword(
+        data.passwordHash,
+        12,
+      );
       const res = await this.USER_REPOSITORY.update<User>(
         {
-          ...val,
+          ...data,
           displayName:
-            val.secondName + ' ' + val.firstName + ' ' + val.middleName,
+            data.secondName + ' ' + data.firstName + ' ' + data.middleName,
           passwordHash: hash,
+          version: data.version + 1,
         },
         {
-          where: { id: val.id },
+          where: { id: data.id },
           returning: true,
           individualHooks: true,
         },
       );
-      const [, [data]] = res;
-      return data.getDataValue('id');
+      const [, [val]] = res;
+      return val;
     } catch (error) {
       throw new BadRequestException();
     }

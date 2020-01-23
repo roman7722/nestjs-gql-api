@@ -23,4 +23,6 @@ export default class User extends Model<User> {
 
   @HasMany(() => Agreement) agreements: Agreement[];
   @HasMany(() => Token) tokens: Token[];
+
+  @Column({ allowNull: false, defaultValue: 1 }) version: number;
 }

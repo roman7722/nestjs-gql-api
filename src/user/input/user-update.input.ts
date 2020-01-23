@@ -12,4 +12,5 @@ export class UserUpdateInput {
   @Field({ nullable: true }) phone: string;
   @Field({ nullable: true }) rem: string;
   @Field(() => String, { nullable: false }) roleId: string;
+  @Field(() => Int, { nullable: false }) version: number;
 }

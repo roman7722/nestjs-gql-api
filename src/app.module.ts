@@ -1,4 +1,5 @@
 import { GraphQLError } from 'graphql/error/GraphQLError';
+import { OptimisticLockError } from 'sequelize';
 import { BadRequestException, ForbiddenException, HttpException, Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
 import { AgreementModule } from './agreement/agreement.module';
@@ -20,8 +21,6 @@ import { UserModule } from './user/user.module';
       debug: false,
       playground: process.env.GRAPHQL_PLAYGROUND === 'true',
       formatError: (error: GraphQLError) => {
-        // console.log(error.message);
-
         /** Error 400 */
         if (error.originalError instanceof BadRequestException) {
           return new BadRequestException('BadRequestException');
@@ -43,6 +42,10 @@ import { UserModule } from './user/user.module';
         /** MessageCodeError from DispatchError */
         if (error.originalError instanceof MessageCodeError) {
           return error?.extensions?.exception;
+        }
+        /** OptimisticLockError from DispatchError */
+        if (error.originalError instanceof OptimisticLockError) {
+          return new OptimisticLockError({ message: 'OptimisticLockError' });
         }
       },
     }),

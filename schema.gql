@@ -91,6 +91,7 @@ type UserDto {
   phone: String
   rem: String
   role: UserRoleDto
+  version: Int
 }
 
 input UserRoleCreateInput {
@@ -105,11 +106,13 @@ input UserRoleDeleteInput {
 type UserRoleDto {
   id: String
   roleDescription: String
+  version: Int
 }
 
 input UserRoleUpdateInput {
   id: String!
   roleDescription: String
+  version: Int!
 }
 
 input UserUpdateInput {
@@ -123,4 +126,5 @@ input UserUpdateInput {
   phone: String
   rem: String
   roleId: String!
+  version: Int!
 }

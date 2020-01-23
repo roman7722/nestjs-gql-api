@@ -1,7 +1,7 @@
 import { AuthenticationError } from 'apollo-server-core';
 import { Response } from 'express';
 import { JsonWebTokenError } from 'jsonwebtoken';
-import { DatabaseError } from 'sequelize';
+import { DatabaseError, OptimisticLockError } from 'sequelize';
 import { ArgumentsHost, BadRequestException, Catch, HttpException } from '@nestjs/common';
 import { BaseExceptionFilter } from '@nestjs/core';
 import { MessageCodeError } from '../lib/error/MessageCodeError';
@@ -28,7 +28,7 @@ export class DispatchError extends BaseExceptionFilter {
       }
     };
 
-    // console.log(exception);
+    // console.log('DispatchError exception ---->', exception);
 
     switch (true) {
       case exception instanceof MessageCodeError:
@@ -61,6 +61,9 @@ export class DispatchError extends BaseExceptionFilter {
 
       case exception instanceof HttpException:
         return exceptionWrapper(response, exception);
+
+      case exception instanceof OptimisticLockError:
+        return new OptimisticLockError({});
 
       default:
         console.log('DispatchError default ---->\n');
