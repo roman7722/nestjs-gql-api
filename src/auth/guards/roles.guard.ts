@@ -2,7 +2,7 @@ import { decode } from 'jsonwebtoken';
 import { CanActivate, ExecutionContext, Injectable } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
 import { GqlExecutionContext } from '@nestjs/graphql';
-import { TDecodedToken } from '../../token/token.types';
+import { TDecodedToken } from '../../session/session.types';
 import { UserService } from '../../user/user.service';
 
 @Injectable()

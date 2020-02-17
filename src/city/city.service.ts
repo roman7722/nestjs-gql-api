@@ -1,9 +1,11 @@
 import { isEmpty } from 'lodash';
 import { Op } from 'sequelize';
 import { BadRequestException, Inject, Injectable } from '@nestjs/common';
-import { MessageCodeError } from '../common/lib/error/MessageCodeError';
+import { OptimisticLocking } from '../common/decorators';
+import { MessageCodeError } from '../common/error/MessageCodeError';
 import City from './city.model';
 import { CityCreateInput } from './input/city-create.input';
+import { CityDeleteInput } from './input/city-delete.input';
 import { CityUpdateInput } from './input/city-update.input';
 
 @Injectable()
@@ -11,6 +13,17 @@ export class CityService {
   constructor(
     @Inject('CITY_REPOSITORY') private readonly CITY_REPOSITORY: typeof City,
   ) {}
+
+  public async checkVersion(id: string): Promise<City | undefined> {
+    try {
+      return await this.CITY_REPOSITORY.findOne<City>({
+        where: { id },
+        attributes: ['version'],
+      });
+    } catch (error) {
+      throw new BadRequestException();
+    }
+  }
 
   async city(id: number): Promise<City> {
     try {
@@ -65,42 +78,42 @@ export class CityService {
         throw new MessageCodeError('city:create:unableToCreateCity');
       }
 
-      return await this.CITY_REPOSITORY.create<City>({
-        ...data,
-      });
+      return await this.CITY_REPOSITORY.create<City>(data);
     } catch (err) {
       throw new MessageCodeError('city:create:unableToCreateCity');
     }
   }
 
-  async cityUpdate(val: CityUpdateInput): Promise<number> {
+  @OptimisticLocking(true)
+  async cityUpdate(data: CityUpdateInput): Promise<City> {
     try {
       const res = await this.CITY_REPOSITORY.update<City>(
         {
-          ...val,
+          ...data,
         },
         {
-          where: { id: val.id },
+          where: { id: data.id },
           returning: true,
-          individualHooks: true,
         },
       );
-      const [, [data]] = res;
-      return data.getDataValue('id');
+      const [, [val]] = res;
+      return val;
     } catch (error) {
       throw new BadRequestException();
     }
   }
 
-  async cityDelete(id: number): Promise<number> {
+  @OptimisticLocking(false)
+  async cityDelete(data: CityDeleteInput): Promise<Number> {
     try {
-      const result = await this.CITY_REPOSITORY.destroy({
-        where: { id },
+      const { id, version } = data;
+      return await this.CITY_REPOSITORY.destroy({
+        where: {
+          [Op.and]: [{ id }, { version }],
+        },
       });
-
-      return result;
     } catch (error) {
-      throw new Error(error);
+      throw new BadRequestException();
     }
   }
 }

@@ -1,8 +1,9 @@
-import { UseGuards } from '@nestjs/common';
+import { Int } from 'type-graphql';
+// import { UseGuards } from '@nestjs/common';
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
-import { Roles } from '../auth/decorators/roles.decorator';
-import { GqlAuthGuard } from '../auth/guards/gql-auth.guard';
-import { RolesGuard } from '../auth/guards/roles.guard';
+// import { Roles } from '../auth/decorators/roles.decorator';
+// import { GqlAuthGuard } from '../auth/guards/gql-auth.guard';
+// import { RolesGuard } from '../auth/guards/roles.guard';
 import { CityListArgs } from './args/city-list.args';
 import { CityArgs } from './args/city.args';
 import { CityService } from './city.service';
@@ -12,8 +13,8 @@ import { CityDeleteInput } from './input/city-delete.input';
 import { CityUpdateInput } from './input/city-update.input';
 
 @Resolver()
-@UseGuards(GqlAuthGuard, RolesGuard)
-@Roles('ADMIN', 'MANAGER')
+// @UseGuards(GqlAuthGuard, RolesGuard)
+// @Roles('ADMIN', 'MANAGER')
 export class CityResolver {
   constructor(private readonly cityService: CityService) {}
 
@@ -26,6 +27,7 @@ export class CityResolver {
   }
 
   @Query(() => [CityDto], {
+    nullable: true,
     description: 'Поиск населённого пункта по наименованию и пагинация',
   })
   async cityList(@Args() { textFilter, page, paging }: CityListArgs) {
@@ -42,8 +44,8 @@ export class CityResolver {
     return await this.cityService.cityUpdate(data);
   }
 
-  @Mutation(() => Number)
-  async cityDelete(@Args('data') { id }: CityDeleteInput) {
-    return await this.cityService.cityDelete(id);
+  @Mutation(() => Int)
+  async cityDelete(@Args('data') data: CityDeleteInput) {
+    return await this.cityService.cityDelete(data);
   }
 }

@@ -16,6 +16,7 @@ input CityCreateInput {
 
 input CityDeleteInput {
   id: Int!
+  version: Int!
 }
 
 type CityDto {
@@ -25,7 +26,8 @@ type CityDto {
 
 input CityUpdateInput {
   id: Int!
-  cityName: String
+  cityName: String!
+  version: Int!
 }
 
 """
@@ -33,16 +35,105 @@ The javascript `Date` as string. Type represents date and time as the ISO Date s
 """
 scalar DateTime
 
+input DistrictCreateInput {
+  districtName: String!
+  cityId: Int!
+}
+
+input DistrictDeleteInput {
+  id: Int!
+  version: Int!
+}
+
+type DistrictDto {
+  id: ID
+  districtName: String
+  city: CityDto
+  version: Int
+}
+
+input DistrictUpdateInput {
+  id: Int!
+  districtName: String!
+  cityId: Int!
+  version: Int!
+}
+
+input FamilyStatusCreateInput {
+  familyStatusName: String!
+}
+
+input FamilyStatusDeleteInput {
+  id: Int!
+  version: Int!
+}
+
+type FamilyStatusDto {
+  id: ID
+  familyStatusName: String
+}
+
+input FamilyStatusUpdateInput {
+  id: Int!
+  familyStatusName: String
+  version: Int!
+}
+
 type Mutation {
   userCreate(data: UserCreateInput!): UserDto!
   userUpdate(data: UserUpdateInput!): UserDto!
-  userDelete(data: UserDeleteInput!): Float!
+  userDelete(data: UserDeleteInput!): Int!
   cityCreate(data: CityCreateInput!): CityDto!
   cityUpdate(data: CityUpdateInput!): CityDto!
-  cityDelete(data: CityDeleteInput!): Float!
+  cityDelete(data: CityDeleteInput!): Int!
+  districtCreate(data: DistrictCreateInput!): DistrictDto!
+  districtUpdate(data: DistrictUpdateInput!): DistrictDto!
+  districtDelete(data: DistrictDeleteInput!): Int!
+  familyStatusCreate(data: FamilyStatusCreateInput!): FamilyStatusDto!
+  familyStatusUpdate(data: FamilyStatusUpdateInput!): FamilyStatusDto!
+  familyStatusDelete(data: FamilyStatusDeleteInput!): Int!
+  quarterCreate(data: QuarterCreateInput!): QuarterDto!
+  quarterUpdate(data: QuarterUpdateInput!): QuarterDto!
+  quarterDelete(data: QuarterDeleteInput!): Int!
+  socialStatusCreate(data: SocialStatusCreateInput!): SocialStatusDto!
+  socialStatusUpdate(data: SocialStatusUpdateInput!): SocialStatusDto!
+  socialStatusDelete(data: SocialStatusDeleteInput!): Int!
   userRoleCreate(data: UserRoleCreateInput!): UserRoleDto!
   userRoleUpdate(data: UserRoleUpdateInput!): UserRoleDto!
-  userRoleDelete(data: UserRoleDeleteInput!): UserRoleDto!
+  userRoleDelete(data: UserRoleDeleteInput!): Int!
+  wardStageProgressCreate(data: WardStageProgressCreateInput!): WardStageProgressDto!
+  wardStageProgressUpdate(data: WardStageProgressUpdateInput!): WardStageProgressDto!
+  wardStageProgressDelete(data: WardStageProgressDeleteInput!): Int!
+  wardStageCreate(data: WardStageCreateInput!): WardStageDto!
+  wardStageUpdate(data: WardStageUpdateInput!): WardStageDto!
+  wardStageDelete(data: WardStageDeleteInput!): Int!
+  wardCreate(data: WardCreateInput!): WardDto!
+  wardUpdate(data: WardUpdateInput!): WardDto!
+  wardDelete(data: WardDeleteInput!): Int!
+}
+
+input QuarterCreateInput {
+  quarterName: String!
+  districtId: Int!
+}
+
+input QuarterDeleteInput {
+  id: Int!
+  version: Int!
+}
+
+type QuarterDto {
+  id: ID
+  quarterName: String
+  district: DistrictDto
+  version: Int
+}
+
+input QuarterUpdateInput {
+  id: Int!
+  quarterName: String!
+  districtId: Int!
+  version: Int!
 }
 
 type Query {
@@ -50,18 +141,77 @@ type Query {
   user(id: Int!): UserDto
 
   """Поиск пользователей по ФИО и пагинация"""
-  userList(textFilter: String, paging: Int!, page: Int!): [UserDto!]!
-  usersFind(ids: [Int!], usernames: [String!]): [UserDto!]!
+  userList(textFilter: String, paging: Int!, page: Int!): [UserDto!]
+  usersFind(ids: [Int!], usernames: [String!]): [UserDto!]
 
   """Поиск населённого пункта по id"""
   city(id: Int!): CityDto
 
   """Поиск населённого пункта по наименованию и пагинация"""
-  cityList(textFilter: String, paging: Int!, page: Int!): [CityDto!]!
+  cityList(textFilter: String, paging: Int!, page: Int!): [CityDto!]
+
+  """Поиск района по id"""
+  district(id: Int!): DistrictDto
+
+  """Поиск района по наименованию и пагинация"""
+  districtList(textFilter: String, paging: Int!, page: Int!): [DistrictDto!]
+
+  """Поиск социального статуса по id"""
+  familyStatus(id: Int!): FamilyStatusDto
+
+  """Поиск социального статуса по наименованию и пагинация"""
+  familyStatusList(textFilter: String, paging: Int!, page: Int!): [FamilyStatusDto!]
+
+  """Поиск квартала по id"""
+  quarter(id: Int!): QuarterDto
+
+  """Поиск квартала по наименованию и пагинация"""
+  quarterList(textFilter: String, paging: Int!, page: Int!): [QuarterDto!]
+
+  """Поиск социального статуса по id"""
+  socialStatus(id: Int!): SocialStatusDto
+
+  """Поиск социального статуса по наименованию и пагинация"""
+  socialStatusList(textFilter: String, paging: Int!, page: Int!): [SocialStatusDto!]
 
   """Роль пользователя"""
-  userRole(id: String!): UserRoleDto!
-  userRolesFind(ids: [String!]): [UserRoleDto!]!
+  userRole(id: String!): UserRoleDto
+
+  """Поиск группы ролей по [ids]"""
+  userRolesFind(ids: [String!]): [UserRoleDto!]
+
+  """Поиск социального статуса по id"""
+  wardStageProgress(id: Int!): WardStageProgressDto
+
+  """Поиск социального статуса по wardId, наименованию и пагинация"""
+  wardStageProgressList(wardId: Int, textFilter: String, paging: Int!, page: Int!): [WardStageProgressDto!]
+
+  """Поиск социального статуса по id"""
+  wardStage(id: Int!): WardStageDto
+
+  """Поиск социального статуса по наименованию и пагинация"""
+  wardStageList(textFilter: String, paging: Int!, page: Int!): [WardStageDto!]
+  ward(id: Int!): WardDto
+}
+
+input SocialStatusCreateInput {
+  socialStatusName: String!
+}
+
+input SocialStatusDeleteInput {
+  id: Int!
+  version: Int!
+}
+
+type SocialStatusDto {
+  id: ID
+  socialStatusName: String
+}
+
+input SocialStatusUpdateInput {
+  id: Int!
+  socialStatusName: String!
+  version: Int!
 }
 
 input UserCreateInput {
@@ -78,6 +228,7 @@ input UserCreateInput {
 
 input UserDeleteInput {
   id: Int!
+  version: Int!
 }
 
 type UserDto {
@@ -91,6 +242,7 @@ type UserDto {
   phone: String
   rem: String
   role: UserRoleDto
+  version: Int
 }
 
 input UserRoleCreateInput {
@@ -100,16 +252,19 @@ input UserRoleCreateInput {
 
 input UserRoleDeleteInput {
   id: String!
+  version: Int!
 }
 
 type UserRoleDto {
-  id: String
+  id: ID
   roleDescription: String
+  version: Int
 }
 
 input UserRoleUpdateInput {
   id: String!
   roleDescription: String
+  version: Int!
 }
 
 input UserUpdateInput {
@@ -123,4 +278,139 @@ input UserUpdateInput {
   phone: String
   rem: String
   roleId: String!
+  version: Int!
+}
+
+input WardCreateInput {
+  userId: Int!
+  clientId: Int
+  fio: String
+  hbDate: DateTime
+  passportNumber: String
+  passportIssuedBy: String
+  passportIssuedDate: DateTime
+  socialStatusesList: [Int!]
+  familyStatusId: Int
+  cityId: Int
+  districtId: Int
+  quarterId: Int
+  street: String
+  house: String
+  apartment: String
+  floor: String
+  entrance: String
+  phone: String
+  doctorsReport: Boolean
+  events: String
+  rem: String
+}
+
+input WardDeleteInput {
+  id: Int!
+  version: Int!
+}
+
+type WardDto {
+  id: ID
+  user: UserDto
+  fio: String
+  hbDate: DateTime
+  passportNumber: String
+  passportIssuedBy: String
+  passportIssuedDate: DateTime
+  socialStatusesList: [SocialStatusDto!]
+  familyStatus: FamilyStatusDto
+  city: CityDto
+  district: DistrictDto
+  quarter: QuarterDto
+  street: String
+  house: String
+  apartment: String
+  floor: String
+  entrance: String
+  phone: String
+  doctorsReport: Boolean
+  events: String
+  rem: String
+  version: Int
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+input WardStageCreateInput {
+  wardStageName: String!
+}
+
+input WardStageDeleteInput {
+  id: Int!
+  version: Int!
+}
+
+type WardStageDto {
+  id: ID
+  wardStageName: String
+}
+
+input WardStageProgressCreateInput {
+  wardStageDate: DateTime!
+  wardStageId: Float!
+  wardId: Float!
+  rem: String
+}
+
+input WardStageProgressDeleteInput {
+  id: Int!
+  version: Int!
+}
+
+type WardStageProgressDto {
+  id: ID
+  wardStageDate: DateTime
+  wardStage: WardStageDto
+  ward: WardDto
+  rem: String
+  version: Int
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+input WardStageProgressUpdateInput {
+  id: Int!
+  wardStageDate: DateTime!
+  wardStageId: Float!
+  wardId: Float!
+  rem: String
+  version: Int!
+}
+
+input WardStageUpdateInput {
+  id: Int!
+  wardStageName: String!
+  version: Int!
+}
+
+input WardUpdateInput {
+  id: Int!
+  userId: Int!
+  clientId: Int
+  fio: String
+  hbDate: DateTime
+  passportNumber: String
+  passportIssuedBy: String
+  passportIssuedDate: DateTime
+  socialStatusesList: [Int!]
+  familyStatusId: Int
+  cityId: Int
+  districtId: Int
+  quarterId: Int
+  street: String
+  house: String
+  apartment: String
+  floor: String
+  entrance: String
+  phone: String
+  doctorsReport: Boolean
+  events: String
+  rem: String
+  version: Int!
 }

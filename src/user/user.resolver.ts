@@ -1,8 +1,9 @@
-import { UseGuards } from '@nestjs/common';
+import { Int } from 'type-graphql';
+// import { UseGuards } from '@nestjs/common';
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
-import { Roles } from '../auth/decorators/roles.decorator';
-import { GqlAuthGuard } from '../auth/guards/gql-auth.guard';
-import { RolesGuard } from '../auth/guards/roles.guard';
+// import { Roles } from '../auth/decorators/roles.decorator';
+// import { GqlAuthGuard } from '../auth/guards/gql-auth.guard';
+// import { RolesGuard } from '../auth/guards/roles.guard';
 import { UserFindArgs } from './args/user-find.args';
 import { UserListArgs } from './args/user-list.args';
 import { UserArgs } from './args/user.args';
@@ -13,12 +14,12 @@ import { UserUpdateInput } from './input/user-update.input';
 import { UserService } from './user.service';
 
 @Resolver()
-@UseGuards(GqlAuthGuard, RolesGuard)
-@Roles('ADMIN')
+// @UseGuards(GqlAuthGuard, RolesGuard)
+// @Roles('ADMIN')
 export class UserResolver {
   constructor(private readonly userService: UserService) {}
 
-  @Roles('MANAGER')
+  // @Roles('MANAGER')
   @Query(() => UserDto, { nullable: true })
   async user(@Args() { id }: UserArgs) {
     return await this.userService.user(id);
@@ -26,13 +27,14 @@ export class UserResolver {
 
   @Query(() => [UserDto], {
     name: 'userList',
+    nullable: true,
     description: 'Поиск пользователей по ФИО и пагинация',
   })
   async userList(@Args() { textFilter, page, paging }: UserListArgs) {
     return this.userService.userList(textFilter, page, paging);
   }
 
-  @Query(() => [UserDto])
+  @Query(() => [UserDto], { nullable: true })
   async usersFind(@Args() data: UserFindArgs) {
     return this.userService.usersFind(data);
   }
@@ -47,8 +49,8 @@ export class UserResolver {
     return await this.userService.userUpdate(data);
   }
 
-  @Mutation(() => Number)
-  async userDelete(@Args('data') { id }: UserDeleteInput) {
-    return await this.userService.userDelete(id);
+  @Mutation(() => Int)
+  async userDelete(@Args('data') data: UserDeleteInput) {
+    return await this.userService.userDelete(data);
   }
 }

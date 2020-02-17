@@ -26,11 +26,13 @@
     },
     "git.enabled": true,
     "typescript.tsdk": "node_modules/typescript/lib",
+    "importSorter.importStringConfiguration.quoteMark": "single",
     "importSorter.generalConfiguration.sortOnBeforeSave": true,
     "importSorter.importStringConfiguration.tabSize": 2,
     "importSorter.sortConfiguration.customOrderingRules.defaultNumberOfEmptyLinesAfterGroup": 0,
     "importSorter.importStringConfiguration.maximumNumberOfImportExpressionsPerLine.count": 120,
     "importSorter.sortConfiguration.removeUnusedImports": true,
+    "sync.gist": "370e68ee605974c5885cda871cedf1ab",
     "sync.quietSync": true,
     "sync.removeExtensions": false,
     "sync.syncExtensions": true

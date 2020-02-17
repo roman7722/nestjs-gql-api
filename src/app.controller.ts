@@ -1,7 +1,7 @@
 import { Controller, Post, Request } from '@nestjs/common';
 import { AppService } from './app.service';
 import { AuthService } from './auth/auth.service';
-import { ITokens } from './token/token.types';
+import { ISessions } from './session/session.types';
 
 @Controller()
 export class AppController {
@@ -19,7 +19,7 @@ export class AppController {
   }
 
   @Post('api/refresh')
-  async refresh(@Request() req: any): Promise<ITokens> {
+  async refresh(@Request() req: any): Promise<ISessions> {
     const refreshToken: string = req.body.refreshToken;
     const fingerprint: string = req.body.fingerprint;
     return await this.authService.regenerateRefreshToken(

@@ -1,7 +1,8 @@
 import { BelongsTo, Column, ForeignKey, HasMany, Model, Table } from 'sequelize-typescript';
 import Agreement from '../agreement/agreement.model';
-import Token from '../token/token.model';
+import Session from '../session/session.model';
 import UserRole from '../user-role/user-role.model';
+import Ward from '../ward/ward.model';
 
 @Table({ tableName: 's_user' })
 export default class User extends Model<User> {
@@ -16,11 +17,16 @@ export default class User extends Model<User> {
   @Column({ allowNull: true }) phone: string;
   @Column({ allowNull: true }) rem: string;
 
+  /** Many-to-one */
   @ForeignKey(() => UserRole)
   @Column({ allowNull: false })
   roleId: string;
   @BelongsTo(() => UserRole) role: UserRole;
 
+  @Column({ allowNull: false, defaultValue: 1 }) version: number;
+
+  /** One-to-many */
   @HasMany(() => Agreement) agreements: Agreement[];
-  @HasMany(() => Token) tokens: Token[];
+  @HasMany(() => Session) sessions: Session[];
+  @HasMany(() => Ward) wards: Ward[];
 }

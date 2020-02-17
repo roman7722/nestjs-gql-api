@@ -2,7 +2,7 @@ import { HttpStatus } from '@nestjs/common';
 
 export interface IErrorMessages {
   type: string;
-  httpStatus: HttpStatus;
+  statusCode: HttpStatus;
   errorMessage: string;
   userMessage: string;
 }

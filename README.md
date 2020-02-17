@@ -33,7 +33,7 @@ $ yarn start:dev
 $ yarn start:prod
 ```
 ### Реализованная схема БД (PostgreSQL 12)
-![Схема БД](./db-diagram.png)
+![Схема БД](./db-diagram.svg)
 
 ### Оставайтесь на связи
 

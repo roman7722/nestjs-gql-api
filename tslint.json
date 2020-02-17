@@ -5,6 +5,7 @@
     "no-unused-expression": true
   },
   "rules": {
+    "ban-types": false,
     "no-string-literal": false,
     "no-console": false,
     "no-shadowed-variable": false,

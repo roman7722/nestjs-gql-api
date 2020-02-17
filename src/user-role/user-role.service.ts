@@ -1,6 +1,9 @@
 import { Op } from 'sequelize';
 import { BadRequestException, Inject, Injectable } from '@nestjs/common';
+import { OptimisticLocking } from '../common/decorators';
 import { UserRoleCreateInput } from './input/user-role-create.input';
+import { UserRoleDeleteInput } from './input/user-role-delete.input';
+import { UserRoleUpdateInput } from './input/user-role-update.input';
 import UserRole from './user-role.model';
 
 @Injectable()
@@ -10,7 +13,18 @@ export class UserRoleService {
     private readonly USER_ROLE_REPOSITORY: typeof UserRole,
   ) {}
 
-  async userRole(id: string): Promise<UserRole | undefined> {
+  public async checkVersion(id: string): Promise<UserRole | undefined> {
+    try {
+      return await this.USER_ROLE_REPOSITORY.findOne<UserRole>({
+        where: { id },
+        attributes: ['version'],
+      });
+    } catch (error) {
+      throw new BadRequestException();
+    }
+  }
+
+  public async userRole(id: string): Promise<UserRole | undefined> {
     try {
       return await this.USER_ROLE_REPOSITORY.findOne<UserRole>({
         where: { id },
@@ -46,31 +60,33 @@ export class UserRoleService {
     }
   }
 
-  async userRoleUpdate({ id, roleDescription }): Promise<string> {
+  @OptimisticLocking(true)
+  async userRoleUpdate(data: UserRoleUpdateInput): Promise<UserRole> {
     try {
-      const res = await this.USER_ROLE_REPOSITORY.update<UserRole>(
-        {
-          roleDescription,
-        },
-        {
-          where: {
-            id,
-          },
-          returning: true,
-        },
-      );
-      const [, [data]] = res;
-      return data.getDataValue('id');
+      const res = await this.USER_ROLE_REPOSITORY.update<UserRole>(data, {
+        where: { id: data.id },
+        returning: true,
+      });
+
+      const [, [val]] = res;
+
+      return val;
     } catch (error) {
       throw new BadRequestException();
     }
   }
 
-  async userRoleDelete(id: string): Promise<number> {
-    return await this.USER_ROLE_REPOSITORY.destroy({
-      where: {
-        id,
-      },
-    });
+  @OptimisticLocking(false)
+  async userRoleDelete(data: UserRoleDeleteInput): Promise<Number> {
+    try {
+      const { id, version } = data;
+      return await this.USER_ROLE_REPOSITORY.destroy({
+        where: {
+          [Op.and]: [{ id }, { version }],
+        },
+      });
+    } catch (error) {
+      throw new BadRequestException();
+    }
   }
 }

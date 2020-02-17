@@ -1,5 +1,4 @@
-import { map } from 'lodash';
-import { AfterCreate, AfterFind, AfterUpdate, BelongsTo, Column, ForeignKey, Model, Table } from 'sequelize-typescript';
+import { BelongsTo, Column, ForeignKey, Model, Table } from 'sequelize-typescript';
 import User from '../user/user.model';
 
 @Table({ tableName: 'agreement' })
@@ -7,13 +6,7 @@ export default class Agreement extends Model<Agreement> {
   @Column({ primaryKey: true, autoIncrement: true }) id: number;
   @Column({ allowNull: false, unique: true }) numAgreement: string;
 
-  @AfterFind
-  @AfterCreate
-  @AfterUpdate
-  static passwordHide(instance: User) {
-    map(instance, dataValues => (dataValues.user.dataValues.password = null));
-  }
-
+  /** Many-to-one */
   @ForeignKey(() => User)
   @Column({ allowNull: false })
   userId: number;
@@ -21,4 +14,5 @@ export default class Agreement extends Model<Agreement> {
 
   @Column({ allowNull: false }) dateAgreement: Date;
   @Column({ allowNull: true }) rem: string;
+  @Column({ allowNull: false, defaultValue: 1 }) version: number;
 }
