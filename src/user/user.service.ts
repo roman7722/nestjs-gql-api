@@ -2,11 +2,13 @@ import * as bcrypt from 'bcrypt';
 import { isEmpty } from 'lodash';
 import { Op, Transaction } from 'sequelize';
 import { BadRequestException, Inject, Injectable } from '@nestjs/common';
-import { MessageCodeError } from '../common/lib/error/MessageCodeError';
-import { TokenService } from '../token/token.service';
+import { OptimisticLocking } from '../common/decorators/optimistic-locking.decorator';
+import { MessageCodeError } from '../common/error/MessageCodeError';
+import { SessionService } from '../session/session.service';
 import UserRole from '../user-role/user-role.model';
 import { UserFindArgs } from './args/user-find.args';
 import { UserCreateInput } from './input/user-create.input';
+import { UserDeleteInput } from './input/user-delete.input';
 import { UserUpdateInput } from './input/user-update.input';
 import User from './user.model';
 
@@ -15,7 +17,7 @@ export class UserService {
   constructor(
     @Inject('SEQUELIZE') private readonly SEQUELIZE,
     @Inject('USER_REPOSITORY') private readonly USER_REPOSITORY: typeof User,
-    private readonly tokenService: TokenService,
+    private readonly sessionService: SessionService,
   ) {}
 
   /**
@@ -47,6 +49,22 @@ export class UserService {
         attributes: ['roleId'],
       });
       return res;
+    } catch (error) {
+      throw new BadRequestException();
+    }
+  }
+
+  /**
+   * Поиск version записи по id для @OptimisticLocking
+   * @param id {number}
+   * @returns {User | undefined}
+   */
+  public async checkVersion(id: string): Promise<User | undefined> {
+    try {
+      return await this.USER_REPOSITORY.findOne<User>({
+        where: { id },
+        attributes: ['version'],
+      });
     } catch (error) {
       throw new BadRequestException();
     }
@@ -159,6 +177,7 @@ export class UserService {
     }
   }
 
+  @OptimisticLocking(true)
   async userUpdate(data: UserUpdateInput): Promise<User> {
     try {
       const hash: string = await UserService.hashPassword(
@@ -171,30 +190,32 @@ export class UserService {
           displayName:
             data.secondName + ' ' + data.firstName + ' ' + data.middleName,
           passwordHash: hash,
-          version: data.version + 1,
         },
         {
           where: { id: data.id },
           returning: true,
-          individualHooks: true,
         },
       );
+
       const [, [val]] = res;
+
       return val;
     } catch (error) {
       throw new BadRequestException();
     }
   }
 
-  async userDelete(userId: number): Promise<number> {
+  @OptimisticLocking(false)
+  async userDelete(data: UserDeleteInput): Promise<Number> {
+    const { id, version } = data;
     let transaction: Transaction;
 
     try {
       transaction = await this.SEQUELIZE.transaction();
-      await this.tokenService.deleteAllRefreshToken(userId, transaction);
+      await this.sessionService.deleteAllSessions(id, transaction);
       const result = await this.USER_REPOSITORY.destroy({
         where: {
-          id: userId,
+          [Op.and]: [{ id }, { version }],
         },
         transaction,
       });
@@ -203,7 +224,7 @@ export class UserService {
       return result;
     } catch (error) {
       transaction.rollback();
-      throw new Error(error);
+      throw new BadRequestException();
     }
   }
 }

@@ -1,3 +1,4 @@
+import { Int } from 'type-graphql';
 // import { UseGuards } from '@nestjs/common';
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 // import { Roles } from '../auth/decorators/roles.decorator';
@@ -26,13 +27,14 @@ export class UserResolver {
 
   @Query(() => [UserDto], {
     name: 'userList',
+    nullable: true,
     description: 'Поиск пользователей по ФИО и пагинация',
   })
   async userList(@Args() { textFilter, page, paging }: UserListArgs) {
     return this.userService.userList(textFilter, page, paging);
   }
 
-  @Query(() => [UserDto])
+  @Query(() => [UserDto], { nullable: true })
   async usersFind(@Args() data: UserFindArgs) {
     return this.userService.usersFind(data);
   }
@@ -47,8 +49,8 @@ export class UserResolver {
     return await this.userService.userUpdate(data);
   }
 
-  @Mutation(() => Number)
-  async userDelete(@Args('data') { id }: UserDeleteInput) {
-    return await this.userService.userDelete(id);
+  @Mutation(() => Int)
+  async userDelete(@Args('data') data: UserDeleteInput) {
+    return await this.userService.userDelete(data);
   }
 }

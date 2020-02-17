@@ -26,6 +26,7 @@
     },
     "git.enabled": true,
     "typescript.tsdk": "node_modules/typescript/lib",
+    "importSorter.importStringConfiguration.quoteMark": "single",
     "importSorter.generalConfiguration.sortOnBeforeSave": true,
     "importSorter.importStringConfiguration.tabSize": 2,
     "importSorter.sortConfiguration.customOrderingRules.defaultNumberOfEmptyLinesAfterGroup": 0,

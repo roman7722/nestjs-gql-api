@@ -1,15 +1,35 @@
-import { GraphQLError } from 'graphql/error/GraphQLError';
-import { OptimisticLockError } from 'sequelize';
-import { BadRequestException, ForbiddenException, HttpException, Module } from '@nestjs/common';
+import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
 import { AgreementModule } from './agreement/agreement.module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
 import { CityModule } from './city/city.module';
-import { MessageCodeError } from './common/lib/error/MessageCodeError';
+import { graphqlError } from './common/filters/graphqlError';
+import { DistrictModule } from './district/district.module';
+import { FamilyStatusModule } from './family-status/family-status.module';
+import { QuarterModule } from './quarter/quarter.module';
+import { SocialStatusModule } from './social-status/social-status.module';
 import { UserRoleModule } from './user-role/user-role.module';
 import { UserModule } from './user/user.module';
+import { WardSocialStatusModule } from './ward-social-status/ward-social-status.module';
+import { WardStageProgressModule } from './ward-stage-progress/ward-stage-progress.module';
+import { WardStageModule } from './ward-stage/ward-stage.module';
+import { WardModule } from './ward/ward.module';
+
+const modules = [
+  UserRoleModule,
+  AgreementModule,
+  CityModule,
+  DistrictModule,
+  QuarterModule,
+  SocialStatusModule,
+  FamilyStatusModule,
+  WardStageModule,
+  WardStageProgressModule,
+  WardModule,
+  WardSocialStatusModule,
+];
 
 @Module({
   imports: [
@@ -20,38 +40,9 @@ import { UserModule } from './user/user.module';
       context: ({ req }) => ({ req }),
       debug: false,
       playground: process.env.GRAPHQL_PLAYGROUND === 'true',
-      formatError: (error: GraphQLError) => {
-        /** Error 400 */
-        if (error.originalError instanceof BadRequestException) {
-          return new BadRequestException('BadRequestException');
-        }
-        /** Error 403 */
-        if (error.originalError instanceof ForbiddenException) {
-          const response = error.originalError.getResponse();
-          const status = error.originalError.getStatus();
-          return new HttpException(response, status);
-        }
-        /** JsonWebTokenError from DispatchError */
-        if (error.message.startsWith('JsonWebTokenError')) {
-          return new BadRequestException('JsonWebTokenError');
-        }
-        /** AuthenticationError from DispatchError */
-        if (error.message.startsWith('AuthenticationError')) {
-          return new BadRequestException('AuthenticationError');
-        }
-        /** MessageCodeError from DispatchError */
-        if (error.originalError instanceof MessageCodeError) {
-          return error?.extensions?.exception;
-        }
-        /** OptimisticLockError from DispatchError */
-        if (error.originalError instanceof OptimisticLockError) {
-          return new OptimisticLockError({ message: 'OptimisticLockError' });
-        }
-      },
+      formatError: graphqlError,
     }),
-    UserRoleModule,
-    AgreementModule,
-    CityModule,
+    ...modules,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -33,6 +33,7 @@ export const databaseProviders = [
           version: true,
         },
       });
+      /** Attention! If true - recreate all tables! */
       const force: boolean = false;
       await sequelize.sync({ force });
       return sequelize;

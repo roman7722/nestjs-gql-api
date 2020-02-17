@@ -1,3 +1,4 @@
+import { Int } from 'type-graphql';
 // import { UseGuards } from '@nestjs/common';
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 // import { Roles } from '../auth/decorators/roles.decorator';
@@ -20,15 +21,18 @@ export class UserRoleResolver {
   // @Roles('MANAGER')
   @Query(() => UserRoleDto, {
     name: 'userRole',
+    nullable: true,
     description: 'Роль пользователя',
-    nullable: false,
   })
   async userRole(@Args() { id }: UserRoleArgs) {
     return this.userRoleService.userRole(id);
   }
 
   // @Roles('MANAGER')
-  @Query(() => [UserRoleDto])
+  @Query(() => [UserRoleDto], {
+    nullable: true,
+    description: 'Поиск группы ролей по [ids]',
+  })
   async userRolesFind(@Args() { ids }: UserRolesArgs) {
     return await this.userRoleService.userRolesFind(ids);
   }
@@ -43,8 +47,8 @@ export class UserRoleResolver {
     return await this.userRoleService.userRoleUpdate(data);
   }
 
-  @Mutation(() => UserRoleDto)
-  async userRoleDelete(@Args('data') { id }: UserRoleDeleteInput) {
-    return await this.userRoleService.userRoleDelete(id);
+  @Mutation(() => Int)
+  async userRoleDelete(@Args('data') data: UserRoleDeleteInput) {
+    return await this.userRoleService.userRoleDelete(data);
   }
 }
