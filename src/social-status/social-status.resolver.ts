@@ -1,9 +1,9 @@
 import { Int } from 'type-graphql';
-// import { UseGuards } from '@nestjs/common';
+import { UseGuards } from '@nestjs/common';
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
-// import { Roles } from '../auth/decorators/roles.decorator';
-// import { GqlAuthGuard } from '../auth/guards/gql-auth.guard';
-// import { RolesGuard } from '../auth/guards/roles.guard';
+import { Roles } from '../auth/decorators/roles.decorator';
+import { GqlAuthGuard } from '../auth/guards/gql-auth.guard';
+import { RolesGuard } from '../auth/guards/roles.guard';
 import { SocialStatusListArgs } from './args/social-status-list.args';
 import { SocialStatusArgs } from './args/social-status.args';
 import { SocialStatusDto } from './dto/social-status.dto';
@@ -13,8 +13,8 @@ import { SocialStatusUpdateInput } from './input/social-status-update.input';
 import { SocialStatusService } from './social-status.service';
 
 @Resolver()
-// @UseGuards(GqlAuthGuard, RolesGuard)
-// @Roles('ADMIN', 'MANAGER')
+@UseGuards(GqlAuthGuard, RolesGuard)
+@Roles('ADMIN', 'MANAGER')
 export class SocialStatusResolver {
   constructor(private readonly socialStatusService: SocialStatusService) {}
 

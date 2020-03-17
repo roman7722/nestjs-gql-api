@@ -22,11 +22,54 @@ input CityDeleteInput {
 type CityDto {
   id: ID
   cityName: String
+  version: Int
 }
 
 input CityUpdateInput {
   id: Int!
   cityName: String!
+  version: Int!
+}
+
+input CustomerCategoryCreateInput {
+  customerCategoryName: String!
+}
+
+input CustomerCategoryDeleteInput {
+  id: Int!
+  version: Int!
+}
+
+type CustomerCategoryDto {
+  id: ID
+  customerCategoryName: String
+  version: Int
+}
+
+input CustomerCategoryUpdateInput {
+  id: Int!
+  customerCategoryName: String!
+  version: Int!
+}
+
+input CustomerCreateInput {
+  customerName: String!
+}
+
+input CustomerDeleteInput {
+  id: Int!
+  version: Int!
+}
+
+type CustomerDto {
+  id: ID
+  customerName: String
+  version: Int
+}
+
+input CustomerUpdateInput {
+  id: Int!
+  customerName: String!
   version: Int!
 }
 
@@ -71,6 +114,7 @@ input FamilyStatusDeleteInput {
 type FamilyStatusDto {
   id: ID
   familyStatusName: String
+  version: Int
 }
 
 input FamilyStatusUpdateInput {
@@ -86,18 +130,33 @@ type Mutation {
   cityCreate(data: CityCreateInput!): CityDto!
   cityUpdate(data: CityUpdateInput!): CityDto!
   cityDelete(data: CityDeleteInput!): Int!
+  customerCategoryCreate(data: CustomerCategoryCreateInput!): CustomerCategoryDto!
+  customerCategoryUpdate(data: CustomerCategoryUpdateInput!): CustomerCategoryDto!
+  customerCategoryDelete(data: CustomerCategoryDeleteInput!): Int!
+  customerCreate(data: CustomerCreateInput!): CustomerDto!
+  customerUpdate(data: CustomerUpdateInput!): CustomerDto!
+  customerDelete(data: CustomerDeleteInput!): Int!
   districtCreate(data: DistrictCreateInput!): DistrictDto!
   districtUpdate(data: DistrictUpdateInput!): DistrictDto!
   districtDelete(data: DistrictDeleteInput!): Int!
   familyStatusCreate(data: FamilyStatusCreateInput!): FamilyStatusDto!
   familyStatusUpdate(data: FamilyStatusUpdateInput!): FamilyStatusDto!
   familyStatusDelete(data: FamilyStatusDeleteInput!): Int!
+  paymentFormCreate(data: PaymentFormCreateInput!): PaymentFormDto!
+  paymentFormUpdate(data: PaymentFormUpdateInput!): PaymentFormDto!
+  paymentFormDelete(data: PaymentFormDeleteInput!): Int!
   quarterCreate(data: QuarterCreateInput!): QuarterDto!
   quarterUpdate(data: QuarterUpdateInput!): QuarterDto!
   quarterDelete(data: QuarterDeleteInput!): Int!
   socialStatusCreate(data: SocialStatusCreateInput!): SocialStatusDto!
   socialStatusUpdate(data: SocialStatusUpdateInput!): SocialStatusDto!
   socialStatusDelete(data: SocialStatusDeleteInput!): Int!
+  subjectCategoryCreate(data: SubjectCategoryCreateInput!): SubjectCategoryDto!
+  subjectCategoryUpdate(data: SubjectCategoryUpdateInput!): SubjectCategoryDto!
+  subjectCategoryDelete(data: SubjectCategoryDeleteInput!): Int!
+  subjectCreate(data: SubjectCreateInput!): SubjectDto!
+  subjectUpdate(data: SubjectUpdateInput!): SubjectDto!
+  subjectDelete(data: SubjectDeleteInput!): Int!
   userRoleCreate(data: UserRoleCreateInput!): UserRoleDto!
   userRoleUpdate(data: UserRoleUpdateInput!): UserRoleDto!
   userRoleDelete(data: UserRoleDeleteInput!): Int!
@@ -110,6 +169,30 @@ type Mutation {
   wardCreate(data: WardCreateInput!): WardDto!
   wardUpdate(data: WardUpdateInput!): WardDto!
   wardDelete(data: WardDeleteInput!): Int!
+  whatAboutUsCreate(data: WhatAboutUsCreateInput!): WhatAboutUsDto!
+  whatAboutUsUpdate(data: WhatAboutUsUpdateInput!): WhatAboutUsDto!
+  whatAboutUsDelete(data: WhatAboutUsDeleteInput!): Int!
+}
+
+input PaymentFormCreateInput {
+  paymentFormName: String!
+}
+
+input PaymentFormDeleteInput {
+  id: Int!
+  version: Int!
+}
+
+type PaymentFormDto {
+  id: ID
+  paymentFormName: String
+  version: Int
+}
+
+input PaymentFormUpdateInput {
+  id: Int!
+  paymentFormName: String!
+  version: Int!
 }
 
 input QuarterCreateInput {
@@ -150,6 +233,18 @@ type Query {
   """Поиск населённого пункта по наименованию и пагинация"""
   cityList(textFilter: String, paging: Int!, page: Int!): [CityDto!]
 
+  """Поиск категории клиента по id"""
+  customerCategory(id: Int!): CustomerCategoryDto
+
+  """Поиск категории клиента по наименованию и пагинация"""
+  customerCategoryList(textFilter: String, paging: Int!, page: Int!): [CustomerCategoryDto!]
+
+  """Поиск населённого пункта по id"""
+  customer(id: Int!): CustomerDto
+
+  """Поиск населённого пункта по наименованию и пагинация"""
+  customerList(textFilter: String, paging: Int!, page: Int!): [CustomerDto!]
+
   """Поиск района по id"""
   district(id: Int!): DistrictDto
 
@@ -161,6 +256,12 @@ type Query {
 
   """Поиск социального статуса по наименованию и пагинация"""
   familyStatusList(textFilter: String, paging: Int!, page: Int!): [FamilyStatusDto!]
+
+  """Поиск формы оплаты по id"""
+  paymentForm(id: Int!): PaymentFormDto
+
+  """Поиск формы оплаты по наименованию и пагинация"""
+  paymentFormList(textFilter: String, paging: Int!, page: Int!): [PaymentFormDto!]
 
   """Поиск квартала по id"""
   quarter(id: Int!): QuarterDto
@@ -174,8 +275,23 @@ type Query {
   """Поиск социального статуса по наименованию и пагинация"""
   socialStatusList(textFilter: String, paging: Int!, page: Int!): [SocialStatusDto!]
 
+  """Поиск категории субъекта по id"""
+  subjectCategory(id: Int!): SubjectCategoryDto
+
+  """Поиск категории субъекта по наименованию и пагинация"""
+  subjectCategoryList(textFilter: String, paging: Int!, page: Int!): [SubjectCategoryDto!]
+
+  """Поиск субъекта по id"""
+  subject(id: Int!): SubjectDto
+
+  """Поиск субъекта по наименованию и пагинация"""
+  subjectList(textFilter: String, paging: Int!, page: Int!): [SubjectDto!]
+
   """Роль пользователя"""
   userRole(id: String!): UserRoleDto
+
+  """Поиск роли пользователя по наименованию роли (id) и пагинация"""
+  userRoleList(textFilter: String, paging: Int!, page: Int!): [UserRoleDto!]
 
   """Поиск группы ролей по [ids]"""
   userRolesFind(ids: [String!]): [UserRoleDto!]
@@ -192,6 +308,12 @@ type Query {
   """Поиск социального статуса по наименованию и пагинация"""
   wardStageList(textFilter: String, paging: Int!, page: Int!): [WardStageDto!]
   ward(id: Int!): WardDto
+
+  """Поиск населённого пункта по id"""
+  whatAboutUs(id: Int!): WhatAboutUsDto
+
+  """Поиск населённого пункта по наименованию и пагинация"""
+  whatAboutUsList(textFilter: String, paging: Int!, page: Int!): [WhatAboutUsDto!]
 }
 
 input SocialStatusCreateInput {
@@ -206,11 +328,57 @@ input SocialStatusDeleteInput {
 type SocialStatusDto {
   id: ID
   socialStatusName: String
+  version: Int
 }
 
 input SocialStatusUpdateInput {
   id: Int!
   socialStatusName: String!
+  version: Int!
+}
+
+input SubjectCategoryCreateInput {
+  subjectCategoryName: String!
+}
+
+input SubjectCategoryDeleteInput {
+  id: Int!
+  version: Int!
+}
+
+type SubjectCategoryDto {
+  id: ID
+  subjectCategoryName: String
+  version: Int
+}
+
+input SubjectCategoryUpdateInput {
+  id: Int!
+  subjectCategoryName: String!
+  version: Int!
+}
+
+input SubjectCreateInput {
+  subjectName: String!
+  subjectCategoryId: Int!
+}
+
+input SubjectDeleteInput {
+  id: Int!
+  version: Int!
+}
+
+type SubjectDto {
+  id: ID
+  subjectName: String
+  subjectCategory: SubjectCategoryDto
+  version: Int
+}
+
+input SubjectUpdateInput {
+  id: Int!
+  subjectName: String!
+  subjectCategoryId: Int!
   version: Int!
 }
 
@@ -283,7 +451,7 @@ input UserUpdateInput {
 
 input WardCreateInput {
   userId: Int!
-  clientId: Int
+  customerId: Int
   fio: String
   hbDate: DateTime
   passportNumber: String
@@ -313,6 +481,7 @@ input WardDeleteInput {
 type WardDto {
   id: ID
   user: UserDto
+  customer: CustomerDto
   fio: String
   hbDate: DateTime
   passportNumber: String
@@ -392,7 +561,7 @@ input WardStageUpdateInput {
 input WardUpdateInput {
   id: Int!
   userId: Int!
-  clientId: Int
+  customerId: Int
   fio: String
   hbDate: DateTime
   passportNumber: String
@@ -412,5 +581,25 @@ input WardUpdateInput {
   doctorsReport: Boolean
   events: String
   rem: String
+  version: Int!
+}
+
+input WhatAboutUsCreateInput {
+  whatAboutUsName: String!
+}
+
+input WhatAboutUsDeleteInput {
+  id: Int!
+  version: Int!
+}
+
+type WhatAboutUsDto {
+  id: ID
+  whatAboutUsName: String
+}
+
+input WhatAboutUsUpdateInput {
+  id: Int!
+  whatAboutUsName: String!
   version: Int!
 }

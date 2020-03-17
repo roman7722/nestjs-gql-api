@@ -1,5 +1,6 @@
 import { BelongsTo, BelongsToMany, Column, DataType, ForeignKey, HasMany, Model, Table } from 'sequelize-typescript';
 import City from '../city/city.model';
+import Customer from '../customer/customer.model';
 import District from '../district/district.model';
 import FamilyStatus from '../family-status/family-status.model';
 import Quarter from '../quarter/quarter.model';
@@ -19,9 +20,10 @@ export default class Ward extends Model<Ward> {
   @BelongsTo(() => User) user: User;
 
   /** Many-to-one */
-  // @ForeignKey(() => Client)
-  @Column({ allowNull: true }) clientId: number;
-  // @BelongsTo(() => Client) user: Client;
+  @ForeignKey(() => Customer)
+  @Column({ allowNull: true })
+  сustomerId: number;
+  @BelongsTo(() => Customer) сustomer: Customer;
 
   @Column({ allowNull: true }) fio: string;
   @Column({ allowNull: true }) hbDate: Date;
@@ -34,7 +36,7 @@ export default class Ward extends Model<Ward> {
     () => SocialStatus,
     () => WardSocialStatus,
   )
-  // socialStatusesList: SocialStatus[];
+  // tslint:disable-next-line: array-type
   socialStatusesList: Array<
     SocialStatus & { WardSocialStatus: WardSocialStatus }
   >;

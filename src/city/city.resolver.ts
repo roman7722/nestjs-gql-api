@@ -1,9 +1,9 @@
 import { Int } from 'type-graphql';
-// import { UseGuards } from '@nestjs/common';
+import { UseGuards } from '@nestjs/common';
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
-// import { Roles } from '../auth/decorators/roles.decorator';
-// import { GqlAuthGuard } from '../auth/guards/gql-auth.guard';
-// import { RolesGuard } from '../auth/guards/roles.guard';
+import { Roles } from '../auth/decorators/roles.decorator';
+import { GqlAuthGuard } from '../auth/guards/gql-auth.guard';
+import { RolesGuard } from '../auth/guards/roles.guard';
 import { CityListArgs } from './args/city-list.args';
 import { CityArgs } from './args/city.args';
 import { CityService } from './city.service';
@@ -13,8 +13,8 @@ import { CityDeleteInput } from './input/city-delete.input';
 import { CityUpdateInput } from './input/city-update.input';
 
 @Resolver()
-// @UseGuards(GqlAuthGuard, RolesGuard)
-// @Roles('ADMIN', 'MANAGER')
+@UseGuards(GqlAuthGuard, RolesGuard)
+@Roles('MANAGER', 'ADMIN')
 export class CityResolver {
   constructor(private readonly cityService: CityService) {}
 

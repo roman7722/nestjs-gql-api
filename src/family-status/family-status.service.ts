@@ -1,7 +1,7 @@
 import { isEmpty } from 'lodash';
 import { Op } from 'sequelize';
 import { BadRequestException, Inject, Injectable } from '@nestjs/common';
-import { OptimisticLocking } from '../common/decorators';
+import { CheckIsValueUnique, OptimisticLocking } from '../common/decorators';
 import { MessageCodeError } from '../common/error/MessageCodeError';
 import FamilyStatus from './family-status.model';
 import { FamilyStatusCreateInput } from './input/family-status-create.input';
@@ -15,7 +15,7 @@ export class FamilyStatusService {
     private readonly FAMILY_STATUS_REPOSITORY: typeof FamilyStatus,
   ) {}
 
-  public async checkVersion(id: string): Promise<FamilyStatus | undefined> {
+  public async checkVersion(id: number): Promise<FamilyStatus | undefined> {
     try {
       return await this.FAMILY_STATUS_REPOSITORY.findOne<FamilyStatus>({
         where: { id },
@@ -74,25 +74,24 @@ export class FamilyStatusService {
     }
   }
 
+  @CheckIsValueUnique(
+    'familyStatusNameFind',
+    'familyStatusName',
+    'familyStatus:validate:notUniqueFamilyStatusName',
+  )
   async familyStatusCreate(
     data: FamilyStatusCreateInput,
   ): Promise<FamilyStatus> {
     try {
-      const familyStatus = await this.familyStatusNameFind(
-        data.familyStatusName,
-      );
-      const familyStatusName = familyStatus?.getDataValue('familyStatusName');
-
-      if (familyStatusName) {
+      return await this.FAMILY_STATUS_REPOSITORY.create<FamilyStatus>(data);
+    } catch (error) {
+      if (
+        error.messageCode === 'familyStatus:validate:notUniqueFamilyStatusName'
+      ) {
         throw new MessageCodeError(
-          'familyStatus:create:unableToCreateFamilyStatus',
+          'familyStatus:validate:notUniqueFamilyStatusName',
         );
       }
-
-      return await this.FAMILY_STATUS_REPOSITORY.create<FamilyStatus>({
-        ...data,
-      });
-    } catch (err) {
       throw new MessageCodeError(
         'familyStatus:create:unableToCreateFamilyStatus',
       );
@@ -100,14 +99,17 @@ export class FamilyStatusService {
   }
 
   @OptimisticLocking(true)
+  @CheckIsValueUnique(
+    'familyStatusNameFind',
+    'familyStatusName',
+    'familyStatus:validate:notUniqueFamilyStatusName',
+  )
   async familyStatusUpdate(
     data: FamilyStatusUpdateInput,
   ): Promise<FamilyStatus> {
     try {
       const res = await this.FAMILY_STATUS_REPOSITORY.update<FamilyStatus>(
-        {
-          ...data,
-        },
+        data,
         {
           where: { id: data.id },
           returning: true,
@@ -116,18 +118,24 @@ export class FamilyStatusService {
       const [, [val]] = res;
       return val;
     } catch (error) {
-      throw new BadRequestException();
+      if (
+        error.messageCode === 'familyStatus:validate:notUniqueFamilyStatusName'
+      ) {
+        throw new MessageCodeError(
+          'familyStatus:validate:notUniqueFamilyStatusName',
+        );
+      }
+      throw new MessageCodeError(
+        'familyStatus:update:unableToUpdateFamilyStatus',
+      );
     }
   }
 
   @OptimisticLocking(false)
   async familyStatusDelete(data: FamilyStatusDeleteInput): Promise<Number> {
     try {
-      const { id, version } = data;
       return await this.FAMILY_STATUS_REPOSITORY.destroy({
-        where: {
-          [Op.and]: [{ id }, { version }],
-        },
+        where: { id: data.id },
       });
     } catch (error) {
       throw new BadRequestException();

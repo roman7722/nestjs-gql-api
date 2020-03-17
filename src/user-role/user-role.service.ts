@@ -1,6 +1,8 @@
+import { isEmpty } from 'lodash';
 import { Op } from 'sequelize';
 import { BadRequestException, Inject, Injectable } from '@nestjs/common';
-import { OptimisticLocking } from '../common/decorators';
+import { CheckIsValueUnique, OptimisticLocking } from '../common/decorators';
+import { MessageCodeError } from '../common/error';
 import { UserRoleCreateInput } from './input/user-role-create.input';
 import { UserRoleDeleteInput } from './input/user-role-delete.input';
 import { UserRoleUpdateInput } from './input/user-role-update.input';
@@ -34,6 +36,30 @@ export class UserRoleService {
     }
   }
 
+  async userRoleList(
+    textFilter: string,
+    page: number,
+    paging: number,
+  ): Promise<UserRole[]> {
+    try {
+      const iRegexp: string = isEmpty(textFilter)
+        ? ``
+        : `(^${textFilter})|( ${textFilter})`;
+      return await this.USER_ROLE_REPOSITORY.findAll<UserRole>({
+        limit: paging,
+        offset: (page - 1) * paging,
+        where: {
+          id: {
+            [Op.iRegexp]: iRegexp,
+          },
+        },
+        order: [['id', 'ASC']],
+      });
+    } catch (error) {
+      throw new BadRequestException();
+    }
+  }
+
   async userRolesFind(ids: number[]): Promise<UserRole[]> {
     try {
       const whereCondition = {};
@@ -52,15 +78,20 @@ export class UserRoleService {
     }
   }
 
+  @CheckIsValueUnique('userRole', 'id', 'userRole:validate:notUniqueUserRoleId')
   async userRoleCreate(data: UserRoleCreateInput): Promise<UserRole> {
     try {
       return await this.USER_ROLE_REPOSITORY.create<UserRole>(data);
     } catch (error) {
-      throw new BadRequestException();
+      if (error.messageCode === 'userRole:validate:notUniqueUserRoleId') {
+        throw new MessageCodeError('userRole:validate:notUniqueUserRoleId');
+      }
+      throw new MessageCodeError('userRole:create:unableToCreateUserRole');
     }
   }
 
   @OptimisticLocking(true)
+  @CheckIsValueUnique('userRole', 'id', 'userRole:validate:notUniqueUserRoleId')
   async userRoleUpdate(data: UserRoleUpdateInput): Promise<UserRole> {
     try {
       const res = await this.USER_ROLE_REPOSITORY.update<UserRole>(data, {
@@ -72,7 +103,10 @@ export class UserRoleService {
 
       return val;
     } catch (error) {
-      throw new BadRequestException();
+      if (error.messageCode === 'userRole:validate:notUniqueUserRoleId') {
+        throw new MessageCodeError('userRole:validate:notUniqueUserRoleId');
+      }
+      throw new MessageCodeError('userRole:update:unableToUpdateUserRole');
     }
   }
 

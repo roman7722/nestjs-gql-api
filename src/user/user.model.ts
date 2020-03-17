@@ -1,5 +1,6 @@
 import { BelongsTo, Column, ForeignKey, HasMany, Model, Table } from 'sequelize-typescript';
 import Agreement from '../agreement/agreement.model';
+import Customer from '../customer/customer.model';
 import Session from '../session/session.model';
 import UserRole from '../user-role/user-role.model';
 import Ward from '../ward/ward.model';
@@ -29,4 +30,5 @@ export default class User extends Model<User> {
   @HasMany(() => Agreement) agreements: Agreement[];
   @HasMany(() => Session) sessions: Session[];
   @HasMany(() => Ward) wards: Ward[];
+  @HasMany(() => Customer) customers: Customer[];
 }

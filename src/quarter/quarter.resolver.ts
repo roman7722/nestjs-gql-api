@@ -6,13 +6,12 @@ import { GqlAuthGuard } from '../auth/guards/gql-auth.guard';
 import { RolesGuard } from '../auth/guards/roles.guard';
 import { QuarterListArgs } from './args/quarter-list.args';
 import { QuarterArgs } from './args/quarter.args';
-import { QuarterService } from './quarter.service';
 import { QuarterDto } from './dto/quarter.dto';
 import { QuarterCreateInput } from './input/quarter-create.input';
 import { QuarterDeleteInput } from './input/quarter-delete.input';
 import { QuarterUpdateInput } from './input/quarter-update.input';
+import { QuarterService } from './quarter.service';
 
-@Resolver()
 @Resolver()
 @UseGuards(GqlAuthGuard, RolesGuard)
 @Roles('ADMIN', 'MANAGER')

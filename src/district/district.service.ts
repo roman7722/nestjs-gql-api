@@ -1,7 +1,7 @@
 import { isEmpty } from 'lodash';
 import { Op } from 'sequelize';
 import { BadRequestException, Inject, Injectable } from '@nestjs/common';
-import { OptimisticLocking } from '../common/decorators';
+import { CheckIsValueUnique, OptimisticLocking } from '../common/decorators';
 import { MessageCodeError } from '../common/error';
 import District from './district.model';
 import { DistrictCreateInput } from './input/district-create.input';
@@ -70,50 +70,49 @@ export class DistrictService {
     }
   }
 
+  @CheckIsValueUnique(
+    'districtNameFind',
+    'districtName',
+    'district:validate:notUniqueDistrictName',
+  )
   async districtCreate(data: DistrictCreateInput): Promise<District> {
     try {
-      const district = await this.districtNameFind(data.districtName);
-      const districtName = district?.getDataValue('districtName');
-
-      if (districtName) {
-        throw new MessageCodeError('district:create:unableToCreateDistrict');
+      return await this.DISTRICT_REPOSITORY.create<District>(data);
+    } catch (error) {
+      if (error.messageCode === 'district:validate:notUniqueDistrictName') {
+        throw new MessageCodeError('district:validate:notUniqueDistrictName');
       }
-
-      return await this.DISTRICT_REPOSITORY.create<District>({
-        ...data,
-      });
-    } catch (err) {
       throw new MessageCodeError('district:create:unableToCreateDistrict');
     }
   }
 
   @OptimisticLocking(true)
+  @CheckIsValueUnique(
+    'districtNameFind',
+    'districtName',
+    'district:validate:notUniqueDistrictName',
+  )
   async districtUpdate(data: DistrictUpdateInput): Promise<District> {
     try {
-      const res = await this.DISTRICT_REPOSITORY.update<District>(
-        {
-          ...data,
-        },
-        {
-          where: { id: data.id },
-          returning: true,
-        },
-      );
+      const res = await this.DISTRICT_REPOSITORY.update<District>(data, {
+        where: { id: data.id },
+        returning: true,
+      });
       const [, [val]] = res;
       return val;
     } catch (error) {
-      throw new BadRequestException();
+      if (error.messageCode === 'district:validate:notUniqueDistrictName') {
+        throw new MessageCodeError('district:validate:notUniqueDistrictName');
+      }
+      throw new MessageCodeError('district:update:unableToUpdateDistrict');
     }
   }
 
   @OptimisticLocking(false)
   async districtDelete(data: DistrictDeleteInput): Promise<Number> {
     try {
-      const { id, version } = data;
       return await this.DISTRICT_REPOSITORY.destroy({
-        where: {
-          [Op.and]: [{ id }, { version }],
-        },
+        where: { id: data.id },
       });
     } catch (error) {
       throw new BadRequestException(error);

@@ -2,7 +2,7 @@ import * as bcrypt from 'bcrypt';
 import { isEmpty } from 'lodash';
 import { Op, Transaction } from 'sequelize';
 import { BadRequestException, Inject, Injectable } from '@nestjs/common';
-import { OptimisticLocking } from '../common/decorators/optimistic-locking.decorator';
+import { CheckIsValueUnique, OptimisticLocking } from '../common/decorators';
 import { MessageCodeError } from '../common/error/MessageCodeError';
 import { SessionService } from '../session/session.service';
 import UserRole from '../user-role/user-role.model';
@@ -59,7 +59,7 @@ export class UserService {
    * @param id {number}
    * @returns {User | undefined}
    */
-  public async checkVersion(id: string): Promise<User | undefined> {
+  public async checkVersion(id: number): Promise<User | undefined> {
     try {
       return await this.USER_REPOSITORY.findOne<User>({
         where: { id },
@@ -153,15 +153,13 @@ export class UserService {
     return await bcrypt.hash(password, rounds);
   }
 
+  @CheckIsValueUnique(
+    'userNameFind',
+    'username',
+    'user:validate:notUniqueUserName',
+  )
   async userCreate(data: UserCreateInput): Promise<User> {
     try {
-      const user = await this.userNameFind(data.username);
-      const username = user?.getDataValue('username');
-
-      if (username) {
-        throw new MessageCodeError('user:create:unableToCreateUser');
-      }
-
       const hash: string = await UserService.hashPassword(
         data.passwordHash,
         12,
@@ -172,12 +170,20 @@ export class UserService {
           data.secondName + ' ' + data.firstName + ' ' + data.middleName,
         passwordHash: hash,
       });
-    } catch (err) {
+    } catch (error) {
+      if (error.messageCode === 'user:validate:notUniqueUserName') {
+        throw new MessageCodeError('user:validate:notUniqueUserName');
+      }
       throw new MessageCodeError('user:create:unableToCreateUser');
     }
   }
 
   @OptimisticLocking(true)
+  @CheckIsValueUnique(
+    'userNameFind',
+    'username',
+    'user:validate:notUniqueUserName',
+  )
   async userUpdate(data: UserUpdateInput): Promise<User> {
     try {
       const hash: string = await UserService.hashPassword(
@@ -201,22 +207,23 @@ export class UserService {
 
       return val;
     } catch (error) {
-      throw new BadRequestException();
+      if (error.messageCode === 'user:validate:notUniqueUserName') {
+        throw new MessageCodeError('user:validate:notUniqueUserName');
+      }
+      throw new MessageCodeError('user:update:unableToUpdateUser');
     }
   }
 
   @OptimisticLocking(false)
   async userDelete(data: UserDeleteInput): Promise<Number> {
-    const { id, version } = data;
+    const { id } = data;
     let transaction: Transaction;
 
     try {
       transaction = await this.SEQUELIZE.transaction();
       await this.sessionService.deleteAllSessions(id, transaction);
       const result = await this.USER_REPOSITORY.destroy({
-        where: {
-          [Op.and]: [{ id }, { version }],
-        },
+        where: { id },
         transaction,
       });
       transaction.commit();

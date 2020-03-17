@@ -1,12 +1,12 @@
 import { isEmpty } from 'lodash';
 import { Op } from 'sequelize';
 import { BadRequestException, Inject, Injectable } from '@nestjs/common';
-import { OptimisticLocking } from '../common/decorators';
+import { CheckIsValueUnique, OptimisticLocking } from '../common/decorators';
 import { MessageCodeError } from '../common/error';
-import Quarter from './quarter.model';
 import { QuarterCreateInput } from './input/quarter-create.input';
 import { QuarterDeleteInput } from './input/quarter-delete.input';
 import { QuarterUpdateInput } from './input/quarter-update.input';
+import Quarter from './quarter.model';
 
 @Injectable()
 export class QuarterService {
@@ -70,50 +70,49 @@ export class QuarterService {
     }
   }
 
+  @CheckIsValueUnique(
+    'quarterNameFind',
+    'quarterName',
+    'quarter:validate:notUniqueQuarterName',
+  )
   async quarterCreate(data: QuarterCreateInput): Promise<Quarter> {
     try {
-      const quarter = await this.quarterNameFind(data.quarterName);
-      const quarterName = quarter?.getDataValue('quarterName');
-
-      if (quarterName) {
-        throw new MessageCodeError('quarter:create:unableToCreateQuarter');
+      return await this.QUARTER_REPOSITORY.create<Quarter>(data);
+    } catch (error) {
+      if (error.messageCode === 'quarter:validate:notUniqueQuarterName') {
+        throw new MessageCodeError('quarter:validate:notUniqueQuarterName');
       }
-
-      return await this.QUARTER_REPOSITORY.create<Quarter>({
-        ...data,
-      });
-    } catch (err) {
       throw new MessageCodeError('quarter:create:unableToCreateQuarter');
     }
   }
 
   @OptimisticLocking(true)
+  @CheckIsValueUnique(
+    'quarterNameFind',
+    'quarterName',
+    'quarter:validate:notUniqueQuarterName',
+  )
   async quarterUpdate(data: QuarterUpdateInput): Promise<Quarter> {
     try {
-      const res = await this.QUARTER_REPOSITORY.update<Quarter>(
-        {
-          ...data,
-        },
-        {
-          where: { id: data.id },
-          returning: true,
-        },
-      );
+      const res = await this.QUARTER_REPOSITORY.update<Quarter>(data, {
+        where: { id: data.id },
+        returning: true,
+      });
       const [, [val]] = res;
       return val;
     } catch (error) {
-      throw new BadRequestException();
+      if (error.messageCode === 'quarter:validate:notUniqueQuarterName') {
+        throw new MessageCodeError('quarter:validate:notUniqueQuarterName');
+      }
+      throw new MessageCodeError('quarter:update:unableToUpdateQuarter');
     }
   }
 
   @OptimisticLocking(false)
   async quarterDelete(data: QuarterDeleteInput): Promise<Number> {
     try {
-      const { id, version } = data;
       return await this.QUARTER_REPOSITORY.destroy({
-        where: {
-          [Op.and]: [{ id }, { version }],
-        },
+        where: { id: data.id },
       });
     } catch (error) {
       throw new BadRequestException(error);
