@@ -1,7 +1,7 @@
 import { isEmpty } from 'lodash';
 import { Op } from 'sequelize';
 import { BadRequestException, Inject, Injectable } from '@nestjs/common';
-import { OptimisticLocking } from '../common/decorators';
+import { CheckIsValueUnique, OptimisticLocking } from '../common/decorators';
 import { MessageCodeError } from '../common/error/MessageCodeError';
 import { WardStageCreateInput } from './input/ward-stage-create.input';
 import { WardStageDeleteInput } from './input/ward-stage-delete.input';
@@ -15,7 +15,7 @@ export class WardStageService {
     private readonly WARD_STAGE_REPOSITORY: typeof WardStage,
   ) {}
 
-  public async checkVersion(id: string): Promise<WardStage | undefined> {
+  public async checkVersion(id: number): Promise<WardStage | undefined> {
     try {
       return await this.WARD_STAGE_REPOSITORY.findOne<WardStage>({
         where: { id },
@@ -70,39 +70,41 @@ export class WardStageService {
     }
   }
 
+  @CheckIsValueUnique(
+    'wardStageNameFind',
+    'wardStageName',
+    'wardStage:validate:notUniqueWardStageName',
+  )
   async wardStageCreate(data: WardStageCreateInput): Promise<WardStage> {
     try {
-      const wardStage = await this.wardStageNameFind(data.wardStageName);
-      const wardStageName = wardStage?.getDataValue('wardStageName');
-
-      if (wardStageName) {
-        throw new MessageCodeError('wardStage:create:unableToCreateWardStage');
+      return await this.WARD_STAGE_REPOSITORY.create<WardStage>(data);
+    } catch (error) {
+      if (error.messageCode === 'wardStage:validate:notUniqueWardStageName') {
+        throw new MessageCodeError('wardStage:validate:notUniqueWardStageName');
       }
-
-      return await this.WARD_STAGE_REPOSITORY.create<WardStage>({
-        ...data,
-      });
-    } catch (err) {
       throw new MessageCodeError('wardStage:create:unableToCreateWardStage');
     }
   }
 
   @OptimisticLocking(true)
+  @CheckIsValueUnique(
+    'wardStageNameFind',
+    'wardStageName',
+    'wardStage:validate:notUniqueWardStageName',
+  )
   async wardStageUpdate(data: WardStageUpdateInput): Promise<WardStage> {
     try {
-      const res = await this.WARD_STAGE_REPOSITORY.update<WardStage>(
-        {
-          ...data,
-        },
-        {
-          where: { id: data.id },
-          returning: true,
-        },
-      );
+      const res = await this.WARD_STAGE_REPOSITORY.update<WardStage>(data, {
+        where: { id: data.id },
+        returning: true,
+      });
       const [, [val]] = res;
       return val;
     } catch (error) {
-      throw new BadRequestException();
+      if (error.messageCode === 'wardStage:validate:notUniqueWardStageName') {
+        throw new MessageCodeError('wardStage:validate:notUniqueWardStageName');
+      }
+      throw new MessageCodeError('wardStage:update:unableToUpdateWardStage');
     }
   }
 

@@ -19,13 +19,10 @@ export const OptimisticLocking = (versionUp: boolean) => (
 
   descriptor.value = async function(data: any) {
     const { id, version } = data;
-
-    console.log(data);
-
     const result = await target.checkVersion.call(this, id);
 
     if (!result) {
-      return new MessageCodeError('common:request:badRequest');
+      return new MessageCodeError('common:checkId:notFound');
     }
 
     const actualVersion: number = result?.getDataValue('version');

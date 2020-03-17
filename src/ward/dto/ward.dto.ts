@@ -1,5 +1,6 @@
 import { Field, ID, Int, ObjectType } from 'type-graphql';
 import { CityDto } from '../../city/dto/city.dto';
+import { CustomerDto } from '../../customer/dto/customer.dto';
 import { DistrictDto } from '../../district/dto/district.dto';
 import { FamilyStatusDto } from '../../family-status/dto/family-status.dto';
 import { QuarterDto } from '../../quarter/dto/quarter.dto';
@@ -10,7 +11,7 @@ import { UserDto } from '../../user/dto/user.dto';
 export class WardDto {
   @Field(() => ID, { nullable: true }) id?: number;
   @Field(() => UserDto, { nullable: true }) user?: UserDto;
-  // @Field(() => ClientDto, { nullable: true }) client?: ClientDto;
+  @Field(() => CustomerDto, { nullable: true }) customer?: CustomerDto;
   @Field({ nullable: true }) fio?: string;
   @Field({ nullable: true }) hbDate?: Date;
   @Field({ nullable: true }) passportNumber?: string;

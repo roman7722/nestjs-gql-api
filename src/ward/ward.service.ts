@@ -32,6 +32,7 @@ export class WardService {
     }
   }
 
+  // TODO: Добавить проверку на уникальность полей ()
   async wardCreate(data: WardCreateInput): Promise<any> {
     const { socialStatusesList, ...rest } = data;
     let transaction: Transaction;

@@ -1,7 +1,7 @@
 import { isEmpty } from 'lodash';
 import { Op } from 'sequelize';
 import { BadRequestException, Inject, Injectable } from '@nestjs/common';
-import { OptimisticLocking } from '../common/decorators';
+import { CheckIsValueUnique, OptimisticLocking } from '../common/decorators';
 import { MessageCodeError } from '../common/error/MessageCodeError';
 import { SocialStatusCreateInput } from './input/social-status-create.input';
 import { SocialStatusDeleteInput } from './input/social-status-delete.input';
@@ -15,7 +15,7 @@ export class SocialStatusService {
     private readonly SOCIAL_STATUS_REPOSITORY: typeof SocialStatus,
   ) {}
 
-  public async checkVersion(id: string): Promise<SocialStatus | undefined> {
+  public async checkVersion(id: number): Promise<SocialStatus | undefined> {
     try {
       return await this.SOCIAL_STATUS_REPOSITORY.findOne<SocialStatus>({
         where: { id },
@@ -74,23 +74,24 @@ export class SocialStatusService {
     }
   }
 
+  @CheckIsValueUnique(
+    'socialStatusNameFind',
+    'socialStatusName',
+    'socialStatus:validate:notUniqueSocialStatusName',
+  )
   async socialStatusCreate(
     data: SocialStatusCreateInput,
   ): Promise<SocialStatus> {
     try {
-      const socialStatus = await this.socialStatusNameFind(
-        data.socialStatusName,
-      );
-      const socialStatusName = socialStatus?.getDataValue('socialStatusName');
-
-      if (socialStatusName) {
+      return await this.SOCIAL_STATUS_REPOSITORY.create<SocialStatus>(data);
+    } catch (error) {
+      if (
+        error.messageCode === 'socialStatus:validate:notUniqueSocialStatusName'
+      ) {
         throw new MessageCodeError(
-          'socialStatus:create:unableToCreateSocialStatus',
+          'socialStatus:validate:notUniqueSocialStatusName',
         );
       }
-
-      return await this.SOCIAL_STATUS_REPOSITORY.create<SocialStatus>(data);
-    } catch (err) {
       throw new MessageCodeError(
         'socialStatus:create:unableToCreateSocialStatus',
       );
@@ -98,6 +99,11 @@ export class SocialStatusService {
   }
 
   @OptimisticLocking(true)
+  @CheckIsValueUnique(
+    'socialStatusNameFind',
+    'socialStatusName',
+    'socialStatus:validate:notUniqueSocialStatusName',
+  )
   async socialStatusUpdate(
     data: SocialStatusUpdateInput,
   ): Promise<SocialStatus> {
@@ -112,18 +118,24 @@ export class SocialStatusService {
       const [, [val]] = res;
       return val;
     } catch (error) {
-      throw new BadRequestException();
+      if (
+        error.messageCode === 'socialStatus:validate:notUniqueSocialStatusName'
+      ) {
+        throw new MessageCodeError(
+          'socialStatus:validate:notUniqueSocialStatusName',
+        );
+      }
+      throw new MessageCodeError(
+        'socialStatus:update:unableToUpdateSocialStatus',
+      );
     }
   }
 
   @OptimisticLocking(false)
   async socialStatusDelete(data: SocialStatusDeleteInput): Promise<Number> {
     try {
-      const { id, version } = data;
       return await this.SOCIAL_STATUS_REPOSITORY.destroy({
-        where: {
-          [Op.and]: [{ id }, { version }],
-        },
+        where: { id: data.id },
       });
     } catch (error) {
       throw new BadRequestException();

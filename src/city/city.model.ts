@@ -1,4 +1,5 @@
 import { Column, HasMany, Model, Table } from 'sequelize-typescript';
+import Customer from '../customer/customer.model';
 import District from '../district/district.model';
 import Ward from '../ward/ward.model';
 
@@ -11,4 +12,5 @@ export default class City extends Model<City> {
   /** One-to-many */
   @HasMany(() => District) districts: District[];
   @HasMany(() => Ward) wards: Ward[];
+  @HasMany(() => Customer) customers: Customer[];
 }

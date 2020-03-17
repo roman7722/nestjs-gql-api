@@ -3,7 +3,7 @@ import { Field, InputType, Int } from 'type-graphql';
 @InputType()
 export class WardCreateInput {
   @Field(() => Int, { nullable: false }) userId: number;
-  @Field(() => Int, { nullable: true }) clientId: number;
+  @Field(() => Int, { nullable: true }) customerId: number;
   @Field({ nullable: true }) fio: string;
   @Field({ nullable: true }) hbDate: Date;
   @Field({ nullable: true }) passportNumber: string;
