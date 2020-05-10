@@ -1,14 +1,14 @@
 import { Module } from '@nestjs/common';
 import { JwtModule } from '@nestjs/jwt';
 import { PassportModule } from '@nestjs/passport';
-import { TokenModule } from '../token/token.module';
+import { SessionModule } from '../session/session.module';
 import { UserModule } from '../user/user.module';
 import { AuthService } from './auth.service';
 import { JwtStrategy } from './jwt.strategy';
 
 @Module({
   imports: [
-    TokenModule,
+    SessionModule,
     UserModule,
     PassportModule,
     JwtModule.register({

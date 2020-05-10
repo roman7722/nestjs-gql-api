@@ -2,12 +2,14 @@ import * as bcrypt from 'bcrypt';
 import { isEmpty } from 'lodash';
 import { Op, Transaction } from 'sequelize';
 import { BadRequestException, Inject, Injectable } from '@nestjs/common';
-import { MessageCodeError } from '../common/lib/error/MessageCodeError';
-import { TokenService } from '../token/token.service';
+import { CheckIsValueUnique, OptimisticLocking } from '../common/decorators';
+import { MessageCodeError } from '../common/error/MessageCodeError';
+import { SessionService } from '../session/session.service';
 import UserRole from '../user-role/user-role.model';
-import { UserArgs } from './args/user.args';
-import { CreateUserInput } from './inputs/user.create.input';
-import { UpdateUserInput } from './inputs/user.update.input';
+import { UserFindArgs } from './args/user-find.args';
+import { UserCreateInput } from './input/user-create.input';
+import { UserDeleteInput } from './input/user-delete.input';
+import { UserUpdateInput } from './input/user-update.input';
 import User from './user.model';
 
 @Injectable()
@@ -15,7 +17,7 @@ export class UserService {
   constructor(
     @Inject('SEQUELIZE') private readonly SEQUELIZE,
     @Inject('USER_REPOSITORY') private readonly USER_REPOSITORY: typeof User,
-    private readonly tokenService: TokenService,
+    private readonly sessionService: SessionService,
   ) {}
 
   /**
@@ -23,7 +25,7 @@ export class UserService {
    * @param username {string}
    * @returns {User | undefined}
    */
-  async findUser(username: string): Promise<User | undefined> {
+  async userFind(username: string): Promise<User | undefined> {
     try {
       const res = await this.USER_REPOSITORY.findOne<User>({
         where: { username },
@@ -40,7 +42,7 @@ export class UserService {
    * @param id {number}
    * @returns {User | undefined}
    */
-  async findUserRole(id: number): Promise<User | undefined> {
+  async userRoleFind(id: number): Promise<User | undefined> {
     try {
       const res = await this.USER_REPOSITORY.findOne<User>({
         where: { id },
@@ -52,13 +54,40 @@ export class UserService {
     }
   }
 
-  async findUserName(username: string): Promise<User | undefined> {
+  /**
+   * Поиск version записи по id для @OptimisticLocking
+   * @param id {number}
+   * @returns {User | undefined}
+   */
+  public async checkVersion(id: number): Promise<User | undefined> {
+    try {
+      return await this.USER_REPOSITORY.findOne<User>({
+        where: { id },
+        attributes: ['version'],
+      });
+    } catch (error) {
+      throw new BadRequestException();
+    }
+  }
+
+  async userNameFind(username: string): Promise<User | undefined> {
     try {
       const res = await this.USER_REPOSITORY.findOne<User>({
         where: { username },
         attributes: ['id', 'username'],
       });
       return res;
+    } catch (error) {
+      throw new BadRequestException();
+    }
+  }
+
+  async user(id: number): Promise<User | undefined> {
+    try {
+      return await this.USER_REPOSITORY.findOne<User>({
+        include: [UserRole],
+        where: { id },
+      });
     } catch (error) {
       throw new BadRequestException();
     }
@@ -89,18 +118,7 @@ export class UserService {
     }
   }
 
-  async user(id: number): Promise<User | undefined> {
-    try {
-      return await this.USER_REPOSITORY.findOne<User>({
-        include: [UserRole],
-        where: { id },
-      });
-    } catch (error) {
-      throw new BadRequestException();
-    }
-  }
-
-  async usersFiltered(data: UserArgs): Promise<User[]> {
+  async usersFind(data: UserFindArgs): Promise<User[]> {
     try {
       const loginWhereCondition = {};
       if (data.usernames.length > 0) {
@@ -135,15 +153,13 @@ export class UserService {
     return await bcrypt.hash(password, rounds);
   }
 
-  async createUser(data: CreateUserInput): Promise<User> {
+  @CheckIsValueUnique(
+    'userNameFind',
+    'username',
+    'user:validate:notUniqueUserName',
+  )
+  async userCreate(data: UserCreateInput): Promise<User> {
     try {
-      const user = await this.findUserName(data.username);
-      const username = user?.getDataValue('username');
-
-      if (username) {
-        throw new MessageCodeError('user:create:unableToCreateUser');
-      }
-
       const hash: string = await UserService.hashPassword(
         data.passwordHash,
         12,
@@ -154,44 +170,60 @@ export class UserService {
           data.secondName + ' ' + data.firstName + ' ' + data.middleName,
         passwordHash: hash,
       });
-    } catch (err) {
+    } catch (error) {
+      if (error.messageCode === 'user:validate:notUniqueUserName') {
+        throw new MessageCodeError('user:validate:notUniqueUserName');
+      }
       throw new MessageCodeError('user:create:unableToCreateUser');
     }
   }
 
-  async updateUser(val: UpdateUserInput): Promise<number> {
+  @OptimisticLocking(true)
+  @CheckIsValueUnique(
+    'userNameFind',
+    'username',
+    'user:validate:notUniqueUserName',
+  )
+  async userUpdate(data: UserUpdateInput): Promise<User> {
     try {
-      const hash: string = await UserService.hashPassword(val.passwordHash, 12);
+      const hash: string = await UserService.hashPassword(
+        data.passwordHash,
+        12,
+      );
       const res = await this.USER_REPOSITORY.update<User>(
         {
-          ...val,
+          ...data,
           displayName:
-            val.secondName + ' ' + val.firstName + ' ' + val.middleName,
+            data.secondName + ' ' + data.firstName + ' ' + data.middleName,
           passwordHash: hash,
         },
         {
-          where: { id: val.id },
+          where: { id: data.id },
           returning: true,
-          individualHooks: true,
         },
       );
-      const [, [data]] = res;
-      return data.getDataValue('id');
+
+      const [, [val]] = res;
+
+      return val;
     } catch (error) {
-      throw new BadRequestException();
+      if (error.messageCode === 'user:validate:notUniqueUserName') {
+        throw new MessageCodeError('user:validate:notUniqueUserName');
+      }
+      throw new MessageCodeError('user:update:unableToUpdateUser');
     }
   }
 
-  async deleteUser(userId: number): Promise<number> {
+  @OptimisticLocking(false)
+  async userDelete(data: UserDeleteInput): Promise<Number> {
+    const { id } = data;
     let transaction: Transaction;
 
     try {
       transaction = await this.SEQUELIZE.transaction();
-      await this.tokenService.deleteAllRefreshToken(userId, transaction);
+      await this.sessionService.deleteAllSessions(id, transaction);
       const result = await this.USER_REPOSITORY.destroy({
-        where: {
-          id: userId,
-        },
+        where: { id },
         transaction,
       });
       transaction.commit();
@@ -199,7 +231,7 @@ export class UserService {
       return result;
     } catch (error) {
       transaction.rollback();
-      throw new Error(error);
+      throw new BadRequestException();
     }
   }
 }

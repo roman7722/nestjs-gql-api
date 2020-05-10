@@ -30,8 +30,10 @@ export const databaseProviders = [
         },
         define: {
           timestamps: false,
+          version: true,
         },
       });
+      /** Attention! If true - recreate all tables! */
       const force: boolean = false;
       await sequelize.sync({ force });
       return sequelize;

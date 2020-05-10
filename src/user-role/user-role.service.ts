@@ -1,6 +1,11 @@
+import { isEmpty } from 'lodash';
 import { Op } from 'sequelize';
 import { BadRequestException, Inject, Injectable } from '@nestjs/common';
-import { CreateUserRoleInput } from './inputs/user-role.create.input';
+import { CheckIsValueUnique, OptimisticLocking } from '../common/decorators';
+import { MessageCodeError } from '../common/error';
+import { UserRoleCreateInput } from './input/user-role-create.input';
+import { UserRoleDeleteInput } from './input/user-role-delete.input';
+import { UserRoleUpdateInput } from './input/user-role-update.input';
 import UserRole from './user-role.model';
 
 @Injectable()
@@ -10,7 +15,18 @@ export class UserRoleService {
     private readonly USER_ROLE_REPOSITORY: typeof UserRole,
   ) {}
 
-  async readUserRole(id: string): Promise<UserRole | undefined> {
+  public async checkVersion(id: string): Promise<UserRole | undefined> {
+    try {
+      return await this.USER_ROLE_REPOSITORY.findOne<UserRole>({
+        where: { id },
+        attributes: ['version'],
+      });
+    } catch (error) {
+      throw new BadRequestException();
+    }
+  }
+
+  public async userRole(id: string): Promise<UserRole | undefined> {
     try {
       return await this.USER_ROLE_REPOSITORY.findOne<UserRole>({
         where: { id },
@@ -20,7 +36,31 @@ export class UserRoleService {
     }
   }
 
-  async findUserRoles(ids: number[]): Promise<UserRole[]> {
+  async userRoleList(
+    textFilter: string,
+    page: number,
+    paging: number,
+  ): Promise<UserRole[]> {
+    try {
+      const iRegexp: string = isEmpty(textFilter)
+        ? ``
+        : `(^${textFilter})|( ${textFilter})`;
+      return await this.USER_ROLE_REPOSITORY.findAll<UserRole>({
+        limit: paging,
+        offset: (page - 1) * paging,
+        where: {
+          id: {
+            [Op.iRegexp]: iRegexp,
+          },
+        },
+        order: [['id', 'ASC']],
+      });
+    } catch (error) {
+      throw new BadRequestException();
+    }
+  }
+
+  async userRolesFind(ids: number[]): Promise<UserRole[]> {
     try {
       const whereCondition = {};
       if (ids.length > 0) {
@@ -38,39 +78,49 @@ export class UserRoleService {
     }
   }
 
-  async createUserRole(data: CreateUserRoleInput): Promise<UserRole> {
+  @CheckIsValueUnique('userRole', 'id', 'userRole:validate:notUniqueUserRoleId')
+  async userRoleCreate(data: UserRoleCreateInput): Promise<UserRole> {
     try {
       return await this.USER_ROLE_REPOSITORY.create<UserRole>(data);
     } catch (error) {
-      throw new BadRequestException();
+      if (error.messageCode === 'userRole:validate:notUniqueUserRoleId') {
+        throw new MessageCodeError('userRole:validate:notUniqueUserRoleId');
+      }
+      throw new MessageCodeError('userRole:create:unableToCreateUserRole');
     }
   }
 
-  async updateUserRole({ id, roleDescription }): Promise<string> {
+  @OptimisticLocking(true)
+  @CheckIsValueUnique('userRole', 'id', 'userRole:validate:notUniqueUserRoleId')
+  async userRoleUpdate(data: UserRoleUpdateInput): Promise<UserRole> {
     try {
-      const res = await this.USER_ROLE_REPOSITORY.update<UserRole>(
-        {
-          roleDescription,
+      const res = await this.USER_ROLE_REPOSITORY.update<UserRole>(data, {
+        where: { id: data.id },
+        returning: true,
+      });
+
+      const [, [val]] = res;
+
+      return val;
+    } catch (error) {
+      if (error.messageCode === 'userRole:validate:notUniqueUserRoleId') {
+        throw new MessageCodeError('userRole:validate:notUniqueUserRoleId');
+      }
+      throw new MessageCodeError('userRole:update:unableToUpdateUserRole');
+    }
+  }
+
+  @OptimisticLocking(false)
+  async userRoleDelete(data: UserRoleDeleteInput): Promise<Number> {
+    try {
+      const { id, version } = data;
+      return await this.USER_ROLE_REPOSITORY.destroy({
+        where: {
+          [Op.and]: [{ id }, { version }],
         },
-        {
-          where: {
-            id,
-          },
-          returning: true,
-        },
-      );
-      const [, [data]] = res;
-      return data.getDataValue('id');
+      });
     } catch (error) {
       throw new BadRequestException();
     }
-  }
-
-  async deleteUserRole(id: string): Promise<number> {
-    return await this.USER_ROLE_REPOSITORY.destroy({
-      where: {
-        id,
-      },
-    });
   }
 }

@@ -8,5 +8,6 @@ import { UserRoleService } from './user-role.service';
 @Module({
   imports: [DatabaseModule, UserModule],
   providers: [UserRoleService, UserRoleResolver, ...userRoleProviders],
+  exports: [UserRoleModule],
 })
 export class UserRoleModule {}

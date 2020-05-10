@@ -1,12 +1,12 @@
 import * as bcrypt from 'bcrypt';
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import { MessageCodeError } from '../common/lib/error/MessageCodeError';
-import { CreateRefreshTokenInput } from '../token/inputs/token.create.inputs';
-import { UpdateRefreshTokenInput } from '../token/inputs/token.update.inputs';
-import Token from '../token/token.model';
-import { TokenService } from '../token/token.service';
-import { IPayload, ITokens, TDecodedToken } from '../token/token.types';
+import { MessageCodeError } from '../common/error/MessageCodeError';
+import { SessionCreateInput } from '../session/inputs/session-create.input';
+import { SessionUpdateInput } from '../session/inputs/session-update.input';
+import Session from '../session/session.model';
+import { SessionService } from '../session/session.service';
+import { IPayload, ISessions, TDecodedToken } from '../session/session.types';
 import { UserService } from '../user/user.service';
 import { jwtConstants } from './constants';
 
@@ -15,7 +15,7 @@ export class AuthService {
   constructor(
     private readonly userService: UserService,
     private readonly jwtService: JwtService,
-    private readonly tokenService: TokenService,
+    private readonly sessionService: SessionService,
   ) {}
 
   /**
@@ -23,7 +23,7 @@ export class AuthService {
    * @param payload {Payload}
    * @returns {Tokens} Объект содержащий accessToken и refreshToken
    */
-  private getTokens(payload: IPayload): ITokens {
+  private getTokens(payload: IPayload): ISessions {
     // Генерация accessToken
     const accessToken: string = this.jwtService.sign(
       { ...payload },
@@ -77,9 +77,9 @@ export class AuthService {
     username: string,
     password: string,
     fingerprint: string,
-  ): Promise<ITokens | undefined> {
+  ): Promise<ISessions | undefined> {
     // Поиск пользователя в таблице s_user по имени username
-    const user = await this.userService.findUser(username);
+    const user = await this.userService.userFind(username);
 
     if (user && user.passwordHash) {
       // Получение passwordHash из записи найденного пользователя
@@ -99,21 +99,21 @@ export class AuthService {
         const payload = { sub: userId };
 
         // Получаем кол-во записей refreshToken пользователя
-        const numberRefreshTokens: number = await this.tokenService.numberRefreshTokens(
+        const numberSessions: number = await this.sessionService.numberSessions(
           userId,
         );
 
-        // Если кол-во refreshToken больше допустимого maxNumberRefreshTokens,
+        // Если кол-во refreshToken больше допустимого maxNumberSessions,
         // то удаляем все refreshToken пользователя из таблицы
-        if (numberRefreshTokens >= jwtConstants.maxNumberRefreshTokens) {
-          await this.tokenService.deleteAllRefreshToken(userId);
+        if (numberSessions >= jwtConstants.maxNumberSessions) {
+          await this.sessionService.deleteAllSessions(userId);
         }
 
         // Генерируем accessToken refreshToken и expiresIn
         const tokens = this.getTokens(payload);
 
         // Поиск записи в таблице token существующего userId и fingerprint
-        const existingRefreshTokenRow: Token = await this.tokenService.findRefreshToken(
+        const existingRefreshTokenRow: Session = await this.sessionService.findSession(
           userId,
           fingerprint,
         );
@@ -129,22 +129,22 @@ export class AuthService {
           decodedRefreshToken?.exp
         ) {
           if (existingRefreshTokenRow) {
-            const value: UpdateRefreshTokenInput = {
+            const value: SessionUpdateInput = {
               id: existingRefreshTokenRow.id,
               userId,
               refreshToken: tokens.refreshToken,
               expiresIn: decodedRefreshToken.exp,
               fingerprint,
             };
-            await this.tokenService.updateRefreshToken(value);
+            await this.sessionService.updateSession(value);
           } else {
-            const data: CreateRefreshTokenInput = {
+            const data: SessionCreateInput = {
               userId,
               refreshToken: tokens.refreshToken,
               expiresIn: decodedRefreshToken.exp,
               fingerprint,
             };
-            await this.tokenService.createRefreshToken(data);
+            await this.sessionService.createSession(data);
           }
 
           return tokens;
@@ -160,14 +160,14 @@ export class AuthService {
    * Обновление accessToken, refreshToken и expiresIn
    * @param refreshToken {string}
    * @param fingerprint {string}
-   * @returns {ITokens} Объект содержащий accessToken и refreshToken
+   * @returns {ISessions} Объект содержащий accessToken и refreshToken
    */
   async regenerateRefreshToken(
     refreshToken: string,
     fingerprint: string,
-  ): Promise<ITokens | undefined> {
+  ): Promise<ISessions | undefined> {
     // Проверяем существование в таблице session записи где refreshToken соответствует fingerprint
-    const existingRefreshTokenRow = await this.tokenService.verifyRefreshToken(
+    const existingRefreshTokenRow = await this.sessionService.verifySession(
       refreshToken,
       fingerprint,
     );
@@ -191,7 +191,7 @@ export class AuthService {
     // Если время жизни refreshToken истекло - удаляем запись из таблицы
     // и генерируем исключение Unauthorized
     if (expiresIn < currentTimestamp) {
-      await this.tokenService.deleteRefreshToken(recordId);
+      await this.sessionService.deleteSession(recordId);
       throw new UnauthorizedException('Unauthorized');
     }
 
@@ -215,7 +215,7 @@ export class AuthService {
         typeof decodedNewRefreshToken !== 'string' &&
         decodedNewRefreshToken?.sub
       ) {
-        const value: UpdateRefreshTokenInput = {
+        const value: SessionUpdateInput = {
           id: recordId,
           userId,
           refreshToken: tokens.refreshToken,
@@ -223,7 +223,7 @@ export class AuthService {
           fingerprint,
         };
         // Обновляем refreshToken в таблице token
-        await this.tokenService.updateRefreshToken(value);
+        await this.sessionService.updateSession(value);
         return tokens;
       }
     }

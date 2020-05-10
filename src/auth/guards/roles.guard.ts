@@ -2,7 +2,7 @@ import { decode } from 'jsonwebtoken';
 import { CanActivate, ExecutionContext, Injectable } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
 import { GqlExecutionContext } from '@nestjs/graphql';
-import { TDecodedToken } from '../../token/token.types';
+import { TDecodedToken } from '../../session/session.types';
 import { UserService } from '../../user/user.service';
 
 @Injectable()
@@ -31,7 +31,7 @@ export class RolesGuard implements CanActivate {
       if (typeof payload !== 'string' && payload) {
         const { sub } = payload;
         /** Получаем roleId из таблицы s_user */
-        const user = await this.userService.findUserRole(sub);
+        const user = await this.userService.userRoleFind(sub);
         const roleId = user?.getDataValue('roleId');
 
         console.log('User role --->', roleId);

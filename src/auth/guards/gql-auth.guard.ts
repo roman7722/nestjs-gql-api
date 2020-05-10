@@ -4,7 +4,7 @@ import { BadRequestException, ExecutionContext, Injectable } from '@nestjs/commo
 import { ExecutionContextHost } from '@nestjs/core/helpers/execution-context-host';
 import { GqlExecutionContext } from '@nestjs/graphql';
 import { AuthGuard } from '@nestjs/passport';
-import { TVerifyedToken } from '../../token/token.types';
+import { TVerifyedToken } from '../../session/session.types';
 
 @Injectable()
 export class GqlAuthGuard extends AuthGuard('jwt') {

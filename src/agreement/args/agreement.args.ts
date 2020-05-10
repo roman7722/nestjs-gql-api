@@ -1,7 +1,6 @@
-import { ArgsType, Field } from 'type-graphql';
+import { ArgsType, Field, Int } from '@nestjs/graphql';
 
 @ArgsType()
 export class AgreementArgs {
-  @Field(() => String, { nullable: true })
-  numAgreements?: [];
+  @Field(() => Int, { nullable: false }) id: number;
 }

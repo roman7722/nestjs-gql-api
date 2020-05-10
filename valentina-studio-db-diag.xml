@@ -1,0 +1,6522 @@
+<?xml version="1.0" encoding="utf-8"?>
+<properties>
+	<Controls>
+		<Table1>
+			<Parent value="#TOP"/>
+			<Properties>
+				<^checks value="0"/>
+				<^group value="-1"/>
+				<^height value="-1"/>
+				<^indexes value="0"/>
+				<^level value="30"/>
+				<^links value="0"/>
+				<^lock value="0"/>
+				<^methods value="0"/>
+				<^minimized value="0"/>
+				<^properties value="0"/>
+				<^triggers value="0"/>
+				<^uniques value="0"/>
+				<back_color value="fb645b"/>
+				<name value="Table1"/>
+				<position value="1904;528"/>
+				<size value="289;90"/>
+				<sort_fields value="0"/>
+			</Properties>
+			<Type value="Table"/>
+		</Table1>
+		<Table10>
+			<Parent value="#TOP"/>
+			<Properties>
+				<^checks value="0"/>
+				<^group value="-1"/>
+				<^height value="-1"/>
+				<^indexes value="0"/>
+				<^level value="22"/>
+				<^links value="0"/>
+				<^lock value="0"/>
+				<^methods value="0"/>
+				<^minimized value="0"/>
+				<^properties value="0"/>
+				<^triggers value="0"/>
+				<^uniques value="1"/>
+				<back_color value="#b4d647"/>
+				<name value="Table10"/>
+				<position value="512;132"/>
+				<size value="373;130"/>
+				<sort_fields value="0"/>
+			</Properties>
+			<Type value="Table"/>
+		</Table10>
+		<Table11>
+			<Parent value="#TOP"/>
+			<Properties>
+				<^checks value="0"/>
+				<^group value="-1"/>
+				<^height value="511"/>
+				<^indexes value="0"/>
+				<^level value="21"/>
+				<^links value="0"/>
+				<^lock value="0"/>
+				<^methods value="0"/>
+				<^minimized value="0"/>
+				<^properties value="0"/>
+				<^triggers value="0"/>
+				<^uniques value="0"/>
+				<back_color value="b4d647"/>
+				<name value="Table11"/>
+				<position value="512;340"/>
+				<size value="344;510"/>
+				<sort_fields value="0"/>
+			</Properties>
+			<Type value="Table"/>
+		</Table11>
+		<Table12>
+			<Parent value="#TOP"/>
+			<Properties>
+				<^checks value="0"/>
+				<^group value="-1"/>
+				<^height value="-1"/>
+				<^indexes value="0"/>
+				<^level value="20"/>
+				<^links value="0"/>
+				<^lock value="0"/>
+				<^methods value="0"/>
+				<^minimized value="0"/>
+				<^properties value="0"/>
+				<^triggers value="0"/>
+				<^uniques value="0"/>
+				<back_color value="b4d647"/>
+				<name value="Table12"/>
+				<position value="951;86"/>
+				<size value="175;70"/>
+				<sort_fields value="0"/>
+			</Properties>
+			<Type value="Table"/>
+		</Table12>
+		<Table13>
+			<Parent value="#TOP"/>
+			<Properties>
+				<^checks value="0"/>
+				<^group value="-1"/>
+				<^height value="-1"/>
+				<^indexes value="0"/>
+				<^level value="19"/>
+				<^links value="0"/>
+				<^lock value="0"/>
+				<^methods value="0"/>
+				<^minimized value="0"/>
+				<^properties value="0"/>
+				<^triggers value="0"/>
+				<^uniques value="0"/>
+				<back_color value="#b4d647"/>
+				<name value="Table13"/>
+				<position value="160;128"/>
+				<size value="304;190"/>
+				<sort_fields value="0"/>
+			</Properties>
+			<Type value="Table"/>
+		</Table13>
+		<Table14>
+			<Parent value="#TOP"/>
+			<Properties>
+				<^checks value="0"/>
+				<^group value="-1"/>
+				<^height value="-1"/>
+				<^indexes value="0"/>
+				<^level value="18"/>
+				<^links value="0"/>
+				<^lock value="0"/>
+				<^methods value="0"/>
+				<^minimized value="0"/>
+				<^properties value="0"/>
+				<^triggers value="0"/>
+				<^uniques value="1"/>
+				<back_color value="5aa2ff"/>
+				<name value="Table14"/>
+				<position value="1888;1168"/>
+				<size value="288;150"/>
+				<sort_fields value="0"/>
+			</Properties>
+			<Type value="Table"/>
+		</Table14>
+		<Table15>
+			<Parent value="#TOP"/>
+			<Properties>
+				<^checks value="0"/>
+				<^group value="-1"/>
+				<^height value="-1"/>
+				<^indexes value="0"/>
+				<^level value="17"/>
+				<^links value="0"/>
+				<^lock value="0"/>
+				<^methods value="0"/>
+				<^minimized value="0"/>
+				<^properties value="0"/>
+				<^triggers value="0"/>
+				<^uniques value="1"/>
+				<back_color value="5aa2ff"/>
+				<name value="Table15"/>
+				<position value="2576;1104"/>
+				<size value="336;130"/>
+				<sort_fields value="0"/>
+			</Properties>
+			<Type value="Table"/>
+		</Table15>
+		<Table16>
+			<Parent value="#TOP"/>
+			<Properties>
+				<^checks value="0"/>
+				<^group value="-1"/>
+				<^height value="-1"/>
+				<^indexes value="0"/>
+				<^level value="12"/>
+				<^links value="0"/>
+				<^lock value="0"/>
+				<^methods value="0"/>
+				<^minimized value="0"/>
+				<^properties value="0"/>
+				<^triggers value="0"/>
+				<^uniques value="0"/>
+				<back_color value="5aa2ff"/>
+				<name value="Table16"/>
+				<position value="1344;1040"/>
+				<size value="336;470"/>
+				<sort_fields value="0"/>
+			</Properties>
+			<Type value="Table"/>
+		</Table16>
+		<Table17>
+			<Parent value="#TOP"/>
+			<Properties>
+				<^checks value="0"/>
+				<^group value="-1"/>
+				<^height value="-1"/>
+				<^indexes value="0"/>
+				<^level value="16"/>
+				<^links value="0"/>
+				<^lock value="0"/>
+				<^methods value="0"/>
+				<^minimized value="0"/>
+				<^properties value="0"/>
+				<^triggers value="0"/>
+				<^uniques value="1"/>
+				<back_color value="5aa2ff"/>
+				<name value="Table17"/>
+				<position value="2576;1320"/>
+				<size value="352;130"/>
+				<sort_fields value="0"/>
+			</Properties>
+			<Type value="Table"/>
+		</Table17>
+		<Table18>
+			<Parent value="#TOP"/>
+			<Properties>
+				<^checks value="0"/>
+				<^group value="-1"/>
+				<^height value="-1"/>
+				<^indexes value="0"/>
+				<^level value="15"/>
+				<^links value="0"/>
+				<^lock value="0"/>
+				<^methods value="0"/>
+				<^minimized value="0"/>
+				<^properties value="0"/>
+				<^triggers value="0"/>
+				<^uniques value="1"/>
+				<back_color value="5aa2ff"/>
+				<name value="Table18"/>
+				<position value="1344;1552"/>
+				<size value="416;130"/>
+				<sort_fields value="1"/>
+			</Properties>
+			<Type value="Table"/>
+		</Table18>
+		<Table19>
+			<Parent value="#TOP"/>
+			<Properties>
+				<^checks value="0"/>
+				<^group value="-1"/>
+				<^height value="-1"/>
+				<^indexes value="0"/>
+				<^level value="14"/>
+				<^links value="0"/>
+				<^lock value="0"/>
+				<^methods value="0"/>
+				<^minimized value="0"/>
+				<^properties value="0"/>
+				<^triggers value="0"/>
+				<^uniques value="1"/>
+				<back_color value="5aa2ff"/>
+				<name value="Table19"/>
+				<position value="1823;1380"/>
+				<size value="416;130"/>
+				<sort_fields value="1"/>
+			</Properties>
+			<Type value="Table"/>
+		</Table19>
+		<Table2>
+			<Parent value="#TOP"/>
+			<Properties>
+				<^checks value="0"/>
+				<^group value="-1"/>
+				<^height value="-1"/>
+				<^indexes value="0"/>
+				<^level value="6"/>
+				<^links value="0"/>
+				<^lock value="0"/>
+				<^methods value="0"/>
+				<^minimized value="0"/>
+				<^properties value="0"/>
+				<^triggers value="0"/>
+				<^uniques value="1"/>
+				<back_color value="efdb47"/>
+				<name value="Table2"/>
+				<position value="2720;1904"/>
+				<size value="272;250"/>
+				<sort_fields value="0"/>
+			</Properties>
+			<Type value="Table"/>
+		</Table2>
+		<Table20>
+			<Parent value="#TOP"/>
+			<Properties>
+				<^checks value="0"/>
+				<^group value="-1"/>
+				<^height value="-1"/>
+				<^indexes value="0"/>
+				<^level value="13"/>
+				<^links value="0"/>
+				<^lock value="0"/>
+				<^methods value="0"/>
+				<^minimized value="0"/>
+				<^properties value="0"/>
+				<^triggers value="0"/>
+				<^uniques value="1"/>
+				<back_color value="f6aa44"/>
+				<name value="Table20"/>
+				<position value="1344;832"/>
+				<size value="336;150"/>
+				<sort_fields value="0"/>
+			</Properties>
+			<Type value="Table"/>
+		</Table20>
+		<Table21>
+			<Parent value="#TOP"/>
+			<Properties>
+				<^checks value="0"/>
+				<^group value="-1"/>
+				<^height value="-1"/>
+				<^indexes value="0"/>
+				<^level value="11"/>
+				<^links value="0"/>
+				<^lock value="0"/>
+				<^methods value="0"/>
+				<^minimized value="0"/>
+				<^properties value="0"/>
+				<^triggers value="0"/>
+				<^uniques value="1"/>
+				<back_color value="efdb47"/>
+				<name value="Table21"/>
+				<position value="2720;1508"/>
+				<size value="320;210"/>
+				<sort_fields value="0"/>
+			</Properties>
+			<Type value="Table"/>
+		</Table21>
+		<Table22>
+			<Parent value="#TOP"/>
+			<Properties>
+				<^checks value="0"/>
+				<^group value="-1"/>
+				<^height value="-1"/>
+				<^indexes value="0"/>
+				<^level value="5"/>
+				<^links value="0"/>
+				<^lock value="0"/>
+				<^methods value="0"/>
+				<^minimized value="0"/>
+				<^properties value="0"/>
+				<^triggers value="0"/>
+				<^uniques value="0"/>
+				<back_color value="efdb47"/>
+				<name value="Table22"/>
+				<position value="2352;1508"/>
+				<size value="320;250"/>
+				<sort_fields value="0"/>
+			</Properties>
+			<Type value="Table"/>
+		</Table22>
+		<Table23>
+			<Parent value="#TOP"/>
+			<Properties>
+				<^checks value="0"/>
+				<^group value="-1"/>
+				<^height value="-1"/>
+				<^indexes value="0"/>
+				<^level value="10"/>
+				<^links value="0"/>
+				<^lock value="0"/>
+				<^methods value="0"/>
+				<^minimized value="0"/>
+				<^properties value="0"/>
+				<^triggers value="0"/>
+				<^uniques value="1"/>
+				<back_color value="efdb47"/>
+				<name value="Table23"/>
+				<position value="720;2128"/>
+				<size value="448;130"/>
+				<sort_fields value="1"/>
+			</Properties>
+			<Type value="Table"/>
+		</Table23>
+		<Table24>
+			<Parent value="#TOP"/>
+			<Properties>
+				<^checks value="0"/>
+				<^group value="-1"/>
+				<^height value="-1"/>
+				<^indexes value="0"/>
+				<^level value="9"/>
+				<^links value="0"/>
+				<^lock value="0"/>
+				<^methods value="0"/>
+				<^minimized value="0"/>
+				<^properties value="0"/>
+				<^triggers value="0"/>
+				<^uniques value="1"/>
+				<back_color value="efdb47"/>
+				<name value="Table24"/>
+				<position value="688;1904"/>
+				<size value="480;170"/>
+				<sort_fields value="0"/>
+			</Properties>
+			<Type value="Table"/>
+		</Table24>
+		<Table25>
+			<Parent value="#TOP"/>
+			<Properties>
+				<^checks value="0"/>
+				<^group value="-1"/>
+				<^height value="-1"/>
+				<^indexes value="0"/>
+				<^level value="8"/>
+				<^links value="0"/>
+				<^lock value="0"/>
+				<^methods value="0"/>
+				<^minimized value="0"/>
+				<^properties value="0"/>
+				<^triggers value="0"/>
+				<^uniques value="1"/>
+				<back_color value="efdb47"/>
+				<name value="Table25"/>
+				<position value="2224;2112"/>
+				<size value="448;130"/>
+				<sort_fields value="0"/>
+			</Properties>
+			<Type value="Table"/>
+		</Table25>
+		<Table26>
+			<Parent value="#TOP"/>
+			<Properties>
+				<^checks value="0"/>
+				<^group value="-1"/>
+				<^height value="-1"/>
+				<^indexes value="0"/>
+				<^level value="7"/>
+				<^links value="0"/>
+				<^lock value="0"/>
+				<^methods value="0"/>
+				<^minimized value="0"/>
+				<^properties value="0"/>
+				<^triggers value="0"/>
+				<^uniques value="1"/>
+				<back_color value="fb645b"/>
+				<name value="Table26"/>
+				<position value="1904;144"/>
+				<size value="288;350"/>
+				<sort_fields value="0"/>
+			</Properties>
+			<Type value="Table"/>
+		</Table26>
+		<Table27>
+			<Parent value="#TOP"/>
+			<Properties>
+				<^checks value="0"/>
+				<^group value="-1"/>
+				<^height value="-1"/>
+				<^indexes value="0"/>
+				<^level value="4"/>
+				<^links value="0"/>
+				<^lock value="0"/>
+				<^methods value="0"/>
+				<^minimized value="0"/>
+				<^properties value="0"/>
+				<^triggers value="0"/>
+				<^uniques value="0"/>
+				<back_color value="efdb47"/>
+				<name value="Table27"/>
+				<position value="2320;1824"/>
+				<size value="272;250"/>
+				<sort_fields value="0"/>
+			</Properties>
+			<Type value="Table"/>
+		</Table27>
+		<Table28>
+			<Parent value="#TOP"/>
+			<Properties>
+				<^checks value="0"/>
+				<^group value="-1"/>
+				<^height value="-1"/>
+				<^indexes value="0"/>
+				<^level value="3"/>
+				<^links value="0"/>
+				<^lock value="0"/>
+				<^methods value="0"/>
+				<^minimized value="0"/>
+				<^properties value="0"/>
+				<^triggers value="0"/>
+				<^uniques value="1"/>
+				<back_color value="efdb47"/>
+				<name value="Table28"/>
+				<position value="1344;1712"/>
+				<size value="352;490"/>
+				<sort_fields value="0"/>
+			</Properties>
+			<Type value="Table"/>
+		</Table28>
+		<Table29>
+			<Parent value="#TOP"/>
+			<Properties>
+				<^checks value="0"/>
+				<^group value="-1"/>
+				<^height value="-1"/>
+				<^indexes value="0"/>
+				<^level value="2"/>
+				<^links value="0"/>
+				<^lock value="0"/>
+				<^methods value="0"/>
+				<^minimized value="0"/>
+				<^properties value="0"/>
+				<^triggers value="0"/>
+				<^uniques value="1"/>
+				<back_color value="efdb47"/>
+				<name value="Table29"/>
+				<position value="1744;2112"/>
+				<size value="320;130"/>
+				<sort_fields value="0"/>
+			</Properties>
+			<Type value="Table"/>
+		</Table29>
+		<Table3>
+			<Parent value="#TOP"/>
+			<Properties>
+				<^checks value="0"/>
+				<^group value="-1"/>
+				<^height value="-1"/>
+				<^indexes value="0"/>
+				<^level value="29"/>
+				<^links value="0"/>
+				<^lock value="0"/>
+				<^methods value="0"/>
+				<^minimized value="0"/>
+				<^properties value="0"/>
+				<^triggers value="0"/>
+				<^uniques value="1"/>
+				<back_color value="c08ed8"/>
+				<name value="Table3"/>
+				<position value="176;1632"/>
+				<size value="328;150"/>
+				<sort_fields value="0"/>
+			</Properties>
+			<Type value="Table"/>
+		</Table3>
+		<Table30>
+			<Parent value="#TOP"/>
+			<Properties>
+				<^checks value="0"/>
+				<^group value="-1"/>
+				<^height value="-1"/>
+				<^indexes value="0"/>
+				<^level value="1"/>
+				<^links value="0"/>
+				<^lock value="0"/>
+				<^methods value="0"/>
+				<^minimized value="0"/>
+				<^properties value="0"/>
+				<^triggers value="0"/>
+				<^uniques value="0"/>
+				<back_color value="efdb47"/>
+				<name value="Table30"/>
+				<position value="1744;1952"/>
+				<size value="176;70"/>
+				<sort_fields value="0"/>
+			</Properties>
+			<Type value="Table"/>
+		</Table30>
+		<Table4>
+			<Parent value="#TOP"/>
+			<Properties>
+				<^checks value="0"/>
+				<^group value="-1"/>
+				<^height value="-1"/>
+				<^indexes value="0"/>
+				<^level value="28"/>
+				<^links value="0"/>
+				<^lock value="0"/>
+				<^methods value="0"/>
+				<^minimized value="0"/>
+				<^properties value="0"/>
+				<^triggers value="0"/>
+				<^uniques value="1"/>
+				<back_color value="f6aa44"/>
+				<name value="Table4"/>
+				<position value="1248;464"/>
+				<size value="432;290"/>
+				<sort_fields value="0"/>
+			</Properties>
+			<Type value="Table"/>
+		</Table4>
+		<Table5>
+			<Parent value="#TOP"/>
+			<Properties>
+				<^checks value="0"/>
+				<^group value="-1"/>
+				<^height value="-1"/>
+				<^indexes value="0"/>
+				<^level value="27"/>
+				<^links value="0"/>
+				<^lock value="0"/>
+				<^methods value="0"/>
+				<^minimized value="0"/>
+				<^properties value="0"/>
+				<^triggers value="0"/>
+				<^uniques value="1"/>
+				<back_color value="c08ed8"/>
+				<name value="Table5"/>
+				<position value="976;1092"/>
+				<size value="260;130"/>
+				<sort_fields value="0"/>
+			</Properties>
+			<Type value="Table"/>
+		</Table5>
+		<Table6>
+			<Parent value="#TOP"/>
+			<Properties>
+				<^checks value="0"/>
+				<^group value="-1"/>
+				<^height value="-1"/>
+				<^indexes value="0"/>
+				<^level value="26"/>
+				<^links value="0"/>
+				<^lock value="0"/>
+				<^methods value="0"/>
+				<^minimized value="0"/>
+				<^properties value="0"/>
+				<^triggers value="0"/>
+				<^uniques value="1"/>
+				<back_color value="c08ed8"/>
+				<name value="Table6"/>
+				<position value="576;1328"/>
+				<size value="315;150"/>
+				<sort_fields value="0"/>
+			</Properties>
+			<Type value="Table"/>
+		</Table6>
+		<Table7>
+			<Parent value="#TOP"/>
+			<Properties>
+				<^checks value="0"/>
+				<^group value="-1"/>
+				<^height value="-1"/>
+				<^indexes value="0"/>
+				<^level value="25"/>
+				<^links value="0"/>
+				<^lock value="0"/>
+				<^methods value="0"/>
+				<^minimized value="0"/>
+				<^properties value="0"/>
+				<^triggers value="0"/>
+				<^uniques value="0"/>
+				<back_color value="fb645b"/>
+				<name value="Table7"/>
+				<position value="2352;124"/>
+				<size value="264;150"/>
+				<sort_fields value="0"/>
+			</Properties>
+			<Type value="Table"/>
+		</Table7>
+		<Table8>
+			<Parent value="#TOP"/>
+			<Properties>
+				<^checks value="0"/>
+				<^group value="-1"/>
+				<^height value="-1"/>
+				<^indexes value="0"/>
+				<^level value="24"/>
+				<^links value="0"/>
+				<^lock value="0"/>
+				<^methods value="0"/>
+				<^minimized value="0"/>
+				<^properties value="0"/>
+				<^triggers value="0"/>
+				<^uniques value="1"/>
+				<back_color value="b4d647"/>
+				<name value="Table8"/>
+				<position value="951;194"/>
+				<size value="384;130"/>
+				<sort_fields value="0"/>
+			</Properties>
+			<Type value="Table"/>
+		</Table8>
+		<Table9>
+			<Parent value="#TOP"/>
+			<Properties>
+				<^checks value="0"/>
+				<^group value="-1"/>
+				<^height value="-1"/>
+				<^indexes value="0"/>
+				<^level value="23"/>
+				<^links value="0"/>
+				<^lock value="0"/>
+				<^methods value="0"/>
+				<^minimized value="0"/>
+				<^properties value="0"/>
+				<^triggers value="0"/>
+				<^uniques value="1"/>
+				<back_color value="#b4d647"/>
+				<name value="Table9"/>
+				<position value="48;400"/>
+				<size value="410;130"/>
+				<sort_fields value="0"/>
+			</Properties>
+			<Type value="Table"/>
+		</Table9>
+		<valentina-studio-db-diag>
+			<Properties>
+				<^lock value="0"/>
+				<back_color value="FFFFFF"/>
+				<gamma value="0"/>
+				<name value="valentina-studio-db-diag"/>
+				<size value="3072;3072"/>
+				<style value="4"/>
+				<style_links value="0"/>
+				<units value="5"/>
+			</Properties>
+			<Type value="Diagram"/>
+		</valentina-studio-db-diag>
+	</Controls>
+	<GUI>
+		<FullToolbarLeft value="1"/>
+		<FullToolbarRight value="1"/>
+		<HiddenLinks value=""/>
+		<PageEditor value="-1"/>
+		<PageEditorH value="0"/>
+		<PageToolbarLeft value="0"/>
+		<PageToolbarRB value="0"/>
+		<PageToolbarRight value="0"/>
+		<ScrollX value="798"/>
+		<ScrollY value="0"/>
+		<Selection value="dmFsZW50aW5hLXN0dWRpby1kYi1kaWFn"/>
+		<ShowAll value="1"/>
+		<ShowChanges value="1"/>
+		<ShowGL value="1"/>
+		<ShowGrid value="1"/>
+		<UseGrid value="1"/>
+	</GUI>
+	<Model>
+		<public>
+			<Links>
+				<o0>
+					<Changes value=""/>
+					<Properties>
+						<Cardinality value="ONE to MANY"/>
+						<Child_Table value="agreement"/>
+						<Child_Table_Schema value="public"/>
+						<Comment value=""/>
+						<Foreign_Key value="userId"/>
+						<ID value="108462"/>
+						<Match_Types value="SIMPLE"/>
+						<Name value="agreement_userId_fkey"/>
+						<On_Delete value="No Action"/>
+						<On_Update value="Cascade"/>
+						<Parent_Table value="user"/>
+						<Parent_Table_Schema value="public"/>
+						<Primary_Key value="id"/>
+						<Schema value="public"/>
+					</Properties>
+					<control value=""/>
+					<delete value="0"/>
+					<id value="108462"/>
+					<name value="agreement_userId_fkey"/>
+				</o0>
+				<o1>
+					<Changes value=""/>
+					<Properties>
+						<Cardinality value="ONE to MANY"/>
+						<Child_Table value="s_district"/>
+						<Child_Table_Schema value="public"/>
+						<Comment value=""/>
+						<Foreign_Key value="cityId"/>
+						<ID value="108383"/>
+						<Match_Types value="SIMPLE"/>
+						<Name value="s_district_cityId_fkey"/>
+						<On_Delete value="Cascade"/>
+						<On_Update value="Cascade"/>
+						<Parent_Table value="s_city"/>
+						<Parent_Table_Schema value="public"/>
+						<Primary_Key value="id"/>
+						<Schema value="public"/>
+					</Properties>
+					<control value=""/>
+					<delete value="0"/>
+					<id value="108383"/>
+					<name value="s_district_cityId_fkey"/>
+				</o1>
+				<o10>
+					<Changes value=""/>
+					<Properties>
+						<Cardinality value="ONE to MANY"/>
+						<Child_Table value="ward_stage_progress"/>
+						<Child_Table_Schema value="public"/>
+						<Comment value=""/>
+						<Foreign_Key value="wardStageId"/>
+						<ID value="108737"/>
+						<Match_Types value="SIMPLE"/>
+						<Name value="ward_stage_progress_wardStageId_fkey"/>
+						<On_Delete value="No Action"/>
+						<On_Update value="Cascade"/>
+						<Parent_Table value="s_ward_stage"/>
+						<Parent_Table_Schema value="public"/>
+						<Primary_Key value="id"/>
+						<Schema value="public"/>
+					</Properties>
+					<control value=""/>
+					<delete value="0"/>
+					<id value="108737"/>
+					<name value="ward_stage_progress_wardStageId_fkey"/>
+				</o10>
+				<o11>
+					<Changes value=""/>
+					<Properties>
+						<Cardinality value="ONE to MANY"/>
+						<Child_Table value="ward_stage_progress"/>
+						<Child_Table_Schema value="public"/>
+						<Comment value=""/>
+						<Foreign_Key value="wardId"/>
+						<ID value="108742"/>
+						<Match_Types value="SIMPLE"/>
+						<Name value="ward_stage_progress_wardId_fkey"/>
+						<On_Delete value="No Action"/>
+						<On_Update value="Cascade"/>
+						<Parent_Table value="ward"/>
+						<Parent_Table_Schema value="public"/>
+						<Primary_Key value="id"/>
+						<Schema value="public"/>
+					</Properties>
+					<control value=""/>
+					<delete value="0"/>
+					<id value="108742"/>
+					<name value="ward_stage_progress_wardId_fkey"/>
+				</o11>
+				<o12>
+					<Changes value=""/>
+					<Properties>
+						<Cardinality value="ONE to MANY"/>
+						<Child_Table value="s_subject"/>
+						<Child_Table_Schema value="public"/>
+						<Comment value=""/>
+						<Foreign_Key value="subjectCategoryId"/>
+						<ID value="108265"/>
+						<Match_Types value="SIMPLE"/>
+						<Name value="s_subject_subjectCategoryId_fkey"/>
+						<On_Delete value="Cascade"/>
+						<On_Update value="Cascade"/>
+						<Parent_Table value="s_subject_category"/>
+						<Parent_Table_Schema value="public"/>
+						<Primary_Key value="id"/>
+						<Schema value="public"/>
+					</Properties>
+					<control value=""/>
+					<delete value="0"/>
+					<id value="108265"/>
+					<name value="s_subject_subjectCategoryId_fkey"/>
+				</o12>
+				<o13>
+					<Changes value=""/>
+					<Properties>
+						<Cardinality value="ONE to MANY"/>
+						<Child_Table value="agreement"/>
+						<Child_Table_Schema value="public"/>
+						<Comment value=""/>
+						<Foreign_Key value="agreementStatusId"/>
+						<ID value="108477"/>
+						<Match_Types value="SIMPLE"/>
+						<Name value="agreement_agreementStatusId_fkey"/>
+						<On_Delete value="Cascade"/>
+						<On_Update value="Cascade"/>
+						<Parent_Table value="s_agreement_status"/>
+						<Parent_Table_Schema value="public"/>
+						<Primary_Key value="id"/>
+						<Schema value="public"/>
+					</Properties>
+					<control value=""/>
+					<delete value="0"/>
+					<id value="108477"/>
+					<name value="agreement_agreementStatusId_fkey"/>
+				</o13>
+				<o14>
+					<Changes value=""/>
+					<Properties>
+						<Cardinality value="ONE to MANY"/>
+						<Child_Table value="customer"/>
+						<Child_Table_Schema value="public"/>
+						<Comment value=""/>
+						<Foreign_Key value="userId"/>
+						<ID value="108326"/>
+						<Match_Types value="SIMPLE"/>
+						<Name value="customer_userId_fkey"/>
+						<On_Delete value="No Action"/>
+						<On_Update value="Cascade"/>
+						<Parent_Table value="user"/>
+						<Parent_Table_Schema value="public"/>
+						<Primary_Key value="id"/>
+						<Schema value="public"/>
+					</Properties>
+					<control value=""/>
+					<delete value="0"/>
+					<id value="108326"/>
+					<name value="customer_userId_fkey"/>
+				</o14>
+				<o15>
+					<Changes value=""/>
+					<Properties>
+						<Cardinality value="ONE to MANY"/>
+						<Child_Table value="customer"/>
+						<Child_Table_Schema value="public"/>
+						<Comment value=""/>
+						<Foreign_Key value="subjectCategoryId"/>
+						<ID value="108331"/>
+						<Match_Types value="SIMPLE"/>
+						<Name value="customer_subjectCategoryId_fkey"/>
+						<On_Delete value="Set NULL"/>
+						<On_Update value="Cascade"/>
+						<Parent_Table value="s_subject_category"/>
+						<Parent_Table_Schema value="public"/>
+						<Primary_Key value="id"/>
+						<Schema value="public"/>
+					</Properties>
+					<control value=""/>
+					<delete value="0"/>
+					<id value="108331"/>
+					<name value="customer_subjectCategoryId_fkey"/>
+				</o15>
+				<o16>
+					<Changes value=""/>
+					<Properties>
+						<Cardinality value="ONE to MANY"/>
+						<Child_Table value="customer"/>
+						<Child_Table_Schema value="public"/>
+						<Comment value=""/>
+						<Foreign_Key value="subjectId"/>
+						<ID value="108336"/>
+						<Match_Types value="SIMPLE"/>
+						<Name value="customer_subjectId_fkey"/>
+						<On_Delete value="Set NULL"/>
+						<On_Update value="Cascade"/>
+						<Parent_Table value="s_subject"/>
+						<Parent_Table_Schema value="public"/>
+						<Primary_Key value="id"/>
+						<Schema value="public"/>
+					</Properties>
+					<control value=""/>
+					<delete value="0"/>
+					<id value="108336"/>
+					<name value="customer_subjectId_fkey"/>
+				</o16>
+				<o17>
+					<Changes value=""/>
+					<Properties>
+						<Cardinality value="ONE to MANY"/>
+						<Child_Table value="customer"/>
+						<Child_Table_Schema value="public"/>
+						<Comment value=""/>
+						<Foreign_Key value="cityId"/>
+						<ID value="108341"/>
+						<Match_Types value="SIMPLE"/>
+						<Name value="customer_cityId_fkey"/>
+						<On_Delete value="Set NULL"/>
+						<On_Update value="Cascade"/>
+						<Parent_Table value="s_city"/>
+						<Parent_Table_Schema value="public"/>
+						<Primary_Key value="id"/>
+						<Schema value="public"/>
+					</Properties>
+					<control value=""/>
+					<delete value="0"/>
+					<id value="108341"/>
+					<name value="customer_cityId_fkey"/>
+				</o17>
+				<o18>
+					<Changes value=""/>
+					<Properties>
+						<Cardinality value="ONE to MANY"/>
+						<Child_Table value="customer"/>
+						<Child_Table_Schema value="public"/>
+						<Comment value=""/>
+						<Foreign_Key value="customerCategoryId"/>
+						<ID value="108346"/>
+						<Match_Types value="SIMPLE"/>
+						<Name value="customer_customerCategoryId_fkey"/>
+						<On_Delete value="Set NULL"/>
+						<On_Update value="Cascade"/>
+						<Parent_Table value="s_customer_category"/>
+						<Parent_Table_Schema value="public"/>
+						<Primary_Key value="id"/>
+						<Schema value="public"/>
+					</Properties>
+					<control value=""/>
+					<delete value="0"/>
+					<id value="108346"/>
+					<name value="customer_customerCategoryId_fkey"/>
+				</o18>
+				<o19>
+					<Changes value=""/>
+					<Properties>
+						<Cardinality value="ONE to MANY"/>
+						<Child_Table value="customer"/>
+						<Child_Table_Schema value="public"/>
+						<Comment value=""/>
+						<Foreign_Key value="paymentFormId"/>
+						<ID value="108351"/>
+						<Match_Types value="SIMPLE"/>
+						<Name value="customer_paymentFormId_fkey"/>
+						<On_Delete value="Set NULL"/>
+						<On_Update value="Cascade"/>
+						<Parent_Table value="s_payment_form"/>
+						<Parent_Table_Schema value="public"/>
+						<Primary_Key value="id"/>
+						<Schema value="public"/>
+					</Properties>
+					<control value=""/>
+					<delete value="0"/>
+					<id value="108351"/>
+					<name value="customer_paymentFormId_fkey"/>
+				</o19>
+				<o2>
+					<Changes value=""/>
+					<Properties>
+						<Cardinality value="ONE to MANY"/>
+						<Child_Table value="s_quarter"/>
+						<Child_Table_Schema value="public"/>
+						<Comment value=""/>
+						<Foreign_Key value="districtId"/>
+						<ID value="108399"/>
+						<Match_Types value="SIMPLE"/>
+						<Name value="s_quarter_districtId_fkey"/>
+						<On_Delete value="No Action"/>
+						<On_Update value="Cascade"/>
+						<Parent_Table value="s_district"/>
+						<Parent_Table_Schema value="public"/>
+						<Primary_Key value="id"/>
+						<Schema value="public"/>
+					</Properties>
+					<control value=""/>
+					<delete value="0"/>
+					<id value="108399"/>
+					<name value="s_quarter_districtId_fkey"/>
+				</o2>
+				<o20>
+					<Changes value=""/>
+					<Properties>
+						<Cardinality value="ONE to MANY"/>
+						<Child_Table value="customer"/>
+						<Child_Table_Schema value="public"/>
+						<Comment value=""/>
+						<Foreign_Key value="whatAboutUsId"/>
+						<ID value="108356"/>
+						<Match_Types value="SIMPLE"/>
+						<Name value="customer_whatAboutUsId_fkey"/>
+						<On_Delete value="Set NULL"/>
+						<On_Update value="Cascade"/>
+						<Parent_Table value="s_what_about_us"/>
+						<Parent_Table_Schema value="public"/>
+						<Primary_Key value="id"/>
+						<Schema value="public"/>
+					</Properties>
+					<control value=""/>
+					<delete value="0"/>
+					<id value="108356"/>
+					<name value="customer_whatAboutUsId_fkey"/>
+				</o20>
+				<o21>
+					<Changes value=""/>
+					<Properties>
+						<Cardinality value="ONE to MANY"/>
+						<Child_Table value="ward"/>
+						<Child_Table_Schema value="public"/>
+						<Comment value=""/>
+						<Foreign_Key value="customerId"/>
+						<ID value="108423"/>
+						<Match_Types value="SIMPLE"/>
+						<Name value="ward_customerId_fkey"/>
+						<On_Delete value="Set NULL"/>
+						<On_Update value="Cascade"/>
+						<Parent_Table value="customer"/>
+						<Parent_Table_Schema value="public"/>
+						<Primary_Key value="id"/>
+						<Schema value="public"/>
+					</Properties>
+					<control value=""/>
+					<delete value="0"/>
+					<id value="108423"/>
+					<name value="ward_customerId_fkey"/>
+				</o21>
+				<o22>
+					<Changes value=""/>
+					<Properties>
+						<Cardinality value="ONE to MANY"/>
+						<Child_Table value="agreement"/>
+						<Child_Table_Schema value="public"/>
+						<Comment value=""/>
+						<Foreign_Key value="customerId"/>
+						<ID value="108467"/>
+						<Match_Types value="SIMPLE"/>
+						<Name value="agreement_customerId_fkey"/>
+						<On_Delete value="No Action"/>
+						<On_Update value="Cascade"/>
+						<Parent_Table value="customer"/>
+						<Parent_Table_Schema value="public"/>
+						<Primary_Key value="id"/>
+						<Schema value="public"/>
+					</Properties>
+					<control value=""/>
+					<delete value="0"/>
+					<id value="108467"/>
+					<name value="agreement_customerId_fkey"/>
+				</o22>
+				<o23>
+					<Changes value=""/>
+					<Properties>
+						<Cardinality value="ONE to MANY"/>
+						<Child_Table value="agreement"/>
+						<Child_Table_Schema value="public"/>
+						<Comment value=""/>
+						<Foreign_Key value="wardId"/>
+						<ID value="108472"/>
+						<Match_Types value="SIMPLE"/>
+						<Name value="agreement_wardId_fkey"/>
+						<On_Delete value="No Action"/>
+						<On_Update value="Cascade"/>
+						<Parent_Table value="ward"/>
+						<Parent_Table_Schema value="public"/>
+						<Primary_Key value="id"/>
+						<Schema value="public"/>
+					</Properties>
+					<control value=""/>
+					<delete value="0"/>
+					<id value="108472"/>
+					<name value="agreement_wardId_fkey"/>
+				</o23>
+				<o24>
+					<Changes value=""/>
+					<Properties>
+						<Cardinality value="ONE to MANY"/>
+						<Child_Table value="ward"/>
+						<Child_Table_Schema value="public"/>
+						<Comment value=""/>
+						<Foreign_Key value="quarterId"/>
+						<ID value="108443"/>
+						<Match_Types value="SIMPLE"/>
+						<Name value="ward_quarterId_fkey"/>
+						<On_Delete value="Set NULL"/>
+						<On_Update value="Cascade"/>
+						<Parent_Table value="s_quarter"/>
+						<Parent_Table_Schema value="public"/>
+						<Primary_Key value="id"/>
+						<Schema value="public"/>
+					</Properties>
+					<control value=""/>
+					<delete value="0"/>
+					<id value="108443"/>
+					<name value="ward_quarterId_fkey"/>
+				</o24>
+				<o25>
+					<Changes value=""/>
+					<Properties>
+						<Cardinality value="ONE to MANY"/>
+						<Child_Table value="user"/>
+						<Child_Table_Schema value="public"/>
+						<Comment value=""/>
+						<Foreign_Key value="roleId"/>
+						<ID value="108238"/>
+						<Match_Types value="SIMPLE"/>
+						<Name value="user_roleId_fkey"/>
+						<On_Delete value="Cascade"/>
+						<On_Update value="Cascade"/>
+						<Parent_Table value="s_user_role"/>
+						<Parent_Table_Schema value="public"/>
+						<Primary_Key value="id"/>
+						<Schema value="public"/>
+					</Properties>
+					<control value=""/>
+					<delete value="0"/>
+					<id value="108238"/>
+					<name value="user_roleId_fkey"/>
+				</o25>
+				<o26>
+					<Changes value=""/>
+					<Properties>
+						<Cardinality value="ONE to MANY"/>
+						<Child_Table value="s_bonus"/>
+						<Child_Table_Schema value="public"/>
+						<Comment value=""/>
+						<Foreign_Key value="bonusCategoryId"/>
+						<ID value="108509"/>
+						<Match_Types value="SIMPLE"/>
+						<Name value="s_bonus_bonusCategoryId_fkey"/>
+						<On_Delete value="Cascade"/>
+						<On_Update value="Cascade"/>
+						<Parent_Table value="s_bonus_category"/>
+						<Parent_Table_Schema value="public"/>
+						<Primary_Key value="id"/>
+						<Schema value="public"/>
+					</Properties>
+					<control value=""/>
+					<delete value="0"/>
+					<id value="108509"/>
+					<name value="s_bonus_bonusCategoryId_fkey"/>
+				</o26>
+				<o27>
+					<Changes value=""/>
+					<Properties>
+						<Cardinality value="ONE to MANY"/>
+						<Child_Table value="employee_position"/>
+						<Child_Table_Schema value="public"/>
+						<Comment value=""/>
+						<Foreign_Key value="positionId"/>
+						<ID value="108643"/>
+						<Match_Types value="SIMPLE"/>
+						<Name value="employee_position_positionId_fkey"/>
+						<On_Delete value="No Action"/>
+						<On_Update value="Cascade"/>
+						<Parent_Table value="s_position"/>
+						<Parent_Table_Schema value="public"/>
+						<Primary_Key value="id"/>
+						<Schema value="public"/>
+					</Properties>
+					<control value=""/>
+					<delete value="0"/>
+					<id value="108643"/>
+					<name value="employee_position_positionId_fkey"/>
+				</o27>
+				<o28>
+					<Changes value=""/>
+					<Properties>
+						<Cardinality value="ONE to MANY"/>
+						<Child_Table value="employee_bonus"/>
+						<Child_Table_Schema value="public"/>
+						<Comment value=""/>
+						<Foreign_Key value="userId"/>
+						<ID value="108591"/>
+						<Match_Types value="SIMPLE"/>
+						<Name value="employee_bonus_userId_fkey"/>
+						<On_Delete value="No Action"/>
+						<On_Update value="Cascade"/>
+						<Parent_Table value="user"/>
+						<Parent_Table_Schema value="public"/>
+						<Primary_Key value="id"/>
+						<Schema value="public"/>
+					</Properties>
+					<control value=""/>
+					<delete value="0"/>
+					<id value="108591"/>
+					<name value="employee_bonus_userId_fkey"/>
+				</o28>
+				<o29>
+					<Changes value=""/>
+					<Properties>
+						<Cardinality value="ONE to MANY"/>
+						<Child_Table value="employee_bonus"/>
+						<Child_Table_Schema value="public"/>
+						<Comment value=""/>
+						<Foreign_Key value="bonusCategoryId"/>
+						<ID value="108601"/>
+						<Match_Types value="SIMPLE"/>
+						<Name value="employee_bonus_bonusCategoryId_fkey"/>
+						<On_Delete value="Cascade"/>
+						<On_Update value="Cascade"/>
+						<Parent_Table value="s_bonus_category"/>
+						<Parent_Table_Schema value="public"/>
+						<Primary_Key value="id"/>
+						<Schema value="public"/>
+					</Properties>
+					<control value=""/>
+					<delete value="0"/>
+					<id value="108601"/>
+					<name value="employee_bonus_bonusCategoryId_fkey"/>
+				</o29>
+				<o3>
+					<Changes value=""/>
+					<Properties>
+						<Cardinality value="ONE to MANY"/>
+						<Child_Table value="session"/>
+						<Child_Table_Schema value="public"/>
+						<Comment value=""/>
+						<Foreign_Key value="userId"/>
+						<ID value="108686"/>
+						<Match_Types value="SIMPLE"/>
+						<Name value="session_userId_fkey"/>
+						<On_Delete value="No Action"/>
+						<On_Update value="Cascade"/>
+						<Parent_Table value="user"/>
+						<Parent_Table_Schema value="public"/>
+						<Primary_Key value="id"/>
+						<Schema value="public"/>
+					</Properties>
+					<control value=""/>
+					<delete value="0"/>
+					<id value="108686"/>
+					<name value="session_userId_fkey"/>
+				</o3>
+				<o30>
+					<Changes value=""/>
+					<Properties>
+						<Cardinality value="ONE to MANY"/>
+						<Child_Table value="employee_bonus"/>
+						<Child_Table_Schema value="public"/>
+						<Comment value=""/>
+						<Foreign_Key value="bonusId"/>
+						<ID value="108606"/>
+						<Match_Types value="SIMPLE"/>
+						<Name value="employee_bonus_bonusId_fkey"/>
+						<On_Delete value="Cascade"/>
+						<On_Update value="Cascade"/>
+						<Parent_Table value="s_bonus"/>
+						<Parent_Table_Schema value="public"/>
+						<Primary_Key value="id"/>
+						<Schema value="public"/>
+					</Properties>
+					<control value=""/>
+					<delete value="0"/>
+					<id value="108606"/>
+					<name value="employee_bonus_bonusId_fkey"/>
+				</o30>
+				<o31>
+					<Changes value=""/>
+					<Properties>
+						<Cardinality value="ONE to MANY"/>
+						<Child_Table value="employee_position"/>
+						<Child_Table_Schema value="public"/>
+						<Comment value=""/>
+						<Foreign_Key value="userId"/>
+						<ID value="108633"/>
+						<Match_Types value="SIMPLE"/>
+						<Name value="employee_position_userId_fkey"/>
+						<On_Delete value="No Action"/>
+						<On_Update value="Cascade"/>
+						<Parent_Table value="user"/>
+						<Parent_Table_Schema value="public"/>
+						<Primary_Key value="id"/>
+						<Schema value="public"/>
+					</Properties>
+					<control value=""/>
+					<delete value="0"/>
+					<id value="108633"/>
+					<name value="employee_position_userId_fkey"/>
+				</o31>
+				<o32>
+					<Changes value=""/>
+					<Properties>
+						<Cardinality value="ONE to MANY"/>
+						<Child_Table value="employee"/>
+						<Child_Table_Schema value="public"/>
+						<Comment value=""/>
+						<Foreign_Key value="userId"/>
+						<ID value="108552"/>
+						<Match_Types value="SIMPLE"/>
+						<Name value="employee_userId_fkey"/>
+						<On_Delete value="No Action"/>
+						<On_Update value="Cascade"/>
+						<Parent_Table value="user"/>
+						<Parent_Table_Schema value="public"/>
+						<Primary_Key value="id"/>
+						<Schema value="public"/>
+					</Properties>
+					<control value=""/>
+					<delete value="0"/>
+					<id value="108552"/>
+					<name value="employee_userId_fkey"/>
+				</o32>
+				<o33>
+					<Changes value=""/>
+					<Properties>
+						<Cardinality value="ONE to MANY"/>
+						<Child_Table value="employee"/>
+						<Child_Table_Schema value="public"/>
+						<Comment value=""/>
+						<Foreign_Key value="cityId"/>
+						<ID value="108557"/>
+						<Match_Types value="SIMPLE"/>
+						<Name value="employee_cityId_fkey"/>
+						<On_Delete value="Set NULL"/>
+						<On_Update value="Cascade"/>
+						<Parent_Table value="s_city"/>
+						<Parent_Table_Schema value="public"/>
+						<Primary_Key value="id"/>
+						<Schema value="public"/>
+					</Properties>
+					<control value=""/>
+					<delete value="0"/>
+					<id value="108557"/>
+					<name value="employee_cityId_fkey"/>
+				</o33>
+				<o34>
+					<Changes value=""/>
+					<Properties>
+						<Cardinality value="ONE to MANY"/>
+						<Child_Table value="employee"/>
+						<Child_Table_Schema value="public"/>
+						<Comment value=""/>
+						<Foreign_Key value="districtId"/>
+						<ID value="108562"/>
+						<Match_Types value="SIMPLE"/>
+						<Name value="employee_districtId_fkey"/>
+						<On_Delete value="Set NULL"/>
+						<On_Update value="Cascade"/>
+						<Parent_Table value="s_district"/>
+						<Parent_Table_Schema value="public"/>
+						<Primary_Key value="id"/>
+						<Schema value="public"/>
+					</Properties>
+					<control value=""/>
+					<delete value="0"/>
+					<id value="108562"/>
+					<name value="employee_districtId_fkey"/>
+				</o34>
+				<o35>
+					<Changes value=""/>
+					<Properties>
+						<Cardinality value="ONE to MANY"/>
+						<Child_Table value="employee"/>
+						<Child_Table_Schema value="public"/>
+						<Comment value=""/>
+						<Foreign_Key value="quarterId"/>
+						<ID value="108567"/>
+						<Match_Types value="SIMPLE"/>
+						<Name value="employee_quarterId_fkey"/>
+						<On_Delete value="Set NULL"/>
+						<On_Update value="Cascade"/>
+						<Parent_Table value="s_quarter"/>
+						<Parent_Table_Schema value="public"/>
+						<Primary_Key value="id"/>
+						<Schema value="public"/>
+					</Properties>
+					<control value=""/>
+					<delete value="0"/>
+					<id value="108567"/>
+					<name value="employee_quarterId_fkey"/>
+				</o35>
+				<o36>
+					<Changes value=""/>
+					<Properties>
+						<Cardinality value="ONE to MANY"/>
+						<Child_Table value="employee"/>
+						<Child_Table_Schema value="public"/>
+						<Comment value=""/>
+						<Foreign_Key value="employeeStatusId"/>
+						<ID value="108572"/>
+						<Match_Types value="SIMPLE"/>
+						<Name value="employee_employeeStatusId_fkey"/>
+						<On_Delete value="Set NULL"/>
+						<On_Update value="Cascade"/>
+						<Parent_Table value="s_employee_status"/>
+						<Parent_Table_Schema value="public"/>
+						<Primary_Key value="id"/>
+						<Schema value="public"/>
+					</Properties>
+					<control value=""/>
+					<delete value="0"/>
+					<id value="108572"/>
+					<name value="employee_employeeStatusId_fkey"/>
+				</o36>
+				<o37>
+					<Changes value=""/>
+					<Properties>
+						<Cardinality value="ONE to MANY"/>
+						<Child_Table value="employee"/>
+						<Child_Table_Schema value="public"/>
+						<Comment value=""/>
+						<Foreign_Key value="operationModeId"/>
+						<ID value="108577"/>
+						<Match_Types value="SIMPLE"/>
+						<Name value="employee_operationModeId_fkey"/>
+						<On_Delete value="Set NULL"/>
+						<On_Update value="Cascade"/>
+						<Parent_Table value="s_operation_mode"/>
+						<Parent_Table_Schema value="public"/>
+						<Primary_Key value="id"/>
+						<Schema value="public"/>
+					</Properties>
+					<control value=""/>
+					<delete value="0"/>
+					<id value="108577"/>
+					<name value="employee_operationModeId_fkey"/>
+				</o37>
+				<o38>
+					<Changes value=""/>
+					<Properties>
+						<Cardinality value="ONE to MANY"/>
+						<Child_Table value="employee_bonus"/>
+						<Child_Table_Schema value="public"/>
+						<Comment value=""/>
+						<Foreign_Key value="employeeId"/>
+						<ID value="108596"/>
+						<Match_Types value="SIMPLE"/>
+						<Name value="employee_bonus_employeeId_fkey"/>
+						<On_Delete value="No Action"/>
+						<On_Update value="Cascade"/>
+						<Parent_Table value="employee"/>
+						<Parent_Table_Schema value="public"/>
+						<Primary_Key value="id"/>
+						<Schema value="public"/>
+					</Properties>
+					<control value=""/>
+					<delete value="0"/>
+					<id value="108596"/>
+					<name value="employee_bonus_employeeId_fkey"/>
+				</o38>
+				<o39>
+					<Changes value=""/>
+					<Properties>
+						<Cardinality value="ONE to MANY"/>
+						<Child_Table value="employee_position"/>
+						<Child_Table_Schema value="public"/>
+						<Comment value=""/>
+						<Foreign_Key value="employeeId"/>
+						<ID value="108638"/>
+						<Match_Types value="SIMPLE"/>
+						<Name value="employee_position_employeeId_fkey"/>
+						<On_Delete value="No Action"/>
+						<On_Update value="Cascade"/>
+						<Parent_Table value="employee"/>
+						<Parent_Table_Schema value="public"/>
+						<Primary_Key value="id"/>
+						<Schema value="public"/>
+					</Properties>
+					<control value=""/>
+					<delete value="0"/>
+					<id value="108638"/>
+					<name value="employee_position_employeeId_fkey"/>
+				</o39>
+				<o4>
+					<Changes value=""/>
+					<Properties>
+						<Cardinality value="ONE to MANY"/>
+						<Child_Table value="ward"/>
+						<Child_Table_Schema value="public"/>
+						<Comment value=""/>
+						<Foreign_Key value="userId"/>
+						<ID value="108418"/>
+						<Match_Types value="SIMPLE"/>
+						<Name value="ward_userId_fkey"/>
+						<On_Delete value="Cascade"/>
+						<On_Update value="Cascade"/>
+						<Parent_Table value="user"/>
+						<Parent_Table_Schema value="public"/>
+						<Primary_Key value="id"/>
+						<Schema value="public"/>
+					</Properties>
+					<control value=""/>
+					<delete value="0"/>
+					<id value="108418"/>
+					<name value="ward_userId_fkey"/>
+				</o4>
+				<o40>
+					<Changes value=""/>
+					<Properties>
+						<Cardinality value="ONE to MANY"/>
+						<Child_Table value="employee_type_job"/>
+						<Child_Table_Schema value="public"/>
+						<Comment value=""/>
+						<Foreign_Key value="employeeId"/>
+						<ID value="108664"/>
+						<Match_Types value="SIMPLE"/>
+						<Name value="employee_type_job_employeeId_fkey"/>
+						<On_Delete value="Cascade"/>
+						<On_Update value="Cascade"/>
+						<Parent_Table value="employee"/>
+						<Parent_Table_Schema value="public"/>
+						<Primary_Key value="id"/>
+						<Schema value="public"/>
+					</Properties>
+					<control value=""/>
+					<delete value="0"/>
+					<id value="108664"/>
+					<name value="employee_type_job_employeeId_fkey"/>
+				</o40>
+				<o41>
+					<Changes value=""/>
+					<Properties>
+						<Cardinality value="ONE to MANY"/>
+						<Child_Table value="employee_type_job"/>
+						<Child_Table_Schema value="public"/>
+						<Comment value=""/>
+						<Foreign_Key value="typeJobId"/>
+						<ID value="108669"/>
+						<Match_Types value="SIMPLE"/>
+						<Name value="employee_type_job_typeJobId_fkey"/>
+						<On_Delete value="Cascade"/>
+						<On_Update value="Cascade"/>
+						<Parent_Table value="s_type_job"/>
+						<Parent_Table_Schema value="public"/>
+						<Primary_Key value="id"/>
+						<Schema value="public"/>
+					</Properties>
+					<control value=""/>
+					<delete value="0"/>
+					<id value="108669"/>
+					<name value="employee_type_job_typeJobId_fkey"/>
+				</o41>
+				<o5>
+					<Changes value=""/>
+					<Properties>
+						<Cardinality value="ONE to MANY"/>
+						<Child_Table value="ward"/>
+						<Child_Table_Schema value="public"/>
+						<Comment value=""/>
+						<Foreign_Key value="familyStatusId"/>
+						<ID value="108428"/>
+						<Match_Types value="SIMPLE"/>
+						<Name value="ward_familyStatusId_fkey"/>
+						<On_Delete value="Set NULL"/>
+						<On_Update value="Cascade"/>
+						<Parent_Table value="s_family_status"/>
+						<Parent_Table_Schema value="public"/>
+						<Primary_Key value="id"/>
+						<Schema value="public"/>
+					</Properties>
+					<control value=""/>
+					<delete value="0"/>
+					<id value="108428"/>
+					<name value="ward_familyStatusId_fkey"/>
+				</o5>
+				<o6>
+					<Changes value=""/>
+					<Properties>
+						<Cardinality value="ONE to MANY"/>
+						<Child_Table value="ward"/>
+						<Child_Table_Schema value="public"/>
+						<Comment value=""/>
+						<Foreign_Key value="cityId"/>
+						<ID value="108433"/>
+						<Match_Types value="SIMPLE"/>
+						<Name value="ward_cityId_fkey"/>
+						<On_Delete value="Set NULL"/>
+						<On_Update value="Cascade"/>
+						<Parent_Table value="s_city"/>
+						<Parent_Table_Schema value="public"/>
+						<Primary_Key value="id"/>
+						<Schema value="public"/>
+					</Properties>
+					<control value=""/>
+					<delete value="0"/>
+					<id value="108433"/>
+					<name value="ward_cityId_fkey"/>
+				</o6>
+				<o7>
+					<Changes value=""/>
+					<Properties>
+						<Cardinality value="ONE to MANY"/>
+						<Child_Table value="ward"/>
+						<Child_Table_Schema value="public"/>
+						<Comment value=""/>
+						<Foreign_Key value="districtId"/>
+						<ID value="108438"/>
+						<Match_Types value="SIMPLE"/>
+						<Name value="ward_districtId_fkey"/>
+						<On_Delete value="Set NULL"/>
+						<On_Update value="Cascade"/>
+						<Parent_Table value="s_district"/>
+						<Parent_Table_Schema value="public"/>
+						<Primary_Key value="id"/>
+						<Schema value="public"/>
+					</Properties>
+					<control value=""/>
+					<delete value="0"/>
+					<id value="108438"/>
+					<name value="ward_districtId_fkey"/>
+				</o7>
+				<o8>
+					<Changes value=""/>
+					<Properties>
+						<Cardinality value="ONE to MANY"/>
+						<Child_Table value="ward_social_status"/>
+						<Child_Table_Schema value="public"/>
+						<Comment value=""/>
+						<Foreign_Key value="wardId"/>
+						<ID value="108707"/>
+						<Match_Types value="SIMPLE"/>
+						<Name value="ward_social_status_wardId_fkey"/>
+						<On_Delete value="Cascade"/>
+						<On_Update value="Cascade"/>
+						<Parent_Table value="ward"/>
+						<Parent_Table_Schema value="public"/>
+						<Primary_Key value="id"/>
+						<Schema value="public"/>
+					</Properties>
+					<control value=""/>
+					<delete value="0"/>
+					<id value="108707"/>
+					<name value="ward_social_status_wardId_fkey"/>
+				</o8>
+				<o9>
+					<Changes value=""/>
+					<Properties>
+						<Cardinality value="ONE to MANY"/>
+						<Child_Table value="ward_social_status"/>
+						<Child_Table_Schema value="public"/>
+						<Comment value=""/>
+						<Foreign_Key value="socialStatusId"/>
+						<ID value="108712"/>
+						<Match_Types value="SIMPLE"/>
+						<Name value="ward_social_status_socialStatusId_fkey"/>
+						<On_Delete value="Cascade"/>
+						<On_Update value="Cascade"/>
+						<Parent_Table value="s_social_status"/>
+						<Parent_Table_Schema value="public"/>
+						<Primary_Key value="id"/>
+						<Schema value="public"/>
+					</Properties>
+					<control value=""/>
+					<delete value="0"/>
+					<id value="108712"/>
+					<name value="ward_social_status_socialStatusId_fkey"/>
+				</o9>
+			</Links>
+			<Tables>
+				<o0>
+					<Changes value=""/>
+					<Fields>
+						<o0>
+							<Changes value=""/>
+							<Properties>
+								<Collation value='"pg_catalog"."default"'/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="1"/>
+								<Indexed value="1"/>
+								<Length value="255"/>
+								<Name value="id"/>
+								<Nullable value="0"/>
+								<Type value="Character Varying"/>
+								<Unique value="1"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="id"/>
+						</o0>
+						<o1>
+							<Changes value=""/>
+							<Properties>
+								<Collation value='"pg_catalog"."default"'/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="2"/>
+								<Indexed value="0"/>
+								<Length value="255"/>
+								<Name value="roleDescription"/>
+								<Nullable value="1"/>
+								<Type value="Character Varying"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="roleDescription"/>
+						</o1>
+						<o2>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value="1"/>
+								<Dimensions value="0"/>
+								<Field_Position value="3"/>
+								<Indexed value="0"/>
+								<Name value="version"/>
+								<Nullable value="0"/>
+								<Type value="Integer"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="version"/>
+						</o2>
+					</Fields>
+					<Properties>
+						<Check_Count value="0"/>
+						<Comment value=""/>
+						<Field_Count value="3"/>
+						<ID value="108215"/>
+						<Index_Count value="0"/>
+						<Name value="s_user_role"/>
+						<Object_Owner value="tlt"/>
+						<Primary_Key value="id"/>
+						<Primary_Key_Name value="s_user_role_pkey"/>
+						<Schema value="public"/>
+						<Trigger_Count value="0"/>
+						<Unique_Count value="0"/>
+					</Properties>
+					<control value="Table1"/>
+					<delete value="0"/>
+					<id value="108215"/>
+					<name value="s_user_role"/>
+				</o0>
+				<o1>
+					<Changes value=""/>
+					<Fields>
+						<o0>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value="nextval('s_quarter_id_seq'::regclass)"/>
+								<Dimensions value="0"/>
+								<Field_Position value="1"/>
+								<Indexed value="1"/>
+								<Name value="id"/>
+								<Nullable value="0"/>
+								<Type value="Integer"/>
+								<Unique value="1"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="id"/>
+						</o0>
+						<o1>
+							<Changes value=""/>
+							<Properties>
+								<Collation value='"pg_catalog"."default"'/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="2"/>
+								<Indexed value="1"/>
+								<Length value="255"/>
+								<Name value="quarterName"/>
+								<Nullable value="0"/>
+								<Type value="Character Varying"/>
+								<Unique value="1"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="quarterName"/>
+						</o1>
+						<o2>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="3"/>
+								<Indexed value="0"/>
+								<Name value="districtId"/>
+								<Nullable value="0"/>
+								<Type value="Integer"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="districtId"/>
+						</o2>
+						<o3>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value="1"/>
+								<Dimensions value="0"/>
+								<Field_Position value="4"/>
+								<Indexed value="0"/>
+								<Name value="version"/>
+								<Nullable value="0"/>
+								<Type value="Integer"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="version"/>
+						</o3>
+					</Fields>
+					<Properties>
+						<Check_Count value="0"/>
+						<Comment value=""/>
+						<Field_Count value="4"/>
+						<ID value="108390"/>
+						<Index_Count value="0"/>
+						<Name value="s_quarter"/>
+						<Object_Owner value="tlt"/>
+						<Primary_Key value="id"/>
+						<Primary_Key_Name value="s_quarter_pkey"/>
+						<Schema value="public"/>
+						<Trigger_Count value="0"/>
+						<Unique_Count value="1"/>
+					</Properties>
+					<Uniques>
+						<o0>
+							<Changes value=""/>
+							<Properties>
+								<Comment value=""/>
+								<Fields value="quarterName"/>
+								<ID value="108398"/>
+								<Name value="s_quarter_quarterName_key"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<id value="108398"/>
+							<name value="s_quarter_quarterName_key"/>
+						</o0>
+					</Uniques>
+					<control value="Table3"/>
+					<delete value="0"/>
+					<id value="108390"/>
+					<name value="s_quarter"/>
+				</o1>
+				<o10>
+					<Changes value=""/>
+					<Fields>
+						<o0>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="1"/>
+								<Indexed value="0"/>
+								<Name value="wardId"/>
+								<Nullable value="0"/>
+								<Type value="Integer"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="wardId"/>
+						</o0>
+						<o1>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="2"/>
+								<Indexed value="0"/>
+								<Name value="socialStatusId"/>
+								<Nullable value="0"/>
+								<Type value="Integer"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="socialStatusId"/>
+						</o1>
+					</Fields>
+					<Properties>
+						<Check_Count value="0"/>
+						<Comment value=""/>
+						<Field_Count value="2"/>
+						<ID value="108702"/>
+						<Index_Count value="0"/>
+						<Name value="ward_social_status"/>
+						<Object_Owner value="tlt"/>
+						<Primary_Key value="wardId
+socialStatusId"/>
+						<Primary_Key_Name value="ward_social_status_pkey"/>
+						<Schema value="public"/>
+						<Trigger_Count value="0"/>
+						<Unique_Count value="0"/>
+					</Properties>
+					<control value="Table12"/>
+					<delete value="0"/>
+					<id value="108702"/>
+					<name value="ward_social_status"/>
+				</o10>
+				<o11>
+					<Changes value=""/>
+					<Fields>
+						<o0>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value="nextval('ward_stage_progress_id_seq'::regclass)"/>
+								<Dimensions value="0"/>
+								<Field_Position value="1"/>
+								<Indexed value="1"/>
+								<Name value="id"/>
+								<Nullable value="0"/>
+								<Type value="Integer"/>
+								<Unique value="1"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="id"/>
+						</o0>
+						<o1>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="2"/>
+								<Indexed value="0"/>
+								<Name value="wardStageDate"/>
+								<Nullable value="0"/>
+								<Precision value="-1"/>
+								<Type value="Timestamp With Time Zone"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="wardStageDate"/>
+						</o1>
+						<o2>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="3"/>
+								<Indexed value="0"/>
+								<Name value="wardStageId"/>
+								<Nullable value="0"/>
+								<Type value="Integer"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="wardStageId"/>
+						</o2>
+						<o3>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="4"/>
+								<Indexed value="0"/>
+								<Name value="wardId"/>
+								<Nullable value="0"/>
+								<Type value="Integer"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="wardId"/>
+						</o3>
+						<o4>
+							<Changes value=""/>
+							<Properties>
+								<Collation value='"pg_catalog"."default"'/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="5"/>
+								<Indexed value="0"/>
+								<Length value="255"/>
+								<Name value="rem"/>
+								<Nullable value="1"/>
+								<Type value="Character Varying"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="rem"/>
+						</o4>
+						<o5>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value="1"/>
+								<Dimensions value="0"/>
+								<Field_Position value="6"/>
+								<Indexed value="0"/>
+								<Name value="version"/>
+								<Nullable value="0"/>
+								<Type value="Integer"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="version"/>
+						</o5>
+						<o6>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="7"/>
+								<Indexed value="0"/>
+								<Name value="createdAt"/>
+								<Nullable value="0"/>
+								<Precision value="-1"/>
+								<Type value="Timestamp With Time Zone"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="createdAt"/>
+						</o6>
+						<o7>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="8"/>
+								<Indexed value="0"/>
+								<Name value="updatedAt"/>
+								<Nullable value="0"/>
+								<Precision value="-1"/>
+								<Type value="Timestamp With Time Zone"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="updatedAt"/>
+						</o7>
+					</Fields>
+					<Properties>
+						<Check_Count value="0"/>
+						<Comment value=""/>
+						<Field_Count value="8"/>
+						<ID value="108730"/>
+						<Index_Count value="0"/>
+						<Name value="ward_stage_progress"/>
+						<Object_Owner value="tlt"/>
+						<Primary_Key value="id"/>
+						<Primary_Key_Name value="ward_stage_progress_pkey"/>
+						<Schema value="public"/>
+						<Trigger_Count value="0"/>
+						<Unique_Count value="0"/>
+					</Properties>
+					<control value="Table13"/>
+					<delete value="0"/>
+					<id value="108730"/>
+					<name value="ward_stage_progress"/>
+				</o11>
+				<o12>
+					<Changes value=""/>
+					<Fields>
+						<o0>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value="nextval('s_subject_id_seq'::regclass)"/>
+								<Dimensions value="0"/>
+								<Field_Position value="1"/>
+								<Indexed value="1"/>
+								<Name value="id"/>
+								<Nullable value="0"/>
+								<Type value="Integer"/>
+								<Unique value="1"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="id"/>
+						</o0>
+						<o1>
+							<Changes value=""/>
+							<Properties>
+								<Collation value='"pg_catalog"."default"'/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="2"/>
+								<Indexed value="1"/>
+								<Length value="255"/>
+								<Name value="subjectName"/>
+								<Nullable value="0"/>
+								<Type value="Character Varying"/>
+								<Unique value="1"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="subjectName"/>
+						</o1>
+						<o2>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="3"/>
+								<Indexed value="0"/>
+								<Name value="subjectCategoryId"/>
+								<Nullable value="0"/>
+								<Type value="Integer"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="subjectCategoryId"/>
+						</o2>
+						<o3>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value="1"/>
+								<Dimensions value="0"/>
+								<Field_Position value="4"/>
+								<Indexed value="0"/>
+								<Name value="version"/>
+								<Nullable value="0"/>
+								<Type value="Integer"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="version"/>
+						</o3>
+					</Fields>
+					<Properties>
+						<Check_Count value="0"/>
+						<Comment value=""/>
+						<Field_Count value="4"/>
+						<ID value="108256"/>
+						<Index_Count value="0"/>
+						<Name value="s_subject"/>
+						<Object_Owner value="tlt"/>
+						<Primary_Key value="id"/>
+						<Primary_Key_Name value="s_subject_pkey"/>
+						<Schema value="public"/>
+						<Trigger_Count value="0"/>
+						<Unique_Count value="1"/>
+					</Properties>
+					<Uniques>
+						<o0>
+							<Changes value=""/>
+							<Properties>
+								<Comment value=""/>
+								<Fields value="subjectName"/>
+								<ID value="108264"/>
+								<Name value="s_subject_subjectName_key"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<id value="108264"/>
+							<name value="s_subject_subjectName_key"/>
+						</o0>
+					</Uniques>
+					<control value="Table14"/>
+					<delete value="0"/>
+					<id value="108256"/>
+					<name value="s_subject"/>
+				</o12>
+				<o13>
+					<Changes value=""/>
+					<Fields>
+						<o0>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value="nextval('s_subject_category_id_seq'::regclass)"/>
+								<Dimensions value="0"/>
+								<Field_Position value="1"/>
+								<Indexed value="1"/>
+								<Name value="id"/>
+								<Nullable value="0"/>
+								<Type value="Integer"/>
+								<Unique value="1"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="id"/>
+						</o0>
+						<o1>
+							<Changes value=""/>
+							<Properties>
+								<Collation value='"pg_catalog"."default"'/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="2"/>
+								<Indexed value="1"/>
+								<Length value="255"/>
+								<Name value="subjectCategoryName"/>
+								<Nullable value="0"/>
+								<Type value="Character Varying"/>
+								<Unique value="1"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="subjectCategoryName"/>
+						</o1>
+						<o2>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value="1"/>
+								<Dimensions value="0"/>
+								<Field_Position value="3"/>
+								<Indexed value="0"/>
+								<Name value="version"/>
+								<Nullable value="0"/>
+								<Type value="Integer"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="version"/>
+						</o2>
+					</Fields>
+					<Properties>
+						<Check_Count value="0"/>
+						<Comment value=""/>
+						<Field_Count value="3"/>
+						<ID value="108245"/>
+						<Index_Count value="0"/>
+						<Name value="s_subject_category"/>
+						<Object_Owner value="tlt"/>
+						<Primary_Key value="id"/>
+						<Primary_Key_Name value="s_subject_category_pkey"/>
+						<Schema value="public"/>
+						<Trigger_Count value="0"/>
+						<Unique_Count value="1"/>
+					</Properties>
+					<Uniques>
+						<o0>
+							<Changes value=""/>
+							<Properties>
+								<Comment value=""/>
+								<Fields value="subjectCategoryName"/>
+								<ID value="108253"/>
+								<Name value="s_subject_category_subjectCategoryName_key"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<id value="108253"/>
+							<name value="s_subject_category_subjectCategoryName_key"/>
+						</o0>
+					</Uniques>
+					<control value="Table15"/>
+					<delete value="0"/>
+					<id value="108245"/>
+					<name value="s_subject_category"/>
+				</o13>
+				<o14>
+					<Changes value=""/>
+					<Fields>
+						<o0>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value="nextval('s_customer_category_id_seq'::regclass)"/>
+								<Dimensions value="0"/>
+								<Field_Position value="1"/>
+								<Indexed value="1"/>
+								<Name value="id"/>
+								<Nullable value="0"/>
+								<Type value="Integer"/>
+								<Unique value="1"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="id"/>
+						</o0>
+						<o1>
+							<Changes value=""/>
+							<Properties>
+								<Collation value='"pg_catalog"."default"'/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="2"/>
+								<Indexed value="1"/>
+								<Length value="255"/>
+								<Name value="customerCategoryName"/>
+								<Nullable value="0"/>
+								<Type value="Character Varying"/>
+								<Unique value="1"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="customerCategoryName"/>
+						</o1>
+						<o2>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value="1"/>
+								<Dimensions value="0"/>
+								<Field_Position value="3"/>
+								<Indexed value="0"/>
+								<Name value="version"/>
+								<Nullable value="0"/>
+								<Type value="Integer"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="version"/>
+						</o2>
+					</Fields>
+					<Properties>
+						<Check_Count value="0"/>
+						<Comment value=""/>
+						<Field_Count value="3"/>
+						<ID value="108283"/>
+						<Index_Count value="0"/>
+						<Name value="s_customer_category"/>
+						<Object_Owner value="tlt"/>
+						<Primary_Key value="id"/>
+						<Primary_Key_Name value="s_customer_category_pkey"/>
+						<Schema value="public"/>
+						<Trigger_Count value="0"/>
+						<Unique_Count value="1"/>
+					</Properties>
+					<Uniques>
+						<o0>
+							<Changes value=""/>
+							<Properties>
+								<Comment value=""/>
+								<Fields value="customerCategoryName"/>
+								<ID value="108291"/>
+								<Name value="s_customer_category_customerCategoryName_key"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<id value="108291"/>
+							<name value="s_customer_category_customerCategoryName_key"/>
+						</o0>
+					</Uniques>
+					<control value="Table17"/>
+					<delete value="0"/>
+					<id value="108283"/>
+					<name value="s_customer_category"/>
+				</o14>
+				<o15>
+					<Changes value=""/>
+					<Fields>
+						<o0>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value="nextval('s_payment_form_id_seq'::regclass)"/>
+								<Dimensions value="0"/>
+								<Field_Position value="1"/>
+								<Indexed value="1"/>
+								<Name value="id"/>
+								<Nullable value="0"/>
+								<Type value="Integer"/>
+								<Unique value="1"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="id"/>
+						</o0>
+						<o1>
+							<Changes value=""/>
+							<Properties>
+								<Collation value='"pg_catalog"."default"'/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="2"/>
+								<Indexed value="1"/>
+								<Length value="255"/>
+								<Name value="paymentFormName"/>
+								<Nullable value="0"/>
+								<Type value="Character Varying"/>
+								<Unique value="1"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="paymentFormName"/>
+						</o1>
+						<o2>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value="1"/>
+								<Dimensions value="0"/>
+								<Field_Position value="3"/>
+								<Indexed value="0"/>
+								<Name value="version"/>
+								<Nullable value="0"/>
+								<Type value="Integer"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="version"/>
+						</o2>
+					</Fields>
+					<Properties>
+						<Check_Count value="0"/>
+						<Comment value=""/>
+						<Field_Count value="3"/>
+						<ID value="108294"/>
+						<Index_Count value="0"/>
+						<Name value="s_payment_form"/>
+						<Object_Owner value="tlt"/>
+						<Primary_Key value="id"/>
+						<Primary_Key_Name value="s_payment_form_pkey"/>
+						<Schema value="public"/>
+						<Trigger_Count value="0"/>
+						<Unique_Count value="1"/>
+					</Properties>
+					<Uniques>
+						<o0>
+							<Changes value=""/>
+							<Properties>
+								<Comment value=""/>
+								<Fields value="paymentFormName"/>
+								<ID value="108302"/>
+								<Name value="s_payment_form_paymentFormName_key"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<id value="108302"/>
+							<name value="s_payment_form_paymentFormName_key"/>
+						</o0>
+					</Uniques>
+					<control value="Table18"/>
+					<delete value="0"/>
+					<id value="108294"/>
+					<name value="s_payment_form"/>
+				</o15>
+				<o16>
+					<Changes value=""/>
+					<Fields>
+						<o0>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value="nextval('s_what_about_us_id_seq'::regclass)"/>
+								<Dimensions value="0"/>
+								<Field_Position value="1"/>
+								<Indexed value="1"/>
+								<Name value="id"/>
+								<Nullable value="0"/>
+								<Type value="Integer"/>
+								<Unique value="1"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="id"/>
+						</o0>
+						<o1>
+							<Changes value=""/>
+							<Properties>
+								<Collation value='"pg_catalog"."default"'/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="2"/>
+								<Indexed value="1"/>
+								<Length value="255"/>
+								<Name value="whatAboutUsName"/>
+								<Nullable value="0"/>
+								<Type value="Character Varying"/>
+								<Unique value="1"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="whatAboutUsName"/>
+						</o1>
+						<o2>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value="1"/>
+								<Dimensions value="0"/>
+								<Field_Position value="3"/>
+								<Indexed value="0"/>
+								<Name value="version"/>
+								<Nullable value="0"/>
+								<Type value="Integer"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="version"/>
+						</o2>
+					</Fields>
+					<Properties>
+						<Check_Count value="0"/>
+						<Comment value=""/>
+						<Field_Count value="3"/>
+						<ID value="108305"/>
+						<Index_Count value="0"/>
+						<Name value="s_what_about_us"/>
+						<Object_Owner value="tlt"/>
+						<Primary_Key value="id"/>
+						<Primary_Key_Name value="s_what_about_us_pkey"/>
+						<Schema value="public"/>
+						<Trigger_Count value="0"/>
+						<Unique_Count value="1"/>
+					</Properties>
+					<Uniques>
+						<o0>
+							<Changes value=""/>
+							<Properties>
+								<Comment value=""/>
+								<Fields value="whatAboutUsName"/>
+								<ID value="108313"/>
+								<Name value="s_what_about_us_whatAboutUsName_key"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<id value="108313"/>
+							<name value="s_what_about_us_whatAboutUsName_key"/>
+						</o0>
+					</Uniques>
+					<control value="Table19"/>
+					<delete value="0"/>
+					<id value="108305"/>
+					<name value="s_what_about_us"/>
+				</o16>
+				<o17>
+					<Changes value=""/>
+					<Fields>
+						<o0>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value="nextval('s_agreement_status_id_seq'::regclass)"/>
+								<Dimensions value="0"/>
+								<Field_Position value="1"/>
+								<Indexed value="1"/>
+								<Name value="id"/>
+								<Nullable value="0"/>
+								<Type value="Integer"/>
+								<Unique value="1"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="id"/>
+						</o0>
+						<o1>
+							<Changes value=""/>
+							<Properties>
+								<Collation value='"pg_catalog"."default"'/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="2"/>
+								<Indexed value="1"/>
+								<Length value="255"/>
+								<Name value="agreementStatusName"/>
+								<Nullable value="0"/>
+								<Type value="Character Varying"/>
+								<Unique value="1"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="agreementStatusName"/>
+						</o1>
+						<o2>
+							<Changes value=""/>
+							<Properties>
+								<Collation value='"pg_catalog"."default"'/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="3"/>
+								<Indexed value="0"/>
+								<Length value="255"/>
+								<Name value="style"/>
+								<Nullable value="1"/>
+								<Type value="Character Varying"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="style"/>
+						</o2>
+						<o3>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value="1"/>
+								<Dimensions value="0"/>
+								<Field_Position value="4"/>
+								<Indexed value="0"/>
+								<Name value="version"/>
+								<Nullable value="0"/>
+								<Type value="Integer"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="version"/>
+						</o3>
+					</Fields>
+					<Properties>
+						<Check_Count value="0"/>
+						<Comment value=""/>
+						<Field_Count value="4"/>
+						<ID value="108203"/>
+						<Index_Count value="0"/>
+						<Name value="s_agreement_status"/>
+						<Object_Owner value="tlt"/>
+						<Primary_Key value="id"/>
+						<Primary_Key_Name value="s_agreement_status_pkey"/>
+						<Schema value="public"/>
+						<Trigger_Count value="0"/>
+						<Unique_Count value="1"/>
+					</Properties>
+					<Uniques>
+						<o0>
+							<Changes value=""/>
+							<Properties>
+								<Comment value=""/>
+								<Fields value="agreementStatusName"/>
+								<ID value="108214"/>
+								<Name value="s_agreement_status_agreementStatusName_key"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<id value="108214"/>
+							<name value="s_agreement_status_agreementStatusName_key"/>
+						</o0>
+					</Uniques>
+					<control value="Table20"/>
+					<delete value="0"/>
+					<id value="108203"/>
+					<name value="s_agreement_status"/>
+				</o17>
+				<o18>
+					<Changes value=""/>
+					<Fields>
+						<o0>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value="nextval('customer_id_seq'::regclass)"/>
+								<Dimensions value="0"/>
+								<Field_Position value="1"/>
+								<Indexed value="1"/>
+								<Name value="id"/>
+								<Nullable value="0"/>
+								<Type value="Integer"/>
+								<Unique value="1"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="id"/>
+						</o0>
+						<o1>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="2"/>
+								<Indexed value="0"/>
+								<Name value="userId"/>
+								<Nullable value="0"/>
+								<Type value="Integer"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="userId"/>
+						</o1>
+						<o10>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="11"/>
+								<Indexed value="0"/>
+								<Name value="cityId"/>
+								<Nullable value="1"/>
+								<Type value="Integer"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="cityId"/>
+						</o10>
+						<o11>
+							<Changes value=""/>
+							<Properties>
+								<Collation value='"pg_catalog"."default"'/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="12"/>
+								<Indexed value="0"/>
+								<Length value="255"/>
+								<Name value="street"/>
+								<Nullable value="1"/>
+								<Type value="Character Varying"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="street"/>
+						</o11>
+						<o12>
+							<Changes value=""/>
+							<Properties>
+								<Collation value='"pg_catalog"."default"'/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="13"/>
+								<Indexed value="0"/>
+								<Length value="255"/>
+								<Name value="apartment"/>
+								<Nullable value="1"/>
+								<Type value="Character Varying"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="apartment"/>
+						</o12>
+						<o13>
+							<Changes value=""/>
+							<Properties>
+								<Collation value='"pg_catalog"."default"'/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="14"/>
+								<Indexed value="0"/>
+								<Length value="255"/>
+								<Name value="house"/>
+								<Nullable value="1"/>
+								<Type value="Character Varying"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="house"/>
+						</o13>
+						<o14>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="15"/>
+								<Indexed value="0"/>
+								<Name value="customerCategoryId"/>
+								<Nullable value="1"/>
+								<Type value="Integer"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="customerCategoryId"/>
+						</o14>
+						<o15>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="16"/>
+								<Indexed value="0"/>
+								<Name value="paymentFormId"/>
+								<Nullable value="1"/>
+								<Type value="Integer"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="paymentFormId"/>
+						</o15>
+						<o16>
+							<Changes value=""/>
+							<Properties>
+								<Collation value='"pg_catalog"."default"'/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="17"/>
+								<Indexed value="0"/>
+								<Length value="255"/>
+								<Name value="companyName"/>
+								<Nullable value="1"/>
+								<Type value="Character Varying"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="companyName"/>
+						</o16>
+						<o17>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="18"/>
+								<Indexed value="0"/>
+								<Name value="whatAboutUsId"/>
+								<Nullable value="1"/>
+								<Type value="Integer"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="whatAboutUsId"/>
+						</o17>
+						<o18>
+							<Changes value=""/>
+							<Properties>
+								<Collation value='"pg_catalog"."default"'/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="19"/>
+								<Indexed value="0"/>
+								<Length value="255"/>
+								<Name value="rem"/>
+								<Nullable value="1"/>
+								<Type value="Character Varying"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="rem"/>
+						</o18>
+						<o19>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value="1"/>
+								<Dimensions value="0"/>
+								<Field_Position value="20"/>
+								<Indexed value="0"/>
+								<Name value="version"/>
+								<Nullable value="0"/>
+								<Type value="Integer"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="version"/>
+						</o19>
+						<o2>
+							<Changes value=""/>
+							<Properties>
+								<Collation value='"pg_catalog"."default"'/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="3"/>
+								<Indexed value="0"/>
+								<Length value="255"/>
+								<Name value="customerName"/>
+								<Nullable value="0"/>
+								<Type value="Character Varying"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="customerName"/>
+						</o2>
+						<o20>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="21"/>
+								<Indexed value="0"/>
+								<Name value="createdAt"/>
+								<Nullable value="0"/>
+								<Precision value="-1"/>
+								<Type value="Timestamp With Time Zone"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="createdAt"/>
+						</o20>
+						<o21>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="22"/>
+								<Indexed value="0"/>
+								<Name value="updatedAt"/>
+								<Nullable value="0"/>
+								<Precision value="-1"/>
+								<Type value="Timestamp With Time Zone"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="updatedAt"/>
+						</o21>
+						<o3>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="4"/>
+								<Indexed value="0"/>
+								<Name value="subjectCategoryId"/>
+								<Nullable value="1"/>
+								<Type value="Integer"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="subjectCategoryId"/>
+						</o3>
+						<o4>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="5"/>
+								<Indexed value="0"/>
+								<Name value="subjectId"/>
+								<Nullable value="1"/>
+								<Type value="Integer"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="subjectId"/>
+						</o4>
+						<o5>
+							<Changes value=""/>
+							<Properties>
+								<Collation value='"pg_catalog"."default"'/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="6"/>
+								<Indexed value="0"/>
+								<Length value="255"/>
+								<Name value="phone"/>
+								<Nullable value="1"/>
+								<Type value="Character Varying"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="phone"/>
+						</o5>
+						<o6>
+							<Changes value=""/>
+							<Properties>
+								<Collation value='"pg_catalog"."default"'/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="7"/>
+								<Indexed value="0"/>
+								<Length value="255"/>
+								<Name value="email"/>
+								<Nullable value="1"/>
+								<Type value="Character Varying"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="email"/>
+						</o6>
+						<o7>
+							<Changes value=""/>
+							<Properties>
+								<Collation value='"pg_catalog"."default"'/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="8"/>
+								<Indexed value="0"/>
+								<Length value="255"/>
+								<Name value="passportNumber"/>
+								<Nullable value="1"/>
+								<Type value="Character Varying"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="passportNumber"/>
+						</o7>
+						<o8>
+							<Changes value=""/>
+							<Properties>
+								<Collation value='"pg_catalog"."default"'/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="9"/>
+								<Indexed value="0"/>
+								<Length value="255"/>
+								<Name value="passportIssuedBy"/>
+								<Nullable value="1"/>
+								<Type value="Character Varying"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="passportIssuedBy"/>
+						</o8>
+						<o9>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="10"/>
+								<Indexed value="0"/>
+								<Name value="passportIssuedDate"/>
+								<Nullable value="1"/>
+								<Precision value="-1"/>
+								<Type value="Timestamp With Time Zone"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="passportIssuedDate"/>
+						</o9>
+					</Fields>
+					<Properties>
+						<Check_Count value="0"/>
+						<Comment value=""/>
+						<Field_Count value="22"/>
+						<ID value="108316"/>
+						<Index_Count value="0"/>
+						<Link_Count value="9"/>
+						<Name value="customer"/>
+						<Object_Owner value="tlt"/>
+						<Primary_Key value="id"/>
+						<Primary_Key_Name value="customer_pkey"/>
+						<Record_Count value="0"/>
+						<Schema value="public"/>
+						<Trigger_Count value="0"/>
+						<Unique_Count value="0"/>
+					</Properties>
+					<control value="Table16"/>
+					<delete value="0"/>
+					<id value="108316"/>
+					<name value="customer"/>
+				</o18>
+				<o19>
+					<Changes value=""/>
+					<Fields>
+						<o0>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value="nextval('s_position_id_seq'::regclass)"/>
+								<Dimensions value="0"/>
+								<Field_Position value="1"/>
+								<Indexed value="1"/>
+								<Name value="id"/>
+								<Nullable value="0"/>
+								<Type value="Integer"/>
+								<Unique value="1"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="id"/>
+						</o0>
+						<o1>
+							<Changes value=""/>
+							<Properties>
+								<Collation value='"pg_catalog"."default"'/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="2"/>
+								<Indexed value="1"/>
+								<Length value="255"/>
+								<Name value="positionName"/>
+								<Nullable value="0"/>
+								<Type value="Character Varying"/>
+								<Unique value="1"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="positionName"/>
+						</o1>
+						<o2>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value="'0'::double precision"/>
+								<Dimensions value="0"/>
+								<Field_Position value="3"/>
+								<Indexed value="0"/>
+								<Name value="tariff"/>
+								<Nullable value="0"/>
+								<Type value="Double Precision"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="tariff"/>
+						</o2>
+						<o3>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="6"/>
+								<Indexed value="0"/>
+								<Name value="createdAt"/>
+								<Nullable value="0"/>
+								<Precision value="-1"/>
+								<Type value="Timestamp With Time Zone"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="createdAt"/>
+						</o3>
+						<o4>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="7"/>
+								<Indexed value="0"/>
+								<Name value="updatedAt"/>
+								<Nullable value="0"/>
+								<Precision value="-1"/>
+								<Type value="Timestamp With Time Zone"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="updatedAt"/>
+						</o4>
+						<o5>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value="1"/>
+								<Dimensions value="0"/>
+								<Field_Position value="5"/>
+								<Indexed value="0"/>
+								<Name value="version"/>
+								<Nullable value="0"/>
+								<Type value="Integer"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="version"/>
+						</o5>
+						<o6>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value="true"/>
+								<Dimensions value="0"/>
+								<Field_Position value="4"/>
+								<Name value="isCurrentOffer"/>
+								<Nullable value="0"/>
+								<Type value="Boolean"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="isCurrentOffer"/>
+						</o6>
+					</Fields>
+					<Properties>
+						<Check_Count value="0"/>
+						<Comment value=""/>
+						<Field_Count value="7"/>
+						<ID value="108613"/>
+						<Index_Count value="0"/>
+						<Name value="s_position"/>
+						<Object_Owner value="tlt"/>
+						<Primary_Key value="id"/>
+						<Primary_Key_Name value="s_position_pkey"/>
+						<Schema value="public"/>
+						<Trigger_Count value="0"/>
+						<Unique_Count value="1"/>
+					</Properties>
+					<Uniques>
+						<o0>
+							<Changes value=""/>
+							<Properties>
+								<Comment value=""/>
+								<Fields value="positionName"/>
+								<ID value="108623"/>
+								<Name value="s_position_positionName_key"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<id value="108623"/>
+							<name value="s_position_positionName_key"/>
+						</o0>
+					</Uniques>
+					<control value="Table21"/>
+					<delete value="0"/>
+					<id value="108613"/>
+					<name value="s_position"/>
+				</o19>
+				<o2>
+					<Changes value=""/>
+					<Fields>
+						<o0>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value="nextval('agreement_id_seq'::regclass)"/>
+								<Dimensions value="0"/>
+								<Field_Position value="1"/>
+								<Indexed value="1"/>
+								<Name value="id"/>
+								<Nullable value="0"/>
+								<Type value="Integer"/>
+								<Unique value="1"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="id"/>
+						</o0>
+						<o1>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="4"/>
+								<Indexed value="0"/>
+								<Name value="userId"/>
+								<Nullable value="0"/>
+								<Type value="Integer"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="userId"/>
+						</o1>
+						<o10>
+							<Changes value=""/>
+							<Properties>
+								<Collation value='"pg_catalog"."default"'/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="2"/>
+								<Indexed value="1"/>
+								<Length value="255"/>
+								<Name value="agreementNumber"/>
+								<Nullable value="0"/>
+								<Type value="Character Varying"/>
+								<Unique value="1"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="agreementNumber"/>
+						</o10>
+						<o2>
+							<Changes value=""/>
+							<Properties>
+								<Collation value='"pg_catalog"."default"'/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="8"/>
+								<Indexed value="0"/>
+								<Length value="255"/>
+								<Name value="rem"/>
+								<Nullable value="1"/>
+								<Type value="Character Varying"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="rem"/>
+						</o2>
+						<o3>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value="1"/>
+								<Dimensions value="0"/>
+								<Field_Position value="9"/>
+								<Indexed value="0"/>
+								<Name value="version"/>
+								<Nullable value="0"/>
+								<Type value="Integer"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="version"/>
+						</o3>
+						<o4>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="5"/>
+								<Indexed value="0"/>
+								<Name value="customerId"/>
+								<Nullable value="0"/>
+								<Type value="Integer"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="customerId"/>
+						</o4>
+						<o5>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="7"/>
+								<Indexed value="0"/>
+								<Name value="agreementStatusId"/>
+								<Nullable value="0"/>
+								<Type value="Integer"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="agreementStatusId"/>
+						</o5>
+						<o6>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="10"/>
+								<Indexed value="0"/>
+								<Name value="createdAt"/>
+								<Nullable value="0"/>
+								<Precision value="-1"/>
+								<Type value="Timestamp With Time Zone"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="createdAt"/>
+						</o6>
+						<o7>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="11"/>
+								<Indexed value="0"/>
+								<Name value="updatedAt"/>
+								<Nullable value="0"/>
+								<Precision value="-1"/>
+								<Type value="Timestamp With Time Zone"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="updatedAt"/>
+						</o7>
+						<o8>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="6"/>
+								<Indexed value="0"/>
+								<Name value="wardId"/>
+								<Nullable value="0"/>
+								<Type value="Integer"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="wardId"/>
+						</o8>
+						<o9>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="3"/>
+								<Indexed value="0"/>
+								<Name value="agreementDate"/>
+								<Nullable value="0"/>
+								<Precision value="-1"/>
+								<Type value="Timestamp With Time Zone"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="agreementDate"/>
+						</o9>
+					</Fields>
+					<Properties>
+						<Check_Count value="0"/>
+						<Comment value=""/>
+						<Field_Count value="11"/>
+						<ID value="108450"/>
+						<Index_Count value="0"/>
+						<Name value="agreement"/>
+						<Object_Owner value="tlt"/>
+						<Primary_Key value="id"/>
+						<Primary_Key_Name value="agreement_pkey"/>
+						<Schema value="public"/>
+						<Trigger_Count value="0"/>
+						<Unique_Count value="1"/>
+					</Properties>
+					<Uniques>
+						<o0>
+							<Changes value=""/>
+							<Properties>
+								<Comment value=""/>
+								<Fields value="agreementNumber"/>
+								<ID value="108461"/>
+								<Name value="agreement_agreementNumber_key"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<id value="108461"/>
+							<name value="agreement_agreementNumber_key"/>
+						</o0>
+					</Uniques>
+					<control value="Table4"/>
+					<delete value="0"/>
+					<id value="108450"/>
+					<name value="agreement"/>
+				</o2>
+				<o20>
+					<Changes value=""/>
+					<Fields>
+						<o0>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value="nextval('s_operation_mode_id_seq'::regclass)"/>
+								<Dimensions value="0"/>
+								<Field_Position value="1"/>
+								<Indexed value="1"/>
+								<Name value="id"/>
+								<Nullable value="0"/>
+								<Type value="Integer"/>
+								<Unique value="1"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="id"/>
+						</o0>
+						<o1>
+							<Changes value=""/>
+							<Properties>
+								<Collation value='"pg_catalog"."default"'/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="2"/>
+								<Indexed value="1"/>
+								<Length value="255"/>
+								<Name value="operationModeName"/>
+								<Nullable value="0"/>
+								<Type value="Character Varying"/>
+								<Unique value="1"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="operationModeName"/>
+						</o1>
+						<o2>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value="1"/>
+								<Dimensions value="0"/>
+								<Field_Position value="3"/>
+								<Indexed value="0"/>
+								<Name value="version"/>
+								<Nullable value="0"/>
+								<Type value="Integer"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="version"/>
+						</o2>
+					</Fields>
+					<Properties>
+						<Check_Count value="0"/>
+						<Comment value=""/>
+						<Field_Count value="3"/>
+						<ID value="108529"/>
+						<Index_Count value="0"/>
+						<Name value="s_operation_mode"/>
+						<Object_Owner value="tlt"/>
+						<Primary_Key value="id"/>
+						<Primary_Key_Name value="s_operation_mode_pkey"/>
+						<Schema value="public"/>
+						<Trigger_Count value="0"/>
+						<Unique_Count value="1"/>
+					</Properties>
+					<Uniques>
+						<o0>
+							<Changes value=""/>
+							<Properties>
+								<Comment value=""/>
+								<Fields value="operationModeName"/>
+								<ID value="108537"/>
+								<Name value="s_operation_mode_operationModeName_key"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<id value="108537"/>
+							<name value="s_operation_mode_operationModeName_key"/>
+						</o0>
+					</Uniques>
+					<control value="Table23"/>
+					<delete value="0"/>
+					<id value="108529"/>
+					<name value="s_operation_mode"/>
+				</o20>
+				<o21>
+					<Changes value=""/>
+					<Fields>
+						<o0>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value="nextval('s_employee_status_id_seq'::regclass)"/>
+								<Dimensions value="0"/>
+								<Field_Position value="1"/>
+								<Indexed value="1"/>
+								<Name value="id"/>
+								<Nullable value="0"/>
+								<Type value="Integer"/>
+								<Unique value="1"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="id"/>
+						</o0>
+						<o1>
+							<Changes value=""/>
+							<Properties>
+								<Collation value='"pg_catalog"."default"'/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="2"/>
+								<Indexed value="1"/>
+								<Length value="255"/>
+								<Name value="employeeStatusName"/>
+								<Nullable value="0"/>
+								<Type value="Character Varying"/>
+								<Unique value="1"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="employeeStatusName"/>
+						</o1>
+						<o2>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value="true"/>
+								<Dimensions value="0"/>
+								<Field_Position value="3"/>
+								<Name value="isEmployeeGroup"/>
+								<Nullable value="0"/>
+								<Type value="Boolean"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="isEmployeeGroup"/>
+						</o2>
+						<o3>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value="true"/>
+								<Dimensions value="0"/>
+								<Field_Position value="4"/>
+								<Name value="isTimesheetGroup"/>
+								<Nullable value="0"/>
+								<Type value="Boolean"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="isTimesheetGroup"/>
+						</o3>
+						<o4>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value="1"/>
+								<Dimensions value="0"/>
+								<Field_Position value="5"/>
+								<Indexed value="0"/>
+								<Name value="version"/>
+								<Nullable value="0"/>
+								<Type value="Integer"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="version"/>
+						</o4>
+					</Fields>
+					<Properties>
+						<Check_Count value="0"/>
+						<Comment value=""/>
+						<Field_Count value="5"/>
+						<ID value="108516"/>
+						<Index_Count value="0"/>
+						<Name value="s_employee_status"/>
+						<Object_Owner value="tlt"/>
+						<Primary_Key value="id"/>
+						<Primary_Key_Name value="s_employee_status_pkey"/>
+						<Schema value="public"/>
+						<Trigger_Count value="0"/>
+						<Unique_Count value="1"/>
+					</Properties>
+					<Uniques>
+						<o0>
+							<Changes value=""/>
+							<Properties>
+								<Comment value=""/>
+								<Fields value="employeeStatusName"/>
+								<ID value="108526"/>
+								<Name value="s_employee_status_employeeStatusName_key"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<id value="108526"/>
+							<name value="s_employee_status_employeeStatusName_key"/>
+						</o0>
+					</Uniques>
+					<control value="Table24"/>
+					<delete value="0"/>
+					<id value="108516"/>
+					<name value="s_employee_status"/>
+				</o21>
+				<o22>
+					<Changes value=""/>
+					<Fields>
+						<o0>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value="nextval('s_bonus_category_id_seq'::regclass)"/>
+								<Dimensions value="0"/>
+								<Field_Position value="1"/>
+								<Indexed value="1"/>
+								<Name value="id"/>
+								<Nullable value="0"/>
+								<Type value="Integer"/>
+								<Unique value="1"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="id"/>
+						</o0>
+						<o1>
+							<Changes value=""/>
+							<Properties>
+								<Collation value='"pg_catalog"."default"'/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="2"/>
+								<Indexed value="1"/>
+								<Length value="255"/>
+								<Name value="bonusCategoryName"/>
+								<Nullable value="0"/>
+								<Type value="Character Varying"/>
+								<Unique value="1"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="bonusCategoryName"/>
+						</o1>
+						<o2>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value="1"/>
+								<Dimensions value="0"/>
+								<Field_Position value="3"/>
+								<Indexed value="0"/>
+								<Name value="version"/>
+								<Nullable value="0"/>
+								<Type value="Integer"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="version"/>
+						</o2>
+					</Fields>
+					<Properties>
+						<Check_Count value="0"/>
+						<Comment value=""/>
+						<Field_Count value="3"/>
+						<ID value="108484"/>
+						<Index_Count value="0"/>
+						<Name value="s_bonus_category"/>
+						<Object_Owner value="tlt"/>
+						<Primary_Key value="id"/>
+						<Primary_Key_Name value="s_bonus_category_pkey"/>
+						<Schema value="public"/>
+						<Trigger_Count value="0"/>
+						<Unique_Count value="1"/>
+					</Properties>
+					<Uniques>
+						<o0>
+							<Changes value=""/>
+							<Properties>
+								<Comment value=""/>
+								<Fields value="bonusCategoryName"/>
+								<ID value="108492"/>
+								<Name value="s_bonus_category_bonusCategoryName_key"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<id value="108492"/>
+							<name value="s_bonus_category_bonusCategoryName_key"/>
+						</o0>
+					</Uniques>
+					<control value="Table25"/>
+					<delete value="0"/>
+					<id value="108484"/>
+					<name value="s_bonus_category"/>
+				</o22>
+				<o23>
+					<Changes value=""/>
+					<Fields>
+						<o0>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value="nextval('user_id_seq'::regclass)"/>
+								<Dimensions value="0"/>
+								<Field_Position value="1"/>
+								<Indexed value="1"/>
+								<Name value="id"/>
+								<Nullable value="0"/>
+								<Type value="Integer"/>
+								<Unique value="1"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="id"/>
+						</o0>
+						<o1>
+							<Changes value=""/>
+							<Properties>
+								<Collation value='"pg_catalog"."default"'/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="2"/>
+								<Indexed value="0"/>
+								<Length value="255"/>
+								<Name value="firstName"/>
+								<Nullable value="1"/>
+								<Type value="Character Varying"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="firstName"/>
+						</o1>
+						<o10>
+							<Changes value=""/>
+							<Properties>
+								<Collation value='"pg_catalog"."default"'/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="11"/>
+								<Indexed value="0"/>
+								<Length value="255"/>
+								<Name value="roleId"/>
+								<Nullable value="0"/>
+								<Type value="Character Varying"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="roleId"/>
+						</o10>
+						<o11>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value="1"/>
+								<Dimensions value="0"/>
+								<Field_Position value="12"/>
+								<Indexed value="0"/>
+								<Name value="version"/>
+								<Nullable value="0"/>
+								<Type value="Integer"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="version"/>
+						</o11>
+						<o12>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="13"/>
+								<Indexed value="0"/>
+								<Name value="createdAt"/>
+								<Nullable value="0"/>
+								<Precision value="-1"/>
+								<Type value="Timestamp With Time Zone"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="createdAt"/>
+						</o12>
+						<o13>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="14"/>
+								<Indexed value="0"/>
+								<Name value="updatedAt"/>
+								<Nullable value="0"/>
+								<Precision value="-1"/>
+								<Type value="Timestamp With Time Zone"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="updatedAt"/>
+						</o13>
+						<o2>
+							<Changes value=""/>
+							<Properties>
+								<Collation value='"pg_catalog"."default"'/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="3"/>
+								<Indexed value="0"/>
+								<Length value="255"/>
+								<Name value="middleName"/>
+								<Nullable value="1"/>
+								<Type value="Character Varying"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="middleName"/>
+						</o2>
+						<o3>
+							<Changes value=""/>
+							<Properties>
+								<Collation value='"pg_catalog"."default"'/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="4"/>
+								<Indexed value="0"/>
+								<Length value="255"/>
+								<Name value="secondName"/>
+								<Nullable value="1"/>
+								<Type value="Character Varying"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="secondName"/>
+						</o3>
+						<o4>
+							<Changes value=""/>
+							<Properties>
+								<Collation value='"pg_catalog"."default"'/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="5"/>
+								<Indexed value="0"/>
+								<Length value="255"/>
+								<Name value="displayName"/>
+								<Nullable value="1"/>
+								<Type value="Character Varying"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="displayName"/>
+						</o4>
+						<o5>
+							<Changes value=""/>
+							<Properties>
+								<Collation value='"pg_catalog"."default"'/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="6"/>
+								<Indexed value="1"/>
+								<Length value="255"/>
+								<Name value="username"/>
+								<Nullable value="0"/>
+								<Type value="Character Varying"/>
+								<Unique value="1"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="username"/>
+						</o5>
+						<o6>
+							<Changes value=""/>
+							<Properties>
+								<Collation value='"pg_catalog"."default"'/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="7"/>
+								<Indexed value="0"/>
+								<Length value="255"/>
+								<Name value="passwordHash"/>
+								<Nullable value="0"/>
+								<Type value="Character Varying"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="passwordHash"/>
+						</o6>
+						<o7>
+							<Changes value=""/>
+							<Properties>
+								<Collation value='"pg_catalog"."default"'/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="8"/>
+								<Indexed value="0"/>
+								<Length value="255"/>
+								<Name value="email"/>
+								<Nullable value="1"/>
+								<Type value="Character Varying"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="email"/>
+						</o7>
+						<o8>
+							<Changes value=""/>
+							<Properties>
+								<Collation value='"pg_catalog"."default"'/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="9"/>
+								<Indexed value="0"/>
+								<Length value="255"/>
+								<Name value="phone"/>
+								<Nullable value="1"/>
+								<Type value="Character Varying"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="phone"/>
+						</o8>
+						<o9>
+							<Changes value=""/>
+							<Properties>
+								<Collation value='"pg_catalog"."default"'/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="10"/>
+								<Indexed value="0"/>
+								<Length value="255"/>
+								<Name value="rem"/>
+								<Nullable value="1"/>
+								<Type value="Character Varying"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="rem"/>
+						</o9>
+					</Fields>
+					<Properties>
+						<Check_Count value="0"/>
+						<Comment value=""/>
+						<Field_Count value="14"/>
+						<ID value="108226"/>
+						<Index_Count value="0"/>
+						<Name value="user"/>
+						<Object_Owner value="tlt"/>
+						<Primary_Key value="id"/>
+						<Primary_Key_Name value="user_pkey"/>
+						<Schema value="public"/>
+						<Trigger_Count value="0"/>
+						<Unique_Count value="1"/>
+					</Properties>
+					<Uniques>
+						<o0>
+							<Changes value=""/>
+							<Properties>
+								<Comment value=""/>
+								<Fields value="username"/>
+								<ID value="108237"/>
+								<Name value="user_username_key"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<id value="108237"/>
+							<name value="user_username_key"/>
+						</o0>
+					</Uniques>
+					<control value="Table26"/>
+					<delete value="0"/>
+					<id value="108226"/>
+					<name value="user"/>
+				</o23>
+				<o24>
+					<Changes value=""/>
+					<Fields>
+						<o0>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value="nextval('s_bonus_id_seq'::regclass)"/>
+								<Dimensions value="0"/>
+								<Field_Position value="1"/>
+								<Indexed value="1"/>
+								<Name value="id"/>
+								<Nullable value="0"/>
+								<Type value="Integer"/>
+								<Unique value="1"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="id"/>
+						</o0>
+						<o1>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="2"/>
+								<Indexed value="0"/>
+								<Name value="bonusCategoryId"/>
+								<Nullable value="0"/>
+								<Type value="Integer"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="bonusCategoryId"/>
+						</o1>
+						<o2>
+							<Changes value=""/>
+							<Properties>
+								<Collation value='"pg_catalog"."default"'/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="3"/>
+								<Indexed value="1"/>
+								<Length value="255"/>
+								<Name value="bonusName"/>
+								<Nullable value="0"/>
+								<Type value="Character Varying"/>
+								<Unique value="1"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="bonusName"/>
+						</o2>
+						<o3>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value="'0'::double precision"/>
+								<Dimensions value="0"/>
+								<Field_Position value="4"/>
+								<Indexed value="0"/>
+								<Name value="cost"/>
+								<Nullable value="0"/>
+								<Type value="Double Precision"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="cost"/>
+						</o3>
+						<o4>
+							<Changes value=""/>
+							<Properties>
+								<Collation value='"pg_catalog"."default"'/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="5"/>
+								<Indexed value="0"/>
+								<Length value="255"/>
+								<Name value="rem"/>
+								<Nullable value="1"/>
+								<Type value="Character Varying"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="rem"/>
+						</o4>
+						<o5>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value="true"/>
+								<Dimensions value="0"/>
+								<Field_Position value="6"/>
+								<Name value="isCurrentOffer"/>
+								<Nullable value="0"/>
+								<Type value="Boolean"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="isCurrentOffer"/>
+						</o5>
+						<o6>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value="1"/>
+								<Dimensions value="0"/>
+								<Field_Position value="7"/>
+								<Indexed value="0"/>
+								<Name value="version"/>
+								<Nullable value="0"/>
+								<Type value="Integer"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="version"/>
+						</o6>
+						<o7>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="8"/>
+								<Indexed value="0"/>
+								<Name value="createdAt"/>
+								<Nullable value="0"/>
+								<Precision value="-1"/>
+								<Type value="Timestamp With Time Zone"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="createdAt"/>
+						</o7>
+						<o8>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="9"/>
+								<Indexed value="0"/>
+								<Name value="updatedAt"/>
+								<Nullable value="0"/>
+								<Precision value="-1"/>
+								<Type value="Timestamp With Time Zone"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="updatedAt"/>
+						</o8>
+					</Fields>
+					<Properties>
+						<Check_Count value="0"/>
+						<Comment value=""/>
+						<Field_Count value="9"/>
+						<ID value="108495"/>
+						<Index_Count value="0"/>
+						<Name value="s_bonus"/>
+						<Object_Owner value="tlt"/>
+						<Primary_Key value="id"/>
+						<Primary_Key_Name value="s_bonus_pkey"/>
+						<Schema value="public"/>
+						<Trigger_Count value="0"/>
+						<Unique_Count value="1"/>
+					</Properties>
+					<Uniques>
+						<o0>
+							<Changes value=""/>
+							<Properties>
+								<Comment value=""/>
+								<Fields value="bonusName"/>
+								<ID value="108508"/>
+								<Name value="s_bonus_bonusName_key"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<id value="108508"/>
+							<name value="s_bonus_bonusName_key"/>
+						</o0>
+					</Uniques>
+					<control value="Table2"/>
+					<delete value="0"/>
+					<id value="108495"/>
+					<name value="s_bonus"/>
+				</o24>
+				<o25>
+					<Changes value=""/>
+					<Fields>
+						<o0>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value="nextval('employee_position_id_seq'::regclass)"/>
+								<Dimensions value="0"/>
+								<Field_Position value="1"/>
+								<Indexed value="1"/>
+								<Name value="id"/>
+								<Nullable value="0"/>
+								<Type value="Integer"/>
+								<Unique value="1"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="id"/>
+						</o0>
+						<o1>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="4"/>
+								<Indexed value="0"/>
+								<Name value="positionDateStart"/>
+								<Nullable value="0"/>
+								<Precision value="-1"/>
+								<Type value="Timestamp With Time Zone"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="positionDateStart"/>
+						</o1>
+						<o10>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="3"/>
+								<Indexed value="0"/>
+								<Name value="employeeId"/>
+								<Nullable value="0"/>
+								<Type value="Integer"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="employeeId"/>
+						</o10>
+						<o2>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="5"/>
+								<Indexed value="0"/>
+								<Name value="positionDateEnd"/>
+								<Nullable value="0"/>
+								<Precision value="-1"/>
+								<Type value="Timestamp With Time Zone"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="positionDateEnd"/>
+						</o2>
+						<o3>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="6"/>
+								<Indexed value="0"/>
+								<Name value="positionId"/>
+								<Nullable value="0"/>
+								<Type value="Integer"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="positionId"/>
+						</o3>
+						<o4>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="7"/>
+								<Indexed value="0"/>
+								<Name value="tariff"/>
+								<Nullable value="0"/>
+								<Type value="Double Precision"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="tariff"/>
+						</o4>
+						<o5>
+							<Changes value=""/>
+							<Properties>
+								<Collation value='"pg_catalog"."default"'/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="8"/>
+								<Indexed value="0"/>
+								<Length value="255"/>
+								<Name value="rem"/>
+								<Nullable value="1"/>
+								<Type value="Character Varying"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="rem"/>
+						</o5>
+						<o6>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value="1"/>
+								<Dimensions value="0"/>
+								<Field_Position value="9"/>
+								<Indexed value="0"/>
+								<Name value="version"/>
+								<Nullable value="0"/>
+								<Type value="Integer"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="version"/>
+						</o6>
+						<o7>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="10"/>
+								<Indexed value="0"/>
+								<Name value="createdAt"/>
+								<Nullable value="0"/>
+								<Precision value="-1"/>
+								<Type value="Timestamp With Time Zone"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="createdAt"/>
+						</o7>
+						<o8>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="11"/>
+								<Indexed value="0"/>
+								<Name value="updatedAt"/>
+								<Nullable value="0"/>
+								<Precision value="-1"/>
+								<Type value="Timestamp With Time Zone"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="updatedAt"/>
+						</o8>
+						<o9>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="2"/>
+								<Indexed value="0"/>
+								<Name value="userId"/>
+								<Nullable value="0"/>
+								<Type value="Integer"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="userId"/>
+						</o9>
+					</Fields>
+					<Properties>
+						<Check_Count value="0"/>
+						<Comment value=""/>
+						<Field_Count value="11"/>
+						<ID value="108626"/>
+						<Index_Count value="0"/>
+						<Name value="employee_position"/>
+						<Object_Owner value="tlt"/>
+						<Primary_Key value="id"/>
+						<Primary_Key_Name value="employee_position_pkey"/>
+						<Schema value="public"/>
+						<Trigger_Count value="0"/>
+						<Unique_Count value="0"/>
+					</Properties>
+					<control value="Table22"/>
+					<delete value="0"/>
+					<id value="108626"/>
+					<name value="employee_position"/>
+				</o25>
+				<o26>
+					<Changes value=""/>
+					<Fields>
+						<o0>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value="nextval('employee_bonus_id_seq'::regclass)"/>
+								<Dimensions value="0"/>
+								<Field_Position value="1"/>
+								<Indexed value="1"/>
+								<Name value="id"/>
+								<Nullable value="0"/>
+								<Type value="Integer"/>
+								<Unique value="1"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="id"/>
+						</o0>
+						<o1>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="2"/>
+								<Indexed value="0"/>
+								<Name value="userId"/>
+								<Nullable value="0"/>
+								<Type value="Integer"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="userId"/>
+						</o1>
+						<o10>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="3"/>
+								<Indexed value="0"/>
+								<Name value="employeeId"/>
+								<Nullable value="0"/>
+								<Type value="Integer"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="employeeId"/>
+						</o10>
+						<o2>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="4"/>
+								<Indexed value="0"/>
+								<Name value="bonusDate"/>
+								<Nullable value="0"/>
+								<Precision value="-1"/>
+								<Type value="Timestamp With Time Zone"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="bonusDate"/>
+						</o2>
+						<o3>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="5"/>
+								<Indexed value="0"/>
+								<Name value="bonusCategoryId"/>
+								<Nullable value="0"/>
+								<Type value="Integer"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="bonusCategoryId"/>
+						</o3>
+						<o4>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="6"/>
+								<Indexed value="0"/>
+								<Name value="bonusId"/>
+								<Nullable value="0"/>
+								<Type value="Integer"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="bonusId"/>
+						</o4>
+						<o5>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="7"/>
+								<Indexed value="0"/>
+								<Name value="cost"/>
+								<Nullable value="0"/>
+								<Type value="Double Precision"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="cost"/>
+						</o5>
+						<o6>
+							<Changes value=""/>
+							<Properties>
+								<Collation value='"pg_catalog"."default"'/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="8"/>
+								<Indexed value="0"/>
+								<Length value="255"/>
+								<Name value="rem"/>
+								<Nullable value="1"/>
+								<Type value="Character Varying"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="rem"/>
+						</o6>
+						<o7>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value="1"/>
+								<Dimensions value="0"/>
+								<Field_Position value="9"/>
+								<Indexed value="0"/>
+								<Name value="version"/>
+								<Nullable value="0"/>
+								<Type value="Integer"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="version"/>
+						</o7>
+						<o8>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="10"/>
+								<Indexed value="0"/>
+								<Name value="createdAt"/>
+								<Nullable value="0"/>
+								<Precision value="-1"/>
+								<Type value="Timestamp With Time Zone"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="createdAt"/>
+						</o8>
+						<o9>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="11"/>
+								<Indexed value="0"/>
+								<Name value="updatedAt"/>
+								<Nullable value="0"/>
+								<Precision value="-1"/>
+								<Type value="Timestamp With Time Zone"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="updatedAt"/>
+						</o9>
+					</Fields>
+					<Properties>
+						<Check_Count value="0"/>
+						<Comment value=""/>
+						<Field_Count value="11"/>
+						<ID value="108584"/>
+						<Index_Count value="0"/>
+						<Name value="employee_bonus"/>
+						<Object_Owner value="tlt"/>
+						<Primary_Key value="id"/>
+						<Primary_Key_Name value="employee_bonus_pkey"/>
+						<Schema value="public"/>
+						<Trigger_Count value="0"/>
+						<Unique_Count value="0"/>
+					</Properties>
+					<control value="Table27"/>
+					<delete value="0"/>
+					<id value="108584"/>
+					<name value="employee_bonus"/>
+				</o26>
+				<o27>
+					<Changes value=""/>
+					<Fields>
+						<o0>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value="nextval('employee_id_seq'::regclass)"/>
+								<Dimensions value="0"/>
+								<Field_Position value="1"/>
+								<Indexed value="1"/>
+								<Name value="id"/>
+								<Nullable value="0"/>
+								<Type value="Integer"/>
+								<Unique value="1"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="id"/>
+						</o0>
+						<o1>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="2"/>
+								<Indexed value="0"/>
+								<Name value="userId"/>
+								<Nullable value="0"/>
+								<Type value="Integer"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="userId"/>
+						</o1>
+						<o10>
+							<Changes value=""/>
+							<Properties>
+								<Collation value='"pg_catalog"."default"'/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="11"/>
+								<Indexed value="0"/>
+								<Length value="255"/>
+								<Name value="education"/>
+								<Nullable value="1"/>
+								<Type value="Character Varying"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="education"/>
+						</o10>
+						<o11>
+							<Changes value=""/>
+							<Properties>
+								<Collation value='"pg_catalog"."default"'/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="12"/>
+								<Indexed value="0"/>
+								<Length value="255"/>
+								<Name value="phone"/>
+								<Nullable value="1"/>
+								<Type value="Character Varying"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="phone"/>
+						</o11>
+						<o12>
+							<Changes value=""/>
+							<Properties>
+								<Collation value='"pg_catalog"."default"'/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="13"/>
+								<Indexed value="0"/>
+								<Length value="255"/>
+								<Name value="email"/>
+								<Nullable value="1"/>
+								<Type value="Character Varying"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="email"/>
+						</o12>
+						<o13>
+							<Changes value=""/>
+							<Properties>
+								<Collation value='"pg_catalog"."default"'/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="14"/>
+								<Indexed value="1"/>
+								<Length value="255"/>
+								<Name value="passportNumber"/>
+								<Nullable value="1"/>
+								<Type value="Character Varying"/>
+								<Unique value="1"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="passportNumber"/>
+						</o13>
+						<o14>
+							<Changes value=""/>
+							<Properties>
+								<Collation value='"pg_catalog"."default"'/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="15"/>
+								<Indexed value="0"/>
+								<Length value="255"/>
+								<Name value="passportIssuedBy"/>
+								<Nullable value="1"/>
+								<Type value="Character Varying"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="passportIssuedBy"/>
+						</o14>
+						<o15>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="16"/>
+								<Indexed value="0"/>
+								<Name value="employeeStatusId"/>
+								<Nullable value="1"/>
+								<Type value="Integer"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="employeeStatusId"/>
+						</o15>
+						<o16>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="17"/>
+								<Indexed value="0"/>
+								<Name value="operationModeId"/>
+								<Nullable value="1"/>
+								<Type value="Integer"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="operationModeId"/>
+						</o16>
+						<o17>
+							<Changes value=""/>
+							<Properties>
+								<Collation value='"pg_catalog"."default"'/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="18"/>
+								<Indexed value="0"/>
+								<Length value="255"/>
+								<Name value="rem"/>
+								<Nullable value="1"/>
+								<Type value="Character Varying"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="rem"/>
+						</o17>
+						<o18>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value="1"/>
+								<Dimensions value="0"/>
+								<Field_Position value="19"/>
+								<Indexed value="0"/>
+								<Name value="version"/>
+								<Nullable value="0"/>
+								<Type value="Integer"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="version"/>
+						</o18>
+						<o19>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="20"/>
+								<Indexed value="0"/>
+								<Name value="createdAt"/>
+								<Nullable value="0"/>
+								<Precision value="-1"/>
+								<Type value="Timestamp With Time Zone"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="createdAt"/>
+						</o19>
+						<o2>
+							<Changes value=""/>
+							<Properties>
+								<Collation value='"pg_catalog"."default"'/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="3"/>
+								<Indexed value="0"/>
+								<Length value="255"/>
+								<Name value="employeeName"/>
+								<Nullable value="0"/>
+								<Type value="Character Varying"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="employeeName"/>
+						</o2>
+						<o20>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="21"/>
+								<Indexed value="0"/>
+								<Name value="updatedAt"/>
+								<Nullable value="0"/>
+								<Precision value="-1"/>
+								<Type value="Timestamp With Time Zone"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="updatedAt"/>
+						</o20>
+						<o3>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="4"/>
+								<Indexed value="0"/>
+								<Name value="hbDate"/>
+								<Nullable value="1"/>
+								<Precision value="-1"/>
+								<Type value="Timestamp With Time Zone"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="hbDate"/>
+						</o3>
+						<o4>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="5"/>
+								<Indexed value="0"/>
+								<Name value="cityId"/>
+								<Nullable value="1"/>
+								<Type value="Integer"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="cityId"/>
+						</o4>
+						<o5>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="6"/>
+								<Indexed value="0"/>
+								<Name value="districtId"/>
+								<Nullable value="1"/>
+								<Type value="Integer"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="districtId"/>
+						</o5>
+						<o6>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="7"/>
+								<Indexed value="0"/>
+								<Name value="quarterId"/>
+								<Nullable value="1"/>
+								<Type value="Integer"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="quarterId"/>
+						</o6>
+						<o7>
+							<Changes value=""/>
+							<Properties>
+								<Collation value='"pg_catalog"."default"'/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="8"/>
+								<Indexed value="0"/>
+								<Length value="255"/>
+								<Name value="street"/>
+								<Nullable value="1"/>
+								<Type value="Character Varying"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="street"/>
+						</o7>
+						<o8>
+							<Changes value=""/>
+							<Properties>
+								<Collation value='"pg_catalog"."default"'/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="9"/>
+								<Indexed value="0"/>
+								<Length value="255"/>
+								<Name value="house"/>
+								<Nullable value="1"/>
+								<Type value="Character Varying"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="house"/>
+						</o8>
+						<o9>
+							<Changes value=""/>
+							<Properties>
+								<Collation value='"pg_catalog"."default"'/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="10"/>
+								<Indexed value="0"/>
+								<Length value="255"/>
+								<Name value="apartment"/>
+								<Nullable value="1"/>
+								<Type value="Character Varying"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="apartment"/>
+						</o9>
+					</Fields>
+					<Properties>
+						<Check_Count value="0"/>
+						<Comment value=""/>
+						<Field_Count value="21"/>
+						<ID value="108540"/>
+						<Index_Count value="0"/>
+						<Name value="employee"/>
+						<Object_Owner value="tlt"/>
+						<Primary_Key value="id"/>
+						<Primary_Key_Name value="employee_pkey"/>
+						<Schema value="public"/>
+						<Trigger_Count value="0"/>
+						<Unique_Count value="1"/>
+					</Properties>
+					<Uniques>
+						<o0>
+							<Changes value=""/>
+							<Properties>
+								<Comment value=""/>
+								<Fields value="employeeName"/>
+								<ID value="33625"/>
+								<Name value="employee_employeeName_key"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="employee_employeeName_key"/>
+						</o0>
+						<o1>
+							<Changes value=""/>
+							<Properties>
+								<Comment value=""/>
+								<Fields value="passportNumber"/>
+								<ID value="108551"/>
+								<Name value="employee_passportNumber_key"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<id value="108551"/>
+							<name value="employee_passportNumber_key"/>
+						</o1>
+					</Uniques>
+					<control value="Table28"/>
+					<delete value="0"/>
+					<id value="108540"/>
+					<name value="employee"/>
+				</o27>
+				<o28>
+					<Changes value=""/>
+					<Fields>
+						<o0>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value="nextval('s_type_job_id_seq'::regclass)"/>
+								<Dimensions value="0"/>
+								<Field_Position value="1"/>
+								<Indexed value="1"/>
+								<Name value="id"/>
+								<Nullable value="0"/>
+								<Type value="Integer"/>
+								<Unique value="1"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="id"/>
+						</o0>
+						<o1>
+							<Changes value=""/>
+							<Properties>
+								<Collation value='"pg_catalog"."default"'/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="2"/>
+								<Indexed value="1"/>
+								<Length value="255"/>
+								<Name value="typeJobName"/>
+								<Nullable value="0"/>
+								<Type value="Character Varying"/>
+								<Unique value="1"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="typeJobName"/>
+						</o1>
+						<o2>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value="1"/>
+								<Dimensions value="0"/>
+								<Field_Position value="3"/>
+								<Indexed value="0"/>
+								<Name value="version"/>
+								<Nullable value="0"/>
+								<Type value="Integer"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="version"/>
+						</o2>
+					</Fields>
+					<Properties>
+						<Check_Count value="0"/>
+						<Comment value=""/>
+						<Field_Count value="3"/>
+						<ID value="108650"/>
+						<Index_Count value="0"/>
+						<Name value="s_type_job"/>
+						<Object_Owner value="tlt"/>
+						<Primary_Key value="id"/>
+						<Primary_Key_Name value="s_type_job_pkey"/>
+						<Schema value="public"/>
+						<Trigger_Count value="0"/>
+						<Unique_Count value="1"/>
+					</Properties>
+					<Uniques>
+						<o0>
+							<Changes value=""/>
+							<Properties>
+								<Comment value=""/>
+								<Fields value="typeJobName"/>
+								<ID value="108658"/>
+								<Name value="s_type_job_typeJobName_key"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<id value="108658"/>
+							<name value="s_type_job_typeJobName_key"/>
+						</o0>
+					</Uniques>
+					<control value="Table29"/>
+					<delete value="0"/>
+					<id value="108650"/>
+					<name value="s_type_job"/>
+				</o28>
+				<o29>
+					<Changes value=""/>
+					<Fields>
+						<o0>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="1"/>
+								<Indexed value="0"/>
+								<Name value="employeeId"/>
+								<Nullable value="0"/>
+								<Type value="Integer"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="employeeId"/>
+						</o0>
+						<o1>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="2"/>
+								<Indexed value="0"/>
+								<Name value="typeJobId"/>
+								<Nullable value="0"/>
+								<Type value="Integer"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="typeJobId"/>
+						</o1>
+					</Fields>
+					<Properties>
+						<Check_Count value="0"/>
+						<Comment value=""/>
+						<Field_Count value="2"/>
+						<ID value="108659"/>
+						<Index_Count value="0"/>
+						<Name value="employee_type_job"/>
+						<Object_Owner value="tlt"/>
+						<Primary_Key value="employeeId
+typeJobId"/>
+						<Primary_Key_Name value="employee_type_job_pkey"/>
+						<Schema value="public"/>
+						<Trigger_Count value="0"/>
+						<Unique_Count value="0"/>
+					</Properties>
+					<control value="Table30"/>
+					<delete value="0"/>
+					<id value="108659"/>
+					<name value="employee_type_job"/>
+				</o29>
+				<o3>
+					<Changes value=""/>
+					<Fields>
+						<o0>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value="nextval('s_city_id_seq'::regclass)"/>
+								<Dimensions value="0"/>
+								<Field_Position value="1"/>
+								<Indexed value="1"/>
+								<Name value="id"/>
+								<Nullable value="0"/>
+								<Type value="Integer"/>
+								<Unique value="1"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="id"/>
+						</o0>
+						<o1>
+							<Changes value=""/>
+							<Properties>
+								<Collation value='"pg_catalog"."default"'/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="2"/>
+								<Indexed value="1"/>
+								<Length value="255"/>
+								<Name value="cityName"/>
+								<Nullable value="0"/>
+								<Type value="Character Varying"/>
+								<Unique value="1"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="cityName"/>
+						</o1>
+						<o2>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value="1"/>
+								<Dimensions value="0"/>
+								<Field_Position value="3"/>
+								<Indexed value="0"/>
+								<Name value="version"/>
+								<Nullable value="0"/>
+								<Type value="Integer"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="version"/>
+						</o2>
+					</Fields>
+					<Properties>
+						<Check_Count value="0"/>
+						<Comment value=""/>
+						<Field_Count value="3"/>
+						<ID value="108272"/>
+						<Index_Count value="0"/>
+						<Name value="s_city"/>
+						<Object_Owner value="tlt"/>
+						<Primary_Key value="id"/>
+						<Primary_Key_Name value="s_city_pkey"/>
+						<Schema value="public"/>
+						<Trigger_Count value="0"/>
+						<Unique_Count value="1"/>
+					</Properties>
+					<Uniques>
+						<o0>
+							<Changes value=""/>
+							<Properties>
+								<Comment value=""/>
+								<Fields value="cityName"/>
+								<ID value="108280"/>
+								<Name value="s_city_cityName_key"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<id value="108280"/>
+							<name value="s_city_cityName_key"/>
+						</o0>
+					</Uniques>
+					<control value="Table5"/>
+					<delete value="0"/>
+					<id value="108272"/>
+					<name value="s_city"/>
+				</o3>
+				<o4>
+					<Changes value=""/>
+					<Fields>
+						<o0>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value="nextval('s_district_id_seq'::regclass)"/>
+								<Dimensions value="0"/>
+								<Field_Position value="1"/>
+								<Indexed value="1"/>
+								<Name value="id"/>
+								<Nullable value="0"/>
+								<Type value="Integer"/>
+								<Unique value="1"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="id"/>
+						</o0>
+						<o1>
+							<Changes value=""/>
+							<Properties>
+								<Collation value='"pg_catalog"."default"'/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="2"/>
+								<Indexed value="1"/>
+								<Length value="255"/>
+								<Name value="districtName"/>
+								<Nullable value="0"/>
+								<Type value="Character Varying"/>
+								<Unique value="1"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="districtName"/>
+						</o1>
+						<o2>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="3"/>
+								<Indexed value="0"/>
+								<Name value="cityId"/>
+								<Nullable value="0"/>
+								<Type value="Integer"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="cityId"/>
+						</o2>
+						<o3>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value="1"/>
+								<Dimensions value="0"/>
+								<Field_Position value="4"/>
+								<Indexed value="0"/>
+								<Name value="version"/>
+								<Nullable value="0"/>
+								<Type value="Integer"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="version"/>
+						</o3>
+					</Fields>
+					<Properties>
+						<Check_Count value="0"/>
+						<Comment value=""/>
+						<Field_Count value="4"/>
+						<ID value="108374"/>
+						<Index_Count value="0"/>
+						<Name value="s_district"/>
+						<Object_Owner value="tlt"/>
+						<Primary_Key value="id"/>
+						<Primary_Key_Name value="s_district_pkey"/>
+						<Schema value="public"/>
+						<Trigger_Count value="0"/>
+						<Unique_Count value="1"/>
+					</Properties>
+					<Uniques>
+						<o0>
+							<Changes value=""/>
+							<Properties>
+								<Comment value=""/>
+								<Fields value="districtName"/>
+								<ID value="108382"/>
+								<Name value="s_district_districtName_key"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<id value="108382"/>
+							<name value="s_district_districtName_key"/>
+						</o0>
+					</Uniques>
+					<control value="Table6"/>
+					<delete value="0"/>
+					<id value="108374"/>
+					<name value="s_district"/>
+				</o4>
+				<o5>
+					<Changes value=""/>
+					<Fields>
+						<o0>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value="nextval('session_id_seq'::regclass)"/>
+								<Dimensions value="0"/>
+								<Field_Position value="1"/>
+								<Indexed value="1"/>
+								<Name value="id"/>
+								<Nullable value="0"/>
+								<Type value="Integer"/>
+								<Unique value="1"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="id"/>
+						</o0>
+						<o1>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="2"/>
+								<Indexed value="0"/>
+								<Name value="userId"/>
+								<Nullable value="0"/>
+								<Type value="Integer"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="userId"/>
+						</o1>
+						<o2>
+							<Changes value=""/>
+							<Properties>
+								<Collation value='"pg_catalog"."default"'/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="3"/>
+								<Indexed value="0"/>
+								<Length value="255"/>
+								<Name value="refreshToken"/>
+								<Nullable value="0"/>
+								<Type value="Character Varying"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="refreshToken"/>
+						</o2>
+						<o3>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="4"/>
+								<Indexed value="0"/>
+								<Name value="expiresIn"/>
+								<Nullable value="0"/>
+								<Type value="Integer"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="expiresIn"/>
+						</o3>
+						<o4>
+							<Changes value=""/>
+							<Properties>
+								<Collation value='"pg_catalog"."default"'/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="5"/>
+								<Indexed value="0"/>
+								<Length value="255"/>
+								<Name value="fingerprint"/>
+								<Nullable value="0"/>
+								<Type value="Character Varying"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="fingerprint"/>
+						</o4>
+						<o5>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value="1"/>
+								<Dimensions value="0"/>
+								<Field_Position value="6"/>
+								<Indexed value="0"/>
+								<Name value="version"/>
+								<Nullable value="0"/>
+								<Type value="Integer"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="version"/>
+						</o5>
+					</Fields>
+					<Properties>
+						<Check_Count value="0"/>
+						<Comment value=""/>
+						<Field_Count value="6"/>
+						<ID value="108676"/>
+						<Index_Count value="0"/>
+						<Link_Count value="1"/>
+						<Name value="session"/>
+						<Object_Owner value="tlt"/>
+						<Primary_Key value="id"/>
+						<Primary_Key_Name value="session_pkey"/>
+						<Record_Count value="1"/>
+						<Schema value="public"/>
+						<Trigger_Count value="0"/>
+						<Unique_Count value="0"/>
+					</Properties>
+					<control value="Table7"/>
+					<delete value="0"/>
+					<id value="108676"/>
+					<name value="session"/>
+				</o5>
+				<o6>
+					<Changes value=""/>
+					<Fields>
+						<o0>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value="nextval('s_social_status_id_seq'::regclass)"/>
+								<Dimensions value="0"/>
+								<Field_Position value="1"/>
+								<Indexed value="1"/>
+								<Name value="id"/>
+								<Nullable value="0"/>
+								<Type value="Integer"/>
+								<Unique value="1"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="id"/>
+						</o0>
+						<o1>
+							<Changes value=""/>
+							<Properties>
+								<Collation value='"pg_catalog"."default"'/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="2"/>
+								<Indexed value="1"/>
+								<Length value="255"/>
+								<Name value="socialStatusName"/>
+								<Nullable value="0"/>
+								<Type value="Character Varying"/>
+								<Unique value="1"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="socialStatusName"/>
+						</o1>
+						<o2>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value="1"/>
+								<Dimensions value="0"/>
+								<Field_Position value="3"/>
+								<Indexed value="0"/>
+								<Name value="version"/>
+								<Nullable value="0"/>
+								<Type value="Integer"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="version"/>
+						</o2>
+					</Fields>
+					<Properties>
+						<Check_Count value="0"/>
+						<Comment value=""/>
+						<Field_Count value="3"/>
+						<ID value="108693"/>
+						<Index_Count value="0"/>
+						<Name value="s_social_status"/>
+						<Object_Owner value="tlt"/>
+						<Primary_Key value="id"/>
+						<Primary_Key_Name value="s_social_status_pkey"/>
+						<Schema value="public"/>
+						<Trigger_Count value="0"/>
+						<Unique_Count value="1"/>
+					</Properties>
+					<Uniques>
+						<o0>
+							<Changes value=""/>
+							<Properties>
+								<Comment value=""/>
+								<Fields value="socialStatusName"/>
+								<ID value="108701"/>
+								<Name value="s_social_status_socialStatusName_key"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<id value="108701"/>
+							<name value="s_social_status_socialStatusName_key"/>
+						</o0>
+					</Uniques>
+					<control value="Table8"/>
+					<delete value="0"/>
+					<id value="108693"/>
+					<name value="s_social_status"/>
+				</o6>
+				<o7>
+					<Changes value=""/>
+					<Fields>
+						<o0>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value="nextval('s_family_status_id_seq'::regclass)"/>
+								<Dimensions value="0"/>
+								<Field_Position value="1"/>
+								<Indexed value="1"/>
+								<Name value="id"/>
+								<Nullable value="0"/>
+								<Type value="Integer"/>
+								<Unique value="1"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="id"/>
+						</o0>
+						<o1>
+							<Changes value=""/>
+							<Properties>
+								<Collation value='"pg_catalog"."default"'/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="2"/>
+								<Indexed value="1"/>
+								<Length value="255"/>
+								<Name value="familyStatusName"/>
+								<Nullable value="0"/>
+								<Type value="Character Varying"/>
+								<Unique value="1"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="familyStatusName"/>
+						</o1>
+						<o2>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value="1"/>
+								<Dimensions value="0"/>
+								<Field_Position value="3"/>
+								<Indexed value="0"/>
+								<Name value="version"/>
+								<Nullable value="0"/>
+								<Type value="Integer"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="version"/>
+						</o2>
+					</Fields>
+					<Properties>
+						<Check_Count value="0"/>
+						<Comment value=""/>
+						<Field_Count value="3"/>
+						<ID value="108363"/>
+						<Index_Count value="0"/>
+						<Name value="s_family_status"/>
+						<Object_Owner value="tlt"/>
+						<Primary_Key value="id"/>
+						<Primary_Key_Name value="s_family_status_pkey"/>
+						<Schema value="public"/>
+						<Trigger_Count value="0"/>
+						<Unique_Count value="1"/>
+					</Properties>
+					<Uniques>
+						<o0>
+							<Changes value=""/>
+							<Properties>
+								<Comment value=""/>
+								<Fields value="familyStatusName"/>
+								<ID value="108371"/>
+								<Name value="s_family_status_familyStatusName_key"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<id value="108371"/>
+							<name value="s_family_status_familyStatusName_key"/>
+						</o0>
+					</Uniques>
+					<control value="Table9"/>
+					<delete value="0"/>
+					<id value="108363"/>
+					<name value="s_family_status"/>
+				</o7>
+				<o8>
+					<Changes value=""/>
+					<Fields>
+						<o0>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value="nextval('s_ward_stage_id_seq'::regclass)"/>
+								<Dimensions value="0"/>
+								<Field_Position value="1"/>
+								<Indexed value="1"/>
+								<Name value="id"/>
+								<Nullable value="0"/>
+								<Type value="Integer"/>
+								<Unique value="1"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="id"/>
+						</o0>
+						<o1>
+							<Changes value=""/>
+							<Properties>
+								<Collation value='"pg_catalog"."default"'/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="2"/>
+								<Indexed value="1"/>
+								<Length value="255"/>
+								<Name value="wardStageName"/>
+								<Nullable value="0"/>
+								<Type value="Character Varying"/>
+								<Unique value="1"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="wardStageName"/>
+						</o1>
+						<o2>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value="1"/>
+								<Dimensions value="0"/>
+								<Field_Position value="3"/>
+								<Indexed value="0"/>
+								<Name value="version"/>
+								<Nullable value="0"/>
+								<Type value="Integer"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="version"/>
+						</o2>
+					</Fields>
+					<Properties>
+						<Check_Count value="0"/>
+						<Comment value=""/>
+						<Field_Count value="3"/>
+						<ID value="108719"/>
+						<Index_Count value="0"/>
+						<Name value="s_ward_stage"/>
+						<Object_Owner value="tlt"/>
+						<Primary_Key value="id"/>
+						<Primary_Key_Name value="s_ward_stage_pkey"/>
+						<Schema value="public"/>
+						<Trigger_Count value="0"/>
+						<Unique_Count value="1"/>
+					</Properties>
+					<Uniques>
+						<o0>
+							<Changes value=""/>
+							<Properties>
+								<Comment value=""/>
+								<Fields value="wardStageName"/>
+								<ID value="108727"/>
+								<Name value="s_ward_stage_wardStageName_key"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<id value="108727"/>
+							<name value="s_ward_stage_wardStageName_key"/>
+						</o0>
+					</Uniques>
+					<control value="Table10"/>
+					<delete value="0"/>
+					<id value="108719"/>
+					<name value="s_ward_stage"/>
+				</o8>
+				<o9>
+					<Changes value=""/>
+					<Fields>
+						<o0>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value="nextval('ward_id_seq'::regclass)"/>
+								<Dimensions value="0"/>
+								<Field_Position value="1"/>
+								<Indexed value="1"/>
+								<Name value="id"/>
+								<Nullable value="0"/>
+								<Type value="Integer"/>
+								<Unique value="1"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="id"/>
+						</o0>
+						<o1>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="2"/>
+								<Indexed value="0"/>
+								<Name value="userId"/>
+								<Nullable value="0"/>
+								<Type value="Integer"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="userId"/>
+						</o1>
+						<o10>
+							<Changes value=""/>
+							<Properties>
+								<Collation value='"pg_catalog"."default"'/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="13"/>
+								<Indexed value="0"/>
+								<Length value="255"/>
+								<Name value="street"/>
+								<Nullable value="1"/>
+								<Type value="Character Varying"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="street"/>
+						</o10>
+						<o11>
+							<Changes value=""/>
+							<Properties>
+								<Collation value='"pg_catalog"."default"'/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="14"/>
+								<Indexed value="0"/>
+								<Length value="255"/>
+								<Name value="house"/>
+								<Nullable value="1"/>
+								<Type value="Character Varying"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="house"/>
+						</o11>
+						<o12>
+							<Changes value=""/>
+							<Properties>
+								<Collation value='"pg_catalog"."default"'/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="15"/>
+								<Indexed value="0"/>
+								<Length value="255"/>
+								<Name value="apartment"/>
+								<Nullable value="1"/>
+								<Type value="Character Varying"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="apartment"/>
+						</o12>
+						<o13>
+							<Changes value=""/>
+							<Properties>
+								<Collation value='"pg_catalog"."default"'/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="16"/>
+								<Indexed value="0"/>
+								<Length value="255"/>
+								<Name value="floor"/>
+								<Nullable value="1"/>
+								<Type value="Character Varying"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="floor"/>
+						</o13>
+						<o14>
+							<Changes value=""/>
+							<Properties>
+								<Collation value='"pg_catalog"."default"'/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="17"/>
+								<Indexed value="0"/>
+								<Length value="255"/>
+								<Name value="entrance"/>
+								<Nullable value="1"/>
+								<Type value="Character Varying"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="entrance"/>
+						</o14>
+						<o15>
+							<Changes value=""/>
+							<Properties>
+								<Collation value='"pg_catalog"."default"'/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="18"/>
+								<Indexed value="0"/>
+								<Length value="255"/>
+								<Name value="phone"/>
+								<Nullable value="1"/>
+								<Type value="Character Varying"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="phone"/>
+						</o15>
+						<o16>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="19"/>
+								<Name value="doctorsReport"/>
+								<Nullable value="1"/>
+								<Type value="Boolean"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="doctorsReport"/>
+						</o16>
+						<o17>
+							<Changes value=""/>
+							<Properties>
+								<Collation value='"pg_catalog"."default"'/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="20"/>
+								<Indexed value="0"/>
+								<Name value="events"/>
+								<Nullable value="1"/>
+								<Type value="Text"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="events"/>
+						</o17>
+						<o18>
+							<Changes value=""/>
+							<Properties>
+								<Collation value='"pg_catalog"."default"'/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="21"/>
+								<Indexed value="0"/>
+								<Length value="255"/>
+								<Name value="rem"/>
+								<Nullable value="1"/>
+								<Type value="Character Varying"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="rem"/>
+						</o18>
+						<o19>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value="1"/>
+								<Dimensions value="0"/>
+								<Field_Position value="22"/>
+								<Indexed value="0"/>
+								<Name value="version"/>
+								<Nullable value="0"/>
+								<Type value="Integer"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="version"/>
+						</o19>
+						<o2>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="5"/>
+								<Indexed value="0"/>
+								<Name value="hbDate"/>
+								<Nullable value="1"/>
+								<Precision value="-1"/>
+								<Type value="Timestamp With Time Zone"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="hbDate"/>
+						</o2>
+						<o20>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="23"/>
+								<Indexed value="0"/>
+								<Name value="createdAt"/>
+								<Nullable value="0"/>
+								<Precision value="-1"/>
+								<Type value="Timestamp With Time Zone"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="createdAt"/>
+						</o20>
+						<o21>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="24"/>
+								<Indexed value="0"/>
+								<Name value="updatedAt"/>
+								<Nullable value="0"/>
+								<Precision value="-1"/>
+								<Type value="Timestamp With Time Zone"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="updatedAt"/>
+						</o21>
+						<o22>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="3"/>
+								<Indexed value="0"/>
+								<Name value="customerId"/>
+								<Nullable value="1"/>
+								<Type value="Integer"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="customerId"/>
+						</o22>
+						<o23>
+							<Changes value=""/>
+							<Properties>
+								<Collation value='"pg_catalog"."default"'/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="4"/>
+								<Indexed value="0"/>
+								<Length value="255"/>
+								<Name value="wardName"/>
+								<Nullable value="1"/>
+								<Type value="Character Varying"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="wardName"/>
+						</o23>
+						<o3>
+							<Changes value=""/>
+							<Properties>
+								<Collation value='"pg_catalog"."default"'/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="6"/>
+								<Indexed value="1"/>
+								<Length value="255"/>
+								<Name value="passportNumber"/>
+								<Nullable value="1"/>
+								<Type value="Character Varying"/>
+								<Unique value="1"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="passportNumber"/>
+						</o3>
+						<o4>
+							<Changes value=""/>
+							<Properties>
+								<Collation value='"pg_catalog"."default"'/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="7"/>
+								<Indexed value="0"/>
+								<Length value="255"/>
+								<Name value="passportIssuedBy"/>
+								<Nullable value="1"/>
+								<Type value="Character Varying"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="passportIssuedBy"/>
+						</o4>
+						<o5>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="8"/>
+								<Indexed value="0"/>
+								<Name value="passportIssuedDate"/>
+								<Nullable value="1"/>
+								<Precision value="-1"/>
+								<Type value="Timestamp With Time Zone"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="passportIssuedDate"/>
+						</o5>
+						<o6>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="9"/>
+								<Indexed value="0"/>
+								<Name value="familyStatusId"/>
+								<Nullable value="1"/>
+								<Type value="Integer"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="familyStatusId"/>
+						</o6>
+						<o7>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="10"/>
+								<Indexed value="0"/>
+								<Name value="cityId"/>
+								<Nullable value="1"/>
+								<Type value="Integer"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="cityId"/>
+						</o7>
+						<o8>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="11"/>
+								<Indexed value="0"/>
+								<Name value="districtId"/>
+								<Nullable value="1"/>
+								<Type value="Integer"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="districtId"/>
+						</o8>
+						<o9>
+							<Changes value=""/>
+							<Properties>
+								<Collation value=""/>
+								<Comment value=""/>
+								<Default_Value value=""/>
+								<Dimensions value="0"/>
+								<Field_Position value="12"/>
+								<Indexed value="0"/>
+								<Name value="quarterId"/>
+								<Nullable value="1"/>
+								<Type value="Integer"/>
+								<Unique value="0"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<name value="quarterId"/>
+						</o9>
+					</Fields>
+					<Properties>
+						<Check_Count value="0"/>
+						<Comment value=""/>
+						<Field_Count value="24"/>
+						<ID value="108406"/>
+						<Index_Count value="0"/>
+						<Name value="ward"/>
+						<Object_Owner value="tlt"/>
+						<Primary_Key value="id"/>
+						<Primary_Key_Name value="ward_pkey"/>
+						<Schema value="public"/>
+						<Trigger_Count value="0"/>
+						<Unique_Count value="1"/>
+					</Properties>
+					<Uniques>
+						<o0>
+							<Changes value=""/>
+							<Properties>
+								<Comment value=""/>
+								<Fields value="passportNumber"/>
+								<ID value="108417"/>
+								<Name value="ward_passportNumber_key"/>
+							</Properties>
+							<control value=""/>
+							<delete value="0"/>
+							<id value="108417"/>
+							<name value="ward_passportNumber_key"/>
+						</o0>
+					</Uniques>
+					<control value="Table11"/>
+					<delete value="0"/>
+					<id value="108406"/>
+					<name value="ward"/>
+				</o9>
+			</Tables>
+		</public>
+	</Model>
+	<Scene>
+		<HeightPX value="3072"/>
+		<WidthPX value="3072"/>
+	</Scene>
+	<version value="100001"/>
+</properties>
+
