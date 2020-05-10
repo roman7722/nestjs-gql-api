@@ -1,11 +1,14 @@
 import { BelongsTo, Column, ForeignKey, Model, Table } from 'sequelize-typescript';
+import AgreementStatus from '../agreement-status/agreement-status.model';
 import Customer from '../customer/customer.model';
 import User from '../user/user.model';
+import Ward from '../ward/ward.model';
 
-@Table({ tableName: 'agreement' })
+@Table({ tableName: 'agreement', timestamps: true })
 export default class Agreement extends Model<Agreement> {
   @Column({ primaryKey: true, autoIncrement: true }) id: number;
-  @Column({ allowNull: false, unique: true }) numAgreement: string;
+  @Column({ allowNull: false, unique: true }) agreementNumber: string;
+  @Column({ allowNull: false }) agreementDate: Date;
 
   /** Many-to-one */
   @ForeignKey(() => User)
@@ -19,8 +22,21 @@ export default class Agreement extends Model<Agreement> {
   customerId: number;
   @BelongsTo(() => Customer) customer: Customer;
 
-  @Column({ allowNull: false }) dateAgreement: Date;
+  /** Many-to-one */
+  @ForeignKey(() => Ward)
+  @Column({ allowNull: false })
+  wardId: number;
+  @BelongsTo(() => Ward) ward: Ward;
+
+  /** Many-to-one */
+  @ForeignKey(() => AgreementStatus)
+  @Column({ allowNull: false })
+  agreementStatusId: number;
+  @BelongsTo(() => AgreementStatus) agreementStatus: AgreementStatus;
+
   @Column({ allowNull: true }) rem: string;
 
   @Column({ allowNull: false, defaultValue: 1 }) version: number;
+  @Column({ allowNull: false }) createdAt: Date;
+  @Column({ allowNull: false }) updatedAt: Date;
 }

@@ -1,4 +1,4 @@
-import { Field, ID, Int, ObjectType } from 'type-graphql';
+import { Field, ID, Int, ObjectType } from '@nestjs/graphql';
 import { UserRoleDto } from '../../user-role/dto/user-role.dto';
 
 @ObjectType()
@@ -14,4 +14,6 @@ export class UserDto {
   @Field({ nullable: true }) rem?: string;
   @Field(() => UserRoleDto, { nullable: true }) role?: UserRoleDto;
   @Field(() => Int, { nullable: true }) version?: number;
+  @Field({ nullable: true }) createdAt?: Date;
+  @Field({ nullable: true }) updatedAt?: Date;
 }

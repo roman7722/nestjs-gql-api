@@ -1,4 +1,4 @@
-import { Field, ID, Int, ObjectType } from 'type-graphql';
+import { Field, ID, Int, ObjectType } from '@nestjs/graphql';
 import { SubjectCategoryDto } from '../../subject-category/dto/subject-category.dto';
 
 @ObjectType()

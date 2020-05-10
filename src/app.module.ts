@@ -1,20 +1,31 @@
 import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
+import { AgreementStatusModule } from './agreement-status/agreement-status.module';
 import { AgreementModule } from './agreement/agreement.module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
+import { BonusCategoryModule } from './bonus-category/bonus-category.module';
+import { BonusModule } from './bonus/bonus.module';
 import { CityModule } from './city/city.module';
-import { CustomerCategoryModule } from './customer-category/customer-category.module';
 import { graphqlError } from './common/filters/graphqlError';
+import { CustomerCategoryModule } from './customer-category/customer-category.module';
 import { CustomerModule } from './customer/customer.module';
 import { DistrictModule } from './district/district.module';
+import { EmployeeBonusModule } from './employee-bonus/employee-bonus.module';
+import { EmployeePositionModule } from './employee-position/employee-position.module';
+import { EmployeeStatusModule } from './employee-status/employee-status.module';
+import { EmployeeTypeJobModule } from './employee-type-job/employee-type-job.module';
+import { EmployeeModule } from './employee/employee.module';
 import { FamilyStatusModule } from './family-status/family-status.module';
+import { OperationModeModule } from './operation-mode/operation-mode.module';
 import { PaymentFormModule } from './payment-form/payment-form.module';
+import { PositionModule } from './position/position.module';
 import { QuarterModule } from './quarter/quarter.module';
 import { SocialStatusModule } from './social-status/social-status.module';
 import { SubjectCategoryModule } from './subject-category/subject-category.module';
 import { SubjectModule } from './subject/subject.module';
+import { TypeJobModule } from './type-job/type-job.module';
 import { UserRoleModule } from './user-role/user-role.module';
 import { UserModule } from './user/user.module';
 import { WardSocialStatusModule } from './ward-social-status/ward-social-status.module';
@@ -41,6 +52,17 @@ const modules = [
   CustomerCategoryModule,
   PaymentFormModule,
   CustomerModule,
+  AgreementStatusModule,
+  PositionModule,
+  EmployeePositionModule,
+  OperationModeModule,
+  EmployeeStatusModule,
+  BonusCategoryModule,
+  BonusModule,
+  EmployeeBonusModule,
+  EmployeeModule,
+  TypeJobModule,
+  EmployeeTypeJobModule,
 ];
 
 @Module({

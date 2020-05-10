@@ -1,6 +1,5 @@
-import { Int } from 'type-graphql';
 import { UseGuards } from '@nestjs/common';
-import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
+import { Args, Int, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { Roles } from '../auth/decorators/roles.decorator';
 import { GqlAuthGuard } from '../auth/guards/gql-auth.guard';
 import { RolesGuard } from '../auth/guards/roles.guard';
@@ -19,7 +18,7 @@ import { UserRoleService } from './user-role.service';
 export class UserRoleResolver {
   constructor(private readonly userRoleService: UserRoleService) {}
 
-  @Roles('MANAGER')
+  // @Roles('MANAGER')
   @Query(() => UserRoleDto, {
     name: 'userRole',
     nullable: true,
@@ -38,7 +37,7 @@ export class UserRoleResolver {
     return this.userRoleService.userRoleList(textFilter, page, paging);
   }
 
-  // @Roles('MANAGER')
+  @Roles('MANAGER')
   @Query(() => [UserRoleDto], {
     nullable: true,
     description: 'Поиск группы ролей по [ids]',

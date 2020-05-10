@@ -1,6 +1,5 @@
-import { Int } from 'type-graphql';
 import { UseGuards } from '@nestjs/common';
-import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
+import { Args, Int, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { Roles } from '../auth/decorators/roles.decorator';
 import { GqlAuthGuard } from '../auth/guards/gql-auth.guard';
 import { RolesGuard } from '../auth/guards/roles.guard';
@@ -16,7 +15,9 @@ import { CustomerCategoryUpdateInput } from './input/customer-category-update.in
 @UseGuards(GqlAuthGuard, RolesGuard)
 @Roles('MANAGER', 'ADMIN')
 export class CustomerCategoryResolver {
-  constructor(private readonly customerCategoryService: CustomerCategoryService) {}
+  constructor(
+    private readonly customerCategoryService: CustomerCategoryService,
+  ) {}
 
   @Query(() => CustomerCategoryDto, {
     nullable: true,
@@ -41,17 +42,23 @@ export class CustomerCategoryResolver {
   }
 
   @Mutation(() => CustomerCategoryDto)
-  async customerCategoryCreate(@Args('data') data: CustomerCategoryCreateInput) {
+  async customerCategoryCreate(
+    @Args('data') data: CustomerCategoryCreateInput,
+  ) {
     return await this.customerCategoryService.customerCategoryCreate(data);
   }
 
   @Mutation(() => CustomerCategoryDto)
-  async customerCategoryUpdate(@Args('data') data: CustomerCategoryUpdateInput) {
+  async customerCategoryUpdate(
+    @Args('data') data: CustomerCategoryUpdateInput,
+  ) {
     return await this.customerCategoryService.customerCategoryUpdate(data);
   }
 
   @Mutation(() => Int)
-  async customerCategoryDelete(@Args('data') data: CustomerCategoryDeleteInput) {
+  async customerCategoryDelete(
+    @Args('data') data: CustomerCategoryDeleteInput,
+  ) {
     return await this.customerCategoryService.customerCategoryDelete(data);
   }
 }

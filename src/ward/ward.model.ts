@@ -1,4 +1,5 @@
 import { BelongsTo, BelongsToMany, Column, DataType, ForeignKey, HasMany, Model, Table } from 'sequelize-typescript';
+import Agreement from '../agreement/agreement.model';
 import City from '../city/city.model';
 import Customer from '../customer/customer.model';
 import District from '../district/district.model';
@@ -22,12 +23,12 @@ export default class Ward extends Model<Ward> {
   /** Many-to-one */
   @ForeignKey(() => Customer)
   @Column({ allowNull: true })
-  сustomerId: number;
-  @BelongsTo(() => Customer) сustomer: Customer;
+  customerId: number;
+  @BelongsTo(() => Customer) customer: Customer;
 
-  @Column({ allowNull: true }) fio: string;
+  @Column({ allowNull: true }) wardName: string;
   @Column({ allowNull: true }) hbDate: Date;
-  @Column({ allowNull: true }) passportNumber: string;
+  @Column({ allowNull: true, unique: true }) passportNumber: string;
   @Column({ allowNull: true }) passportIssuedBy: string;
   @Column({ allowNull: true }) passportIssuedDate: Date;
 
@@ -80,4 +81,5 @@ export default class Ward extends Model<Ward> {
 
   /** One-to-many */
   @HasMany(() => WardStageProgress) wardStagesProgressList: WardStageProgress[];
+  @HasMany(() => Agreement) agreements: Agreement[];
 }

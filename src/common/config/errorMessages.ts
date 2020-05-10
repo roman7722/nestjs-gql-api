@@ -227,6 +227,12 @@ export const errorMessagesConfig: { [messageCode: string]: IErrorMessages } = {
     errorMessage: 'Unable to update ward.',
     userMessage: 'Невозможно обновить подопечного.',
   },
+  'ward:validate:notUniquePassportNumber': {
+    type: 'BadRequest',
+    statusCode: HttpStatus.BAD_REQUEST,
+    errorMessage: 'Passport number already exists.',
+    userMessage: 'Такой номер паспорта уже существует.',
+  },
 
   /** -------------------- subjectCategory -------------------- */
 
@@ -346,5 +352,197 @@ export const errorMessagesConfig: { [messageCode: string]: IErrorMessages } = {
     statusCode: HttpStatus.BAD_REQUEST,
     errorMessage: 'Unable to update customer.',
     userMessage: 'Невозможно обновить клиента.',
+  },
+
+  /** -------------------- agreement -------------------- */
+
+  'agreement:create:unableToCreateAgreement': {
+    type: 'BadRequest',
+    statusCode: HttpStatus.BAD_REQUEST,
+    errorMessage: 'Unable to create agreement.',
+    userMessage: 'Невозможно создать договор.',
+  },
+  'agreement:update:unableToUpdateAgreement': {
+    type: 'BadRequest',
+    statusCode: HttpStatus.BAD_REQUEST,
+    errorMessage: 'Unable to update agreement.',
+    userMessage: 'Невозможно обновить договор.',
+  },
+  'agreement:validate:notUniqueAgreementNumber': {
+    type: 'BadRequest',
+    statusCode: HttpStatus.BAD_REQUEST,
+    errorMessage: 'Agreement number already exists.',
+    userMessage: 'Номер договора уже существует.',
+  },
+
+  /** -------------------- agreementStatus -------------------- */
+
+  'agreementStatus:create:unableToCreateAgreementStatus': {
+    type: 'BadRequest',
+    statusCode: HttpStatus.BAD_REQUEST,
+    errorMessage: 'Unable to create agreement status name.',
+    userMessage: 'Невозможно создать наименование договора.',
+  },
+  'agreementStatus:update:unableToUpdateAgreementStatus': {
+    type: 'BadRequest',
+    statusCode: HttpStatus.BAD_REQUEST,
+    errorMessage: 'Unable to update agreement status name.',
+    userMessage: 'Невозможно обновить наименование статуса договора.',
+  },
+  'agreementStatus:validate:notUniqueAgreementStatusName': {
+    type: 'BadRequest',
+    statusCode: HttpStatus.BAD_REQUEST,
+    errorMessage: 'Agreement status name already exists.',
+    userMessage: 'Наименование статуса договора уже существует.',
+  },
+
+  /** -------------------- position -------------------- */
+
+  'position:create:unableToCreatePosition': {
+    type: 'BadRequest',
+    statusCode: HttpStatus.BAD_REQUEST,
+    errorMessage: 'Unable to create position.',
+    userMessage: 'Невозможно создать должность.',
+  },
+  'position:update:unableToUpdatePosition': {
+    type: 'BadRequest',
+    statusCode: HttpStatus.BAD_REQUEST,
+    errorMessage: 'Unable to update position.',
+    userMessage: 'Невозможно обновить должность.',
+  },
+  'position:validate:notUniquePositionName': {
+    type: 'BadRequest',
+    statusCode: HttpStatus.BAD_REQUEST,
+    errorMessage: 'Position name already exists.',
+    userMessage: 'Наименование должности уже существует.',
+  },
+
+  /** -------------------- employeePosition -------------------- */
+
+  'employeePosition:create:unableToCreateEmployeePosition': {
+    type: 'BadRequest',
+    statusCode: HttpStatus.BAD_REQUEST,
+    errorMessage: 'Unable to create employeePosition.',
+    userMessage: 'Невозможно создать должность сотрудника.',
+  },
+  'employeePosition:update:unableToUpdateEmployeePosition': {
+    type: 'BadRequest',
+    statusCode: HttpStatus.BAD_REQUEST,
+    errorMessage: 'Unable to update employeePosition.',
+    userMessage: 'Невозможно обновить должность сотрудника.',
+  },
+
+  /** -------------------- operationMode -------------------- */
+
+  'operationMode:create:unableToCreateOperationMode': {
+    type: 'BadRequest',
+    statusCode: HttpStatus.BAD_REQUEST,
+    errorMessage: 'Unable to create operation mode name.',
+    userMessage: 'Невозможно создать режим работы.',
+  },
+  'operationMode:update:unableToUpdateOperationMode': {
+    type: 'BadRequest',
+    statusCode: HttpStatus.BAD_REQUEST,
+    errorMessage: 'Unable to update operation mode name.',
+    userMessage: 'Невозможно обновить режим работы.',
+  },
+  'operationMode:validate:notUniqueOperationModeName': {
+    type: 'BadRequest',
+    statusCode: HttpStatus.BAD_REQUEST,
+    errorMessage: 'Operation mode name already exists.',
+    userMessage: 'Наименование режима работы уже существует.',
+  },
+
+  /** -------------------- employeeStatus -------------------- */
+
+  'employeeStatus:create:unableToCreateEmployeeStatus': {
+    type: 'BadRequest',
+    statusCode: HttpStatus.BAD_REQUEST,
+    errorMessage: 'Unable to create employee status name.',
+    userMessage: 'Невозможно создать статус сотрудника.',
+  },
+  'employeeStatus:update:unableToUpdateEmployeeStatus': {
+    type: 'BadRequest',
+    statusCode: HttpStatus.BAD_REQUEST,
+    errorMessage: 'Unable to update employee status name.',
+    userMessage: 'Невозможно обновить статус сотрудника.',
+  },
+
+  /** -------------------- bonusCategory -------------------- */
+
+  'bonusCategory:create:unableToCreateBonusCategory': {
+    type: 'BadRequest',
+    statusCode: HttpStatus.BAD_REQUEST,
+    errorMessage: 'Unable to create bonus category name.',
+    userMessage: 'Невозможно создать категорию НиУ.',
+  },
+  'bonusCategory:update:unableToUpdateBonusCategory': {
+    type: 'BadRequest',
+    statusCode: HttpStatus.BAD_REQUEST,
+    errorMessage: 'Unable to update bonus category name.',
+    userMessage: 'Невозможно обновить категорию НиУ.',
+  },
+  'bonusCategory:validate:notUniqueBonusCategoryName': {
+    type: 'BadRequest',
+    statusCode: HttpStatus.BAD_REQUEST,
+    errorMessage: 'Employee status name already exists.',
+    userMessage: 'Наименование категории НиУ уже существует.',
+  },
+
+  /** -------------------- bonus -------------------- */
+
+  'bonus:create:unableToCreateBonus': {
+    type: 'BadRequest',
+    statusCode: HttpStatus.BAD_REQUEST,
+    errorMessage: 'Unable to create bonus.',
+    userMessage: 'Невозможно создать запись НиУ.',
+  },
+  'bonus:update:unableToUpdateBonus': {
+    type: 'BadRequest',
+    statusCode: HttpStatus.BAD_REQUEST,
+    errorMessage: 'Unable to update bonus.',
+    userMessage: 'Невозможно обновить запись НиУ.',
+  },
+  'bonus:validate:notUniqueBonusName': {
+    type: 'BadRequest',
+    statusCode: HttpStatus.BAD_REQUEST,
+    errorMessage: 'Bonus name already exists.',
+    userMessage: 'Наименование НиУ уже существует.',
+  },
+
+  /** -------------------- employeeBonus -------------------- */
+
+  'employeeBonus:create:unableToCreateEmployeeBonus': {
+    type: 'BadRequest',
+    statusCode: HttpStatus.BAD_REQUEST,
+    errorMessage: 'Unable to create employee bonus.',
+    userMessage: 'Невозможно создать НиУ сотрудника.',
+  },
+  'employeeBonus:update:unableToUpdateEmployeeBonus': {
+    type: 'BadRequest',
+    statusCode: HttpStatus.BAD_REQUEST,
+    errorMessage: 'Unable to update employee bonus.',
+    userMessage: 'Невозможно обновить НиУ сотрудника.',
+  },
+
+  /** -------------------- employee -------------------- */
+
+  'employee:create:unableToCreateEmployee': {
+    type: 'BadRequest',
+    statusCode: HttpStatus.BAD_REQUEST,
+    errorMessage: 'Unable to create employee.',
+    userMessage: 'Невозможно создать сотрудника.',
+  },
+  'employee:update:unableToUpdateEmployee': {
+    type: 'BadRequest',
+    statusCode: HttpStatus.BAD_REQUEST,
+    errorMessage: 'Unable to update employee.',
+    userMessage: 'Невозможно обновить сотрудника.',
+  },
+  'employee:validate:notUniquePassportNumber': {
+    type: 'BadRequest',
+    statusCode: HttpStatus.BAD_REQUEST,
+    errorMessage: 'Passport number already exists.',
+    userMessage: 'Такой номер паспорта уже существует.',
   },
 };

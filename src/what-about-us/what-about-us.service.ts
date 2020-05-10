@@ -100,7 +100,7 @@ export class WhatAboutUsService {
   @CheckIsValueUnique(
     'whatAboutUsNameFind',
     'whatAboutUsName',
-    'whatAboutUs:validate:notUniqueWhatAboutUs',
+    'whatAboutUs:validate:notUniqueWhatAboutUsName',
   )
   async whatAboutUsUpdate(data: WhatAboutUsUpdateInput): Promise<WhatAboutUs> {
     try {

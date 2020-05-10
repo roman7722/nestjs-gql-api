@@ -1,6 +1,8 @@
+import { isEmpty } from 'lodash';
 import { Op, Transaction } from 'sequelize';
 import { BadRequestException, Inject, Injectable } from '@nestjs/common';
 import City from '../city/city.model';
+import { CheckIsValueUnique, OptimisticLocking } from '../common/decorators';
 import { MessageCodeError } from '../common/error';
 import District from '../district/district.model';
 import FamilyStatus from '../family-status/family-status.model';
@@ -32,9 +34,48 @@ export class WardService {
     }
   }
 
-  // TODO: Добавить проверку на уникальность полей ()
+  async wardList(
+    textFilter: string,
+    page: number,
+    paging: number,
+  ): Promise<Ward[] | undefined> {
+    try {
+      const iRegexp: string = isEmpty(textFilter)
+        ? ``
+        : `(^${textFilter})|( ${textFilter})`;
+      return await this.WARD_REPOSITORY.findAll<Ward>({
+        limit: paging,
+        offset: (page - 1) * paging,
+        include: [User, City, District, Quarter, FamilyStatus, SocialStatus],
+        where: {
+          employeeName: {
+            [Op.iRegexp]: iRegexp,
+          },
+        },
+        order: [['wardName', 'ASC']],
+      });
+    } catch (error) {
+      throw new BadRequestException();
+    }
+  }
+
+  async passportNumberFind(passportNumber: string): Promise<Ward> {
+    try {
+      return await this.WARD_REPOSITORY.findOne<Ward | undefined>({
+        where: { passportNumber },
+      });
+    } catch (error) {
+      throw new BadRequestException();
+    }
+  }
+
+  @CheckIsValueUnique(
+    'passportNumberFind',
+    'passportNumber',
+    'ward:validate:notUniquePassportNumber',
+  )
   async wardCreate(data: WardCreateInput): Promise<any> {
-    const { socialStatusesList, ...rest } = data;
+    const { socialStatusesIds, ...rest } = data;
     let transaction: Transaction;
 
     try {
@@ -46,11 +87,11 @@ export class WardService {
 
       const newId: number = result.getDataValue('id');
 
-      if (socialStatusesList) {
+      if (socialStatusesIds) {
         await this.wardSocialStatusService.wardSocialStatusesCreate(
           {
             wardId: newId,
-            socialStatusesIds: socialStatusesList,
+            socialStatusesIds,
           },
           transaction,
         );
@@ -62,12 +103,23 @@ export class WardService {
     } catch (error) {
       transaction.rollback();
 
-      throw new MessageCodeError('ward:create:unableToCreateWard');
+      switch (error.messageCode) {
+        case 'ward:validate:notUniquePassportNumber':
+          throw new MessageCodeError('ward:validate:notUniquePassportNumber');
+        default:
+          throw new MessageCodeError('ward:create:unableToCreateWard');
+      }
     }
   }
 
+  @OptimisticLocking(true)
+  @CheckIsValueUnique(
+    'passportNumberFind',
+    'passportNumber',
+    'ward:validate:notUniquePassportNumber',
+  )
   async wardUpdate(data: WardUpdateInput): Promise<any> {
-    const { socialStatusesList, ...rest } = data;
+    const { socialStatusesIds, ...rest } = data;
     const { id } = rest;
 
     let transaction: Transaction;
@@ -87,7 +139,7 @@ export class WardService {
         {
           wardId: id,
           oldSocialStatusesIds,
-          newSocialStatusesIds: socialStatusesList,
+          newSocialStatusesIds: socialStatusesIds,
         },
         transaction,
       );
@@ -106,24 +158,30 @@ export class WardService {
     } catch (error) {
       transaction.rollback();
 
-      throw new MessageCodeError('ward:update:unableToUpdateWard');
+      switch (error.messageCode) {
+        case 'ward:validate:notUniquePassportNumber':
+          throw new MessageCodeError('ward:validate:notUniquePassportNumber');
+        default:
+          throw new MessageCodeError('ward:update:unableToUpdateWard');
+      }
     }
   }
 
+  @OptimisticLocking(false)
   async wardDelete(data: WardDeleteInput): Promise<Number> {
-    const { id, version } = data;
+    const { id } = data;
     let transaction: Transaction;
 
     try {
       transaction = await this.SEQUELIZE.transaction();
+
       await this.wardSocialStatusService.deleteAllWardSocialStatusesByWardId(
         id,
         transaction,
       );
+
       const result = await this.WARD_REPOSITORY.destroy({
-        where: {
-          [Op.and]: [{ id }, { version }],
-        },
+        where: { id },
         transaction,
       });
 
@@ -132,6 +190,7 @@ export class WardService {
       return result;
     } catch (error) {
       transaction.rollback();
+
       throw new BadRequestException();
     }
   }

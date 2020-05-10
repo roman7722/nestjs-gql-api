@@ -1,9 +1,9 @@
-import { Int } from 'type-graphql';
 import { UseGuards } from '@nestjs/common';
-import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
+import { Args, Int, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { Roles } from '../auth/decorators/roles.decorator';
 import { GqlAuthGuard } from '../auth/guards/gql-auth.guard';
 import { RolesGuard } from '../auth/guards/roles.guard';
+import { WardListArgs } from './args/ward-list.args';
 import { WardArgs } from './args/ward.args';
 import { WardDto } from './dto/ward.dto';
 import { WardCreateInput } from './input/ward-create.input';
@@ -17,9 +17,20 @@ import { WardService } from './ward.service';
 export class WardResolver {
   constructor(private readonly wardService: WardService) {}
 
-  @Query(() => WardDto, { nullable: true })
+  @Query(() => WardDto, {
+    nullable: true,
+    description: 'Поиск подопечного по id',
+  })
   async ward(@Args() { id }: WardArgs) {
     return await this.wardService.ward(id);
+  }
+
+  @Query(() => [WardDto], {
+    nullable: true,
+    description: 'Поиск подопечного по имени и пагинация',
+  })
+  async wardList(@Args() { textFilter, page, paging }: WardListArgs) {
+    return this.wardService.wardList(textFilter, page, paging);
   }
 
   @Mutation(() => WardDto)

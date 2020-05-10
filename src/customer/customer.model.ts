@@ -9,7 +9,7 @@ import User from '../user/user.model';
 import Ward from '../ward/ward.model';
 import WhatAboutUs from '../what-about-us/what-about-us.model';
 
-@Table({ tableName: 's_customer' })
+@Table({ tableName: 'customer', timestamps: true })
 export default class Customer extends Model<Customer> {
   @Column({ primaryKey: true, autoIncrement: true }) id: number;
 
@@ -19,7 +19,7 @@ export default class Customer extends Model<Customer> {
   userId: number;
   @BelongsTo(() => User) user: User;
 
-  @Column({ allowNull: true }) customerName: string;
+  @Column({ allowNull: false }) customerName: string;
 
   /** Many-to-one */
   @ForeignKey(() => SubjectCategory)
@@ -37,6 +37,7 @@ export default class Customer extends Model<Customer> {
   @Column({ allowNull: true }) email: string;
   @Column({ allowNull: true }) passportNumber: string;
   @Column({ allowNull: true }) passportIssuedBy: string;
+
   @Column({ allowNull: true }) passportIssuedDate: Date;
 
   /** Many-to-one */

@@ -15,7 +15,7 @@ export class WardStageProgressService {
   constructor(
     @Inject('WARD_STAGE_PROGRESS_REPOSITORY')
     private readonly WARD_STAGE_PROGRESS_REPOSITORY: typeof WardStageProgress,
-  ) {}
+  ) { }
 
   public async checkVersion(
     id: string,
@@ -67,7 +67,7 @@ export class WardStageProgressService {
             },
           },
         },
-        order: [['wardStageDate', 'ASC']],
+        order: [['rem', 'ASC']],
       });
     } catch (error) {
       throw new BadRequestException();

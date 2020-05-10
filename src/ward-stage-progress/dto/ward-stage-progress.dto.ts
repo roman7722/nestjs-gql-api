@@ -1,4 +1,4 @@
-import { Field, ID, Int, ObjectType } from 'type-graphql';
+import { Field, ID, Int, ObjectType } from '@nestjs/graphql';
 import { WardStageDto } from '../../ward-stage/dto/ward-stage.dto';
 import { WardDto } from '../../ward/dto/ward.dto';
 

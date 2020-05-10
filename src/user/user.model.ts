@@ -1,11 +1,13 @@
 import { BelongsTo, Column, ForeignKey, HasMany, Model, Table } from 'sequelize-typescript';
 import Agreement from '../agreement/agreement.model';
 import Customer from '../customer/customer.model';
+import EmployeeBonus from '../employee-bonus/employee-bonus.model';
+import EmployeePosition from '../employee-position/employee-position.model';
 import Session from '../session/session.model';
 import UserRole from '../user-role/user-role.model';
 import Ward from '../ward/ward.model';
 
-@Table({ tableName: 's_user' })
+@Table({ tableName: 'user', timestamps: true })
 export default class User extends Model<User> {
   @Column({ primaryKey: true, autoIncrement: true }) id: number;
   @Column({ allowNull: true }) firstName: string;
@@ -31,4 +33,6 @@ export default class User extends Model<User> {
   @HasMany(() => Session) sessions: Session[];
   @HasMany(() => Ward) wards: Ward[];
   @HasMany(() => Customer) customers: Customer[];
+  @HasMany(() => EmployeeBonus) employeeBonuses: EmployeeBonus[];
+  @HasMany(() => EmployeePosition) EmployeePositions: EmployeePosition[];
 }
