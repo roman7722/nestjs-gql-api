@@ -3,9 +3,9 @@ import { Op } from 'sequelize';
 import { BadRequestException, Inject, Injectable } from '@nestjs/common';
 import { CheckIsValueUnique, OptimisticLocking } from '../common/decorators';
 import { MessageCodeError } from '../common/error/MessageCodeError';
-import { PaymentFormCreateInput } from './input/payment-form-create.input';
-import { PaymentFormDeleteInput } from './input/payment-form-delete.input';
-import { PaymentFormUpdateInput } from './input/payment-form-update.input';
+import { PaymentFormCreateInputDto } from './dto/input/payment-form-create.input.dto';
+import { PaymentFormDeleteInputDto } from './dto/input/payment-form-delete.input.dto';
+import { PaymentFormUpdateInputDto } from './dto/input/payment-form-update.input.dto';
 import PaymentForm from './payment-form.model';
 
 @Injectable()
@@ -79,7 +79,9 @@ export class PaymentFormService {
     'paymentFormName',
     'paymentForm:validate:notUniquePaymentFormName',
   )
-  async paymentFormCreate(data: PaymentFormCreateInput): Promise<PaymentForm> {
+  async paymentFormCreate(
+    data: PaymentFormCreateInputDto,
+  ): Promise<PaymentForm> {
     try {
       return await this.PAYMENT_FORM_REPOSITORY.create<PaymentForm>(data);
     } catch (error) {
@@ -102,7 +104,9 @@ export class PaymentFormService {
     'paymentFormName',
     'paymentForm:validate:notUniquePaymentFormName',
   )
-  async paymentFormUpdate(data: PaymentFormUpdateInput): Promise<PaymentForm> {
+  async paymentFormUpdate(
+    data: PaymentFormUpdateInputDto,
+  ): Promise<PaymentForm> {
     try {
       const res = await this.PAYMENT_FORM_REPOSITORY.update<PaymentForm>(data, {
         where: { id: data.id },
@@ -125,7 +129,7 @@ export class PaymentFormService {
   }
 
   @OptimisticLocking(false)
-  async paymentFormDelete(data: PaymentFormDeleteInput): Promise<Number> {
+  async paymentFormDelete(data: PaymentFormDeleteInputDto): Promise<Number> {
     try {
       return await this.PAYMENT_FORM_REPOSITORY.destroy({
         where: { id: data.id },

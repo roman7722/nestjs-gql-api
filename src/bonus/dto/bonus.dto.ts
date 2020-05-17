@@ -6,9 +6,9 @@ export class BonusDto {
   @Field(() => ID, { nullable: true }) id?: number;
   @Field(() => BonusCategoryDto, { nullable: true })
   bonusCategory?: BonusCategoryDto;
-  @Field({ nullable: true }) bonusName?: string;
+  @Field(() => String, { nullable: true }) bonusName?: string;
   @Field(() => Float, { nullable: true }) cost?: number;
-  @Field({ nullable: true }) rem?: string;
+  @Field(() => String, { nullable: true }) rem?: string;
   @Field({ nullable: true }) isCurrentOffer?: boolean;
   @Field(() => Int, { nullable: true }) version?: number;
   @Field({ nullable: true }) createdAt?: Date;

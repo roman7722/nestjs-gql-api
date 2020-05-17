@@ -3,9 +3,9 @@ import { Op } from 'sequelize';
 import { BadRequestException, Inject, Injectable } from '@nestjs/common';
 import { CheckIsValueUnique, OptimisticLocking } from '../common/decorators';
 import { MessageCodeError } from '../common/error/MessageCodeError';
-import { SubjectCategoryCreateInput } from './input/subject-category-create.input';
-import { SubjectCategoryDeleteInput } from './input/subject-category-delete.input';
-import { SubjectCategoryUpdateInput } from './input/subject-category-update.input';
+import { SubjectCategoryCreateInputDto } from './dto/input/subject-category-create.input.dto';
+import { SubjectCategoryDeleteInputDto } from './dto/input/subject-category-delete.input.dto';
+import { SubjectCategoryUpdateInputDto } from './dto/input/subject-category-update.input.dto';
 import SubjectCategory from './subject-category.model';
 
 @Injectable()
@@ -82,7 +82,7 @@ export class SubjectCategoryService {
     'subjectCategory:validate:notUniqueSubjectCategoryName',
   )
   async subjectCategoryCreate(
-    data: SubjectCategoryCreateInput,
+    data: SubjectCategoryCreateInputDto,
   ): Promise<SubjectCategory> {
     try {
       return await this.SUBJECT_CATEGORY_REPOSITORY.create<SubjectCategory>(
@@ -110,7 +110,7 @@ export class SubjectCategoryService {
     'subjectCategory:validate:notUniqueSubjectCategoryName',
   )
   async subjectCategoryUpdate(
-    data: SubjectCategoryUpdateInput,
+    data: SubjectCategoryUpdateInputDto,
   ): Promise<SubjectCategory> {
     try {
       const res = await this.SUBJECT_CATEGORY_REPOSITORY.update<
@@ -138,7 +138,7 @@ export class SubjectCategoryService {
 
   @OptimisticLocking(false)
   async subjectCategoryDelete(
-    data: SubjectCategoryDeleteInput,
+    data: SubjectCategoryDeleteInputDto,
   ): Promise<Number> {
     try {
       return await this.SUBJECT_CATEGORY_REPOSITORY.destroy({

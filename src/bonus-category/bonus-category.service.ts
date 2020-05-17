@@ -4,9 +4,9 @@ import { BadRequestException, Inject, Injectable } from '@nestjs/common';
 import { CheckIsValueUnique, OptimisticLocking } from '../common/decorators';
 import { MessageCodeError } from '../common/error/MessageCodeError';
 import BonusCategory from './bonus-category.model';
-import { BonusCategoryCreateInput } from './input/bonus-category-create.input';
-import { BonusCategoryDeleteInput } from './input/bonus-category-delete.input';
-import { BonusCategoryUpdateInput } from './input/bonus-category-update.input';
+import { BonusCategoryCreateInputDto } from './dto/input/bonus-category-create.input.dto';
+import { BonusCategoryDeleteInputDto } from './dto/input/bonus-category-delete.input.dto';
+import { BonusCategoryUpdateInputDto } from './dto/input/bonus-category-update.input.dto';
 
 @Injectable()
 export class BonusCategoryService {
@@ -62,7 +62,9 @@ export class BonusCategoryService {
     }
   }
 
-  async bonusCategoryNameFind(bonusCategoryName: string): Promise<BonusCategory> {
+  async bonusCategoryNameFind(
+    bonusCategoryName: string,
+  ): Promise<BonusCategory> {
     try {
       return await this.BONUS_CATEGORY_REPOSITORY.findOne<
         BonusCategory | undefined
@@ -80,13 +82,14 @@ export class BonusCategoryService {
     'bonusCategory:validate:notUniqueBonusCategoryName',
   )
   async bonusCategoryCreate(
-    data: BonusCategoryCreateInput,
+    data: BonusCategoryCreateInputDto,
   ): Promise<BonusCategory> {
     try {
       return await this.BONUS_CATEGORY_REPOSITORY.create<BonusCategory>(data);
     } catch (error) {
       if (
-        error.messageCode === 'bonusCategory:validate:notUniqueBonusCategoryName'
+        error.messageCode ===
+        'bonusCategory:validate:notUniqueBonusCategoryName'
       ) {
         throw new MessageCodeError(
           'bonusCategory:validate:notUniqueBonusCategoryName',
@@ -105,7 +108,7 @@ export class BonusCategoryService {
     'bonusCategory:validate:notUniqueBonusCategoryName',
   )
   async bonusCategoryUpdate(
-    data: BonusCategoryUpdateInput,
+    data: BonusCategoryUpdateInputDto,
   ): Promise<BonusCategory> {
     try {
       const res = await this.BONUS_CATEGORY_REPOSITORY.update<BonusCategory>(
@@ -119,7 +122,8 @@ export class BonusCategoryService {
       return val;
     } catch (error) {
       if (
-        error.messageCode === 'bonusCategory:validate:notUniqueBonusCategoryName'
+        error.messageCode ===
+        'bonusCategory:validate:notUniqueBonusCategoryName'
       ) {
         throw new MessageCodeError(
           'bonusCategory:validate:notUniqueBonusCategoryName',
@@ -132,7 +136,9 @@ export class BonusCategoryService {
   }
 
   @OptimisticLocking(false)
-  async bonusCategoryDelete(data: BonusCategoryDeleteInput): Promise<Number> {
+  async bonusCategoryDelete(
+    data: BonusCategoryDeleteInputDto,
+  ): Promise<Number> {
     try {
       return await this.BONUS_CATEGORY_REPOSITORY.destroy({
         where: { id: data.id },

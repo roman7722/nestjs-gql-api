@@ -3,15 +3,16 @@ import { Op } from 'sequelize';
 import { BadRequestException, Inject, Injectable } from '@nestjs/common';
 import { CheckIsValueUnique, OptimisticLocking } from '../common/decorators';
 import { MessageCodeError } from '../common/error/MessageCodeError';
+import { PositionCreateInputDto } from './dto/input/position-create.input.dto';
+import { PositionDeleteInputDto } from './dto/input/position-delete.input.dto';
+import { PositionUpdateInputDto } from './dto/input/position-update.input.dto';
 import Position from './position.model';
-import { PositionCreateInput } from './input/position-create.input';
-import { PositionDeleteInput } from './input/position-delete.input';
-import { PositionUpdateInput } from './input/position-update.input';
 
 @Injectable()
 export class PositionService {
   constructor(
-    @Inject('POSITION_REPOSITORY') private readonly POSITION_REPOSITORY: typeof Position,
+    @Inject('POSITION_REPOSITORY')
+    private readonly POSITION_REPOSITORY: typeof Position,
   ) {}
 
   public async checkVersion(id: number): Promise<Position | undefined> {
@@ -74,7 +75,7 @@ export class PositionService {
     'positionName',
     'position:validate:notUniquePositionName',
   )
-  async positionCreate(data: PositionCreateInput): Promise<Position> {
+  async positionCreate(data: PositionCreateInputDto): Promise<Position> {
     try {
       return await this.POSITION_REPOSITORY.create<Position>(data);
     } catch (error) {
@@ -91,7 +92,7 @@ export class PositionService {
     'positionName',
     'position:validate:notUniquePositionName',
   )
-  async positionUpdate(data: PositionUpdateInput): Promise<Position> {
+  async positionUpdate(data: PositionUpdateInputDto): Promise<Position> {
     try {
       const res = await this.POSITION_REPOSITORY.update<Position>(data, {
         where: { id: data.id },
@@ -108,7 +109,7 @@ export class PositionService {
   }
 
   @OptimisticLocking(false)
-  async positionDelete(data: PositionDeleteInput): Promise<Number> {
+  async positionDelete(data: PositionDeleteInputDto): Promise<Number> {
     try {
       return await this.POSITION_REPOSITORY.destroy({
         where: { id: data.id },

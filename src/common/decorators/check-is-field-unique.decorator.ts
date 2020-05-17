@@ -11,7 +11,7 @@ export const CheckIsValueUnique = (
 ) => (target: any, key: string, descriptor: any) => {
   const originalMethod = descriptor.value;
 
-  descriptor.value = async function(data: any) {
+  descriptor.value = async function (data: any) {
     const { id } = data;
     const fieldValue = data[fieldName];
     const result = await target[checkerKey].call(this, fieldValue);
@@ -19,7 +19,7 @@ export const CheckIsValueUnique = (
     const existsId = result?.getDataValue('id');
     const existsValue = result?.getDataValue(fieldName);
 
-    if (existsValue && (existsId !== id || fieldName === 'id')) {
+    if (existsValue && existsId !== id) {
       throw new MessageCodeError(notUniqueErrCode);
     }
 

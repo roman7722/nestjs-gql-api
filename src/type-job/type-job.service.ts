@@ -3,9 +3,9 @@ import { Op } from 'sequelize';
 import { BadRequestException, Inject, Injectable } from '@nestjs/common';
 import { CheckIsValueUnique, OptimisticLocking } from '../common/decorators';
 import { MessageCodeError } from '../common/error/MessageCodeError';
-import { TypeJobCreateInput } from './input/type-job-create.input';
-import { TypeJobDeleteInput } from './input/type-job-delete.input';
-import { TypeJobUpdateInput } from './input/type-job-update.input';
+import { TypeJobCreateInputDto } from './dto/input/type-job-create.input.dto';
+import { TypeJobDeleteInputDto } from './dto/input/type-job-delete.input.dto';
+import { TypeJobUpdateInputDto } from './dto/input/type-job-update.input.dto';
 import TypeJob from './type-job.model';
 
 @Injectable()
@@ -28,9 +28,7 @@ export class TypeJobService {
 
   async typeJob(id: number): Promise<TypeJob> {
     try {
-      return await this.TYPE_JOB_REPOSITORY.findOne<
-        TypeJob | undefined
-      >({
+      return await this.TYPE_JOB_REPOSITORY.findOne<TypeJob | undefined>({
         where: { id },
       });
     } catch (error) {
@@ -64,9 +62,7 @@ export class TypeJobService {
 
   async typeJobNameFind(typeJobName: string): Promise<TypeJob> {
     try {
-      return await this.TYPE_JOB_REPOSITORY.findOne<
-        TypeJob | undefined
-      >({
+      return await this.TYPE_JOB_REPOSITORY.findOne<TypeJob | undefined>({
         where: { typeJobName },
       });
     } catch (error) {
@@ -79,22 +75,14 @@ export class TypeJobService {
     'typeJobName',
     'typeJob:validate:notUniqueTypeJobName',
   )
-  async typeJobCreate(
-    data: TypeJobCreateInput,
-  ): Promise<TypeJob> {
+  async typeJobCreate(data: TypeJobCreateInputDto): Promise<TypeJob> {
     try {
       return await this.TYPE_JOB_REPOSITORY.create<TypeJob>(data);
     } catch (error) {
-      if (
-        error.messageCode === 'typeJob:validate:notUniqueTypeJobName'
-      ) {
-        throw new MessageCodeError(
-          'typeJob:validate:notUniqueTypeJobName',
-        );
+      if (error.messageCode === 'typeJob:validate:notUniqueTypeJobName') {
+        throw new MessageCodeError('typeJob:validate:notUniqueTypeJobName');
       }
-      throw new MessageCodeError(
-        'typeJob:create:unableToCreateTypeJob',
-      );
+      throw new MessageCodeError('typeJob:create:unableToCreateTypeJob');
     }
   }
 
@@ -104,35 +92,24 @@ export class TypeJobService {
     'typeJobName',
     'typeJob:validate:notUniqueTypeJobName',
   )
-  async typeJobUpdate(
-    data: TypeJobUpdateInput,
-  ): Promise<TypeJob> {
+  async typeJobUpdate(data: TypeJobUpdateInputDto): Promise<TypeJob> {
     try {
-      const res = await this.TYPE_JOB_REPOSITORY.update<TypeJob>(
-        data,
-        {
-          where: { id: data.id },
-          returning: true,
-        },
-      );
+      const res = await this.TYPE_JOB_REPOSITORY.update<TypeJob>(data, {
+        where: { id: data.id },
+        returning: true,
+      });
       const [, [val]] = res;
       return val;
     } catch (error) {
-      if (
-        error.messageCode === 'typeJob:validate:notUniqueTypeJobName'
-      ) {
-        throw new MessageCodeError(
-          'typeJob:validate:notUniqueTypeJobName',
-        );
+      if (error.messageCode === 'typeJob:validate:notUniqueTypeJobName') {
+        throw new MessageCodeError('typeJob:validate:notUniqueTypeJobName');
       }
-      throw new MessageCodeError(
-        'typeJob:update:unableToUpdateTypeJob',
-      );
+      throw new MessageCodeError('typeJob:update:unableToUpdateTypeJob');
     }
   }
 
   @OptimisticLocking(false)
-  async typeJobDelete(data: TypeJobDeleteInput): Promise<Number> {
+  async typeJobDelete(data: TypeJobDeleteInputDto): Promise<Number> {
     try {
       return await this.TYPE_JOB_REPOSITORY.destroy({
         where: { id: data.id },

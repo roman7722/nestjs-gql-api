@@ -3,10 +3,10 @@ import { Op } from 'sequelize';
 import { BadRequestException, Inject, Injectable } from '@nestjs/common';
 import { CheckIsValueUnique, OptimisticLocking } from '../common/decorators';
 import { MessageCodeError } from '../common/error/MessageCodeError';
+import { OperationModeCreateInputDto } from './dto/input/operation-mode-create.input.dto';
+import { OperationModeDeleteInputDto } from './dto/input/operation-mode-delete.input.dto';
+import { OperationModeUpdateInputDto } from './dto/input/operation-mode-update.input.dto';
 import OperationMode from './operation-mode.model';
-import { OperationModeCreateInput } from './input/operation-mode-create.input';
-import { OperationModeDeleteInput } from './input/operation-mode-delete.input';
-import { OperationModeUpdateInput } from './input/operation-mode-update.input';
 
 @Injectable()
 export class OperationModeService {
@@ -62,7 +62,9 @@ export class OperationModeService {
     }
   }
 
-  async operationModeNameFind(operationModeName: string): Promise<OperationMode> {
+  async operationModeNameFind(
+    operationModeName: string,
+  ): Promise<OperationMode> {
     try {
       return await this.OPERATION_MODE_REPOSITORY.findOne<
         OperationMode | undefined
@@ -80,13 +82,14 @@ export class OperationModeService {
     'operationMode:validate:notUniqueOperationModeName',
   )
   async operationModeCreate(
-    data: OperationModeCreateInput,
+    data: OperationModeCreateInputDto,
   ): Promise<OperationMode> {
     try {
       return await this.OPERATION_MODE_REPOSITORY.create<OperationMode>(data);
     } catch (error) {
       if (
-        error.messageCode === 'operationMode:validate:notUniqueOperationModeName'
+        error.messageCode ===
+        'operationMode:validate:notUniqueOperationModeName'
       ) {
         throw new MessageCodeError(
           'operationMode:validate:notUniqueOperationModeName',
@@ -105,7 +108,7 @@ export class OperationModeService {
     'operationMode:validate:notUniqueOperationModeName',
   )
   async operationModeUpdate(
-    data: OperationModeUpdateInput,
+    data: OperationModeUpdateInputDto,
   ): Promise<OperationMode> {
     try {
       const res = await this.OPERATION_MODE_REPOSITORY.update<OperationMode>(
@@ -119,7 +122,8 @@ export class OperationModeService {
       return val;
     } catch (error) {
       if (
-        error.messageCode === 'operationMode:validate:notUniqueOperationModeName'
+        error.messageCode ===
+        'operationMode:validate:notUniqueOperationModeName'
       ) {
         throw new MessageCodeError(
           'operationMode:validate:notUniqueOperationModeName',
@@ -132,7 +136,9 @@ export class OperationModeService {
   }
 
   @OptimisticLocking(false)
-  async operationModeDelete(data: OperationModeDeleteInput): Promise<Number> {
+  async operationModeDelete(
+    data: OperationModeDeleteInputDto,
+  ): Promise<Number> {
     try {
       return await this.OPERATION_MODE_REPOSITORY.destroy({
         where: { id: data.id },

@@ -12,7 +12,10 @@ export class WardDto {
   @Field(() => ID, { nullable: true }) id?: number;
   @Field(() => UserDto, { nullable: true }) user?: UserDto;
   @Field(() => CustomerDto, { nullable: true }) customer?: CustomerDto;
-  @Field({ nullable: true }) wardName?: string;
+  @Field({ nullable: true }) firstName?: string;
+  @Field({ nullable: true }) middleName?: string;
+  @Field({ nullable: true }) secondName?: string;
+  @Field({ nullable: true }) displayName?: string;
   @Field({ nullable: true }) hbDate?: Date;
   @Field({ nullable: true }) passportNumber?: string;
   @Field({ nullable: true }) passportIssuedBy?: string;

@@ -380,14 +380,14 @@ export const errorMessagesConfig: { [messageCode: string]: IErrorMessages } = {
   'agreementStatus:create:unableToCreateAgreementStatus': {
     type: 'BadRequest',
     statusCode: HttpStatus.BAD_REQUEST,
-    errorMessage: 'Unable to create agreement status name.',
-    userMessage: 'Невозможно создать наименование договора.',
+    errorMessage: 'Unable to create agreement status.',
+    userMessage: 'Невозможно создать статус договора.',
   },
   'agreementStatus:update:unableToUpdateAgreementStatus': {
     type: 'BadRequest',
     statusCode: HttpStatus.BAD_REQUEST,
-    errorMessage: 'Unable to update agreement status name.',
-    userMessage: 'Невозможно обновить наименование статуса договора.',
+    errorMessage: 'Unable to update agreement status.',
+    userMessage: 'Невозможно обновить статуса договора.',
   },
   'agreementStatus:validate:notUniqueAgreementStatusName': {
     type: 'BadRequest',
@@ -544,5 +544,62 @@ export const errorMessagesConfig: { [messageCode: string]: IErrorMessages } = {
     statusCode: HttpStatus.BAD_REQUEST,
     errorMessage: 'Passport number already exists.',
     userMessage: 'Такой номер паспорта уже существует.',
+  },
+
+  /** -------------------- paymentStatus -------------------- */
+
+  'paymentStatus:create:unableToCreatePaymentStatus': {
+    type: 'BadRequest',
+    statusCode: HttpStatus.BAD_REQUEST,
+    errorMessage: 'Unable to create payment status.',
+    userMessage: 'Невозможно создать статус оплаты.',
+  },
+  'paymentStatus:update:unableToUpdatePaymentStatus': {
+    type: 'BadRequest',
+    statusCode: HttpStatus.BAD_REQUEST,
+    errorMessage: 'Unable to update payment status.',
+    userMessage: 'Невозможно обновить статус оплаты.',
+  },
+  'paymentStatus:validate:notUniquePaymentStatusName': {
+    type: 'BadRequest',
+    statusCode: HttpStatus.BAD_REQUEST,
+    errorMessage: 'Payment status name already exists.',
+    userMessage: 'Наименование статуса оплаты уже существует.',
+  },
+
+  /** -------------------- executionStatus -------------------- */
+
+  'executionStatus:create:unableToCreateExecutionStatus': {
+    type: 'BadRequest',
+    statusCode: HttpStatus.BAD_REQUEST,
+    errorMessage: 'Unable to create execution status.',
+    userMessage: 'Невозможно создать статус выполнения.',
+  },
+  'executionStatus:update:unableToUpdateExecutionStatus': {
+    type: 'BadRequest',
+    statusCode: HttpStatus.BAD_REQUEST,
+    errorMessage: 'Unable to update execution status.',
+    userMessage: 'Невозможно обновить статус выполнения.',
+  },
+  'executionStatus:validate:notUniqueExecutionStatusName': {
+    type: 'BadRequest',
+    statusCode: HttpStatus.BAD_REQUEST,
+    errorMessage: 'Execution status name already exists.',
+    userMessage: 'Наименование статуса выполнения уже существует.',
+  },
+
+  /** -------------------- servicePack -------------------- */
+
+  'servicePack:create:unableToCreateServicePack': {
+    type: 'BadRequest',
+    statusCode: HttpStatus.BAD_REQUEST,
+    errorMessage: 'Unable to create service pack.',
+    userMessage: 'Невозможно создать пакет услуг.',
+  },
+  'servicePack:update:unableToUpdateServicePack': {
+    type: 'BadRequest',
+    statusCode: HttpStatus.BAD_REQUEST,
+    errorMessage: 'Unable to update service pack.',
+    userMessage: 'Невозможно обновить пакет услуг.',
   },
 };

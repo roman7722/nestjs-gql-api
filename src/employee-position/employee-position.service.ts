@@ -3,10 +3,10 @@ import { Op } from 'sequelize';
 import { BadRequestException, Inject, Injectable } from '@nestjs/common';
 import { OptimisticLocking } from '../common/decorators';
 import { MessageCodeError } from '../common/error/MessageCodeError';
+import { EmployeePositionCreateInputDto } from './dto/input/employee-position-create.input.dto';
+import { EmployeePositionDeleteInputDto } from './dto/input/employee-position-delete.input.dto';
+import { EmployeePositionUpdateInputDto } from './dto/input/employee-position-update.input.dto';
 import EmployeePosition from './employee-position.model';
-import { EmployeePositionCreateInput } from './input/employee-position-create.input';
-import { EmployeePositionDeleteInput } from './input/employee-position-delete.input';
-import { EmployeePositionUpdateInput } from './input/employee-position-update.input';
 
 @Injectable()
 export class EmployeePositionService {
@@ -63,7 +63,7 @@ export class EmployeePositionService {
   }
 
   async employeePositionCreate(
-    data: EmployeePositionCreateInput,
+    data: EmployeePositionCreateInputDto,
   ): Promise<EmployeePosition> {
     try {
       return await this.EMPLOYEE_POSITION_REPOSITORY.create<EmployeePosition>(
@@ -78,7 +78,7 @@ export class EmployeePositionService {
 
   @OptimisticLocking(true)
   async employeePositionUpdate(
-    data: EmployeePositionUpdateInput,
+    data: EmployeePositionUpdateInputDto,
   ): Promise<EmployeePosition> {
     try {
       const res = await this.EMPLOYEE_POSITION_REPOSITORY.update<
@@ -98,7 +98,7 @@ export class EmployeePositionService {
 
   @OptimisticLocking(false)
   async employeePositionDelete(
-    data: EmployeePositionDeleteInput,
+    data: EmployeePositionDeleteInputDto,
   ): Promise<Number> {
     try {
       return await this.EMPLOYEE_POSITION_REPOSITORY.destroy({

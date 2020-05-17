@@ -1,4 +1,4 @@
-import { BelongsTo, Column, ForeignKey, HasMany, Model, Table } from 'sequelize-typescript';
+import { BelongsTo, Column, DataType, ForeignKey, HasMany, Model, Table } from 'sequelize-typescript';
 import Agreement from '../agreement/agreement.model';
 import Customer from '../customer/customer.model';
 import EmployeeBonus from '../employee-bonus/employee-bonus.model';
@@ -23,8 +23,12 @@ export default class User extends Model<User> {
   /** Many-to-one */
   @ForeignKey(() => UserRole)
   @Column({ allowNull: false })
-  roleId: string;
-  @BelongsTo(() => UserRole) role: UserRole;
+  userRoleName: string;
+  @BelongsTo(() => UserRole, {
+    targetKey: 'userRoleName',
+    keyType: DataType.STRING,
+  })
+  userRole: UserRole;
 
   @Column({ allowNull: false, defaultValue: 1 }) version: number;
 

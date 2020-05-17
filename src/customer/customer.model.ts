@@ -19,7 +19,10 @@ export default class Customer extends Model<Customer> {
   userId: number;
   @BelongsTo(() => User) user: User;
 
-  @Column({ allowNull: false }) customerName: string;
+  @Column({ allowNull: true }) firstName: string;
+  @Column({ allowNull: true }) middleName: string;
+  @Column({ allowNull: true }) secondName: string;
+  @Column({ allowNull: true }) displayName: string;
 
   /** Many-to-one */
   @ForeignKey(() => SubjectCategory)

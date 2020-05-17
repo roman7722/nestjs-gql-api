@@ -3,13 +3,13 @@ import { Args, Int, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { Roles } from '../auth/decorators/roles.decorator';
 import { GqlAuthGuard } from '../auth/guards/gql-auth.guard';
 import { RolesGuard } from '../auth/guards/roles.guard';
-import { EmployeePositionListArgs } from './args/employee-position-list.args';
-import { EmployeePositionArgs } from './args/employee-position.args';
+import { EmployeePositionListArgsDto } from './dto/args/employee-position-list.args.dto';
+import { EmployeePositionArgsDto } from './dto/args/employee-position.args.dto';
 import { EmployeePositionDto } from './dto/employee-position.dto';
+import { EmployeePositionCreateInputDto } from './dto/input/employee-position-create.input.dto';
+import { EmployeePositionDeleteInputDto } from './dto/input/employee-position-delete.input.dto';
+import { EmployeePositionUpdateInputDto } from './dto/input/employee-position-update.input.dto';
 import { EmployeePositionService } from './employee-position.service';
-import { EmployeePositionCreateInput } from './input/employee-position-create.input';
-import { EmployeePositionDeleteInput } from './input/employee-position-delete.input';
-import { EmployeePositionUpdateInput } from './input/employee-position-update.input';
 
 @Resolver()
 @UseGuards(GqlAuthGuard, RolesGuard)
@@ -23,7 +23,7 @@ export class EmployeePositionResolver {
     nullable: true,
     description: 'Поиск социального статуса по id',
   })
-  async employeePosition(@Args() { id }: EmployeePositionArgs) {
+  async employeePosition(@Args() { id }: EmployeePositionArgsDto) {
     return await this.employeePositionService.employeePosition(id);
   }
 
@@ -32,7 +32,7 @@ export class EmployeePositionResolver {
     description: 'Поиск социального статуса по наименованию и пагинация',
   })
   async employeePositionList(
-    @Args() { textFilter, page, paging }: EmployeePositionListArgs,
+    @Args() { textFilter, page, paging }: EmployeePositionListArgsDto,
   ) {
     return this.employeePositionService.employeePositionList(
       textFilter,
@@ -43,21 +43,21 @@ export class EmployeePositionResolver {
 
   @Mutation(() => EmployeePositionDto)
   async employeePositionCreate(
-    @Args('data') data: EmployeePositionCreateInput,
+    @Args('data') data: EmployeePositionCreateInputDto,
   ) {
     return await this.employeePositionService.employeePositionCreate(data);
   }
 
   @Mutation(() => EmployeePositionDto)
   async employeePositionUpdate(
-    @Args('data') data: EmployeePositionUpdateInput,
+    @Args('data') data: EmployeePositionUpdateInputDto,
   ) {
     return await this.employeePositionService.employeePositionUpdate(data);
   }
 
   @Mutation(() => Int)
   async employeePositionDelete(
-    @Args('data') data: EmployeePositionDeleteInput,
+    @Args('data') data: EmployeePositionDeleteInputDto,
   ) {
     return await this.employeePositionService.employeePositionDelete(data);
   }

@@ -4,9 +4,9 @@ import { BadRequestException, Inject, Injectable } from '@nestjs/common';
 import { CheckIsValueUnique, OptimisticLocking } from '../common/decorators';
 import { MessageCodeError } from '../common/error/MessageCodeError';
 import Bonus from './bonus.model';
-import { BonusCreateInput } from './input/bonus-create.input';
-import { BonusDeleteInput } from './input/bonus-delete.input';
-import { BonusUpdateInput } from './input/bonus-update.input';
+import { BonusCreateInputDto } from './dto/input/bonus-create.input.dto';
+import { BonusDeleteInputDto } from './dto/input/bonus-delete.input.dto';
+import { BonusUpdateInputDto } from './dto/input/bonus-update.input.dto';
 
 @Injectable()
 export class BonusService {
@@ -74,7 +74,7 @@ export class BonusService {
     'bonusName',
     'bonus:validate:notUniqueBonusName',
   )
-  async bonusCreate(data: BonusCreateInput): Promise<Bonus> {
+  async bonusCreate(data: BonusCreateInputDto): Promise<Bonus> {
     try {
       return await this.BONUS_REPOSITORY.create<Bonus>(data);
     } catch (error) {
@@ -91,7 +91,7 @@ export class BonusService {
     'bonusName',
     'bonus:validate:notUniqueBonusName',
   )
-  async bonusUpdate(data: BonusUpdateInput): Promise<Bonus> {
+  async bonusUpdate(data: BonusUpdateInputDto): Promise<Bonus> {
     try {
       const res = await this.BONUS_REPOSITORY.update<Bonus>(data, {
         where: { id: data.id },
@@ -108,7 +108,7 @@ export class BonusService {
   }
 
   @OptimisticLocking(false)
-  async bonusDelete(data: BonusDeleteInput): Promise<Number> {
+  async bonusDelete(data: BonusDeleteInputDto): Promise<Number> {
     try {
       return await this.BONUS_REPOSITORY.destroy({
         where: { id: data.id },

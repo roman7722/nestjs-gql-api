@@ -3,9 +3,9 @@ import { Op } from 'sequelize';
 import { BadRequestException, Inject, Injectable } from '@nestjs/common';
 import { CheckIsValueUnique, OptimisticLocking } from '../common/decorators';
 import { MessageCodeError } from '../common/error';
-import { QuarterCreateInput } from './input/quarter-create.input';
-import { QuarterDeleteInput } from './input/quarter-delete.input';
-import { QuarterUpdateInput } from './input/quarter-update.input';
+import { QuarterCreateInputDto } from './dto/input/quarter-create.input.dto';
+import { QuarterDeleteInputDto } from './dto/input/quarter-delete.input.dto';
+import { QuarterUpdateInputDto } from './dto/input/quarter-update.input.dto';
 import Quarter from './quarter.model';
 
 @Injectable()
@@ -75,7 +75,7 @@ export class QuarterService {
     'quarterName',
     'quarter:validate:notUniqueQuarterName',
   )
-  async quarterCreate(data: QuarterCreateInput): Promise<Quarter> {
+  async quarterCreate(data: QuarterCreateInputDto): Promise<Quarter> {
     try {
       return await this.QUARTER_REPOSITORY.create<Quarter>(data);
     } catch (error) {
@@ -92,7 +92,7 @@ export class QuarterService {
     'quarterName',
     'quarter:validate:notUniqueQuarterName',
   )
-  async quarterUpdate(data: QuarterUpdateInput): Promise<Quarter> {
+  async quarterUpdate(data: QuarterUpdateInputDto): Promise<Quarter> {
     try {
       const res = await this.QUARTER_REPOSITORY.update<Quarter>(data, {
         where: { id: data.id },
@@ -109,7 +109,7 @@ export class QuarterService {
   }
 
   @OptimisticLocking(false)
-  async quarterDelete(data: QuarterDeleteInput): Promise<Number> {
+  async quarterDelete(data: QuarterDeleteInputDto): Promise<Number> {
     try {
       return await this.QUARTER_REPOSITORY.destroy({
         where: { id: data.id },

@@ -3,10 +3,10 @@ import { Op } from 'sequelize';
 import { BadRequestException, Inject, Injectable } from '@nestjs/common';
 import { CheckIsValueUnique, OptimisticLocking } from '../common/decorators';
 import { MessageCodeError } from '../common/error/MessageCodeError';
+import { FamilyStatusCreateInputDto } from './dto/input/family-status-create.input.dto';
+import { FamilyStatusDeleteInputDto } from './dto/input/family-status-delete.input.dto';
+import { FamilyStatusUpdateInputDto } from './dto/input/family-status-update.input.dto';
 import FamilyStatus from './family-status.model';
-import { FamilyStatusCreateInput } from './input/family-status-create.input';
-import { FamilyStatusDeleteInput } from './input/family-status-delete.input';
-import { FamilyStatusUpdateInput } from './input/family-status-update.input';
 
 @Injectable()
 export class FamilyStatusService {
@@ -80,7 +80,7 @@ export class FamilyStatusService {
     'familyStatus:validate:notUniqueFamilyStatusName',
   )
   async familyStatusCreate(
-    data: FamilyStatusCreateInput,
+    data: FamilyStatusCreateInputDto,
   ): Promise<FamilyStatus> {
     try {
       return await this.FAMILY_STATUS_REPOSITORY.create<FamilyStatus>(data);
@@ -105,7 +105,7 @@ export class FamilyStatusService {
     'familyStatus:validate:notUniqueFamilyStatusName',
   )
   async familyStatusUpdate(
-    data: FamilyStatusUpdateInput,
+    data: FamilyStatusUpdateInputDto,
   ): Promise<FamilyStatus> {
     try {
       const res = await this.FAMILY_STATUS_REPOSITORY.update<FamilyStatus>(
@@ -132,7 +132,7 @@ export class FamilyStatusService {
   }
 
   @OptimisticLocking(false)
-  async familyStatusDelete(data: FamilyStatusDeleteInput): Promise<Number> {
+  async familyStatusDelete(data: FamilyStatusDeleteInputDto): Promise<Number> {
     try {
       return await this.FAMILY_STATUS_REPOSITORY.destroy({
         where: { id: data.id },

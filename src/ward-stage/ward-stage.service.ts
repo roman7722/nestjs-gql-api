@@ -3,9 +3,9 @@ import { Op } from 'sequelize';
 import { BadRequestException, Inject, Injectable } from '@nestjs/common';
 import { CheckIsValueUnique, OptimisticLocking } from '../common/decorators';
 import { MessageCodeError } from '../common/error/MessageCodeError';
-import { WardStageCreateInput } from './input/ward-stage-create.input';
-import { WardStageDeleteInput } from './input/ward-stage-delete.input';
-import { WardStageUpdateInput } from './input/ward-stage-update.input';
+import { WardStageCreateInputDto } from './dto/input/ward-stage-create.input.dto';
+import { WardStageDeleteInputDto } from './dto/input/ward-stage-delete.input.dto';
+import { WardStageUpdateInputDto } from './dto/input/ward-stage-update.input.dto';
 import WardStage from './ward-stage.model';
 
 @Injectable()
@@ -75,7 +75,7 @@ export class WardStageService {
     'wardStageName',
     'wardStage:validate:notUniqueWardStageName',
   )
-  async wardStageCreate(data: WardStageCreateInput): Promise<WardStage> {
+  async wardStageCreate(data: WardStageCreateInputDto): Promise<WardStage> {
     try {
       return await this.WARD_STAGE_REPOSITORY.create<WardStage>(data);
     } catch (error) {
@@ -92,7 +92,7 @@ export class WardStageService {
     'wardStageName',
     'wardStage:validate:notUniqueWardStageName',
   )
-  async wardStageUpdate(data: WardStageUpdateInput): Promise<WardStage> {
+  async wardStageUpdate(data: WardStageUpdateInputDto): Promise<WardStage> {
     try {
       const res = await this.WARD_STAGE_REPOSITORY.update<WardStage>(data, {
         where: { id: data.id },
@@ -109,7 +109,7 @@ export class WardStageService {
   }
 
   @OptimisticLocking(false)
-  async wardStageDelete(data: WardStageDeleteInput): Promise<Number> {
+  async wardStageDelete(data: WardStageDeleteInputDto): Promise<Number> {
     try {
       const { id, version } = data;
       return await this.WARD_STAGE_REPOSITORY.destroy({

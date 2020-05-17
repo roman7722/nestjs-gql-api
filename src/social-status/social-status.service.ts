@@ -3,9 +3,9 @@ import { Op } from 'sequelize';
 import { BadRequestException, Inject, Injectable } from '@nestjs/common';
 import { CheckIsValueUnique, OptimisticLocking } from '../common/decorators';
 import { MessageCodeError } from '../common/error/MessageCodeError';
-import { SocialStatusCreateInput } from './input/social-status-create.input';
-import { SocialStatusDeleteInput } from './input/social-status-delete.input';
-import { SocialStatusUpdateInput } from './input/social-status-update.input';
+import { SocialStatusCreateInputDto } from './dto/input/social-status-create.input.dto';
+import { SocialStatusDeleteInputDto } from './dto/input/social-status-delete.input.dto';
+import { SocialStatusUpdateInputDto } from './dto/input/social-status-update.input.dto';
 import SocialStatus from './social-status.model';
 
 @Injectable()
@@ -80,7 +80,7 @@ export class SocialStatusService {
     'socialStatus:validate:notUniqueSocialStatusName',
   )
   async socialStatusCreate(
-    data: SocialStatusCreateInput,
+    data: SocialStatusCreateInputDto,
   ): Promise<SocialStatus> {
     try {
       return await this.SOCIAL_STATUS_REPOSITORY.create<SocialStatus>(data);
@@ -105,7 +105,7 @@ export class SocialStatusService {
     'socialStatus:validate:notUniqueSocialStatusName',
   )
   async socialStatusUpdate(
-    data: SocialStatusUpdateInput,
+    data: SocialStatusUpdateInputDto,
   ): Promise<SocialStatus> {
     try {
       const res = await this.SOCIAL_STATUS_REPOSITORY.update<SocialStatus>(
@@ -132,7 +132,7 @@ export class SocialStatusService {
   }
 
   @OptimisticLocking(false)
-  async socialStatusDelete(data: SocialStatusDeleteInput): Promise<Number> {
+  async socialStatusDelete(data: SocialStatusDeleteInputDto): Promise<Number> {
     try {
       return await this.SOCIAL_STATUS_REPOSITORY.destroy({
         where: { id: data.id },

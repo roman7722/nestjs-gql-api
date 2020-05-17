@@ -26,21 +26,19 @@ export default class Ward extends Model<Ward> {
   customerId: number;
   @BelongsTo(() => Customer) customer: Customer;
 
-  @Column({ allowNull: true }) wardName: string;
+  @Column({ allowNull: true }) firstName: string;
+  @Column({ allowNull: true }) middleName: string;
+  @Column({ allowNull: true }) secondName: string;
+  @Column({ allowNull: true }) displayName: string;
   @Column({ allowNull: true }) hbDate: Date;
   @Column({ allowNull: true, unique: true }) passportNumber: string;
   @Column({ allowNull: true }) passportIssuedBy: string;
   @Column({ allowNull: true }) passportIssuedDate: Date;
 
   /** Many-to-many */
-  @BelongsToMany(
-    () => SocialStatus,
-    () => WardSocialStatus,
-  )
+  @BelongsToMany(() => SocialStatus, () => WardSocialStatus)
   // tslint:disable-next-line: array-type
-  socialStatusesList: Array<
-    SocialStatus & { WardSocialStatus: WardSocialStatus }
-  >;
+  socialStatuses: Array<SocialStatus & { WardSocialStatus: WardSocialStatus }>;
 
   /** Many-to-one */
   @ForeignKey(() => FamilyStatus)

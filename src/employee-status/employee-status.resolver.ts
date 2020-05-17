@@ -3,13 +3,13 @@ import { Args, Int, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { Roles } from '../auth/decorators/roles.decorator';
 import { GqlAuthGuard } from '../auth/guards/gql-auth.guard';
 import { RolesGuard } from '../auth/guards/roles.guard';
-import { EmployeeStatusListArgs } from './args/employee-status-list.args';
-import { EmployeeStatusArgs } from './args/employee-status.args';
+import { EmployeeStatusListArgsDto } from './dto/args/employee-status-list.args.dto';
+import { EmployeeStatusArgsDto } from './dto/args/employee-status.args.dto';
 import { EmployeeStatusDto } from './dto/employee-status.dto';
+import { EmployeeStatusCreateInputDto } from './dto/input/employee-status-create.input.dto';
+import { EmployeeStatusDeleteInputDto } from './dto/input/employee-status-delete.input.dto';
+import { EmployeeStatusUpdateInputDto } from './dto/input/employee-status-update.input.dto';
 import { EmployeeStatusService } from './employee-status.service';
-import { EmployeeStatusCreateInput } from './input/employee-status-create.input';
-import { EmployeeStatusDeleteInput } from './input/employee-status-delete.input';
-import { EmployeeStatusUpdateInput } from './input/employee-status-update.input';
 
 @Resolver()
 @UseGuards(GqlAuthGuard, RolesGuard)
@@ -21,7 +21,7 @@ export class EmployeeStatusResolver {
     nullable: true,
     description: 'Поиск статуса сотрудника по id',
   })
-  async employeeStatus(@Args() { id }: EmployeeStatusArgs) {
+  async employeeStatus(@Args() { id }: EmployeeStatusArgsDto) {
     return await this.employeeStatusService.employeeStatus(id);
   }
 
@@ -30,7 +30,7 @@ export class EmployeeStatusResolver {
     description: 'Поиск статуса сотрудника по наименованию и пагинация',
   })
   async employeeStatusList(
-    @Args() { textFilter, page, paging }: EmployeeStatusListArgs,
+    @Args() { textFilter, page, paging }: EmployeeStatusListArgsDto,
   ) {
     return this.employeeStatusService.employeeStatusList(
       textFilter,
@@ -40,17 +40,17 @@ export class EmployeeStatusResolver {
   }
 
   @Mutation(() => EmployeeStatusDto)
-  async employeeStatusCreate(@Args('data') data: EmployeeStatusCreateInput) {
+  async employeeStatusCreate(@Args('data') data: EmployeeStatusCreateInputDto) {
     return await this.employeeStatusService.employeeStatusCreate(data);
   }
 
   @Mutation(() => EmployeeStatusDto)
-  async employeeStatusUpdate(@Args('data') data: EmployeeStatusUpdateInput) {
+  async employeeStatusUpdate(@Args('data') data: EmployeeStatusUpdateInputDto) {
     return await this.employeeStatusService.employeeStatusUpdate(data);
   }
 
   @Mutation(() => Int)
-  async employeeStatusDelete(@Args('data') data: EmployeeStatusDeleteInput) {
+  async employeeStatusDelete(@Args('data') data: EmployeeStatusDeleteInputDto) {
     return await this.employeeStatusService.employeeStatusDelete(data);
   }
 }

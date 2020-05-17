@@ -15,12 +15,9 @@ export default class Employee extends Model<Employee> {
   @Column({ primaryKey: true, autoIncrement: true }) id: number;
 
   /** Many-to-many */
-  @BelongsToMany(
-    () => TypeJob,
-    () => EmployeeTypeJob,
-  )
+  @BelongsToMany(() => TypeJob, () => EmployeeTypeJob)
   // tslint:disable-next-line: array-type
-  typeJobsList: Array<TypeJob & { EmployeeTypeJob: EmployeeTypeJob }>;
+  typeJobs: Array<TypeJob & { EmployeeTypeJob: EmployeeTypeJob }>;
 
   /** Many-to-one */
   @ForeignKey(() => User)

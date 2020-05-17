@@ -4,9 +4,9 @@ import { BadRequestException, Inject, Injectable } from '@nestjs/common';
 import { CheckIsValueUnique, OptimisticLocking } from '../common/decorators';
 import { MessageCodeError } from '../common/error/MessageCodeError';
 import AgreementStatus from './agreement-status.model';
-import { AgreementStatusCreateInput } from './input/agreement-status-create.input';
-import { AgreementStatusDeleteInput } from './input/agreement-status-delete.input';
-import { AgreementStatusUpdateInput } from './input/agreement-status-update.input';
+import { AgreementStatusCreateInputDto } from './dto/input/agreement-status-create.input.dto';
+import { AgreementStatusDeleteInputDto } from './dto/input/agreement-status-delete.input.dto';
+import { AgreementStatusUpdateInputDto } from './dto/input/agreement-status-update.input.dto';
 
 @Injectable()
 export class AgreementStatusService {
@@ -82,7 +82,7 @@ export class AgreementStatusService {
     'agreementStatus:validate:notUniqueAgreementStatusName',
   )
   async agreementStatusCreate(
-    data: AgreementStatusCreateInput,
+    data: AgreementStatusCreateInputDto,
   ): Promise<AgreementStatus> {
     try {
       return await this.AGREEMENT_STATUS_REPOSITORY.create<AgreementStatus>(
@@ -110,7 +110,7 @@ export class AgreementStatusService {
     'agreementStatus:validate:notUniqueAgreementStatusName',
   )
   async agreementStatusUpdate(
-    data: AgreementStatusUpdateInput,
+    data: AgreementStatusUpdateInputDto,
   ): Promise<AgreementStatus> {
     try {
       const res = await this.AGREEMENT_STATUS_REPOSITORY.update<
@@ -138,7 +138,7 @@ export class AgreementStatusService {
 
   @OptimisticLocking(false)
   async agreementStatusDelete(
-    data: AgreementStatusDeleteInput,
+    data: AgreementStatusDeleteInputDto,
   ): Promise<Number> {
     try {
       return await this.AGREEMENT_STATUS_REPOSITORY.destroy({

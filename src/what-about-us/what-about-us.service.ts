@@ -3,9 +3,9 @@ import { Op } from 'sequelize';
 import { BadRequestException, Inject, Injectable } from '@nestjs/common';
 import { CheckIsValueUnique, OptimisticLocking } from '../common/decorators';
 import { MessageCodeError } from '../common/error/MessageCodeError';
-import { WhatAboutUsCreateInput } from './input/what-about-us-create.input';
-import { WhatAboutUsDeleteInput } from './input/what-about-us-delete.input';
-import { WhatAboutUsUpdateInput } from './input/what-about-us-update.input';
+import { WhatAboutUsCreateInputDto } from './dto/input/what-about-us-create.input.dto';
+import { WhatAboutUsDeleteInputDto } from './dto/input/what-about-us-delete.input.dto';
+import { WhatAboutUsUpdateInputDto } from './dto/input/what-about-us-update.input.dto';
 import WhatAboutUs from './what-about-us.model';
 
 @Injectable()
@@ -79,7 +79,9 @@ export class WhatAboutUsService {
     'whatAboutUsName',
     'whatAboutUs:validate:notUniqueWhatAboutUsName',
   )
-  async whatAboutUsCreate(data: WhatAboutUsCreateInput): Promise<WhatAboutUs> {
+  async whatAboutUsCreate(
+    data: WhatAboutUsCreateInputDto,
+  ): Promise<WhatAboutUs> {
     try {
       return await this.WHAT_ABOUT_US_REPOSITORY.create<WhatAboutUs>(data);
     } catch (error) {
@@ -102,7 +104,9 @@ export class WhatAboutUsService {
     'whatAboutUsName',
     'whatAboutUs:validate:notUniqueWhatAboutUsName',
   )
-  async whatAboutUsUpdate(data: WhatAboutUsUpdateInput): Promise<WhatAboutUs> {
+  async whatAboutUsUpdate(
+    data: WhatAboutUsUpdateInputDto,
+  ): Promise<WhatAboutUs> {
     try {
       const res = await this.WHAT_ABOUT_US_REPOSITORY.update<WhatAboutUs>(
         data,
@@ -128,7 +132,7 @@ export class WhatAboutUsService {
   }
 
   @OptimisticLocking(false)
-  async whatAboutUsDelete(data: WhatAboutUsDeleteInput): Promise<Number> {
+  async whatAboutUsDelete(data: WhatAboutUsDeleteInputDto): Promise<Number> {
     try {
       return await this.WHAT_ABOUT_US_REPOSITORY.destroy({
         where: { id: data.id },

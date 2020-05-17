@@ -4,12 +4,12 @@ import { Roles } from '../auth/decorators/roles.decorator';
 import { GqlAuthGuard } from '../auth/guards/gql-auth.guard';
 import { RolesGuard } from '../auth/guards/roles.guard';
 import { AgreementStatusService } from './agreement-status.service';
-import { AgreementStatusListArgs } from './args/agreement-status-list.args';
-import { AgreementStatusArgs } from './args/agreement-status.args';
 import { AgreementStatusDto } from './dto/agreement-status.dto';
-import { AgreementStatusCreateInput } from './input/agreement-status-create.input';
-import { AgreementStatusDeleteInput } from './input/agreement-status-delete.input';
-import { AgreementStatusUpdateInput } from './input/agreement-status-update.input';
+import { AgreementStatusListArgsDto } from './dto/args/agreement-status-list.args.dto';
+import { AgreementStatusArgsDto } from './dto/args/agreement-status.args.dto';
+import { AgreementStatusCreateInputDto } from './dto/input/agreement-status-create.input.dto';
+import { AgreementStatusDeleteInputDto } from './dto/input/agreement-status-delete.input.dto';
+import { AgreementStatusUpdateInputDto } from './dto/input/agreement-status-update.input.dto';
 
 @Resolver()
 @UseGuards(GqlAuthGuard, RolesGuard)
@@ -23,7 +23,7 @@ export class AgreementStatusResolver {
     nullable: true,
     description: 'Поиск социального статуса по id',
   })
-  async agreementStatus(@Args() { id }: AgreementStatusArgs) {
+  async agreementStatus(@Args() { id }: AgreementStatusArgsDto) {
     return await this.agreementStatusService.agreementStatus(id);
   }
 
@@ -32,7 +32,7 @@ export class AgreementStatusResolver {
     description: 'Поиск социального статуса по наименованию и пагинация',
   })
   async agreementStatusList(
-    @Args() { textFilter, page, paging }: AgreementStatusListArgs,
+    @Args() { textFilter, page, paging }: AgreementStatusListArgsDto,
   ) {
     return this.agreementStatusService.agreementStatusList(
       textFilter,
@@ -42,17 +42,23 @@ export class AgreementStatusResolver {
   }
 
   @Mutation(() => AgreementStatusDto)
-  async agreementStatusCreate(@Args('data') data: AgreementStatusCreateInput) {
+  async agreementStatusCreate(
+    @Args('data') data: AgreementStatusCreateInputDto,
+  ) {
     return await this.agreementStatusService.agreementStatusCreate(data);
   }
 
   @Mutation(() => AgreementStatusDto)
-  async agreementStatusUpdate(@Args('data') data: AgreementStatusUpdateInput) {
+  async agreementStatusUpdate(
+    @Args('data') data: AgreementStatusUpdateInputDto,
+  ) {
     return await this.agreementStatusService.agreementStatusUpdate(data);
   }
 
   @Mutation(() => Int)
-  async agreementStatusDelete(@Args('data') data: AgreementStatusDeleteInput) {
+  async agreementStatusDelete(
+    @Args('data') data: AgreementStatusDeleteInputDto,
+  ) {
     return await this.agreementStatusService.agreementStatusDelete(data);
   }
 }

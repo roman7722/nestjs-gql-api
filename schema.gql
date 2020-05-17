@@ -3,8 +3,9 @@
 # ------------------------------------------------------
 
 type UserRoleDto {
-  id: ID
-  roleDescription: String
+  id: Int
+  userRoleName: String
+  userRoleDescription: String
   version: Int
 }
 
@@ -18,7 +19,7 @@ type UserDto {
   email: String
   phone: String
   rem: String
-  role: UserRoleDto
+  userRole: UserRoleDto
   version: Int
   createdAt: DateTime
   updatedAt: DateTime
@@ -76,7 +77,10 @@ type WhatAboutUsDto {
 type CustomerDto {
   id: ID
   user: UserDto
-  customerName: String
+  firstName: String
+  middleName: String
+  secondName: String
+  displayName: String
   subjectCategory: SubjectCategoryDto
   subject: SubjectDto
   phone: String
@@ -128,7 +132,10 @@ type WardDto {
   id: ID
   user: UserDto
   customer: CustomerDto
-  wardName: String
+  firstName: String
+  middleName: String
+  secondName: String
+  displayName: String
   hbDate: DateTime
   passportNumber: String
   passportIssuedBy: String
@@ -184,42 +191,6 @@ type BonusDto {
   updatedAt: DateTime
 }
 
-type EmployeeBonusDto {
-  id: ID
-  user: UserDto
-  bonusDate: DateTime
-  bonusCategory: BonusCategoryDto
-  bonus: BonusDto
-  cost: Float
-  rem: String
-  version: Int
-  createdAt: DateTime
-  updatedAt: DateTime
-}
-
-type PositionDto {
-  id: ID
-  positionName: String
-  tariff: Float
-  isCurrentOffer: Boolean
-  version: Int
-  createdAt: DateTime
-  updatedAt: DateTime
-}
-
-type EmployeePositionDto {
-  id: ID
-  user: UserDto
-  positionDateStart: DateTime
-  positionDateEnd: DateTime
-  position: PositionDto
-  tariff: Float
-  rem: String
-  version: Int
-  createdAt: DateTime
-  updatedAt: DateTime
-}
-
 type EmployeeStatusDto {
   id: ID
   employeeStatusName: String
@@ -259,6 +230,75 @@ type EmployeeDto {
   employeeStatus: EmployeeStatusDto
   operationMode: OperationModeDto
   typeJobs: [TypeJobDto!]
+  rem: String
+  version: Int
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type EmployeeBonusDto {
+  id: ID
+  user: UserDto
+  employee: EmployeeDto
+  bonusDate: DateTime
+  bonusCategory: BonusCategoryDto
+  bonus: BonusDto
+  cost: Float
+  rem: String
+  version: Int
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type PositionDto {
+  id: ID
+  positionName: String
+  tariff: Float
+  isCurrentOffer: Boolean
+  version: Int
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type EmployeePositionDto {
+  id: ID
+  user: UserDto
+  employee: EmployeeDto
+  positionDateStart: DateTime
+  positionDateEnd: DateTime
+  position: PositionDto
+  tariff: Float
+  rem: String
+  version: Int
+  createdAt: DateTime
+  updatedAt: DateTime
+}
+
+type ExecutionStatusDto {
+  id: ID
+  executionStatusName: String
+  style: String
+  version: Int
+}
+
+type PaymentStatusDto {
+  id: ID
+  paymentStatusName: String
+  style: String
+  version: Int
+}
+
+type ServicePackDto {
+  id: ID
+  agreementData: String
+  agreement: AgreementDto
+  startDate: DateTime
+  endDate: DateTime
+  totalCost: Int
+  prepayment: Int
+  debt: Int
+  executionStatus: ExecutionStatusDto
+  paymentStatus: PaymentStatusDto
   rem: String
   version: Int
   createdAt: DateTime
@@ -364,6 +404,12 @@ type Query {
   employeeList(textFilter: String, paging: Int!, page: Int!): [EmployeeDto!]
 
   """Поиск социального статуса по id"""
+  executionStatus(id: Int!): ExecutionStatusDto
+
+  """Поиск социального статуса по наименованию и пагинация"""
+  executionStatusList(textFilter: String, paging: Int!, page: Int!): [ExecutionStatusDto!]
+
+  """Поиск социального статуса по id"""
   familyStatus(id: Int!): FamilyStatusDto
 
   """Поиск социального статуса по наименованию и пагинация"""
@@ -381,6 +427,12 @@ type Query {
   """Поиск формы оплаты по наименованию и пагинация"""
   paymentFormList(textFilter: String, paging: Int!, page: Int!): [PaymentFormDto!]
 
+  """Поиск социального статуса по id"""
+  paymentStatus(id: Int!): PaymentStatusDto
+
+  """Поиск социального статуса по наименованию и пагинация"""
+  paymentStatusList(textFilter: String, paging: Int!, page: Int!): [PaymentStatusDto!]
+
   """Поиск населённого пункта по id"""
   position(id: Int!): PositionDto
 
@@ -392,6 +444,12 @@ type Query {
 
   """Поиск квартала по наименованию и пагинация"""
   quarterList(textFilter: String, paging: Int!, page: Int!): [QuarterDto!]
+
+  """Поиск социального статуса по id"""
+  servicePack(id: Int!): ServicePackDto
+
+  """Поиск социального статуса по наименованию и пагинация"""
+  servicePackList(textFilter: String, paging: Int!, page: Int!): [ServicePackDto!]
 
   """Поиск социального статуса по id"""
   socialStatus(id: Int!): SocialStatusDto
@@ -418,13 +476,17 @@ type Query {
   typeJobList(textFilter: String, paging: Int!, page: Int!): [TypeJobDto!]
 
   """Роль пользователя"""
-  userRole(id: String!): UserRoleDto
+  userRole(id: Int!): UserRoleDto
 
-  """Поиск роли пользователя по наименованию роли (id) и пагинация"""
+  """
+  Поиск роли пользователя по наименованию роли (userRoleName) и пагинация
+  """
   userRoleList(textFilter: String, paging: Int!, page: Int!): [UserRoleDto!]
 
-  """Поиск группы ролей по [ids]"""
-  userRolesFind(ids: String): [UserRoleDto!]
+  """
+  Поиск группы ролей по [userRoleName]. Если отправить пустой массив, то возвращаются все роли.
+  """
+  userRoles(userRoleNames: [String!]): [UserRoleDto!]
 
   """Поиск социального статуса по id"""
   wardStageProgress(id: Int!): WardStageProgressDto
@@ -452,90 +514,99 @@ type Query {
 }
 
 type Mutation {
-  userCreate(data: UserCreateInput!): UserDto!
-  userUpdate(data: UserUpdateInput!): UserDto!
-  userDelete(data: UserDeleteInput!): Int!
-  agreementStatusCreate(data: AgreementStatusCreateInput!): AgreementStatusDto!
-  agreementStatusUpdate(data: AgreementStatusUpdateInput!): AgreementStatusDto!
-  agreementStatusDelete(data: AgreementStatusDeleteInput!): Int!
-  agreementCreate(data: AgreementCreateInput!): AgreementDto!
-  agreementUpdate(data: AgreementUpdateInput!): AgreementDto!
-  agreementDelete(data: AgreementDeleteInput!): Int!
-  bonusCategoryCreate(data: BonusCategoryCreateInput!): BonusCategoryDto!
-  bonusCategoryUpdate(data: BonusCategoryUpdateInput!): BonusCategoryDto!
-  bonusCategoryDelete(data: BonusCategoryDeleteInput!): Int!
-  bonusCreate(data: BonusCreateInput!): BonusDto!
-  bonusUpdate(data: BonusUpdateInput!): BonusDto!
-  bonusDelete(data: BonusDeleteInput!): Int!
-  cityCreate(data: CityCreateInput!): CityDto!
-  cityUpdate(data: CityUpdateInput!): CityDto!
-  cityDelete(data: CityDeleteInput!): Int!
-  customerCategoryCreate(data: CustomerCategoryCreateInput!): CustomerCategoryDto!
-  customerCategoryUpdate(data: CustomerCategoryUpdateInput!): CustomerCategoryDto!
-  customerCategoryDelete(data: CustomerCategoryDeleteInput!): Int!
-  customerCreate(data: CustomerCreateInput!): CustomerDto!
-  customerUpdate(data: CustomerUpdateInput!): CustomerDto!
-  customerDelete(data: CustomerDeleteInput!): Int!
-  districtCreate(data: DistrictCreateInput!): DistrictDto!
-  districtUpdate(data: DistrictUpdateInput!): DistrictDto!
-  districtDelete(data: DistrictDeleteInput!): Int!
-  employeeBonusCreate(data: EmployeeBonusCreateInput!): EmployeeBonusDto!
-  employeeBonusUpdate(data: EmployeeBonusUpdateInput!): EmployeeBonusDto!
-  employeeBonusDelete(data: EmployeeBonusDeleteInput!): Int!
-  employeePositionCreate(data: EmployeePositionCreateInput!): EmployeePositionDto!
-  employeePositionUpdate(data: EmployeePositionUpdateInput!): EmployeePositionDto!
-  employeePositionDelete(data: EmployeePositionDeleteInput!): Int!
-  employeeStatusCreate(data: EmployeeStatusCreateInput!): EmployeeStatusDto!
-  employeeStatusUpdate(data: EmployeeStatusUpdateInput!): EmployeeStatusDto!
-  employeeStatusDelete(data: EmployeeStatusDeleteInput!): Int!
-  employeeCreate(data: EmployeeCreateInput!): EmployeeDto!
-  employeeUpdate(data: EmployeeUpdateInput!): EmployeeDto!
-  employeeDelete(data: EmployeeDeleteInput!): Int!
-  familyStatusCreate(data: FamilyStatusCreateInput!): FamilyStatusDto!
-  familyStatusUpdate(data: FamilyStatusUpdateInput!): FamilyStatusDto!
-  familyStatusDelete(data: FamilyStatusDeleteInput!): Int!
-  operationModeCreate(data: OperationModeCreateInput!): OperationModeDto!
-  operationModeUpdate(data: OperationModeUpdateInput!): OperationModeDto!
-  operationModeDelete(data: OperationModeDeleteInput!): Int!
-  paymentFormCreate(data: PaymentFormCreateInput!): PaymentFormDto!
-  paymentFormUpdate(data: PaymentFormUpdateInput!): PaymentFormDto!
-  paymentFormDelete(data: PaymentFormDeleteInput!): Int!
-  positionCreate(data: PositionCreateInput!): PositionDto!
-  positionUpdate(data: PositionUpdateInput!): PositionDto!
-  positionDelete(data: PositionDeleteInput!): Int!
-  quarterCreate(data: QuarterCreateInput!): QuarterDto!
-  quarterUpdate(data: QuarterUpdateInput!): QuarterDto!
-  quarterDelete(data: QuarterDeleteInput!): Int!
-  socialStatusCreate(data: SocialStatusCreateInput!): SocialStatusDto!
-  socialStatusUpdate(data: SocialStatusUpdateInput!): SocialStatusDto!
-  socialStatusDelete(data: SocialStatusDeleteInput!): Int!
-  subjectCategoryCreate(data: SubjectCategoryCreateInput!): SubjectCategoryDto!
-  subjectCategoryUpdate(data: SubjectCategoryUpdateInput!): SubjectCategoryDto!
-  subjectCategoryDelete(data: SubjectCategoryDeleteInput!): Int!
-  subjectCreate(data: SubjectCreateInput!): SubjectDto!
-  subjectUpdate(data: SubjectUpdateInput!): SubjectDto!
-  subjectDelete(data: SubjectDeleteInput!): Int!
-  typeJobCreate(data: TypeJobCreateInput!): TypeJobDto!
-  typeJobUpdate(data: TypeJobUpdateInput!): TypeJobDto!
-  typeJobDelete(data: TypeJobDeleteInput!): Int!
-  userRoleCreate(data: UserRoleCreateInput!): UserRoleDto!
-  userRoleUpdate(data: UserRoleUpdateInput!): UserRoleDto!
-  userRoleDelete(data: UserRoleDeleteInput!): Int!
-  wardStageProgressCreate(data: WardStageProgressCreateInput!): WardStageProgressDto!
-  wardStageProgressUpdate(data: WardStageProgressUpdateInput!): WardStageProgressDto!
-  wardStageProgressDelete(data: WardStageProgressDeleteInput!): Int!
-  wardStageCreate(data: WardStageCreateInput!): WardStageDto!
-  wardStageUpdate(data: WardStageUpdateInput!): WardStageDto!
-  wardStageDelete(data: WardStageDeleteInput!): Int!
-  wardCreate(data: WardCreateInput!): WardDto!
-  wardUpdate(data: WardUpdateInput!): WardDto!
-  wardDelete(data: WardDeleteInput!): Int!
-  whatAboutUsCreate(data: WhatAboutUsCreateInput!): WhatAboutUsDto!
-  whatAboutUsUpdate(data: WhatAboutUsUpdateInput!): WhatAboutUsDto!
-  whatAboutUsDelete(data: WhatAboutUsDeleteInput!): Int!
+  userCreate(data: UserCreateInputDto!): UserDto!
+  userUpdate(data: UserUpdateInputDto!): UserDto!
+  userDelete(data: UserDeleteInputDto!): Int!
+  agreementStatusCreate(data: AgreementStatusCreateInputDto!): AgreementStatusDto!
+  agreementStatusUpdate(data: AgreementStatusUpdateInputDto!): AgreementStatusDto!
+  agreementStatusDelete(data: AgreementStatusDeleteInputDto!): Int!
+  agreementCreate(data: AgreementCreateInputDto!): AgreementDto!
+  agreementUpdate(data: AgreementUpdateInputDto!): AgreementDto!
+  agreementDelete(data: AgreementDeleteInputDto!): Int!
+  bonusCategoryCreate(data: BonusCategoryCreateInputDto!): BonusCategoryDto!
+  bonusCategoryUpdate(data: BonusCategoryUpdateInputDto!): BonusCategoryDto!
+  bonusCategoryDelete(data: BonusCategoryDeleteInputDto!): Int!
+  bonusCreate(data: BonusCreateInputDto!): BonusDto!
+  bonusUpdate(data: BonusUpdateInputDto!): BonusDto!
+  bonusDelete(data: BonusDeleteInputDto!): Int!
+  cityCreate(data: CityCreateInputDto!): CityDto!
+  cityUpdate(data: CityUpdateInputDto!): CityDto!
+  cityDelete(data: CityDeleteInputDto!): Int!
+  customerCategoryCreate(data: CustomerCategoryCreateInputDto!): CustomerCategoryDto!
+  customerCategoryUpdate(data: CustomerCategoryUpdateInputDto!): CustomerCategoryDto!
+  customerCategoryDelete(data: CustomerCategoryDeleteInputDto!): Int!
+  customerCreate(data: CustomerCreateInputDto!): CustomerDto!
+  customerUpdate(data: CustomerUpdateInputDto!): CustomerDto!
+  customerDelete(data: CustomerDeleteInputDto!): Int!
+  districtCreate(data: DistrictCreateInputDto!): DistrictDto!
+  districtUpdate(data: DistrictUpdateInputDto!): DistrictDto!
+  districtDelete(data: DistrictDeleteInputDto!): Int!
+  employeeBonusCreate(data: EmployeeBonusCreateInputDto!): EmployeeBonusDto!
+  employeeBonusUpdate(data: EmployeeBonusUpdateInputDto!): EmployeeBonusDto!
+  employeeBonusDelete(data: EmployeeBonusDeleteInputDto!): Int!
+  employeePositionCreate(data: EmployeePositionCreateInputDto!): EmployeePositionDto!
+  employeePositionUpdate(data: EmployeePositionUpdateInputDto!): EmployeePositionDto!
+  employeePositionDelete(data: EmployeePositionDeleteInputDto!): Int!
+  employeeStatusCreate(data: EmployeeStatusCreateInputDto!): EmployeeStatusDto!
+  employeeStatusUpdate(data: EmployeeStatusUpdateInputDto!): EmployeeStatusDto!
+  employeeStatusDelete(data: EmployeeStatusDeleteInputDto!): Int!
+  employeeCreate(data: EmployeeCreateInputDto!): EmployeeDto!
+  employeeUpdate(data: EmployeeUpdateInputDto!): EmployeeDto!
+  employeeDelete(data: EmployeeDeleteInputDto!): Int!
+  executionStatusCreate(data: ExecutionStatusCreateInputDto!): ExecutionStatusDto!
+  executionStatusUpdate(data: ExecutionStatusUpdateInputDto!): ExecutionStatusDto!
+  executionStatusDelete(data: ExecutionStatusDeleteInputDto!): Int!
+  familyStatusCreate(data: FamilyStatusCreateInputDto!): FamilyStatusDto!
+  familyStatusUpdate(data: FamilyStatusUpdateInputDto!): FamilyStatusDto!
+  familyStatusDelete(data: FamilyStatusDeleteInputDto!): Int!
+  operationModeCreate(data: OperationModeCreateInputDto!): OperationModeDto!
+  operationModeUpdate(data: OperationModeUpdateInputDto!): OperationModeDto!
+  operationModeDelete(data: OperationModeDeleteInputDto!): Int!
+  paymentFormCreate(data: PaymentFormCreateInputDto!): PaymentFormDto!
+  paymentFormUpdate(data: PaymentFormUpdateInputDto!): PaymentFormDto!
+  paymentFormDelete(data: PaymentFormDeleteInputDto!): Int!
+  paymentStatusCreate(data: PaymentStatusCreateInputDto!): PaymentStatusDto!
+  paymentStatusUpdate(data: PaymentStatusUpdateInputDto!): PaymentStatusDto!
+  paymentStatusDelete(data: PaymentStatusDeleteInputDto!): Int!
+  positionCreate(data: PositionCreateInputDto!): PositionDto!
+  positionUpdate(data: PositionUpdateInputDto!): PositionDto!
+  positionDelete(data: PositionDeleteInputDto!): Int!
+  quarterCreate(data: QuarterCreateInputDto!): QuarterDto!
+  quarterUpdate(data: QuarterUpdateInputDto!): QuarterDto!
+  quarterDelete(data: QuarterDeleteInputDto!): Int!
+  servicePackCreate(data: ServicePackCreateInputDto!): ServicePackDto!
+  servicePackUpdate(data: ServicePackUpdateInputDto!): ServicePackDto!
+  servicePackDelete(data: ServicePackDeleteInputDto!): Int!
+  socialStatusCreate(data: SocialStatusCreateInputDto!): SocialStatusDto!
+  socialStatusUpdate(data: SocialStatusUpdateInputDto!): SocialStatusDto!
+  socialStatusDelete(data: SocialStatusDeleteInputDto!): Int!
+  subjectCategoryCreate(data: SubjectCategoryCreateInputDto!): SubjectCategoryDto!
+  subjectCategoryUpdate(data: SubjectCategoryUpdateInputDto!): SubjectCategoryDto!
+  subjectCategoryDelete(data: SubjectCategoryDeleteInputDto!): Int!
+  subjectCreate(data: SubjectCreateInputDto!): SubjectDto!
+  subjectUpdate(data: SubjectUpdateInputDto!): SubjectDto!
+  subjectDelete(data: SubjectDeleteInputDto!): Int!
+  typeJobCreate(data: TypeJobCreateInputDto!): TypeJobDto!
+  typeJobUpdate(data: TypeJobUpdateInputDto!): TypeJobDto!
+  typeJobDelete(data: TypeJobDeleteInputDto!): Int!
+  userRoleCreate(data: UserRoleCreateInputDto!): UserRoleDto!
+  userRoleUpdate(data: UserRoleUpdateInputDto!): UserRoleDto!
+  userRoleDelete(data: UserRoleDeleteInputDto!): Int!
+  wardStageProgressCreate(data: WardStageProgressCreateInputDto!): WardStageProgressDto!
+  wardStageProgressUpdate(data: WardStageProgressUpdateInputDto!): WardStageProgressDto!
+  wardStageProgressDelete(data: WardStageProgressDeleteInputDto!): Int!
+  wardStageCreate(data: WardStageCreateInputDto!): WardStageDto!
+  wardStageUpdate(data: WardStageUpdateInputDto!): WardStageDto!
+  wardStageDelete(data: WardStageDeleteInputDto!): Int!
+  wardCreate(data: WardCreateInputDto!): WardDto!
+  wardUpdate(data: WardUpdateInputDto!): WardDto!
+  wardDelete(data: WardDeleteInputDto!): Int!
+  whatAboutUsCreate(data: WhatAboutUsCreateInputDto!): WhatAboutUsDto!
+  whatAboutUsUpdate(data: WhatAboutUsUpdateInputDto!): WhatAboutUsDto!
+  whatAboutUsDelete(data: WhatAboutUsDeleteInputDto!): Int!
 }
 
-input UserCreateInput {
+input UserCreateInputDto {
   firstName: String
   middleName: String
   secondName: String
@@ -544,10 +615,10 @@ input UserCreateInput {
   email: String
   phone: String
   rem: String
-  roleId: String!
+  userRoleName: String!
 }
 
-input UserUpdateInput {
+input UserUpdateInputDto {
   id: Int!
   firstName: String
   middleName: String
@@ -557,35 +628,35 @@ input UserUpdateInput {
   email: String
   phone: String
   rem: String
-  roleId: String!
+  userRoleName: String!
   version: Int!
 }
 
-input UserDeleteInput {
+input UserDeleteInputDto {
   id: Int!
   version: Int!
 }
 
-input AgreementStatusCreateInput {
+input AgreementStatusCreateInputDto {
   agreementStatusName: String!
   style: String
 }
 
-input AgreementStatusUpdateInput {
+input AgreementStatusUpdateInputDto {
   id: Int!
   agreementStatusName: String!
   style: String
   version: Int!
 }
 
-input AgreementStatusDeleteInput {
+input AgreementStatusDeleteInputDto {
   id: Int!
   version: Int!
 }
 
-input AgreementCreateInput {
+input AgreementCreateInputDto {
   agreementNumber: String!
-  agreementDate: DateTime!
+  agreementDate: String!
   userId: Int!
   customerId: Int!
   wardId: Int!
@@ -593,10 +664,10 @@ input AgreementCreateInput {
   rem: String
 }
 
-input AgreementUpdateInput {
+input AgreementUpdateInputDto {
   id: Int!
   agreementNumber: String!
-  agreementDate: DateTime!
+  agreementDate: String!
   userId: Int!
   customerId: Int!
   wardId: Int!
@@ -605,27 +676,27 @@ input AgreementUpdateInput {
   version: Int!
 }
 
-input AgreementDeleteInput {
+input AgreementDeleteInputDto {
   id: Int!
   version: Int!
 }
 
-input BonusCategoryCreateInput {
+input BonusCategoryCreateInputDto {
   bonusCategoryName: String!
 }
 
-input BonusCategoryUpdateInput {
+input BonusCategoryUpdateInputDto {
   id: Int!
   bonusCategoryName: String!
   version: Int!
 }
 
-input BonusCategoryDeleteInput {
+input BonusCategoryDeleteInputDto {
   id: Int!
   version: Int!
 }
 
-input BonusCreateInput {
+input BonusCreateInputDto {
   bonusCategoryId: Int!
   bonusName: String!
   cost: Float!
@@ -633,7 +704,7 @@ input BonusCreateInput {
   isCurrentOffer: Boolean!
 }
 
-input BonusUpdateInput {
+input BonusUpdateInputDto {
   id: Int!
   bonusCategoryId: Int!
   bonusName: String!
@@ -643,44 +714,46 @@ input BonusUpdateInput {
   version: Int!
 }
 
-input BonusDeleteInput {
+input BonusDeleteInputDto {
   id: Int!
   version: Int!
 }
 
-input CityCreateInput {
+input CityCreateInputDto {
   cityName: String!
 }
 
-input CityUpdateInput {
+input CityUpdateInputDto {
   id: Int!
   cityName: String!
   version: Int!
 }
 
-input CityDeleteInput {
+input CityDeleteInputDto {
   id: Int!
   version: Int!
 }
 
-input CustomerCategoryCreateInput {
+input CustomerCategoryCreateInputDto {
   customerCategoryName: String!
 }
 
-input CustomerCategoryUpdateInput {
+input CustomerCategoryUpdateInputDto {
   id: Int!
   customerCategoryName: String!
   version: Int!
 }
 
-input CustomerCategoryDeleteInput {
+input CustomerCategoryDeleteInputDto {
   id: Int!
   version: Int!
 }
 
-input CustomerCreateInput {
+input CustomerCreateInputDto {
   userId: Int!
-  customerName: String!
+  firstName: String
+  middleName: String
+  secondName: String
   subjectCategoryId: Int
   subjectId: Int
   phone: String
@@ -699,10 +772,12 @@ input CustomerCreateInput {
   rem: String
 }
 
-input CustomerUpdateInput {
+input CustomerUpdateInputDto {
   id: Int!
   userId: Int!
-  customerName: String!
+  firstName: String
+  middleName: String
+  secondName: String
   subjectCategoryId: Int
   subjectId: Int
   phone: String
@@ -722,29 +797,29 @@ input CustomerUpdateInput {
   version: Int!
 }
 
-input CustomerDeleteInput {
+input CustomerDeleteInputDto {
   id: Int!
   version: Int!
 }
 
-input DistrictCreateInput {
+input DistrictCreateInputDto {
   districtName: String!
   cityId: Int!
 }
 
-input DistrictUpdateInput {
+input DistrictUpdateInputDto {
   id: Int!
   districtName: String!
   cityId: Int!
   version: Int!
 }
 
-input DistrictDeleteInput {
+input DistrictDeleteInputDto {
   id: Int!
   version: Int!
 }
 
-input EmployeeBonusCreateInput {
+input EmployeeBonusCreateInputDto {
   userId: Int!
   employeeId: Int!
   bonusDate: DateTime!
@@ -754,7 +829,7 @@ input EmployeeBonusCreateInput {
   rem: String
 }
 
-input EmployeeBonusUpdateInput {
+input EmployeeBonusUpdateInputDto {
   id: Int!
   userId: Int!
   employeeId: Int!
@@ -766,12 +841,12 @@ input EmployeeBonusUpdateInput {
   version: Int!
 }
 
-input EmployeeBonusDeleteInput {
+input EmployeeBonusDeleteInputDto {
   id: Int!
   version: Int!
 }
 
-input EmployeePositionCreateInput {
+input EmployeePositionCreateInputDto {
   userId: Int!
   employeeId: Int!
   positionDateStart: DateTime!
@@ -781,7 +856,7 @@ input EmployeePositionCreateInput {
   rem: String
 }
 
-input EmployeePositionUpdateInput {
+input EmployeePositionUpdateInputDto {
   id: Int!
   userId: Int!
   employeeId: Int!
@@ -793,18 +868,18 @@ input EmployeePositionUpdateInput {
   version: Int!
 }
 
-input EmployeePositionDeleteInput {
+input EmployeePositionDeleteInputDto {
   id: Int!
   version: Int!
 }
 
-input EmployeeStatusCreateInput {
+input EmployeeStatusCreateInputDto {
   employeeStatusName: String!
   isEmployeeGroup: Boolean!
   isTimesheetGroup: Boolean!
 }
 
-input EmployeeStatusUpdateInput {
+input EmployeeStatusUpdateInputDto {
   id: Int!
   employeeStatusName: String!
   isEmployeeGroup: Boolean!
@@ -812,12 +887,12 @@ input EmployeeStatusUpdateInput {
   version: Int!
 }
 
-input EmployeeStatusDeleteInput {
+input EmployeeStatusDeleteInputDto {
   id: Int!
   version: Int!
 }
 
-input EmployeeCreateInput {
+input EmployeeCreateInputDto {
   userId: Int!
   employeeName: String!
   hbDate: DateTime
@@ -838,7 +913,7 @@ input EmployeeCreateInput {
   rem: String
 }
 
-input EmployeeUpdateInput {
+input EmployeeUpdateInputDto {
   id: Int!
   userId: Int!
   employeeName: String!
@@ -861,63 +936,97 @@ input EmployeeUpdateInput {
   version: Int!
 }
 
-input EmployeeDeleteInput {
+input EmployeeDeleteInputDto {
   id: Int!
   version: Int!
 }
 
-input FamilyStatusCreateInput {
+input ExecutionStatusCreateInputDto {
+  executionStatusName: String!
+  style: String
+}
+
+input ExecutionStatusUpdateInputDto {
+  id: Int!
+  executionStatusName: String!
+  style: String
+  version: Int!
+}
+
+input ExecutionStatusDeleteInputDto {
+  id: Int!
+  version: Int!
+}
+
+input FamilyStatusCreateInputDto {
   familyStatusName: String!
 }
 
-input FamilyStatusUpdateInput {
+input FamilyStatusUpdateInputDto {
   id: Int!
   familyStatusName: String!
   version: Int!
 }
 
-input FamilyStatusDeleteInput {
+input FamilyStatusDeleteInputDto {
   id: Int!
   version: Int!
 }
 
-input OperationModeCreateInput {
+input OperationModeCreateInputDto {
   operationModeName: String!
 }
 
-input OperationModeUpdateInput {
+input OperationModeUpdateInputDto {
   id: Int!
   operationModeName: String!
   version: Int!
 }
 
-input OperationModeDeleteInput {
+input OperationModeDeleteInputDto {
   id: Int!
   version: Int!
 }
 
-input PaymentFormCreateInput {
+input PaymentFormCreateInputDto {
   paymentFormName: String!
 }
 
-input PaymentFormUpdateInput {
+input PaymentFormUpdateInputDto {
   id: Int!
   paymentFormName: String!
   version: Int!
 }
 
-input PaymentFormDeleteInput {
+input PaymentFormDeleteInputDto {
   id: Int!
   version: Int!
 }
 
-input PositionCreateInput {
+input PaymentStatusCreateInputDto {
+  paymentStatusName: String!
+  style: String
+}
+
+input PaymentStatusUpdateInputDto {
+  id: Int!
+  paymentStatusName: String!
+  style: String
+  version: Int!
+}
+
+input PaymentStatusDeleteInputDto {
+  id: Int!
+  version: Int!
+}
+
+input PositionCreateInputDto {
   positionName: String!
   tariff: Float!
   isCurrentOffer: Boolean!
 }
 
-input PositionUpdateInput {
+input PositionUpdateInputDto {
   id: Int!
   positionName: String!
   tariff: Float!
@@ -925,114 +1034,142 @@ input PositionUpdateInput {
   version: Int!
 }
 
-input PositionDeleteInput {
+input PositionDeleteInputDto {
   id: Int!
   version: Int!
 }
 
-input QuarterCreateInput {
+input QuarterCreateInputDto {
   quarterName: String!
   districtId: Int!
 }
 
-input QuarterUpdateInput {
+input QuarterUpdateInputDto {
   id: Int!
   quarterName: String!
   districtId: Int!
   version: Int!
 }
 
-input QuarterDeleteInput {
+input QuarterDeleteInputDto {
   id: Int!
   version: Int!
 }
 
-input SocialStatusCreateInput {
+input ServicePackCreateInputDto {
+  agreementId: Int!
+  totalCost: Int
+  prepayment: Int
+  debt: Int
+  executionStatusId: Int!
+  paymentStatusId: Int!
+  rem: String
+}
+
+input ServicePackUpdateInputDto {
+  id: Int!
+  agreementId: Int!
+  totalCost: Int
+  prepayment: Int
+  debt: Int
+  executionStatusId: Int!
+  paymentStatusId: Int!
+  rem: String
+  version: Int!
+}
+
+input ServicePackDeleteInputDto {
+  id: Int!
+  version: Int!
+}
+
+input SocialStatusCreateInputDto {
   socialStatusName: String!
 }
 
-input SocialStatusUpdateInput {
+input SocialStatusUpdateInputDto {
   id: Int!
   socialStatusName: String!
   version: Int!
 }
 
-input SocialStatusDeleteInput {
+input SocialStatusDeleteInputDto {
   id: Int!
   version: Int!
 }
 
-input SubjectCategoryCreateInput {
+input SubjectCategoryCreateInputDto {
   subjectCategoryName: String!
 }
 
-input SubjectCategoryUpdateInput {
+input SubjectCategoryUpdateInputDto {
   id: Int!
   subjectCategoryName: String!
   version: Int!
 }
 
-input SubjectCategoryDeleteInput {
+input SubjectCategoryDeleteInputDto {
   id: Int!
   version: Int!
 }
 
-input SubjectCreateInput {
+input SubjectCreateInputDto {
   subjectName: String!
   subjectCategoryId: Int!
 }
 
-input SubjectUpdateInput {
+input SubjectUpdateInputDto {
   id: Int!
   subjectName: String!
   subjectCategoryId: Int!
   version: Int!
 }
 
-input SubjectDeleteInput {
+input SubjectDeleteInputDto {
   id: Int!
   version: Int!
 }
 
-input TypeJobCreateInput {
+input TypeJobCreateInputDto {
   typeJobName: String!
 }
 
-input TypeJobUpdateInput {
+input TypeJobUpdateInputDto {
   id: Int!
   typeJobName: String!
   version: Int!
 }
 
-input TypeJobDeleteInput {
+input TypeJobDeleteInputDto {
   id: Int!
   version: Int!
 }
 
-input UserRoleCreateInput {
-  id: String!
-  roleDescription: String
+input UserRoleCreateInputDto {
+  userRoleName: String!
+  userRoleDescription: String
 }
 
-input UserRoleUpdateInput {
-  id: String!
-  roleDescription: String
+input UserRoleUpdateInputDto {
+  id: Int!
+  userRoleName: String
+  userRoleDescription: String
   version: Int!
 }
 
-input UserRoleDeleteInput {
-  id: String!
+input UserRoleDeleteInputDto {
+  id: Int!
   version: Int!
 }
 
-input WardStageProgressCreateInput {
+input WardStageProgressCreateInputDto {
   wardStageDate: DateTime!
   wardStageId: Int!
   wardId: Int!
   rem: String
 }
 
-input WardStageProgressUpdateInput {
+input WardStageProgressUpdateInputDto {
   id: Int!
   wardStageDate: DateTime!
   wardStageId: Int!
@@ -1041,30 +1178,32 @@ input WardStageProgressUpdateInput {
   version: Int!
 }
 
-input WardStageProgressDeleteInput {
+input WardStageProgressDeleteInputDto {
   id: Int!
   version: Int!
 }
 
-input WardStageCreateInput {
+input WardStageCreateInputDto {
   wardStageName: String!
 }
 
-input WardStageUpdateInput {
+input WardStageUpdateInputDto {
   id: Int!
   wardStageName: String!
   version: Int!
 }
 
-input WardStageDeleteInput {
+input WardStageDeleteInputDto {
   id: Int!
   version: Int!
 }
 
-input WardCreateInput {
+input WardCreateInputDto {
   userId: Int!
   customerId: Int
-  wardName: String
+  firstName: String
+  middleName: String
+  secondName: String
   hbDate: DateTime
   passportNumber: String
   passportIssuedBy: String
@@ -1085,11 +1224,13 @@ input WardCreateInput {
   rem: String
 }
 
-input WardUpdateInput {
+input WardUpdateInputDto {
   id: Int!
   userId: Int!
   customerId: Int
-  wardName: String
+  firstName: String
+  middleName: String
+  secondName: String
   hbDate: DateTime
   passportNumber: String
   passportIssuedBy: String
@@ -1111,22 +1252,22 @@ input WardUpdateInput {
   version: Int!
 }
 
-input WardDeleteInput {
+input WardDeleteInputDto {
   id: Int!
   version: Int!
 }
 
-input WhatAboutUsCreateInput {
+input WhatAboutUsCreateInputDto {
   whatAboutUsName: String!
 }
 
-input WhatAboutUsUpdateInput {
+input WhatAboutUsUpdateInputDto {
   id: Int!
   whatAboutUsName: String!
   version: Int!
 }
 
-input WhatAboutUsDeleteInput {
+input WhatAboutUsDeleteInputDto {
   id: Int!
   version: Int!
 }
