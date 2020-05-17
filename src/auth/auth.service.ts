@@ -2,8 +2,8 @@ import * as bcrypt from 'bcrypt';
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { MessageCodeError } from '../common/error/MessageCodeError';
-import { SessionCreateInput } from '../session/inputs/session-create.input';
-import { SessionUpdateInput } from '../session/inputs/session-update.input';
+import { SessionCreateInputDto } from '../session/dto/inputs/session-create.input.dto';
+import { SessionUpdateInputDto } from '../session/dto/inputs/session-update.input.dto';
 import Session from '../session/session.model';
 import { SessionService } from '../session/session.service';
 import { IPayload, ISessions, TDecodedToken } from '../session/session.types';
@@ -129,7 +129,7 @@ export class AuthService {
           decodedRefreshToken?.exp
         ) {
           if (existingRefreshTokenRow) {
-            const value: SessionUpdateInput = {
+            const value: SessionUpdateInputDto = {
               id: existingRefreshTokenRow.id,
               userId,
               refreshToken: tokens.refreshToken,
@@ -138,7 +138,7 @@ export class AuthService {
             };
             await this.sessionService.updateSession(value);
           } else {
-            const data: SessionCreateInput = {
+            const data: SessionCreateInputDto = {
               userId,
               refreshToken: tokens.refreshToken,
               expiresIn: decodedRefreshToken.exp,
@@ -215,7 +215,7 @@ export class AuthService {
         typeof decodedNewRefreshToken !== 'string' &&
         decodedNewRefreshToken?.sub
       ) {
-        const value: SessionUpdateInput = {
+        const value: SessionUpdateInputDto = {
           id: recordId,
           userId,
           refreshToken: tokens.refreshToken,

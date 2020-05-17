@@ -3,9 +3,9 @@ import { Op } from 'sequelize';
 import { BadRequestException, Inject, Injectable } from '@nestjs/common';
 import { CheckIsValueUnique, OptimisticLocking } from '../common/decorators';
 import { MessageCodeError } from '../common/error';
-import { UserRoleCreateInput } from './input/user-role-create.input';
-import { UserRoleDeleteInput } from './input/user-role-delete.input';
-import { UserRoleUpdateInput } from './input/user-role-update.input';
+import { UserRoleCreateInputDto } from './dto/input/user-role-create.input.dto';
+import { UserRoleDeleteInputDto } from './dto/input/user-role-delete.input.dto';
+import { UserRoleUpdateInputDto } from './dto/input/user-role-update.input.dto';
 import UserRole from './user-role.model';
 
 @Injectable()
@@ -15,7 +15,7 @@ export class UserRoleService {
     private readonly USER_ROLE_REPOSITORY: typeof UserRole,
   ) {}
 
-  public async checkVersion(id: string): Promise<UserRole | undefined> {
+  public async checkVersion(id: number): Promise<UserRole | undefined> {
     try {
       return await this.USER_ROLE_REPOSITORY.findOne<UserRole>({
         where: { id },
@@ -26,7 +26,7 @@ export class UserRoleService {
     }
   }
 
-  public async userRole(id: string): Promise<UserRole | undefined> {
+  public async userRole(id: number): Promise<UserRole | undefined> {
     try {
       return await this.USER_ROLE_REPOSITORY.findOne<UserRole>({
         where: { id },
@@ -49,7 +49,7 @@ export class UserRoleService {
         limit: paging,
         offset: (page - 1) * paging,
         where: {
-          id: {
+          userRoleName: {
             [Op.iRegexp]: iRegexp,
           },
         },
@@ -60,13 +60,13 @@ export class UserRoleService {
     }
   }
 
-  async userRolesFind(ids: number[]): Promise<UserRole[]> {
+  async userRoles(userRoleNames: string[]): Promise<UserRole[]> {
     try {
       const whereCondition = {};
-      if (ids.length > 0) {
-        whereCondition[Op.or] = ids.map((id: number) => {
+      if (userRoleNames.length > 0) {
+        whereCondition[Op.or] = userRoleNames.map((userRoleName: string) => {
           return {
-            id,
+            userRoleName,
           };
         });
       }
@@ -78,8 +78,22 @@ export class UserRoleService {
     }
   }
 
-  @CheckIsValueUnique('userRole', 'id', 'userRole:validate:notUniqueUserRoleId')
-  async userRoleCreate(data: UserRoleCreateInput): Promise<UserRole> {
+  async userRoleNameFind(userRoleName: string): Promise<UserRole> {
+    try {
+      return await this.USER_ROLE_REPOSITORY.findOne<UserRole | undefined>({
+        where: { userRoleName },
+      });
+    } catch (error) {
+      throw new BadRequestException();
+    }
+  }
+
+  @CheckIsValueUnique(
+    'userRoleNameFind',
+    'userRoleName',
+    'userRole:validate:notUniqueUserRoleId',
+  )
+  async userRoleCreate(data: UserRoleCreateInputDto): Promise<UserRole> {
     try {
       return await this.USER_ROLE_REPOSITORY.create<UserRole>(data);
     } catch (error) {
@@ -91,8 +105,12 @@ export class UserRoleService {
   }
 
   @OptimisticLocking(true)
-  @CheckIsValueUnique('userRole', 'id', 'userRole:validate:notUniqueUserRoleId')
-  async userRoleUpdate(data: UserRoleUpdateInput): Promise<UserRole> {
+  @CheckIsValueUnique(
+    'userRoleNameFind',
+    'userRoleName',
+    'userRole:validate:notUniqueUserRoleId',
+  )
+  async userRoleUpdate(data: UserRoleUpdateInputDto): Promise<UserRole> {
     try {
       const res = await this.USER_ROLE_REPOSITORY.update<UserRole>(data, {
         where: { id: data.id },
@@ -111,7 +129,7 @@ export class UserRoleService {
   }
 
   @OptimisticLocking(false)
-  async userRoleDelete(data: UserRoleDeleteInput): Promise<Number> {
+  async userRoleDelete(data: UserRoleDeleteInputDto): Promise<Number> {
     try {
       const { id, version } = data;
       return await this.USER_ROLE_REPOSITORY.destroy({

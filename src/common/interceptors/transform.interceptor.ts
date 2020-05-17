@@ -1,3 +1,4 @@
+import chalk from 'chalk';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { CallHandler, ExecutionContext, NestInterceptor } from '@nestjs/common';
@@ -7,10 +8,15 @@ export class TransformInterceptor implements NestInterceptor {
     context: ExecutionContext,
     next: CallHandler,
   ): Observable<any> | Promise<Observable<any>> {
-    console.log('Before...');
+    console.log(
+      chalk.green('[GLOBAL INTERCEPTORS] [TransformInterceptor] [Before]'),
+    );
+
     return next.handle().pipe(
       tap(() => {
-        console.log('After...');
+        console.log(
+          chalk.green('\n[GLOBAL INTERCEPTORS] [TransformInterceptor] [After]'),
+        );
       }),
     );
   }

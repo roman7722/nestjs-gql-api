@@ -3,13 +3,13 @@ import { Args, Int, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { Roles } from '../auth/decorators/roles.decorator';
 import { GqlAuthGuard } from '../auth/guards/gql-auth.guard';
 import { RolesGuard } from '../auth/guards/roles.guard';
-import { FamilyStatusListArgs } from './args/family-status-list.args';
-import { FamilyStatusArgs } from './args/family-status.args';
+import { FamilyStatusListArgsDto } from './dto/args/family-status-list.args.dto';
+import { FamilyStatusArgsDto } from './dto/args/family-status.args.dto';
 import { FamilyStatusDto } from './dto/family-status.dto';
+import { FamilyStatusCreateInputDto } from './dto/input/family-status-create.input.dto';
+import { FamilyStatusDeleteInputDto } from './dto/input/family-status-delete.input.dto';
+import { FamilyStatusUpdateInputDto } from './dto/input/family-status-update.input.dto';
 import { FamilyStatusService } from './family-status.service';
-import { FamilyStatusCreateInput } from './input/family-status-create.input';
-import { FamilyStatusDeleteInput } from './input/family-status-delete.input';
-import { FamilyStatusUpdateInput } from './input/family-status-update.input';
 
 @Resolver()
 @UseGuards(GqlAuthGuard, RolesGuard)
@@ -21,7 +21,7 @@ export class FamilyStatusResolver {
     nullable: true,
     description: 'Поиск социального статуса по id',
   })
-  async familyStatus(@Args() { id }: FamilyStatusArgs) {
+  async familyStatus(@Args() { id }: FamilyStatusArgsDto) {
     return await this.familyStatusService.familyStatus(id);
   }
 
@@ -30,23 +30,23 @@ export class FamilyStatusResolver {
     description: 'Поиск социального статуса по наименованию и пагинация',
   })
   async familyStatusList(
-    @Args() { textFilter, page, paging }: FamilyStatusListArgs,
+    @Args() { textFilter, page, paging }: FamilyStatusListArgsDto,
   ) {
     return this.familyStatusService.familyStatusList(textFilter, page, paging);
   }
 
   @Mutation(() => FamilyStatusDto)
-  async familyStatusCreate(@Args('data') data: FamilyStatusCreateInput) {
+  async familyStatusCreate(@Args('data') data: FamilyStatusCreateInputDto) {
     return await this.familyStatusService.familyStatusCreate(data);
   }
 
   @Mutation(() => FamilyStatusDto)
-  async familyStatusUpdate(@Args('data') data: FamilyStatusUpdateInput) {
+  async familyStatusUpdate(@Args('data') data: FamilyStatusUpdateInputDto) {
     return await this.familyStatusService.familyStatusUpdate(data);
   }
 
   @Mutation(() => Int)
-  async familyStatusDelete(@Args('data') data: FamilyStatusDeleteInput) {
+  async familyStatusDelete(@Args('data') data: FamilyStatusDeleteInputDto) {
     return await this.familyStatusService.familyStatusDelete(data);
   }
 }

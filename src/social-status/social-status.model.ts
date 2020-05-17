@@ -9,10 +9,7 @@ export default class SocialStatus extends Model<SocialStatus> {
   @Column({ allowNull: false, defaultValue: 1 }) version: number;
 
   /** Many-to-many */
-  @BelongsToMany(
-    () => Ward,
-    () => WardSocialStatus,
-  )
-  wards: Ward[];
-  // wards: Array<Ward & { WardSocialStatus: WardSocialStatus }>;
+  @BelongsToMany(() => Ward, () => WardSocialStatus)
+  // tslint:disable-next-line: array-type
+  wards: Array<Ward & { WardSocialStatus: WardSocialStatus }>;
 }

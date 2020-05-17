@@ -1,3 +1,5 @@
+import chalk from 'chalk';
+import dateFormat from 'dateformat';
 import { decode } from 'jsonwebtoken';
 import { CanActivate, ExecutionContext, Injectable } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
@@ -19,7 +21,19 @@ export class RolesGuard implements CanActivate {
       this.reflector.get<string[]>('roles', context.getHandler()) || [];
     const roles = [...rolesResolver, ...rolesQuery];
 
-    console.log('Roles Allowed --->', roles);
+    const now = new Date();
+
+    console.log(
+      chalk.bgRedBright.whiteBright.bold('\n\n START QUERY '),
+      chalk.bgWhiteBright.redBright.bold(
+        ' ',
+        dateFormat(now, 'default'),
+        ' \n',
+      ),
+      chalk.yellow('\nRoles Allowed: '),
+      chalk.red(roles),
+      '\n',
+    );
 
     const ctx = GqlExecutionContext.create(context);
     const { req } = ctx.getContext();
@@ -30,13 +44,17 @@ export class RolesGuard implements CanActivate {
       payload = decode(accessToken) as TDecodedToken;
       if (typeof payload !== 'string' && payload) {
         const { sub } = payload;
-        /** Получаем roleId из таблицы s_user */
+        /** Получаем userRoleName из таблицы s_user */
         const user = await this.userService.userRoleFind(sub);
-        const roleId = user?.getDataValue('roleId');
+        const userRoleName = user?.getDataValue('userRoleName');
 
-        console.log('User role --->', roleId);
+        console.log(
+          chalk.yellow('\nUser role: '),
+          chalk.red(userRoleName),
+          '\n',
+        );
 
-        const hasRole = () => roles.some(role => role === roleId);
+        const hasRole = () => roles.some((role) => role === userRoleName);
 
         return sub && hasRole();
       } else {

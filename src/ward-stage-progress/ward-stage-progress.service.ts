@@ -4,10 +4,10 @@ import { BadRequestException, Inject, Injectable } from '@nestjs/common';
 import { OptimisticLocking } from '../common/decorators';
 import WardStage from '../ward-stage/ward-stage.model';
 import Ward from '../ward/ward.model';
-import { WardStageProgressListArgs } from './args/ward-stage-progress-list.args';
-import { WardStageProgressCreateInput } from './input/ward-stage-progress-create.input';
-import { WardStageProgressDeleteInput } from './input/ward-stage-progress-delete.input';
-import { WardStageProgressUpdateInput } from './input/ward-stage-progress-update.input';
+import { WardStageProgressListArgsDto } from './dto/args/ward-stage-progress-list.args.dto';
+import { WardStageProgressCreateInputDto } from './dto/input/ward-stage-progress-create.input.dto';
+import { WardStageProgressDeleteInputDto } from './dto/input/ward-stage-progress-delete.input.dto';
+import { WardStageProgressUpdateInputDto } from './dto/input/ward-stage-progress-update.input.dto';
 import WardStageProgress from './ward-stage-progress.model';
 
 @Injectable()
@@ -15,7 +15,7 @@ export class WardStageProgressService {
   constructor(
     @Inject('WARD_STAGE_PROGRESS_REPOSITORY')
     private readonly WARD_STAGE_PROGRESS_REPOSITORY: typeof WardStageProgress,
-  ) { }
+  ) {}
 
   public async checkVersion(
     id: string,
@@ -45,7 +45,7 @@ export class WardStageProgressService {
   }
 
   async wardStageProgressList(
-    data: WardStageProgressListArgs,
+    data: WardStageProgressListArgsDto,
   ): Promise<WardStageProgress[]> {
     try {
       const { wardId, textFilter, paging, page } = data;
@@ -75,7 +75,7 @@ export class WardStageProgressService {
   }
 
   async wardStageProgressCreate(
-    data: WardStageProgressCreateInput,
+    data: WardStageProgressCreateInputDto,
   ): Promise<WardStageProgress> {
     try {
       return await this.WARD_STAGE_PROGRESS_REPOSITORY.create<
@@ -88,7 +88,7 @@ export class WardStageProgressService {
 
   @OptimisticLocking(true)
   async wardStageProgressUpdate(
-    data: WardStageProgressUpdateInput,
+    data: WardStageProgressUpdateInputDto,
   ): Promise<WardStageProgress> {
     try {
       const res = await this.WARD_STAGE_PROGRESS_REPOSITORY.update<
@@ -106,7 +106,7 @@ export class WardStageProgressService {
 
   @OptimisticLocking(false)
   async wardStageProgressDelete(
-    data: WardStageProgressDeleteInput,
+    data: WardStageProgressDeleteInputDto,
   ): Promise<Number> {
     try {
       const { id, version } = data;

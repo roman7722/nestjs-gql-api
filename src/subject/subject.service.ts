@@ -4,9 +4,9 @@ import { BadRequestException, Inject, Injectable } from '@nestjs/common';
 import { CheckIsValueUnique, OptimisticLocking } from '../common/decorators';
 import { MessageCodeError } from '../common/error';
 import SubjectCategory from '../subject-category/subject-category.model';
-import { SubjectCreateInput } from './input/subject-create.input';
-import { SubjectDeleteInput } from './input/subject-delete.input';
-import { SubjectUpdateInput } from './input/subject-update.input';
+import { SubjectCreateInputDto } from './dto/input/subject-create.input.dto';
+import { SubjectDeleteInputDto } from './dto/input/subject-delete.input.dto';
+import { SubjectUpdateInputDto } from './dto/input/subject-update.input.dto';
 import Subject from './subject.model';
 
 @Injectable()
@@ -77,7 +77,7 @@ export class SubjectService {
     'subjectName',
     'subject:validate:notUniqueSubjectName',
   )
-  async subjectCreate(data: SubjectCreateInput): Promise<Subject> {
+  async subjectCreate(data: SubjectCreateInputDto): Promise<Subject> {
     try {
       return await this.SUBJECT_REPOSITORY.create<Subject>(data);
     } catch (error) {
@@ -94,7 +94,7 @@ export class SubjectService {
     'subjectName',
     'subject:validate:notUniqueSubjectName',
   )
-  async subjectUpdate(data: SubjectUpdateInput): Promise<Subject> {
+  async subjectUpdate(data: SubjectUpdateInputDto): Promise<Subject> {
     try {
       const res = await this.SUBJECT_REPOSITORY.update<Subject>(data, {
         where: { id: data.id },
@@ -111,7 +111,7 @@ export class SubjectService {
   }
 
   @OptimisticLocking(false)
-  async subjectDelete(data: SubjectDeleteInput): Promise<Number> {
+  async subjectDelete(data: SubjectDeleteInputDto): Promise<Number> {
     try {
       return await this.SUBJECT_REPOSITORY.destroy({
         where: { id: data.id },

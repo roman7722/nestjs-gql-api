@@ -3,13 +3,13 @@ import { Args, Int, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { Roles } from '../auth/decorators/roles.decorator';
 import { GqlAuthGuard } from '../auth/guards/gql-auth.guard';
 import { RolesGuard } from '../auth/guards/roles.guard';
-import { EmployeeListArgs } from './args/employee-list.args';
-import { EmployeeArgs } from './args/employee.args';
+import { EmployeeListArgsDto } from './dto/args/employee-list.args.dto';
+import { EmployeeArgsDto } from './dto/args/employee.args.dto';
 import { EmployeeDto } from './dto/employee.dto';
+import { EmployeeCreateInputDto } from './dto/input/employee-create.input.dto';
+import { EmployeeDeleteInputDto } from './dto/input/employee-delete.input.dto';
+import { EmployeeUpdateInputDto } from './dto/input/employee-update.input.dto';
 import { EmployeeService } from './employee.service';
-import { EmployeeCreateInput } from './input/employee-create.input';
-import { EmployeeDeleteInput } from './input/employee-delete.input';
-import { EmployeeUpdateInput } from './input/employee-update.input';
 
 @Resolver()
 @UseGuards(GqlAuthGuard, RolesGuard)
@@ -21,7 +21,7 @@ export class EmployeeResolver {
     nullable: true,
     description: 'Поиск сотрудника по id',
   })
-  async employee(@Args() { id }: EmployeeArgs) {
+  async employee(@Args() { id }: EmployeeArgsDto) {
     return await this.employeeService.employee(id);
   }
 
@@ -29,22 +29,24 @@ export class EmployeeResolver {
     nullable: true,
     description: 'Поиск сотрудника по имени и пагинация',
   })
-  async employeeList(@Args() { textFilter, page, paging }: EmployeeListArgs) {
+  async employeeList(
+    @Args() { textFilter, page, paging }: EmployeeListArgsDto,
+  ) {
     return this.employeeService.employeeList(textFilter, page, paging);
   }
 
   @Mutation(() => EmployeeDto)
-  async employeeCreate(@Args('data') data: EmployeeCreateInput) {
+  async employeeCreate(@Args('data') data: EmployeeCreateInputDto) {
     return await this.employeeService.employeeCreate(data);
   }
 
   @Mutation(() => EmployeeDto)
-  async employeeUpdate(@Args('data') data: EmployeeUpdateInput) {
+  async employeeUpdate(@Args('data') data: EmployeeUpdateInputDto) {
     return await this.employeeService.employeeUpdate(data);
   }
 
   @Mutation(() => Int)
-  async employeeDelete(@Args('data') data: EmployeeDeleteInput) {
+  async employeeDelete(@Args('data') data: EmployeeDeleteInputDto) {
     return await this.employeeService.employeeDelete(data);
   }
 }

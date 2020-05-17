@@ -9,10 +9,7 @@ export default class TypeJob extends Model<TypeJob> {
   @Column({ allowNull: false, defaultValue: 1 }) version: number;
 
   /** Many-to-many */
-  @BelongsToMany(
-    () => Employee,
-    () => EmployeeTypeJob,
-  )
-  employees: Employee[];
-  // employees: Array<Employee & { EmployeeTypeJob: EmployeeTypeJob }>;
+  @BelongsToMany(() => Employee, () => EmployeeTypeJob)
+  // tslint:disable-next-line: array-type
+  employees: Array<Employee & { EmployeeTypeJob: EmployeeTypeJob }>;
 }

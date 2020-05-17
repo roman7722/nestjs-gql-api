@@ -1,14 +1,18 @@
 import { isEmpty } from 'lodash';
 import { Op } from 'sequelize';
 import { BadRequestException, Inject, Injectable } from '@nestjs/common';
+import AgreementStatus from '../agreement-status/agreement-status.model';
 import { CheckIsValueUnique, OptimisticLocking } from '../common/decorators';
 import { MessageCodeError } from '../common/error/MessageCodeError';
+import Customer from '../customer/customer.model';
+import SocialStatus from '../social-status/social-status.model';
 import UserRole from '../user-role/user-role.model';
 import User from '../user/user.model';
+import Ward from '../ward/ward.model';
 import Agreement from './agreement.model';
-import { AgreementCreateInput } from './input/agreement-create.input';
-import { AgreementDeleteInput } from './input/agreement-delete.input';
-import { AgreementUpdateInput } from './input/agreement-update.input';
+import { AgreementCreateInputDto } from './dto/input/agreement-create.input.dto';
+import { AgreementDeleteInputDto } from './dto/input/agreement-delete.input.dto';
+import { AgreementUpdateInputDto } from './dto/input/agreement-update.input.dto';
 
 @Injectable()
 export class AgreementService {
@@ -16,6 +20,8 @@ export class AgreementService {
     @Inject('AGREEMENT_REPOSITORY')
     private readonly AGREEMENT_REPOSITORY: typeof Agreement,
   ) {}
+
+  private readonly includedModels = [User, Customer, Ward, AgreementStatus];
 
   public async checkVersion(id: number): Promise<Agreement | undefined> {
     try {
@@ -32,6 +38,10 @@ export class AgreementService {
     try {
       return await this.AGREEMENT_REPOSITORY.findOne<Agreement | undefined>({
         where: { id },
+        include: [
+          ...this.includedModels,
+          { model: Ward, include: [{ model: SocialStatus }] },
+        ],
       });
     } catch (error) {
       throw new BadRequestException();
@@ -56,6 +66,7 @@ export class AgreementService {
           },
         },
         order: [['agreementNumber', 'ASC']],
+        include: this.includedModels,
       });
     } catch (error) {
       throw new BadRequestException();
@@ -92,7 +103,7 @@ export class AgreementService {
     'agreementNumber',
     'agreement:validate:notUniqueAgreementNumber',
   )
-  async agreementCreate(data: AgreementCreateInput): Promise<Agreement> {
+  async agreementCreate(data: AgreementCreateInputDto): Promise<Agreement> {
     try {
       return await this.AGREEMENT_REPOSITORY.create<Agreement>(data);
     } catch (error) {
@@ -111,7 +122,7 @@ export class AgreementService {
     'agreementNumber',
     'agreement:validate:notUniqueAgreementNumber',
   )
-  async agreementUpdate(data: AgreementUpdateInput): Promise<Agreement> {
+  async agreementUpdate(data: AgreementUpdateInputDto): Promise<Agreement> {
     try {
       const res = await this.AGREEMENT_REPOSITORY.update<Agreement>(data, {
         where: { id: data.id },
@@ -130,7 +141,7 @@ export class AgreementService {
   }
 
   @OptimisticLocking(false)
-  async agreementDelete(data: AgreementDeleteInput): Promise<Number> {
+  async agreementDelete(data: AgreementDeleteInputDto): Promise<Number> {
     try {
       return await this.AGREEMENT_REPOSITORY.destroy({
         where: { id: data.id },

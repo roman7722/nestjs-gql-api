@@ -1,9 +1,9 @@
 import { difference } from 'lodash';
 import { Op, Transaction } from 'sequelize';
 import { BadRequestException, Inject, Injectable } from '@nestjs/common';
-import { WardSocialStatusCreateInput } from './input/ward-social-status-create.input';
-import { WardSocialStatusDeleteInput } from './input/ward-social-status-delete.input';
-import { WardSocialStatusUpdateInput } from './input/ward-social-status-update.input';
+import { WardSocialStatusCreateInputDto } from './dto/input/ward-social-status-create.input.dto';
+import { WardSocialStatusDeleteInputDto } from './dto/input/ward-social-status-delete.input.dto';
+import { WardSocialStatusUpdateInputDto } from './dto/input/ward-social-status-update.input.dto';
 import WardSocialStatus from './ward-social-status.model';
 
 @Injectable()
@@ -28,7 +28,7 @@ export class WardSocialStatusService {
     }
   }
   async wardSocialStatusesCreate(
-    data: WardSocialStatusCreateInput,
+    data: WardSocialStatusCreateInputDto,
     transaction?: Transaction,
   ): Promise<WardSocialStatus[]> {
     try {
@@ -51,7 +51,7 @@ export class WardSocialStatusService {
   }
 
   async wardSocialStatusesUpdate(
-    data: WardSocialStatusUpdateInput,
+    data: WardSocialStatusUpdateInputDto,
     transaction?: Transaction,
   ): Promise<any[]> {
     const { wardId, oldSocialStatusesIds, newSocialStatusesIds } = data;
@@ -84,7 +84,7 @@ export class WardSocialStatusService {
   }
 
   async wardSocialStatusesDelete(
-    data: WardSocialStatusDeleteInput,
+    data: WardSocialStatusDeleteInputDto,
     transaction?: Transaction,
   ): Promise<Number[]> {
     try {

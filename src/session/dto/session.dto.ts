@@ -1,10 +1,10 @@
-import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Field, ID, Int, ObjectType } from '@nestjs/graphql';
 
 @ObjectType()
 export class SessionDto {
   @Field(() => ID) id: number;
-  @Field({ nullable: false }) userId: number;
-  @Field({ nullable: false }) refreshToken: string;
-  @Field({ nullable: false }) expiresIn: number;
-  @Field({ nullable: false }) fingerprint: string;
+  @Field(() => Int, { nullable: false }) userId: number;
+  @Field(() => String, { nullable: false }) refreshToken: string;
+  @Field(() => Int, { nullable: false }) expiresIn: number;
+  @Field(() => String, { nullable: false }) fingerprint: string;
 }

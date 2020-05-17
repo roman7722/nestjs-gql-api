@@ -1,7 +1,7 @@
 import { Op, Transaction } from 'sequelize';
 import { BadRequestException, Inject, Injectable } from '@nestjs/common';
-import { SessionCreateInput } from './inputs/session-create.input';
-import { SessionUpdateInput } from './inputs/session-update.input';
+import { SessionCreateInputDto } from './dto/inputs/session-create.input.dto';
+import { SessionUpdateInputDto } from './dto/inputs/session-update.input.dto';
 import Session from './session.model';
 
 @Injectable()
@@ -11,7 +11,7 @@ export class SessionService {
     private readonly SESSION_REPOSITORY: typeof Session,
   ) {}
 
-  async createSession(data: SessionCreateInput): Promise<Session> {
+  async createSession(data: SessionCreateInputDto): Promise<Session> {
     try {
       return await this.SESSION_REPOSITORY.create<Session>(data);
     } catch (error) {
@@ -19,7 +19,7 @@ export class SessionService {
     }
   }
 
-  async updateSession(values: SessionUpdateInput): Promise<number> {
+  async updateSession(values: SessionUpdateInputDto): Promise<number> {
     try {
       const res = await this.SESSION_REPOSITORY.update<Session>(values, {
         where: { id: values.id },

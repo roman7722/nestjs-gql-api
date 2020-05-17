@@ -3,12 +3,12 @@ import { Args, Int, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { Roles } from '../auth/decorators/roles.decorator';
 import { GqlAuthGuard } from '../auth/guards/gql-auth.guard';
 import { RolesGuard } from '../auth/guards/roles.guard';
-import { PositionListArgs } from './args/position-list.args';
-import { PositionArgs } from './args/position.args';
+import { PositionListArgsDto } from './dto/args/position-list.args.dto';
+import { PositionArgsDto } from './dto/args/position.args.dto';
+import { PositionCreateInputDto } from './dto/input/position-create.input.dto';
+import { PositionDeleteInputDto } from './dto/input/position-delete.input.dto';
+import { PositionUpdateInputDto } from './dto/input/position-update.input.dto';
 import { PositionDto } from './dto/position.dto';
-import { PositionCreateInput } from './input/position-create.input';
-import { PositionDeleteInput } from './input/position-delete.input';
-import { PositionUpdateInput } from './input/position-update.input';
 import { PositionService } from './position.service';
 
 @Resolver()
@@ -21,7 +21,7 @@ export class PositionResolver {
     nullable: true,
     description: 'Поиск населённого пункта по id',
   })
-  async position(@Args() { id }: PositionArgs) {
+  async position(@Args() { id }: PositionArgsDto) {
     return await this.positionService.position(id);
   }
 
@@ -29,22 +29,24 @@ export class PositionResolver {
     nullable: true,
     description: 'Поиск населённого пункта по наименованию и пагинация',
   })
-  async positionList(@Args() { textFilter, page, paging }: PositionListArgs) {
+  async positionList(
+    @Args() { textFilter, page, paging }: PositionListArgsDto,
+  ) {
     return this.positionService.positionList(textFilter, page, paging);
   }
 
   @Mutation(() => PositionDto)
-  async positionCreate(@Args('data') data: PositionCreateInput) {
+  async positionCreate(@Args('data') data: PositionCreateInputDto) {
     return await this.positionService.positionCreate(data);
   }
 
   @Mutation(() => PositionDto)
-  async positionUpdate(@Args('data') data: PositionUpdateInput) {
+  async positionUpdate(@Args('data') data: PositionUpdateInputDto) {
     return await this.positionService.positionUpdate(data);
   }
 
   @Mutation(() => Int)
-  async positionDelete(@Args('data') data: PositionDeleteInput) {
+  async positionDelete(@Args('data') data: PositionDeleteInputDto) {
     return await this.positionService.positionDelete(data);
   }
 }

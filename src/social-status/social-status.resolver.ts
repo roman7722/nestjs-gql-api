@@ -3,12 +3,12 @@ import { Args, Int, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { Roles } from '../auth/decorators/roles.decorator';
 import { GqlAuthGuard } from '../auth/guards/gql-auth.guard';
 import { RolesGuard } from '../auth/guards/roles.guard';
-import { SocialStatusListArgs } from './args/social-status-list.args';
-import { SocialStatusArgs } from './args/social-status.args';
+import { SocialStatusListArgsDto } from './dto/args/social-status-list.args.dto';
+import { SocialStatusArgsDto } from './dto/args/social-status.args.dto';
+import { SocialStatusCreateInputDto } from './dto/input/social-status-create.input.dto';
+import { SocialStatusDeleteInputDto } from './dto/input/social-status-delete.input.dto';
+import { SocialStatusUpdateInputDto } from './dto/input/social-status-update.input.dto';
 import { SocialStatusDto } from './dto/social-status.dto';
-import { SocialStatusCreateInput } from './input/social-status-create.input';
-import { SocialStatusDeleteInput } from './input/social-status-delete.input';
-import { SocialStatusUpdateInput } from './input/social-status-update.input';
 import { SocialStatusService } from './social-status.service';
 
 @Resolver()
@@ -21,7 +21,7 @@ export class SocialStatusResolver {
     nullable: true,
     description: 'Поиск социального статуса по id',
   })
-  async socialStatus(@Args() { id }: SocialStatusArgs) {
+  async socialStatus(@Args() { id }: SocialStatusArgsDto) {
     return await this.socialStatusService.socialStatus(id);
   }
 
@@ -30,23 +30,23 @@ export class SocialStatusResolver {
     description: 'Поиск социального статуса по наименованию и пагинация',
   })
   async socialStatusList(
-    @Args() { textFilter, page, paging }: SocialStatusListArgs,
+    @Args() { textFilter, page, paging }: SocialStatusListArgsDto,
   ) {
     return this.socialStatusService.socialStatusList(textFilter, page, paging);
   }
 
   @Mutation(() => SocialStatusDto)
-  async socialStatusCreate(@Args('data') data: SocialStatusCreateInput) {
+  async socialStatusCreate(@Args('data') data: SocialStatusCreateInputDto) {
     return await this.socialStatusService.socialStatusCreate(data);
   }
 
   @Mutation(() => SocialStatusDto)
-  async socialStatusUpdate(@Args('data') data: SocialStatusUpdateInput) {
+  async socialStatusUpdate(@Args('data') data: SocialStatusUpdateInputDto) {
     return await this.socialStatusService.socialStatusUpdate(data);
   }
 
   @Mutation(() => Int)
-  async socialStatusDelete(@Args('data') data: SocialStatusDeleteInput) {
+  async socialStatusDelete(@Args('data') data: SocialStatusDeleteInputDto) {
     return await this.socialStatusService.socialStatusDelete(data);
   }
 }

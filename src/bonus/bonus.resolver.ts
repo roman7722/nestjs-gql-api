@@ -3,13 +3,13 @@ import { Args, Int, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { Roles } from '../auth/decorators/roles.decorator';
 import { GqlAuthGuard } from '../auth/guards/gql-auth.guard';
 import { RolesGuard } from '../auth/guards/roles.guard';
-import { BonusListArgs } from './args/bonus-list.args';
-import { BonusArgs } from './args/bonus.args';
 import { BonusService } from './bonus.service';
+import { BonusListArgsDto } from './dto/args/bonus-list.args.dto';
+import { BonusArgsDto } from './dto/args/bonus.args.dto';
 import { BonusDto } from './dto/bonus.dto';
-import { BonusCreateInput } from './input/bonus-create.input';
-import { BonusDeleteInput } from './input/bonus-delete.input';
-import { BonusUpdateInput } from './input/bonus-update.input';
+import { BonusCreateInputDto } from './dto/input/bonus-create.input.dto';
+import { BonusDeleteInputDto } from './dto/input/bonus-delete.input.dto';
+import { BonusUpdateInputDto } from './dto/input/bonus-update.input.dto';
 
 @Resolver()
 @UseGuards(GqlAuthGuard, RolesGuard)
@@ -21,7 +21,7 @@ export class BonusResolver {
     nullable: true,
     description: 'Поиск начисления или удержания по id',
   })
-  async bonus(@Args() { id }: BonusArgs) {
+  async bonus(@Args() { id }: BonusArgsDto) {
     return await this.bonusService.bonus(id);
   }
 
@@ -29,22 +29,22 @@ export class BonusResolver {
     nullable: true,
     description: 'Поиск начисления или удержания по наименованию и пагинация',
   })
-  async bonusList(@Args() { textFilter, page, paging }: BonusListArgs) {
+  async bonusList(@Args() { textFilter, page, paging }: BonusListArgsDto) {
     return this.bonusService.bonusList(textFilter, page, paging);
   }
 
   @Mutation(() => BonusDto)
-  async bonusCreate(@Args('data') data: BonusCreateInput) {
+  async bonusCreate(@Args('data') data: BonusCreateInputDto) {
     return await this.bonusService.bonusCreate(data);
   }
 
   @Mutation(() => BonusDto)
-  async bonusUpdate(@Args('data') data: BonusUpdateInput) {
+  async bonusUpdate(@Args('data') data: BonusUpdateInputDto) {
     return await this.bonusService.bonusUpdate(data);
   }
 
   @Mutation(() => Int)
-  async bonusDelete(@Args('data') data: BonusDeleteInput) {
+  async bonusDelete(@Args('data') data: BonusDeleteInputDto) {
     return await this.bonusService.bonusDelete(data);
   }
 }

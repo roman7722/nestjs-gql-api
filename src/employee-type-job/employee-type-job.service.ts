@@ -1,10 +1,10 @@
 import { difference } from 'lodash';
 import { Op, Transaction } from 'sequelize';
 import { BadRequestException, Inject, Injectable } from '@nestjs/common';
+import { EmployeeTypeJobCreateInputDto } from './dto/input/employee-type-job-create.input';
+import { EmployeeTypeJobDeleteInputDto } from './dto/input/employee-type-job-delete.input';
+import { EmployeeTypeJobUpdateInputDto } from './dto/input/employee-type-job-update.input';
 import EmployeeTypeJob from './employee-type-job.model';
-import { EmployeeTypeJobCreateInput } from './input/employee-type-job-create.input';
-import { EmployeeTypeJobDeleteInput } from './input/employee-type-job-delete.input';
-import { EmployeeTypeJobUpdateInput } from './input/employee-type-job-update.input';
 
 @Injectable()
 export class EmployeeTypeJobService {
@@ -27,7 +27,7 @@ export class EmployeeTypeJobService {
   }
 
   async employeeTypeJobsCreate(
-    data: EmployeeTypeJobCreateInput,
+    data: EmployeeTypeJobCreateInputDto,
     transaction?: Transaction,
   ): Promise<EmployeeTypeJob[]> {
     try {
@@ -50,7 +50,7 @@ export class EmployeeTypeJobService {
   }
 
   async employeeTypeJobsUpdate(
-    data: EmployeeTypeJobUpdateInput,
+    data: EmployeeTypeJobUpdateInputDto,
     transaction?: Transaction,
   ): Promise<any[]> {
     const { employeeId, oldTypeJobsIds, newTypeJobsIds } = data;
@@ -83,7 +83,7 @@ export class EmployeeTypeJobService {
   }
 
   async employeeTypeJobsDelete(
-    data: EmployeeTypeJobDeleteInput,
+    data: EmployeeTypeJobDeleteInputDto,
     transaction?: Transaction,
   ): Promise<Number[]> {
     try {

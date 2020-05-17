@@ -2,7 +2,7 @@ import { isEmpty } from 'lodash';
 import { Op, Transaction } from 'sequelize';
 import { BadRequestException, Inject, Injectable } from '@nestjs/common';
 import City from '../city/city.model';
-import { CheckIsValueUnique, OptimisticLocking } from '../common/decorators';
+import { OptimisticLocking } from '../common/decorators';
 import { MessageCodeError } from '../common/error';
 import District from '../district/district.model';
 import FamilyStatus from '../family-status/family-status.model';
@@ -10,9 +10,9 @@ import Quarter from '../quarter/quarter.model';
 import SocialStatus from '../social-status/social-status.model';
 import User from '../user/user.model';
 import { WardSocialStatusService } from '../ward-social-status/ward-social-status.service';
-import { WardCreateInput } from './input/ward-create.input';
-import { WardDeleteInput } from './input/ward-delete.input';
-import { WardUpdateInput } from './input/ward-update.input';
+import { WardCreateInputDto } from './dto/input/ward-create.input.dto';
+import { WardDeleteInputDto } from './dto/input/ward-delete.input.dto';
+import { WardUpdateInputDto } from './dto/input/ward-update.input.dto';
 import Ward from './ward.model';
 
 @Injectable()
@@ -23,10 +23,30 @@ export class WardService {
     private readonly wardSocialStatusService: WardSocialStatusService,
   ) {}
 
+  private readonly includedModels = [
+    User,
+    City,
+    District,
+    Quarter,
+    FamilyStatus,
+    SocialStatus,
+  ];
+
+  public async checkVersion(id: number): Promise<Ward | undefined> {
+    try {
+      return await this.WARD_REPOSITORY.findOne<Ward>({
+        where: { id },
+        attributes: ['version'],
+      });
+    } catch (error) {
+      throw new BadRequestException();
+    }
+  }
+
   async ward(id: number): Promise<Ward | undefined> {
     try {
       return await this.WARD_REPOSITORY.findOne<Ward>({
-        include: [User, City, District, Quarter, FamilyStatus, SocialStatus],
+        include: this.includedModels,
         where: { id },
       });
     } catch (error) {
@@ -46,13 +66,13 @@ export class WardService {
       return await this.WARD_REPOSITORY.findAll<Ward>({
         limit: paging,
         offset: (page - 1) * paging,
-        include: [User, City, District, Quarter, FamilyStatus, SocialStatus],
+        include: this.includedModels,
         where: {
-          employeeName: {
+          displayName: {
             [Op.iRegexp]: iRegexp,
           },
         },
-        order: [['wardName', 'ASC']],
+        order: [['displayName', 'ASC']],
       });
     } catch (error) {
       throw new BadRequestException();
@@ -69,21 +89,28 @@ export class WardService {
     }
   }
 
-  @CheckIsValueUnique(
-    'passportNumberFind',
-    'passportNumber',
-    'ward:validate:notUniquePassportNumber',
-  )
-  async wardCreate(data: WardCreateInput): Promise<any> {
+  // TODO: Исправить декоратор, не работает если не передаётся номер паспорта
+  // @CheckIsValueUnique(
+  //   'passportNumberFind',
+  //   'passportNumber',
+  //   'ward:validate:notUniquePassportNumber',
+  // )
+  async wardCreate(data: WardCreateInputDto): Promise<any> {
     const { socialStatusesIds, ...rest } = data;
     let transaction: Transaction;
 
     try {
       transaction = await this.SEQUELIZE.transaction();
 
-      const result = await this.WARD_REPOSITORY.create<Ward>(rest, {
-        transaction,
-      });
+      const result = await this.WARD_REPOSITORY.create<Ward>(
+        {
+          ...rest,
+          displayName: `${data.secondName} ${data.firstName} ${data.middleName}`,
+        },
+        {
+          transaction,
+        },
+      );
 
       const newId: number = result.getDataValue('id');
 
@@ -101,6 +128,8 @@ export class WardService {
 
       return result;
     } catch (error) {
+      console.log(error);
+
       transaction.rollback();
 
       switch (error.messageCode) {
@@ -113,12 +142,12 @@ export class WardService {
   }
 
   @OptimisticLocking(true)
-  @CheckIsValueUnique(
-    'passportNumberFind',
-    'passportNumber',
-    'ward:validate:notUniquePassportNumber',
-  )
-  async wardUpdate(data: WardUpdateInput): Promise<any> {
+  // @CheckIsValueUnique(
+  //   'passportNumberFind',
+  //   'passportNumber',
+  //   'ward:validate:notUniquePassportNumber',
+  // )
+  async wardUpdate(data: WardUpdateInputDto): Promise<any> {
     const { socialStatusesIds, ...rest } = data;
     const { id } = rest;
 
@@ -129,7 +158,7 @@ export class WardService {
         id,
       );
 
-      const oldSocialStatusesIds = wardSocialStatuses.map(status =>
+      const oldSocialStatusesIds = wardSocialStatuses.map((status) =>
         status.getDataValue('socialStatusId'),
       );
 
@@ -144,11 +173,17 @@ export class WardService {
         transaction,
       );
 
-      const res = await this.WARD_REPOSITORY.update<Ward>(rest, {
-        where: { id },
-        returning: true,
-        transaction,
-      });
+      const res = await this.WARD_REPOSITORY.update<Ward>(
+        {
+          ...rest,
+          displayName: `${data.secondName} ${data.firstName} ${data.middleName}`,
+        },
+        {
+          where: { id },
+          returning: true,
+          transaction,
+        },
+      );
 
       transaction.commit();
 
@@ -168,7 +203,7 @@ export class WardService {
   }
 
   @OptimisticLocking(false)
-  async wardDelete(data: WardDeleteInput): Promise<Number> {
+  async wardDelete(data: WardDeleteInputDto): Promise<Number> {
     const { id } = data;
     let transaction: Transaction;
 

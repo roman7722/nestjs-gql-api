@@ -4,9 +4,9 @@ import { BadRequestException, Inject, Injectable } from '@nestjs/common';
 import { CheckIsValueUnique, OptimisticLocking } from '../common/decorators';
 import { MessageCodeError } from '../common/error/MessageCodeError';
 import CustomerCategory from './customer-category.model';
-import { CustomerCategoryCreateInput } from './input/customer-category-create.input';
-import { CustomerCategoryDeleteInput } from './input/customer-category-delete.input';
-import { CustomerCategoryUpdateInput } from './input/customer-category-update.input';
+import { CustomerCategoryCreateInputDto } from './dto/input/customer-category-create.input.dto';
+import { CustomerCategoryDeleteInputDto } from './dto/input/customer-category-delete.input.dto';
+import { CustomerCategoryUpdateInputDto } from './dto/input/customer-category-update.input.dto';
 
 @Injectable()
 export class CustomerCategoryService {
@@ -82,10 +82,12 @@ export class CustomerCategoryService {
     'customerCategory:validate:notUniqueCustomerCategoryName',
   )
   async customerCategoryCreate(
-    data: CustomerCategoryCreateInput,
+    data: CustomerCategoryCreateInputDto,
   ): Promise<CustomerCategory> {
     try {
-      return await this.CUSTOMER_CATEGORY_REPOSITORY.create<CustomerCategory>(data);
+      return await this.CUSTOMER_CATEGORY_REPOSITORY.create<CustomerCategory>(
+        data,
+      );
     } catch (error) {
       if (
         error.messageCode ===
@@ -108,16 +110,15 @@ export class CustomerCategoryService {
     'customerCategory:validate:notUniqueCustomerCategoryName',
   )
   async customerCategoryUpdate(
-    data: CustomerCategoryUpdateInput,
+    data: CustomerCategoryUpdateInputDto,
   ): Promise<CustomerCategory> {
     try {
-      const res = await this.CUSTOMER_CATEGORY_REPOSITORY.update<CustomerCategory>(
-        data,
-        {
-          where: { id: data.id },
-          returning: true,
-        },
-      );
+      const res = await this.CUSTOMER_CATEGORY_REPOSITORY.update<
+        CustomerCategory
+      >(data, {
+        where: { id: data.id },
+        returning: true,
+      });
       const [, [val]] = res;
       return val;
     } catch (error) {
@@ -136,7 +137,9 @@ export class CustomerCategoryService {
   }
 
   @OptimisticLocking(false)
-  async customerCategoryDelete(data: CustomerCategoryDeleteInput): Promise<Number> {
+  async customerCategoryDelete(
+    data: CustomerCategoryDeleteInputDto,
+  ): Promise<Number> {
     try {
       return await this.CUSTOMER_CATEGORY_REPOSITORY.destroy({
         where: { id: data.id },

@@ -17,11 +17,14 @@ import { EmployeePositionModule } from './employee-position/employee-position.mo
 import { EmployeeStatusModule } from './employee-status/employee-status.module';
 import { EmployeeTypeJobModule } from './employee-type-job/employee-type-job.module';
 import { EmployeeModule } from './employee/employee.module';
+import { ExecutionStatusModule } from './execution-status/execution-status.module';
 import { FamilyStatusModule } from './family-status/family-status.module';
 import { OperationModeModule } from './operation-mode/operation-mode.module';
 import { PaymentFormModule } from './payment-form/payment-form.module';
+import { PaymentStatusModule } from './payment-status/payment-status.module';
 import { PositionModule } from './position/position.module';
 import { QuarterModule } from './quarter/quarter.module';
+import { ServicePackModule } from './service-pack/service-pack.module';
 import { SocialStatusModule } from './social-status/social-status.module';
 import { SubjectCategoryModule } from './subject-category/subject-category.module';
 import { SubjectModule } from './subject/subject.module';
@@ -63,6 +66,9 @@ const modules = [
   EmployeeModule,
   TypeJobModule,
   EmployeeTypeJobModule,
+  PaymentStatusModule,
+  ExecutionStatusModule,
+  ServicePackModule,
 ];
 
 @Module({

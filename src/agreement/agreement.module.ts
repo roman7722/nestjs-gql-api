@@ -8,5 +8,6 @@ import { AgreementService } from './agreement.service';
 @Module({
   imports: [DatabaseModule, UserModule],
   providers: [AgreementService, AgreementResolver, ...agreementProviders],
+  exports: [AgreementModule, AgreementService],
 })
 export class AgreementModule {}

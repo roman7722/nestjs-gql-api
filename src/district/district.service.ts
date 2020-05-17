@@ -4,9 +4,9 @@ import { BadRequestException, Inject, Injectable } from '@nestjs/common';
 import { CheckIsValueUnique, OptimisticLocking } from '../common/decorators';
 import { MessageCodeError } from '../common/error';
 import District from './district.model';
-import { DistrictCreateInput } from './input/district-create.input';
-import { DistrictDeleteInput } from './input/district-delete.input';
-import { DistrictUpdateInput } from './input/district-update.input';
+import { DistrictCreateInputDto } from './dto/input/district-create.input.dto';
+import { DistrictDeleteInputDto } from './dto/input/district-delete.input.dto';
+import { DistrictUpdateInputDto } from './dto/input/district-update.input.dto';
 
 @Injectable()
 export class DistrictService {
@@ -75,7 +75,7 @@ export class DistrictService {
     'districtName',
     'district:validate:notUniqueDistrictName',
   )
-  async districtCreate(data: DistrictCreateInput): Promise<District> {
+  async districtCreate(data: DistrictCreateInputDto): Promise<District> {
     try {
       return await this.DISTRICT_REPOSITORY.create<District>(data);
     } catch (error) {
@@ -92,7 +92,7 @@ export class DistrictService {
     'districtName',
     'district:validate:notUniqueDistrictName',
   )
-  async districtUpdate(data: DistrictUpdateInput): Promise<District> {
+  async districtUpdate(data: DistrictUpdateInputDto): Promise<District> {
     try {
       const res = await this.DISTRICT_REPOSITORY.update<District>(data, {
         where: { id: data.id },
@@ -109,7 +109,7 @@ export class DistrictService {
   }
 
   @OptimisticLocking(false)
-  async districtDelete(data: DistrictDeleteInput): Promise<Number> {
+  async districtDelete(data: DistrictDeleteInputDto): Promise<Number> {
     try {
       return await this.DISTRICT_REPOSITORY.destroy({
         where: { id: data.id },

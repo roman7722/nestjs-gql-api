@@ -4,9 +4,9 @@ import { BadRequestException, Inject, Injectable } from '@nestjs/common';
 import { CheckIsValueUnique, OptimisticLocking } from '../common/decorators';
 import { MessageCodeError } from '../common/error/MessageCodeError';
 import City from './city.model';
-import { CityCreateInput } from './input/city-create.input';
-import { CityDeleteInput } from './input/city-delete.input';
-import { CityUpdateInput } from './input/city-update.input';
+import { CityCreateInputDto } from './dto/input/city-create.input.dto';
+import { CityDeleteInputDto } from './dto/input/city-delete.input.dto';
+import { CityUpdateInputDto } from './dto/input/city-update.input.dto';
 
 @Injectable()
 export class CityService {
@@ -74,7 +74,7 @@ export class CityService {
     'cityName',
     'city:validate:notUniqueCityName',
   )
-  async cityCreate(data: CityCreateInput): Promise<City> {
+  async cityCreate(data: CityCreateInputDto): Promise<City> {
     try {
       return await this.CITY_REPOSITORY.create<City>(data);
     } catch (error) {
@@ -91,7 +91,7 @@ export class CityService {
     'cityName',
     'city:validate:notUniqueCityName',
   )
-  async cityUpdate(data: CityUpdateInput): Promise<City> {
+  async cityUpdate(data: CityUpdateInputDto): Promise<City> {
     try {
       const res = await this.CITY_REPOSITORY.update<City>(data, {
         where: { id: data.id },
@@ -108,7 +108,7 @@ export class CityService {
   }
 
   @OptimisticLocking(false)
-  async cityDelete(data: CityDeleteInput): Promise<Number> {
+  async cityDelete(data: CityDeleteInputDto): Promise<Number> {
     try {
       return await this.CITY_REPOSITORY.destroy({
         where: { id: data.id },

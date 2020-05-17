@@ -1,6 +1,7 @@
-import { BelongsTo, Column, ForeignKey, Model, Table } from 'sequelize-typescript';
+import { BelongsTo, Column, ForeignKey, HasMany, Model, Table } from 'sequelize-typescript';
 import AgreementStatus from '../agreement-status/agreement-status.model';
 import Customer from '../customer/customer.model';
+import ServicePack from '../service-pack/service-pack.model';
 import User from '../user/user.model';
 import Ward from '../ward/ward.model';
 
@@ -39,4 +40,7 @@ export default class Agreement extends Model<Agreement> {
   @Column({ allowNull: false, defaultValue: 1 }) version: number;
   @Column({ allowNull: false }) createdAt: Date;
   @Column({ allowNull: false }) updatedAt: Date;
+
+  /** One-to-many */
+  @HasMany(() => ServicePack) servicePacks: ServicePack[];
 }

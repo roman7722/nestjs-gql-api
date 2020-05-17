@@ -11,10 +11,10 @@ import OperationMode from '../operation-mode/operation-mode.model';
 import Quarter from '../quarter/quarter.model';
 import TypeJob from '../type-job/type-job.model';
 import User from '../user/user.model';
+import { EmployeeCreateInputDto } from './dto/input/employee-create.input.dto';
+import { EmployeeDeleteInputDto } from './dto/input/employee-delete.input.dto';
+import { EmployeeUpdateInputDto } from './dto/input/employee-update.input.dto';
 import Employee from './employee.model';
-import { EmployeeCreateInput } from './input/employee-create.input';
-import { EmployeeDeleteInput } from './input/employee-delete.input';
-import { EmployeeUpdateInput } from './input/employee-update.input';
 
 @Injectable()
 export class EmployeeService {
@@ -103,7 +103,7 @@ export class EmployeeService {
     'passportNumber',
     'employee:validate:notUniquePassportNumber',
   )
-  async employeeCreate(data: EmployeeCreateInput): Promise<any> {
+  async employeeCreate(data: EmployeeCreateInputDto): Promise<any> {
     const { typeJobsIds, ...rest } = data;
     let transaction: Transaction;
 
@@ -149,7 +149,7 @@ export class EmployeeService {
     'passportNumber',
     'employee:validate:notUniquePassportNumber',
   )
-  async employeeUpdate(data: EmployeeUpdateInput): Promise<Employee> {
+  async employeeUpdate(data: EmployeeUpdateInputDto): Promise<Employee> {
     const { typeJobsIds, ...rest } = data;
     const { id } = rest;
 
@@ -160,7 +160,9 @@ export class EmployeeService {
         id,
       );
 
-      const oldTypeJobsIds = typeJobs.map(job => job.getDataValue('typeJobId'));
+      const oldTypeJobsIds = typeJobs.map((job) =>
+        job.getDataValue('typeJobId'),
+      );
 
       transaction = await this.SEQUELIZE.transaction();
 
@@ -199,7 +201,7 @@ export class EmployeeService {
   }
 
   @OptimisticLocking(false)
-  async employeeDelete(data: EmployeeDeleteInput): Promise<Number> {
+  async employeeDelete(data: EmployeeDeleteInputDto): Promise<Number> {
     const { id } = data;
     let transaction: Transaction;
 

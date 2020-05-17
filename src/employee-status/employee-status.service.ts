@@ -3,10 +3,10 @@ import { Op } from 'sequelize';
 import { BadRequestException, Inject, Injectable } from '@nestjs/common';
 import { CheckIsValueUnique, OptimisticLocking } from '../common/decorators';
 import { MessageCodeError } from '../common/error/MessageCodeError';
+import { EmployeeStatusCreateInputDto } from './dto/input/employee-status-create.input.dto';
+import { EmployeeStatusDeleteInputDto } from './dto/input/employee-status-delete.input.dto';
+import { EmployeeStatusUpdateInputDto } from './dto/input/employee-status-update.input.dto';
 import EmployeeStatus from './employee-status.model';
-import { EmployeeStatusCreateInput } from './input/employee-status-create.input';
-import { EmployeeStatusDeleteInput } from './input/employee-status-delete.input';
-import { EmployeeStatusUpdateInput } from './input/employee-status-update.input';
 
 @Injectable()
 export class EmployeeStatusService {
@@ -62,7 +62,9 @@ export class EmployeeStatusService {
     }
   }
 
-  async employeeStatusNameFind(employeeStatusName: string): Promise<EmployeeStatus> {
+  async employeeStatusNameFind(
+    employeeStatusName: string,
+  ): Promise<EmployeeStatus> {
     try {
       return await this.EMPLOYEE_STATUS_REPOSITORY.findOne<
         EmployeeStatus | undefined
@@ -80,13 +82,14 @@ export class EmployeeStatusService {
     'employeeStatus:validate:notUniqueEmployeeStatusName',
   )
   async employeeStatusCreate(
-    data: EmployeeStatusCreateInput,
+    data: EmployeeStatusCreateInputDto,
   ): Promise<EmployeeStatus> {
     try {
       return await this.EMPLOYEE_STATUS_REPOSITORY.create<EmployeeStatus>(data);
     } catch (error) {
       if (
-        error.messageCode === 'employeeStatus:validate:notUniqueEmployeeStatusName'
+        error.messageCode ===
+        'employeeStatus:validate:notUniqueEmployeeStatusName'
       ) {
         throw new MessageCodeError(
           'employeeStatus:validate:notUniqueEmployeeStatusName',
@@ -105,7 +108,7 @@ export class EmployeeStatusService {
     'employeeStatus:validate:notUniqueEmployeeStatusName',
   )
   async employeeStatusUpdate(
-    data: EmployeeStatusUpdateInput,
+    data: EmployeeStatusUpdateInputDto,
   ): Promise<EmployeeStatus> {
     try {
       const res = await this.EMPLOYEE_STATUS_REPOSITORY.update<EmployeeStatus>(
@@ -119,7 +122,8 @@ export class EmployeeStatusService {
       return val;
     } catch (error) {
       if (
-        error.messageCode === 'employeeStatus:validate:notUniqueEmployeeStatusName'
+        error.messageCode ===
+        'employeeStatus:validate:notUniqueEmployeeStatusName'
       ) {
         throw new MessageCodeError(
           'employeeStatus:validate:notUniqueEmployeeStatusName',
@@ -132,7 +136,9 @@ export class EmployeeStatusService {
   }
 
   @OptimisticLocking(false)
-  async employeeStatusDelete(data: EmployeeStatusDeleteInput): Promise<Number> {
+  async employeeStatusDelete(
+    data: EmployeeStatusDeleteInputDto,
+  ): Promise<Number> {
     try {
       return await this.EMPLOYEE_STATUS_REPOSITORY.destroy({
         where: { id: data.id },

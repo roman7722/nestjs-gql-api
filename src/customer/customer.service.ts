@@ -4,9 +4,9 @@ import { BadRequestException, Inject, Injectable } from '@nestjs/common';
 import { OptimisticLocking } from '../common/decorators';
 import { MessageCodeError } from '../common/error/MessageCodeError';
 import Customer from './customer.model';
-import { CustomerCreateInput } from './input/customer-create.input';
-import { CustomerDeleteInput } from './input/customer-delete.input';
-import { CustomerUpdateInput } from './input/customer-update.input';
+import { CustomerCreateInputDto } from './dto/input/customer-create.input.dto';
+import { CustomerDeleteInputDto } from './dto/input/customer-delete.input.dto';
+import { CustomerUpdateInputDto } from './dto/input/customer-update.input.dto';
 
 @Injectable()
 export class CustomerService {
@@ -49,42 +49,42 @@ export class CustomerService {
         limit: paging,
         offset: (page - 1) * paging,
         where: {
-          customerName: {
+          displayName: {
             [Op.iRegexp]: iRegexp,
           },
         },
-        order: [['customerName', 'ASC']],
+        order: [['displayName', 'ASC']],
       });
     } catch (error) {
       throw new BadRequestException();
     }
   }
 
-  async customerNameFind(customerName: string): Promise<Customer> {
+  // TODO: Добавить проверку уникальности номера паспорта
+  async customerCreate(data: CustomerCreateInputDto): Promise<Customer> {
     try {
-      return await this.CUSTOMER_REPOSITORY.findOne<Customer | undefined>({
-        where: { customerName },
+      return await this.CUSTOMER_REPOSITORY.create<Customer>({
+        ...data,
+        displayName: `${data.secondName} ${data.firstName} ${data.middleName}`,
       });
-    } catch (error) {
-      throw new BadRequestException();
-    }
-  }
-
-  async customerCreate(data: CustomerCreateInput): Promise<Customer> {
-    try {
-      return await this.CUSTOMER_REPOSITORY.create<Customer>(data);
     } catch (error) {
       throw new MessageCodeError('customer:create:unableToCreateCustomer');
     }
   }
 
   @OptimisticLocking(true)
-  async customerUpdate(data: CustomerUpdateInput): Promise<Customer> {
+  async customerUpdate(data: CustomerUpdateInputDto): Promise<Customer> {
     try {
-      const res = await this.CUSTOMER_REPOSITORY.update<Customer>(data, {
-        where: { id: data.id },
-        returning: true,
-      });
+      const res = await this.CUSTOMER_REPOSITORY.update<Customer>(
+        {
+          ...data,
+          displayName: `${data.secondName} ${data.firstName} ${data.middleName}`,
+        },
+        {
+          where: { id: data.id },
+          returning: true,
+        },
+      );
       const [, [val]] = res;
       return val;
     } catch (error) {
@@ -93,7 +93,7 @@ export class CustomerService {
   }
 
   @OptimisticLocking(false)
-  async customerDelete(data: CustomerDeleteInput): Promise<Number> {
+  async customerDelete(data: CustomerDeleteInputDto): Promise<Number> {
     try {
       return await this.CUSTOMER_REPOSITORY.destroy({
         where: { id: data.id },
