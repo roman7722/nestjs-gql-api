@@ -48,7 +48,7 @@ export class ServicePackService {
     try {
       const iRegexp: string = isEmpty(textFilter)
         ? ``
-        : `(^${textFilter})|( ${textFilter})`;
+        : `(^${textFilter})|( ${textFilter})|(\(${textFilter})|('/'${textFilter})`;
       return await this.SERVICE_PACK_REPOSITORY.findAll<ServicePack>({
         limit: paging,
         offset: (page - 1) * paging,

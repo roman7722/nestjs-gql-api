@@ -19,7 +19,7 @@ export class BonusCategoryResolver {
 
   @Query(() => BonusCategoryDto, {
     nullable: true,
-    description: 'Поиск социального статуса по id',
+    description: 'Поиск категории НиУ по id',
   })
   async bonusCategory(@Args() { id }: BonusCategoryArgsDto) {
     return await this.bonusCategoryService.bonusCategory(id);
@@ -27,7 +27,7 @@ export class BonusCategoryResolver {
 
   @Query(() => [BonusCategoryDto], {
     nullable: true,
-    description: 'Поиск социального статуса по наименованию и пагинация',
+    description: 'Поиск НиУ по наименованию и пагинация',
   })
   async bonusCategoryList(
     @Args() { textFilter, page, paging }: BonusCategoryListArgsDto,

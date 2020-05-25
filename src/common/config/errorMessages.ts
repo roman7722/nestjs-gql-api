@@ -602,4 +602,46 @@ export const errorMessagesConfig: { [messageCode: string]: IErrorMessages } = {
     errorMessage: 'Unable to update service pack.',
     userMessage: 'Невозможно обновить пакет услуг.',
   },
+
+  /** -------------------- serviceCategory -------------------- */
+
+  'serviceCategory:create:unableToCreateServiceCategory': {
+    type: 'BadRequest',
+    statusCode: HttpStatus.BAD_REQUEST,
+    errorMessage: 'Unable to create service category.',
+    userMessage: 'Невозможно создать категорию услуги.',
+  },
+  'serviceCategory:update:unableToUpdateServiceCategory': {
+    type: 'BadRequest',
+    statusCode: HttpStatus.BAD_REQUEST,
+    errorMessage: 'Unable to update service category.',
+    userMessage: 'Невозможно обновить категорию услуги.',
+  },
+  'serviceCategory:validate:notUniqueServiceCategoryName': {
+    type: 'BadRequest',
+    statusCode: HttpStatus.BAD_REQUEST,
+    errorMessage: 'Execution status name already exists.',
+    userMessage: 'Наименование категории услуги уже существует.',
+  },
+
+  /** -------------------- serviceGuide -------------------- */
+
+  'serviceGuide:create:unableToCreateServiceGuide': {
+    type: 'BadRequest',
+    statusCode: HttpStatus.BAD_REQUEST,
+    errorMessage: 'Unable to create service guide.',
+    userMessage: 'Невозможно создать услугу.',
+  },
+  'serviceGuide:update:unableToUpdateServiceGuide': {
+    type: 'BadRequest',
+    statusCode: HttpStatus.BAD_REQUEST,
+    errorMessage: 'Unable to update service guide.',
+    userMessage: 'Невозможно обновить услугу.',
+  },
+  'serviceGuide:validate:notUniqueServiceGuideName': {
+    type: 'BadRequest',
+    statusCode: HttpStatus.BAD_REQUEST,
+    errorMessage: 'Execution status name already exists.',
+    userMessage: 'Наименование услуги уже существует.',
+  },
 };

@@ -1,4 +1,5 @@
-import { Column, DataType, Model, Table } from 'sequelize-typescript';
+import { Column, DataType, HasMany, Model, Table } from 'sequelize-typescript';
+import Employee from '../employee/employee.model';
 
 @Table({ tableName: 's_employee_status' })
 export default class EmployeeStatus extends Model<EmployeeStatus> {
@@ -11,5 +12,5 @@ export default class EmployeeStatus extends Model<EmployeeStatus> {
   @Column({ allowNull: false, defaultValue: 1 }) version: number;
 
   /** One-to-many */
-  // @HasMany(() => Employee) employees: Employee[];
+  @HasMany(() => Employee) employees: Employee[];
 }

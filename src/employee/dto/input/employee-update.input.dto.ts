@@ -4,7 +4,10 @@ import { Field, InputType, Int } from '@nestjs/graphql';
 export class EmployeeUpdateInputDto {
   @Field(() => Int, { nullable: false }) id: number;
   @Field(() => Int, { nullable: false }) userId: number;
-  @Field(() => String, { nullable: false }) employeeName: string;
+  @Field(() => String, { nullable: true }) firstName: string;
+  @Field(() => String, { nullable: true }) middleName: string;
+  @Field(() => String, { nullable: true }) secondName: string;
+  @Field(() => String, { nullable: true }) displayName: string;
   @Field({ nullable: true }) hbDate: Date;
   @Field(() => Int, { nullable: true }) cityId: number;
   @Field(() => Int, { nullable: true }) districtId: number;

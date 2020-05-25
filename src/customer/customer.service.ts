@@ -1,7 +1,7 @@
 import { isEmpty } from 'lodash';
 import { Op } from 'sequelize';
 import { BadRequestException, Inject, Injectable } from '@nestjs/common';
-import { OptimisticLocking } from '../common/decorators';
+import { CheckIsValueUnique, OptimisticLocking } from '../common/decorators';
 import { MessageCodeError } from '../common/error/MessageCodeError';
 import Customer from './customer.model';
 import { CustomerCreateInputDto } from './dto/input/customer-create.input.dto';
@@ -60,7 +60,21 @@ export class CustomerService {
     }
   }
 
-  // TODO: Добавить проверку уникальности номера паспорта
+  async passportNumberFind(passportNumber: string): Promise<Customer> {
+    try {
+      return await this.CUSTOMER_REPOSITORY.findOne<Customer | undefined>({
+        where: { passportNumber },
+      });
+    } catch (error) {
+      throw new BadRequestException();
+    }
+  }
+
+  @CheckIsValueUnique(
+    'passportNumberFind',
+    'passportNumber',
+    'customer:validate:notUniquePassportNumber',
+  )
   async customerCreate(data: CustomerCreateInputDto): Promise<Customer> {
     try {
       return await this.CUSTOMER_REPOSITORY.create<Customer>({
@@ -73,6 +87,11 @@ export class CustomerService {
   }
 
   @OptimisticLocking(true)
+  @CheckIsValueUnique(
+    'passportNumberFind',
+    'passportNumber',
+    'customer:validate:notUniquePassportNumber',
+  )
   async customerUpdate(data: CustomerUpdateInputDto): Promise<Customer> {
     try {
       const res = await this.CUSTOMER_REPOSITORY.update<Customer>(

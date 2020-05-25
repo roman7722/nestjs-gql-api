@@ -19,7 +19,7 @@ export class TypeJobResolver {
 
   @Query(() => TypeJobDto, {
     nullable: true,
-    description: 'Поиск социального статуса по id',
+    description: 'Поиск типа работы по id',
   })
   async typeJob(@Args() { id }: TypeJobArgsDto) {
     return await this.typeJobService.typeJob(id);
@@ -27,7 +27,7 @@ export class TypeJobResolver {
 
   @Query(() => [TypeJobDto], {
     nullable: true,
-    description: 'Поиск социального статуса по наименованию и пагинация',
+    description: 'Поиск типа работы по наименованию и пагинация',
   })
   async typeJobList(@Args() { textFilter, page, paging }: TypeJobListArgsDto) {
     return this.typeJobService.typeJobList(textFilter, page, paging);

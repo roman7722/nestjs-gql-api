@@ -1,9 +1,9 @@
-import { Field, ID, Int, ObjectType } from '@nestjs/graphql';
+import { Field, Int, ObjectType } from '@nestjs/graphql';
 
 @ObjectType()
 export class ExecutionStatusDto {
-  @Field(() => ID, { nullable: true }) id?: number;
-  @Field(() => String, { nullable: true }) executionStatusName?: string;
-  @Field(() => String, { nullable: true }) style?: string;
-  @Field(() => Int, { nullable: true }) version?: number;
+  @Field(() => Int, { nullable: false }) id: number;
+  @Field(() => String, { nullable: false }) executionStatusName: string;
+  @Field(() => String, { nullable: true }) style: string;
+  @Field(() => Int, { nullable: false }) version: number;
 }

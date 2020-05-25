@@ -3,26 +3,26 @@
 # ------------------------------------------------------
 
 type UserRoleDto {
-  id: Int
-  userRoleName: String
+  id: Int!
+  userRoleName: String!
   userRoleDescription: String
-  version: Int
+  version: Int!
 }
 
 type UserDto {
-  id: ID
+  id: Int!
   firstName: String
   middleName: String
   secondName: String
   displayName: String
-  username: String
+  username: String!
   email: String
   phone: String
   rem: String
-  userRole: UserRoleDto
-  version: Int
-  createdAt: DateTime
-  updatedAt: DateTime
+  userRole: UserRoleDto!
+  version: Int!
+  createdAt: DateTime!
+  updatedAt: DateTime!
 }
 
 """
@@ -31,52 +31,52 @@ A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date
 scalar DateTime
 
 type AgreementStatusDto {
-  id: ID
-  agreementStatusName: String
+  id: Int!
+  agreementStatusName: String!
   style: String
-  version: Int
+  version: Int!
 }
 
 type CityDto {
-  id: ID
+  id: Int!
   cityName: String
-  version: Int
+  version: Int!
 }
 
 type CustomerCategoryDto {
-  id: ID
-  customerCategoryName: String
-  version: Int
+  id: Int!
+  customerCategoryName: String!
+  version: Int!
 }
 
 type PaymentFormDto {
-  id: ID
-  paymentFormName: String
-  version: Int
+  id: Int!
+  paymentFormName: String!
+  version: Int!
 }
 
 type SubjectCategoryDto {
-  id: ID
-  subjectCategoryName: String
-  version: Int
+  id: Int!
+  subjectCategoryName: String!
+  version: Int!
 }
 
 type SubjectDto {
-  id: ID
-  subjectName: String
-  subjectCategory: SubjectCategoryDto
-  version: Int
+  id: Int!
+  subjectName: String!
+  subjectCategory: SubjectCategoryDto!
+  version: Int!
 }
 
 type WhatAboutUsDto {
-  id: ID
-  whatAboutUsName: String
-  version: Int
+  id: Int!
+  whatAboutUsName: String!
+  version: Int!
 }
 
 type CustomerDto {
-  id: ID
-  user: UserDto
+  id: Int!
+  user: UserDto!
   firstName: String
   middleName: String
   secondName: String
@@ -97,40 +97,40 @@ type CustomerDto {
   companyName: String
   whatAboutUs: WhatAboutUsDto
   rem: String
-  version: Int
-  createdAt: DateTime
-  updatedAt: DateTime
+  version: Int!
+  createdAt: DateTime!
+  updatedAt: DateTime!
 }
 
 type DistrictDto {
-  id: ID
-  districtName: String
-  city: CityDto
-  version: Int
+  id: Int!
+  districtName: String!
+  city: CityDto!
+  version: Int!
 }
 
 type FamilyStatusDto {
-  id: ID
-  familyStatusName: String
-  version: Int
+  id: Int!
+  familyStatusName: String!
+  version: Int!
 }
 
 type QuarterDto {
-  id: ID
-  quarterName: String
-  district: DistrictDto
-  version: Int
+  id: Int!
+  quarterName: String!
+  district: DistrictDto!
+  version: Int!
 }
 
 type SocialStatusDto {
-  id: ID
-  socialStatusName: String
-  version: Int
+  id: Int!
+  socialStatusName: String!
+  version: Int!
 }
 
 type WardDto {
-  id: ID
-  user: UserDto
+  id: Int!
+  user: UserDto!
   customer: CustomerDto
   firstName: String
   middleName: String
@@ -154,67 +154,70 @@ type WardDto {
   doctorsReport: Boolean
   events: String
   rem: String
-  version: Int
-  createdAt: DateTime
-  updatedAt: DateTime
+  version: Int!
+  createdAt: DateTime!
+  updatedAt: DateTime!
 }
 
 type AgreementDto {
-  id: ID
-  agreementNumber: String
-  agreementDate: DateTime
-  user: UserDto
-  customer: CustomerDto
-  ward: WardDto
-  agreementStatus: AgreementStatusDto
+  id: Int!
+  agreementNumber: String!
+  agreementDate: DateTime!
+  user: UserDto!
+  customer: CustomerDto!
+  ward: WardDto!
+  agreementStatus: AgreementStatusDto!
   rem: String
-  version: Int
-  createdAt: DateTime
-  updatedAt: DateTime
+  version: Int!
+  createdAt: DateTime!
+  updatedAt: DateTime!
 }
 
 type BonusCategoryDto {
-  id: ID
-  bonusCategoryName: String
-  version: Int
+  id: Int!
+  bonusCategoryName: String!
+  version: Int!
 }
 
 type BonusDto {
-  id: ID
-  bonusCategory: BonusCategoryDto
-  bonusName: String
-  cost: Float
+  id: Int!
+  bonusCategory: BonusCategoryDto!
+  bonusName: String!
+  cost: Float!
   rem: String
-  isCurrentOffer: Boolean
-  version: Int
-  createdAt: DateTime
-  updatedAt: DateTime
+  isCurrentOffer: Boolean!
+  version: Int!
+  createdAt: DateTime!
+  updatedAt: DateTime!
 }
 
 type EmployeeStatusDto {
-  id: ID
-  employeeStatusName: String
-  isEmployeeGroup: Boolean
-  isTimesheetGroup: Boolean
-  version: Int
+  id: Int!
+  employeeStatusName: String!
+  isEmployeeGroup: Boolean!
+  isTimesheetGroup: Boolean!
+  version: Int!
 }
 
 type OperationModeDto {
-  id: ID
-  operationModeName: String
-  version: Int
+  id: Int!
+  operationModeName: String!
+  version: Int!
 }
 
 type TypeJobDto {
-  id: ID
-  typeJobName: String
-  version: Int
+  id: Int!
+  typeJobName: String!
+  version: Int!
 }
 
 type EmployeeDto {
-  id: ID
-  user: UserDto
-  employeeName: String
+  id: Int!
+  user: UserDto!
+  firstName: String
+  middleName: String
+  secondName: String
+  displayName: String
   hbDate: DateTime
   city: CityDto
   district: DistrictDto
@@ -231,94 +234,124 @@ type EmployeeDto {
   operationMode: OperationModeDto
   typeJobs: [TypeJobDto!]
   rem: String
-  version: Int
-  createdAt: DateTime
-  updatedAt: DateTime
+  version: Int!
+  createdAt: DateTime!
+  updatedAt: DateTime!
 }
 
 type EmployeeBonusDto {
-  id: ID
-  user: UserDto
-  employee: EmployeeDto
-  bonusDate: DateTime
-  bonusCategory: BonusCategoryDto
-  bonus: BonusDto
-  cost: Float
+  id: Int!
+  user: UserDto!
+  employee: EmployeeDto!
+  bonusDate: DateTime!
+  bonusCategory: BonusCategoryDto!
+  bonus: BonusDto!
+  cost: Float!
   rem: String
-  version: Int
-  createdAt: DateTime
-  updatedAt: DateTime
+  version: Int!
+  createdAt: DateTime!
+  updatedAt: DateTime!
 }
 
 type PositionDto {
-  id: ID
-  positionName: String
-  tariff: Float
-  isCurrentOffer: Boolean
-  version: Int
-  createdAt: DateTime
-  updatedAt: DateTime
+  id: Int!
+  positionName: String!
+  tariff: Float!
+  isCurrentOffer: Boolean!
+  version: Int!
+  createdAt: DateTime!
+  updatedAt: DateTime!
 }
 
 type EmployeePositionDto {
-  id: ID
-  user: UserDto
-  employee: EmployeeDto
-  positionDateStart: DateTime
-  positionDateEnd: DateTime
-  position: PositionDto
-  tariff: Float
+  id: Int!
+  user: UserDto!
+  employee: EmployeeDto!
+  positionDateStart: DateTime!
+  positionDateEnd: DateTime!
+  position: PositionDto!
+  tariff: Float!
   rem: String
-  version: Int
-  createdAt: DateTime
-  updatedAt: DateTime
+  version: Int!
+  createdAt: DateTime!
+  updatedAt: DateTime!
 }
 
 type ExecutionStatusDto {
-  id: ID
-  executionStatusName: String
+  id: Int!
+  executionStatusName: String!
   style: String
-  version: Int
+  version: Int!
 }
 
 type PaymentStatusDto {
-  id: ID
-  paymentStatusName: String
+  id: Int!
+  paymentStatusName: String!
   style: String
-  version: Int
+  version: Int!
+}
+
+type ServiceCategoryDto {
+  id: Int!
+  serviceCategoryName: String!
+  version: Int!
+}
+
+type ServiceGuideDto {
+  id: Int!
+  serviceGuideName: String!
+  serviceCategory: ServiceCategoryDto!
+  showInCalc: Boolean!
+  rem: String
+  version: Int!
+}
+
+type ServiceGridDto {
+  id: Int!
+  serviceCategory: ServiceCategoryDto!
+  serviceGuide: ServiceGuideDto!
+  hoursFrom: Float!
+  hoursTo: Float!
+  workDayPrice: Float!
+  restDayPrice: Float!
+  rem: String
+  version: Int!
+  createdAt: DateTime!
+  updatedAt: DateTime!
 }
 
 type ServicePackDto {
-  id: ID
+  id: Int!
   agreementData: String
-  agreement: AgreementDto
+  agreement: AgreementDto!
   startDate: DateTime
   endDate: DateTime
   totalCost: Int
   prepayment: Int
   debt: Int
-  executionStatus: ExecutionStatusDto
-  paymentStatus: PaymentStatusDto
+  executionStatus: ExecutionStatusDto!
+  paymentStatus: PaymentStatusDto!
   rem: String
-  version: Int
-  createdAt: DateTime
-  updatedAt: DateTime
+  version: Int!
+  createdAt: DateTime!
+  updatedAt: DateTime!
 }
 
 type WardStageDto {
-  id: ID
-  wardStageName: String
+  id: Int!
+  wardStageName: String!
+  version: Int!
 }
 
 type WardStageProgressDto {
-  id: ID
-  wardStageDate: DateTime
-  wardStage: WardStageDto
-  ward: WardDto
+  id: Int!
+  wardStageDate: DateTime!
+  wardStage: WardStageDto!
+  ward: WardDto!
   rem: String
-  version: Int
-  createdAt: DateTime
-  updatedAt: DateTime
+  version: Int!
+  createdAt: DateTime!
+  updatedAt: DateTime!
 }
 
 type Query {
@@ -328,10 +361,10 @@ type Query {
   userList(textFilter: String, paging: Int!, page: Int!): [UserDto!]
   usersFind(ids: Int, usernames: String): [UserDto!]
 
-  """Поиск социального статуса по id"""
+  """Поиск статуса договора по id"""
   agreementStatus(id: Int!): AgreementStatusDto
 
-  """Поиск социального статуса по наименованию и пагинация"""
+  """Поиск статуса договора по наименованию и пагинация"""
   agreementStatusList(textFilter: String, paging: Int!, page: Int!): [AgreementStatusDto!]
 
   """Поиск договора по id"""
@@ -343,10 +376,10 @@ type Query {
   """Поиск договоров по номерам (точное совпадение)"""
   agreementsNumbersFind(agreementNumber: String): [AgreementDto!]
 
-  """Поиск социального статуса по id"""
+  """Поиск категории НиУ по id"""
   bonusCategory(id: Int!): BonusCategoryDto
 
-  """Поиск социального статуса по наименованию и пагинация"""
+  """Поиск НиУ по наименованию и пагинация"""
   bonusCategoryList(textFilter: String, paging: Int!, page: Int!): [BonusCategoryDto!]
 
   """Поиск начисления или удержания по id"""
@@ -385,10 +418,10 @@ type Query {
   """Поиск НиУ по примечанию и пагинация"""
   employeeBonusList(textFilter: String, paging: Int!, page: Int!): [EmployeeBonusDto!]
 
-  """Поиск социального статуса по id"""
+  """Поиск должности сотрудника по id"""
   employeePosition(id: Int!): EmployeePositionDto
 
-  """Поиск социального статуса по наименованию и пагинация"""
+  """Поиск должности сотрудника по наименованию и пагинация"""
   employeePositionList(textFilter: String, paging: Int!, page: Int!): [EmployeePositionDto!]
 
   """Поиск статуса сотрудника по id"""
@@ -403,22 +436,22 @@ type Query {
   """Поиск сотрудника по имени и пагинация"""
   employeeList(textFilter: String, paging: Int!, page: Int!): [EmployeeDto!]
 
-  """Поиск социального статуса по id"""
+  """Поиск статуса выполнения пакета услуг по id"""
   executionStatus(id: Int!): ExecutionStatusDto
 
-  """Поиск социального статуса по наименованию и пагинация"""
+  """Поиск статуса выполнения пакета услуг по наименованию и пагинация"""
   executionStatusList(textFilter: String, paging: Int!, page: Int!): [ExecutionStatusDto!]
 
-  """Поиск социального статуса по id"""
+  """Поиск статуса семейнгог положения по id"""
   familyStatus(id: Int!): FamilyStatusDto
 
-  """Поиск социального статуса по наименованию и пагинация"""
+  """Поиск статуса семейнгог положения по наименованию и пагинация"""
   familyStatusList(textFilter: String, paging: Int!, page: Int!): [FamilyStatusDto!]
 
-  """Поиск социального статуса по id"""
+  """Поиск режима работы сотрудника по id"""
   operationMode(id: Int!): OperationModeDto
 
-  """Поиск социального статуса по наименованию и пагинация"""
+  """Поиск режима работы сотрудника по наименованию и пагинация"""
   operationModeList(textFilter: String, paging: Int!, page: Int!): [OperationModeDto!]
 
   """Поиск формы оплаты по id"""
@@ -427,10 +460,10 @@ type Query {
   """Поиск формы оплаты по наименованию и пагинация"""
   paymentFormList(textFilter: String, paging: Int!, page: Int!): [PaymentFormDto!]
 
-  """Поиск социального статуса по id"""
+  """Поиск статуса оплаты по id"""
   paymentStatus(id: Int!): PaymentStatusDto
 
-  """Поиск социального статуса по наименованию и пагинация"""
+  """Поиск статуса оплаты по наименованию и пагинация"""
   paymentStatusList(textFilter: String, paging: Int!, page: Int!): [PaymentStatusDto!]
 
   """Поиск населённого пункта по id"""
@@ -445,10 +478,32 @@ type Query {
   """Поиск квартала по наименованию и пагинация"""
   quarterList(textFilter: String, paging: Int!, page: Int!): [QuarterDto!]
 
-  """Поиск социального статуса по id"""
+  """Поиск категории услуги по id"""
+  serviceCategory(id: Int!): ServiceCategoryDto
+
+  """Поиск категории услуги по наименованию и пагинация"""
+  serviceCategoryList(textFilter: String, paging: Int!, page: Int!): [ServiceCategoryDto!]
+
+  """Поиск услуги по id"""
+  serviceGrid(id: Int!): ServiceGridDto
+
+  """
+  Поиск услуги по наименованию serviceGuideName из родительской таблицы s_service_guide и пагинация
+  """
+  serviceGridList(textFilter: String, paging: Int!, page: Int!): [ServiceGridDto!]
+
+  """Поиск услуги по id"""
+  serviceGuide(id: Int!): ServiceGuideDto
+
+  """Поиск услуги по наименованию и пагинация"""
+  serviceGuideList(textFilter: String, paging: Int!, page: Int!): [ServiceGuideDto!]
+
+  """Поиск пакета услуг по id"""
   servicePack(id: Int!): ServicePackDto
 
-  """Поиск социального статуса по наименованию и пагинация"""
+  """
+  Поиск пакета услуг по № договора или фамилиям заказчика или подопечного представленных в формате agreementNumber (customerSecondName/wardSecondName) и пагинация
+  """
   servicePackList(textFilter: String, paging: Int!, page: Int!): [ServicePackDto!]
 
   """Поиск социального статуса по id"""
@@ -469,10 +524,10 @@ type Query {
   """Поиск субъекта по наименованию и пагинация"""
   subjectList(textFilter: String, paging: Int!, page: Int!): [SubjectDto!]
 
-  """Поиск социального статуса по id"""
+  """Поиск типа работы по id"""
   typeJob(id: Int!): TypeJobDto
 
-  """Поиск социального статуса по наименованию и пагинация"""
+  """Поиск типа работы по наименованию и пагинация"""
   typeJobList(textFilter: String, paging: Int!, page: Int!): [TypeJobDto!]
 
   """Роль пользователя"""
@@ -488,16 +543,20 @@ type Query {
   """
   userRoles(userRoleNames: [String!]): [UserRoleDto!]
 
-  """Поиск социального статуса по id"""
+  """Поиск статуса прогресса работы с подопечным по id"""
   wardStageProgress(id: Int!): WardStageProgressDto
 
-  """Поиск социального статуса по wardId, наименованию и пагинация"""
+  """
+  Поиск статуса прогресса работы с подопечным по полю примечание (rem) и пагинация
+  """
   wardStageProgressList(wardId: Int, textFilter: String, paging: Int!, page: Int!): [WardStageProgressDto!]
 
-  """Поиск социального статуса по id"""
+  """Поиск статуса состояния работы с подопечным по id"""
   wardStage(id: Int!): WardStageDto
 
-  """Поиск социального статуса по наименованию и пагинация"""
+  """
+  Поиск статуса состояния работы с подопечным по наименованию и пагинация
+  """
   wardStageList(textFilter: String, paging: Int!, page: Int!): [WardStageDto!]
 
   """Поиск подопечного по id"""
@@ -574,6 +633,15 @@ type Mutation {
   quarterCreate(data: QuarterCreateInputDto!): QuarterDto!
   quarterUpdate(data: QuarterUpdateInputDto!): QuarterDto!
   quarterDelete(data: QuarterDeleteInputDto!): Int!
+  serviceCategoryCreate(data: ServiceCategoryCreateInputDto!): ServiceCategoryDto!
+  serviceCategoryUpdate(data: ServiceCategoryUpdateInputDto!): ServiceCategoryDto!
+  serviceCategoryDelete(data: ServiceCategoryDeleteInputDto!): Int!
+  serviceGridCreate(data: ServiceGridCreateInputDto!): ServiceGridDto!
+  serviceGridUpdate(data: ServiceGridUpdateInputDto!): ServiceGridDto!
+  serviceGridDelete(data: ServiceGridDeleteInputDto!): Int!
+  serviceGuideCreate(data: ServiceGuideCreateInputDto!): ServiceGuideDto!
+  serviceGuideUpdate(data: ServiceGuideUpdateInputDto!): ServiceGuideDto!
+  serviceGuideDelete(data: ServiceGuideDeleteInputDto!): Int!
   servicePackCreate(data: ServicePackCreateInputDto!): ServicePackDto!
   servicePackUpdate(data: ServicePackUpdateInputDto!): ServicePackDto!
   servicePackDelete(data: ServicePackDeleteInputDto!): Int!
@@ -894,7 +962,10 @@ input EmployeeStatusDeleteInputDto {
 
 input EmployeeCreateInputDto {
   userId: Int!
-  employeeName: String!
+  firstName: String
+  middleName: String
+  secondName: String
+  displayName: String
   hbDate: DateTime
   cityId: Int
   districtId: Int
@@ -916,7 +987,10 @@ input EmployeeCreateInputDto {
 input EmployeeUpdateInputDto {
   id: Int!
   userId: Int!
-  employeeName: String!
+  firstName: String
+  middleName: String
+  secondName: String
+  displayName: String
   hbDate: DateTime
   cityId: Int
   districtId: Int
@@ -1052,6 +1126,69 @@ input QuarterUpdateInputDto {
 }
 
 input QuarterDeleteInputDto {
+  id: Int!
+  version: Int!
+}
+
+input ServiceCategoryCreateInputDto {
+  serviceCategoryName: String!
+}
+
+input ServiceCategoryUpdateInputDto {
+  id: Int!
+  serviceCategoryName: String!
+  version: Int!
+}
+
+input ServiceCategoryDeleteInputDto {
+  id: Int!
+  version: Int!
+}
+
+input ServiceGridCreateInputDto {
+  serviceCategoryId: Int!
+  serviceGuideId: Int!
+  hoursFrom: Float!
+  hoursTo: Float!
+  workDayPrice: Float!
+  restDayPrice: Float!
+  rem: String
+}
+
+input ServiceGridUpdateInputDto {
+  id: Int!
+  serviceCategoryId: Int!
+  serviceGuideId: Int!
+  hoursFrom: Float!
+  hoursTo: Float!
+  workDayPrice: Float!
+  restDayPrice: Float!
+  rem: String
+  version: Int!
+}
+
+input ServiceGridDeleteInputDto {
+  id: Int!
+  version: Int!
+}
+
+input ServiceGuideCreateInputDto {
+  serviceGuideName: String!
+  serviceCategoryId: Int!
+  showInCalc: Boolean!
+  rem: String
+}
+
+input ServiceGuideUpdateInputDto {
+  id: Int!
+  serviceGuideName: String!
+  serviceCategoryId: Int!
+  showInCalc: Boolean!
+  rem: String
+  version: Int!
+}
+
+input ServiceGuideDeleteInputDto {
   id: Int!
   version: Int!
 }

@@ -33,8 +33,13 @@ export const databaseProviders = [
           version: true,
         },
       });
-      /** Attention! If true - recreate all tables! */
+
+      /**
+       * Attention! If force = true, then all data in DB will be destroyed.
+       * All tables will be recreated again.
+       */
       const force: boolean = false;
+
       await sequelize.sync({ force });
       return sequelize;
     },

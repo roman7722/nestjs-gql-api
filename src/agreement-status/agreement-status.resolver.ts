@@ -21,7 +21,7 @@ export class AgreementStatusResolver {
 
   @Query(() => AgreementStatusDto, {
     nullable: true,
-    description: 'Поиск социального статуса по id',
+    description: 'Поиск статуса договора по id',
   })
   async agreementStatus(@Args() { id }: AgreementStatusArgsDto) {
     return await this.agreementStatusService.agreementStatus(id);
@@ -29,7 +29,7 @@ export class AgreementStatusResolver {
 
   @Query(() => [AgreementStatusDto], {
     nullable: true,
-    description: 'Поиск социального статуса по наименованию и пагинация',
+    description: 'Поиск статуса договора по наименованию и пагинация',
   })
   async agreementStatusList(
     @Args() { textFilter, page, paging }: AgreementStatusListArgsDto,

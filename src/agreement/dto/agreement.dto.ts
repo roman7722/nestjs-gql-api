@@ -1,4 +1,4 @@
-import { Field, ID, Int, ObjectType } from '@nestjs/graphql';
+import { Field, Int, ObjectType } from '@nestjs/graphql';
 import { AgreementStatusDto } from '../../agreement-status/dto/agreement-status.dto';
 import { CustomerDto } from '../../customer/dto/customer.dto';
 import { UserDto } from '../../user/dto/user.dto';
@@ -6,16 +6,16 @@ import { WardDto } from '../../ward/dto/ward.dto';
 
 @ObjectType()
 export class AgreementDto {
-  @Field(() => ID, { nullable: true }) id?: number;
-  @Field(() => String, { nullable: true }) agreementNumber?: string;
-  @Field({ nullable: true }) agreementDate?: Date;
-  @Field(() => UserDto, { nullable: true }) user?: UserDto;
-  @Field(() => CustomerDto, { nullable: true }) customer?: CustomerDto;
-  @Field(() => WardDto, { nullable: true }) ward?: WardDto;
-  @Field(() => AgreementStatusDto, { nullable: true })
-  agreementStatus?: AgreementStatusDto;
-  @Field(() => String, { nullable: true }) rem?: string;
-  @Field(() => Int, { nullable: true }) version?: number;
-  @Field({ nullable: true }) createdAt?: Date;
-  @Field({ nullable: true }) updatedAt?: Date;
+  @Field(() => Int, { nullable: false }) id: number;
+  @Field(() => String, { nullable: false }) agreementNumber: string;
+  @Field({ nullable: false }) agreementDate: Date;
+  @Field(() => UserDto, { nullable: false }) user: UserDto;
+  @Field(() => CustomerDto, { nullable: false }) customer: CustomerDto;
+  @Field(() => WardDto, { nullable: false }) ward: WardDto;
+  @Field(() => AgreementStatusDto, { nullable: false })
+  agreementStatus: AgreementStatusDto;
+  @Field(() => String, { nullable: true }) rem: string;
+  @Field(() => Int, { nullable: false }) version: number;
+  @Field({ nullable: false }) createdAt: Date;
+  @Field({ nullable: false }) updatedAt: Date;
 }

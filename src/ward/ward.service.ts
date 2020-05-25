@@ -105,7 +105,7 @@ export class WardService {
       const result = await this.WARD_REPOSITORY.create<Ward>(
         {
           ...rest,
-          displayName: `${data.secondName} ${data.firstName} ${data.middleName}`,
+          displayName: `${rest.secondName} ${rest.firstName} ${rest.middleName}`,
         },
         {
           transaction,
@@ -176,7 +176,7 @@ export class WardService {
       const res = await this.WARD_REPOSITORY.update<Ward>(
         {
           ...rest,
-          displayName: `${data.secondName} ${data.firstName} ${data.middleName}`,
+          displayName: `${rest.secondName} ${rest.firstName} ${rest.middleName}`,
         },
         {
           where: { id },

@@ -3,7 +3,7 @@ import Agreement from '../agreement/agreement.model';
 import ExecutionStatus from '../execution-status/execution-status.model';
 import PaymentStatus from '../payment-status/payment-status.model';
 
-// import Service from '../service/service.model';
+// import WardService from '../ward-service/ward-service.model';
 
 @Table({ tableName: 'service_pack', timestamps: true })
 export default class ServicePack extends Model<ServicePack> {
@@ -42,5 +42,5 @@ export default class ServicePack extends Model<ServicePack> {
   @Column({ allowNull: false }) updatedAt: Date;
 
   /** One-to-many */
-  // @HasMany(() => Service) services: Service[];
+  // @HasMany(() => WardService) wardServices: WardService[];
 }

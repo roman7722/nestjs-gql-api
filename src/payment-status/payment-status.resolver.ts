@@ -19,7 +19,7 @@ export class PaymentStatusResolver {
 
   @Query(() => PaymentStatusDto, {
     nullable: true,
-    description: 'Поиск социального статуса по id',
+    description: 'Поиск статуса оплаты по id',
   })
   async paymentStatus(@Args() { id }: PaymentStatusArgsDto) {
     return await this.paymentStatusService.paymentStatus(id);
@@ -27,7 +27,7 @@ export class PaymentStatusResolver {
 
   @Query(() => [PaymentStatusDto], {
     nullable: true,
-    description: 'Поиск социального статуса по наименованию и пагинация',
+    description: 'Поиск статуса оплаты по наименованию и пагинация',
   })
   async paymentStatusList(
     @Args() { textFilter, page, paging }: PaymentStatusListArgsDto,
