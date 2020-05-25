@@ -2,7 +2,7 @@ import { isEmpty } from 'lodash';
 import { Op, Transaction } from 'sequelize';
 import { BadRequestException, Inject, Injectable } from '@nestjs/common';
 import City from '../city/city.model';
-import { CheckIsValueUnique, OptimisticLocking } from '../common/decorators';
+import { OptimisticLocking } from '../common/decorators';
 import { MessageCodeError } from '../common/error/MessageCodeError';
 import District from '../district/district.model';
 import EmployeeStatus from '../employee-status/employee-status.model';
@@ -77,11 +77,11 @@ export class EmployeeService {
           TypeJob,
         ],
         where: {
-          employeeName: {
+          displayName: {
             [Op.iRegexp]: iRegexp,
           },
         },
-        order: [['employeeName', 'ASC']],
+        order: [['displayName', 'ASC']],
       });
     } catch (error) {
       throw new BadRequestException();
@@ -98,11 +98,12 @@ export class EmployeeService {
     }
   }
 
-  @CheckIsValueUnique(
-    'passportNumberFind',
-    'passportNumber',
-    'employee:validate:notUniquePassportNumber',
-  )
+  // TODO: Исправить декоратор, не работает если не передаётся номер паспорта
+  // @CheckIsValueUnique(
+  //   'passportNumberFind',
+  //   'passportNumber',
+  //   'employee:validate:notUniquePassportNumber',
+  // )
   async employeeCreate(data: EmployeeCreateInputDto): Promise<any> {
     const { typeJobsIds, ...rest } = data;
     let transaction: Transaction;
@@ -110,9 +111,15 @@ export class EmployeeService {
     try {
       transaction = await this.SEQUELIZE.transaction();
 
-      const result = await this.EMPLOYEE_REPOSITORY.create<Employee>(rest, {
-        transaction,
-      });
+      const result = await this.EMPLOYEE_REPOSITORY.create<Employee>(
+        {
+          ...rest,
+          displayName: `${rest.secondName} ${rest.firstName} ${rest.middleName}`,
+        },
+        {
+          transaction,
+        },
+      );
 
       const newId: number = result.getDataValue('id');
 
@@ -144,11 +151,11 @@ export class EmployeeService {
   }
 
   @OptimisticLocking(true)
-  @CheckIsValueUnique(
-    'passportNumberFind',
-    'passportNumber',
-    'employee:validate:notUniquePassportNumber',
-  )
+  // @CheckIsValueUnique(
+  //   'passportNumberFind',
+  //   'passportNumber',
+  //   'employee:validate:notUniquePassportNumber',
+  // )
   async employeeUpdate(data: EmployeeUpdateInputDto): Promise<Employee> {
     const { typeJobsIds, ...rest } = data;
     const { id } = rest;
@@ -175,11 +182,17 @@ export class EmployeeService {
         transaction,
       );
 
-      const res = await this.EMPLOYEE_REPOSITORY.update<Employee>(data, {
-        where: { id },
-        returning: true,
-        transaction,
-      });
+      const res = await this.EMPLOYEE_REPOSITORY.update<Employee>(
+        {
+          ...rest,
+          displayName: `${rest.secondName} ${rest.firstName} ${rest.middleName}`,
+        },
+        {
+          where: { id },
+          returning: true,
+          transaction,
+        },
+      );
 
       transaction.commit();
 

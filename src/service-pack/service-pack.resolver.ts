@@ -19,7 +19,7 @@ export class ServicePackResolver {
 
   @Query(() => ServicePackDto, {
     nullable: true,
-    description: 'Поиск социального статуса по id',
+    description: 'Поиск пакета услуг по id',
   })
   async servicePack(@Args() { id }: ServicePackArgsDto) {
     return await this.servicePackService.servicePack(id);
@@ -27,7 +27,8 @@ export class ServicePackResolver {
 
   @Query(() => [ServicePackDto], {
     nullable: true,
-    description: 'Поиск социального статуса по наименованию и пагинация',
+    description:
+      'Поиск пакета услуг по № договора или фамилиям заказчика или подопечного представленных в формате agreementNumber (customerSecondName/wardSecondName) и пагинация',
   })
   async servicePackList(
     @Args() { textFilter, page, paging }: ServicePackListArgsDto,

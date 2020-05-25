@@ -1,11 +1,11 @@
-import { Field, ID, Int, ObjectType } from '@nestjs/graphql';
+import { Field, Int, ObjectType } from '@nestjs/graphql';
 import { SubjectCategoryDto } from '../../subject-category/dto/subject-category.dto';
 
 @ObjectType()
 export class SubjectDto {
-  @Field(() => ID, { nullable: true }) id?: number;
-  @Field({ nullable: true }) subjectName?: string;
-  @Field(() => SubjectCategoryDto, { nullable: true })
-  subjectCategory?: SubjectCategoryDto;
-  @Field(() => Int, { nullable: true }) version?: number;
+  @Field(() => Int, { nullable: false }) id: number;
+  @Field(() => String, { nullable: false }) subjectName: string;
+  @Field(() => SubjectCategoryDto, { nullable: false })
+  subjectCategory: SubjectCategoryDto;
+  @Field(() => Int, { nullable: false }) version: number;
 }

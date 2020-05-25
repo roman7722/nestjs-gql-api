@@ -1,4 +1,5 @@
-import { Column, Model, Table } from 'sequelize-typescript';
+import { Column, HasMany, Model, Table } from 'sequelize-typescript';
+import Employee from '../employee/employee.model';
 
 @Table({ tableName: 's_operation_mode' })
 export default class OperationMode extends Model<OperationMode> {
@@ -7,5 +8,5 @@ export default class OperationMode extends Model<OperationMode> {
   @Column({ allowNull: false, defaultValue: 1 }) version: number;
 
   /** One-to-many */
-  // @HasMany(() => Employee) employees: Employee[];
+  @HasMany(() => Employee) employees: Employee[];
 }

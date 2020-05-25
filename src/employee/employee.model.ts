@@ -25,7 +25,10 @@ export default class Employee extends Model<Employee> {
   userId: number;
   @BelongsTo(() => User) user: User;
 
-  @Column({ allowNull: false }) employeeName: string;
+  @Column({ allowNull: false }) firstName: string;
+  @Column({ allowNull: true }) middleName: string;
+  @Column({ allowNull: true }) secondName: string;
+  @Column({ allowNull: true }) displayName: string;
   @Column({ allowNull: true }) hbDate: Date;
 
   /** Many-to-one */

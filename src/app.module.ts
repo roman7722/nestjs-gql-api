@@ -24,6 +24,9 @@ import { PaymentFormModule } from './payment-form/payment-form.module';
 import { PaymentStatusModule } from './payment-status/payment-status.module';
 import { PositionModule } from './position/position.module';
 import { QuarterModule } from './quarter/quarter.module';
+import { ServiceCategoryModule } from './service-category/service-category.module';
+import { ServiceGridModule } from './service-grid/service-grid.module';
+import { ServiceGuideModule } from './service-guide/service-guide.module';
 import { ServicePackModule } from './service-pack/service-pack.module';
 import { SocialStatusModule } from './social-status/social-status.module';
 import { SubjectCategoryModule } from './subject-category/subject-category.module';
@@ -69,6 +72,9 @@ const modules = [
   PaymentStatusModule,
   ExecutionStatusModule,
   ServicePackModule,
+  ServiceCategoryModule,
+  ServiceGuideModule,
+  ServiceGridModule,
 ];
 
 @Module({

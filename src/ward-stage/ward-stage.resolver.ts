@@ -19,7 +19,7 @@ export class WardStageResolver {
 
   @Query(() => WardStageDto, {
     nullable: true,
-    description: 'Поиск социального статуса по id',
+    description: 'Поиск статуса состояния работы с подопечным по id',
   })
   async wardStage(@Args() { id }: WardStageArgsDto) {
     return await this.wardStageService.wardStage(id);
@@ -27,7 +27,8 @@ export class WardStageResolver {
 
   @Query(() => [WardStageDto], {
     nullable: true,
-    description: 'Поиск социального статуса по наименованию и пагинация',
+    description:
+      'Поиск статуса состояния работы с подопечным по наименованию и пагинация',
   })
   async wardStageList(
     @Args() { textFilter, page, paging }: WardStageListArgsDto,

@@ -21,7 +21,7 @@ export class ExecutionStatusResolver {
 
   @Query(() => ExecutionStatusDto, {
     nullable: true,
-    description: 'Поиск социального статуса по id',
+    description: 'Поиск статуса выполнения пакета услуг по id',
   })
   async executionStatus(@Args() { id }: ExecutionStatusArgsDto) {
     return await this.executionStatusService.executionStatus(id);
@@ -29,7 +29,8 @@ export class ExecutionStatusResolver {
 
   @Query(() => [ExecutionStatusDto], {
     nullable: true,
-    description: 'Поиск социального статуса по наименованию и пагинация',
+    description:
+      'Поиск статуса выполнения пакета услуг по наименованию и пагинация',
   })
   async executionStatusList(
     @Args() { textFilter, page, paging }: ExecutionStatusListArgsDto,

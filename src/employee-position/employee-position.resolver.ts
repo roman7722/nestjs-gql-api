@@ -21,7 +21,7 @@ export class EmployeePositionResolver {
 
   @Query(() => EmployeePositionDto, {
     nullable: true,
-    description: 'Поиск социального статуса по id',
+    description: 'Поиск должности сотрудника по id',
   })
   async employeePosition(@Args() { id }: EmployeePositionArgsDto) {
     return await this.employeePositionService.employeePosition(id);
@@ -29,7 +29,7 @@ export class EmployeePositionResolver {
 
   @Query(() => [EmployeePositionDto], {
     nullable: true,
-    description: 'Поиск социального статуса по наименованию и пагинация',
+    description: 'Поиск должности сотрудника по наименованию и пагинация',
   })
   async employeePositionList(
     @Args() { textFilter, page, paging }: EmployeePositionListArgsDto,

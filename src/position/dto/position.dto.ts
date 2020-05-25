@@ -1,12 +1,12 @@
-import { Field, Float, ID, Int, ObjectType } from '@nestjs/graphql';
+import { Field, Float, Int, ObjectType } from '@nestjs/graphql';
 
 @ObjectType()
 export class PositionDto {
-  @Field(() => ID, { nullable: true }) id?: number;
-  @Field(() => String, { nullable: true }) positionName?: string;
-  @Field(() => Float, { nullable: true }) tariff?: number;
-  @Field({ nullable: true }) isCurrentOffer?: boolean;
-  @Field(() => Int, { nullable: true }) version?: number;
-  @Field({ nullable: true }) createdAt?: Date;
-  @Field({ nullable: true }) updatedAt?: Date;
+  @Field(() => Int, { nullable: false }) id: number;
+  @Field(() => String, { nullable: false }) positionName: string;
+  @Field(() => Float, { nullable: false }) tariff: number;
+  @Field({ nullable: false }) isCurrentOffer: boolean;
+  @Field(() => Int, { nullable: false }) version: number;
+  @Field({ nullable: false }) createdAt: Date;
+  @Field({ nullable: false }) updatedAt: Date;
 }

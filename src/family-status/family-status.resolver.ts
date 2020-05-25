@@ -19,7 +19,7 @@ export class FamilyStatusResolver {
 
   @Query(() => FamilyStatusDto, {
     nullable: true,
-    description: 'Поиск социального статуса по id',
+    description: 'Поиск статуса семейнгог положения по id',
   })
   async familyStatus(@Args() { id }: FamilyStatusArgsDto) {
     return await this.familyStatusService.familyStatus(id);
@@ -27,7 +27,8 @@ export class FamilyStatusResolver {
 
   @Query(() => [FamilyStatusDto], {
     nullable: true,
-    description: 'Поиск социального статуса по наименованию и пагинация',
+    description:
+      'Поиск статуса семейнгог положения по наименованию и пагинация',
   })
   async familyStatusList(
     @Args() { textFilter, page, paging }: FamilyStatusListArgsDto,

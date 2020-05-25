@@ -19,7 +19,7 @@ export class OperationModeResolver {
 
   @Query(() => OperationModeDto, {
     nullable: true,
-    description: 'Поиск социального статуса по id',
+    description: 'Поиск режима работы сотрудника по id',
   })
   async operationMode(@Args() { id }: OperationModeArgsDto) {
     return await this.operationModeService.operationMode(id);
@@ -27,7 +27,7 @@ export class OperationModeResolver {
 
   @Query(() => [OperationModeDto], {
     nullable: true,
-    description: 'Поиск социального статуса по наименованию и пагинация',
+    description: 'Поиск режима работы сотрудника по наименованию и пагинация',
   })
   async operationModeList(
     @Args() { textFilter, page, paging }: OperationModeListArgsDto,

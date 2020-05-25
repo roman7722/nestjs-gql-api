@@ -1,10 +1,10 @@
-import { Field, ID, Int, ObjectType } from '@nestjs/graphql';
+import { Field, Int, ObjectType } from '@nestjs/graphql';
 import { DistrictDto } from '../../district/dto/district.dto';
 
 @ObjectType()
 export class QuarterDto {
-  @Field(() => ID, { nullable: true }) id?: number;
-  @Field(() => String, { nullable: true }) quarterName?: string;
-  @Field(() => DistrictDto, { nullable: true }) district?: DistrictDto;
-  @Field(() => Int, { nullable: true }) version?: number;
+  @Field(() => Int, { nullable: false }) id: number;
+  @Field(() => String, { nullable: false }) quarterName: string;
+  @Field(() => DistrictDto, { nullable: false }) district: DistrictDto;
+  @Field(() => Int, { nullable: false }) version: number;
 }
