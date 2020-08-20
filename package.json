@@ -30,7 +30,7 @@
     "@nestjs/platform-express": "^7.0.9",
     "@types/dateformat": "^3.0.1",
     "apollo-server-express": "^2.13.0",
-    "bcrypt": "^4.0.1",
+    "bcrypt": "^5.0.0",
     "class-validator": "^0.12.2",
     "dateformat": "^3.0.3",
     "graphql": "^15.0.0",
